@@ -1,2 +1,2 @@
 # Click-journeY
-Projet préing 2 - CY-tech
+CY-tech - Projet préing 2 - MI3 A 
