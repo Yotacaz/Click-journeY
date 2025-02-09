@@ -1,5 +1,6 @@
 main{padding-top: 4rem;}
 
+/*Header style*/
 .header { 
     color: white;
     background-color: hsla(265, 100%, 25%, 0.838);
@@ -16,17 +17,21 @@ main{padding-top: 4rem;}
     left: 0;
 
     justify-content: space-between;
-    box-sizing: border-box;
-    align-items: center;
+    /* box-sizing: border-box; */   /*activer si utilisation de bordure*/
+    /* align-items: stretch; */
+    gap:0;
 }
+
 
 .header *{
     margin: 0;
+    font-weight: 600;
 }
 
-.header .section {
-    height: 100%;
-    flex-grow: 1;
+.header .section{
+    /* height: 100%; */
+    /* flex-grow: 1; */
+    /* background-color: hsla(265, 100%, 25%, 0.838); */
     display: flex;
     flex-wrap: wrap;
 
@@ -54,11 +59,10 @@ nav.navbar{
     text-align: center;
     align-items: center;
 
-    font-weight: 600;
     color: white;
     text-decoration: none;
     padding: 0em 1em 0em 1em;
-    margin-left: -4px;
+    /* margin-left: -4px; */
     
 }
 
