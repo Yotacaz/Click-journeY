@@ -4,37 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>Profil</title>
 </head>
 
 <body>
-    <div class="header">test</div>
+    <div class="header">
+        <div class="sectionH">test</div>
+    </div>
     <main>
-        <h3>Bonjour *utilisateur*</h3>
-        <div class="profil">
-            <h3>Votre profil :</h3>
-                <form action="" method="post">
+        <div class="bandeau">
+            <h3><img src="../img/profile-circle-icon-.png" alt="icône de profil" height="50em">Bonjour *utilisateur*</h3>
+        </div>
+        <div class="bloc">
+            <h3>Vos voyages prévus : </h3>
+            <ul>
+                <li>Animal Crossing - Etats Unis, Hawai, le 03/08/2025</li>
+                <li>GTA V - Etats Unis, Miamin, le 11/07/2025 </li>
+            </ul>
+        </div>
+        <div class="bloc">
+            <form action="" method="post">
 
-                    <label for="nom">Nom : <input type="text" name="nom" id="nom" disabled contenteditable="false" placeholder="Nom"
-                            value="VADOR"></label>
-                            <button type="button"><img src="" alt="modifier"></button>
-                    <br><br>
-                    <label for="prenom">Prénom : <input type="text" name="prenom" id="prenom" disabled contenteditable="false"
-                            placeholder="Prénom" value="Dark"></label>
-                    <br>
+
+                <h3>Votre profil :</h3>
+                <div class="formgroup">
+                    <label for="nom">Nom : </label>
+                    <div><input type="text" name="nom" id="nom" disabled contenteditable="false"
+                            placeholder="Nom" value="VADOR"></div>
+                    
+                    <button id="modifierNom" type="button"><img src="" alt="modifier"></button>
+                </div>
+                <br><br>
+                <div class="formgroup">
+                    <label for="prenom">Prénom : </label>
+                    <input type="text" name="prenom" id="prenom" disabled
+                            contenteditable="false" placeholder="Prénom" value="Dark">
+                </div>
+                <br>
+                <div class="formgroup">
+                    Genre :
                     <label for="genreH"><input type="radio" name="genre" id="genreH" checked disabled>Homme</label>
                     <label for="genreF"><input type="radio" name="genre" id="genreF" disabled>Femme</label>
                     <label for="genreA"><input type="radio" name="genre" id="genreA" disabled>Autre</label>
-                    <br>
+                </div>
+                <div class="formgroup">
                     <label for="addresse">Adresse :<input type="email" name="addresse" id="addresse"
                             placeholder="addresse@email.exemple" value="true.vador@evil.com" disabled></label>
-                    <br>
-                    <label for="date">Date de naissance : <input type="date" name="date" id="date" min="01/01/1900" disabled></label>
-                    <input type="submit" value="valider" disabled>
-                </form>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ad aspernatur odit id nesciunt voluptate
-                voluptatum excepturi accusamus voluptatibus debitis non repellendus similique expedita voluptatem,
-                cupiditate nobis eos harum consequuntur.</p>
+                </div>
+                <br>
+                <br>
+                <label for="date">Date de naissance : <input type="date" name="date" id="date" min="1900-01-01"
+                        value="1977-08-11" disabled>
+                <div class="formgroup"></div>
+                </label>
+
+            </form>
         </div>
     </main>
 </body>
