@@ -14,7 +14,8 @@
     </div>
     <main>
         <div class="bandeau">
-            <h3><img src="../img/profile-circle-icon-.png" alt="icône de profil" height="50em">Bonjour *utilisateur*</h3>
+            <h3><img src="../img/profile-circle-icon-.png" alt="icône de profil" height="50em">Bonjour *utilisateur*
+            </h3>
         </div>
         <div class="bloc">
             <h3>Vos voyages prévus : </h3>
@@ -24,40 +25,51 @@
             </ul>
         </div>
         <div class="bloc">
-            <form action="" method="post">
+            <h3>Votre profil :</h3>
+            <br>
+            <form action="#" method="post" name="profil">
+                
+                <div class="form-group">
+                    <label for="nom" class="col1">Nom : </label>
+                    <input class="col2" type="text" name="nom" id="nom" disabled contenteditable="false"
+                        placeholder="Nom" value="VADOR">
 
+                    <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="prenom" class="col1">Prénom : </label>
+                    <input class="col2" type="text" name="prenom" id="prenom" disabled contenteditable="false"
+                        placeholder="Prénom" value="Dark">
+                        <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
 
-                <h3>Votre profil :</h3>
-                <div class="formgroup">
-                    <label for="nom">Nom : </label>
-                    <div><input type="text" name="nom" id="nom" disabled contenteditable="false"
-                            placeholder="Nom" value="VADOR"></div>
-                    
-                    <button id="modifierNom" type="button"><img src="" alt="modifier"></button>
-                </div>
-                <br><br>
-                <div class="formgroup">
-                    <label for="prenom">Prénom : </label>
-                    <input type="text" name="prenom" id="prenom" disabled
-                            contenteditable="false" placeholder="Prénom" value="Dark">
                 </div>
                 <br>
-                <div class="formgroup">
-                    Genre :
-                    <label for="genreH"><input type="radio" name="genre" id="genreH" checked disabled>Homme</label>
-                    <label for="genreF"><input type="radio" name="genre" id="genreF" disabled>Femme</label>
-                    <label for="genreA"><input type="radio" name="genre" id="genreA" disabled>Autre</label>
-                </div>
-                <div class="formgroup">
-                    <label for="addresse">Adresse :<input type="email" name="addresse" id="addresse"
-                            placeholder="addresse@email.exemple" value="true.vador@evil.com" disabled></label>
+                <div class="form-group">
+                    <p class="col1">Genre :</p>
+                    <div class="col2">
+                        <label for="genreH"><input type="radio" name="genre" id="genreH" checked disabled>Homme</label>
+                        <label for="genreF"><input type="radio" name="genre" id="genreF" disabled>Femme</label>
+                        <label for="genreA"><input type="radio" name="genre" id="genreA" disabled>Autre</label>
+                    </div>
+                    <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+
                 </div>
                 <br>
+                <div class="form-group">
+                    <label for="addresse" class="col1">Adresse :</label>
+                    <input class="col2" type="email" name="addresse" id="addresse" placeholder="addresse@email.exemple"
+                        value="true.vador@evil.com" disabled>
+                        <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+
+                </div>
                 <br>
-                <label for="date">Date de naissance : <input type="date" name="date" id="date" min="1900-01-01"
-                        value="1977-08-11" disabled>
-                <div class="formgroup"></div>
-                </label>
+                <div class="form-group" class="col1">
+                    <label class="col1" for="date">Date de naissance :</label>
+                    <input class="col2" type="date" name="date" id="date" min="1900-01-01" value="1977-08-11" disabled>
+                    <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+
+                </div>
 
             </form>
         </div>
