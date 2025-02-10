@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -14,62 +14,59 @@
     </div>
     <main>
         <div class="bandeau">
-            <h3><img src="../img/profile-circle-icon-.png" alt="icône de profil" height="50em">Bonjour *utilisateur*
-            </h3>
+            <h1><img src="../img/profile-circle-icon-.png" alt="icône de profil" height="50">&nbsp;Bonjour utilisateur
+            </h1>
         </div>
-        <div class="bloc">
-            <h3>Vos voyages prévus : </h3>
+        <div class="contour-bloc">
+            <h2>Vos voyages prévus : </h2>
             <ul>
-                <li>Animal Crossing - Etats Unis, Hawai, le 03/08/2025</li>
-                <li>GTA V - Etats Unis, Miamin, le 11/07/2025 </li>
+                <li><b>Animal Crossing</b> - Etats Unis, Hawai, le 03/08/2025</li>
+                <li><b>GTA V</b> - Etats Unis, Miamin, le 11/07/2025 </li>
             </ul>
         </div>
         <div class="bloc">
-            <h3>Votre profil :</h3>
+            <h2>Votre profil :</h2>
             <br>
-            <form action="#" method="post" name="profil">
-                
-                <div class="form-group">
-                    <label for="nom" class="col1">Nom : </label>
-                    <input class="col2" type="text" name="nom" id="nom" disabled contenteditable="false"
-                        placeholder="Nom" value="VADOR">
+            <form class="form" action="#" method="post" name="profil">
 
-                    <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="prenom" class="col1">Prénom : </label>
-                    <input class="col2" type="text" name="prenom" id="prenom" disabled contenteditable="false"
-                        placeholder="Prénom" value="Dark">
-                        <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+                <label for="nom" class="col1">Nom : </label>
+                <input class="col2" type="text" name="nom" id="nom" disabled contenteditable="false" placeholder="Nom"
+                    value="VADOR">
 
-                </div>
-                <br>
-                <div class="form-group">
-                    <p class="col1">Genre :</p>
-                    <div class="col2">
-                        <label for="genreH"><input type="radio" name="genre" id="genreH" checked disabled>Homme</label>
-                        <label for="genreF"><input type="radio" name="genre" id="genreF" disabled>Femme</label>
-                        <label for="genreA"><input type="radio" name="genre" id="genreA" disabled>Autre</label>
-                    </div>
-                    <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+                <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png"
+                        alt="modifier"></button>
 
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="addresse" class="col1">Adresse :</label>
-                    <input class="col2" type="email" name="addresse" id="addresse" placeholder="addresse@email.exemple"
-                        value="true.vador@evil.com" disabled>
-                        <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
+                <label for="prenom" class="col1">Prénom : </label>
+                <input class="col2" type="text" name="prenom" id="prenom" disabled contenteditable="false"
+                    placeholder="Prénom" value="Dark">
+                <button class="col3" id="modifierPrenom" type="button"><img src="../img/modifier.png"
+                        alt="modifier"></button>
 
-                </div>
-                <br>
-                <div class="form-group" class="col1">
-                    <label class="col1" for="date">Date de naissance :</label>
-                    <input class="col2" type="date" name="date" id="date" min="1900-01-01" value="1977-08-11" disabled>
-                    <button class="col3" id="modifierNom" type="button"><img src="../img/modifier.png" alt="modifier"></button>
 
+                <label for="addresse" class="col1">Adresse :</label>
+                <input class="col2" type="email" name="addresse" id="addresse" placeholder="addresse@email.exemple"
+                    value="true.vador@evil.com" disabled>
+                <button class="col3" id="modifierEmail" type="button"><img src="../img/modifier.png"
+                        alt="modifier"></button>
+
+                <label for="mdp" class="col1">Mot de passe :</label>
+                <input class="col2" type="password" name="mot de passe" id="mdp" placeholder="Entrez un mot de passe"
+                    value="J3Su1sM€chAnt" disabled>
+                <button class="col3" id="modifierMdp" type="button"><img src="../img/modifier.png"
+                        alt="modifier"></button>
+
+                <p class="col1">Genre :</p>
+                <div class="col2">
+                    <label for="genreH"><input type="radio" name="genre" id="genreH" checked disabled>Homme</label>
+                    <label for="genreF"><input type="radio" name="genre" id="genreF" disabled>Femme</label>
+                    <label for="genreA"><input type="radio" name="genre" id="genreA" disabled>Autre</label>
                 </div>
+                <button class="col3" id="modifierGenre" type="button"><img src="../img/modifier.png"
+                        alt="modifier"></button>
+                <label class="col1" for="date">Date de naissance:</label>
+                <input class="col2" type="date" name="date" id="date" min="1900-01-01" value="1977-08-11" disabled>
+                <button class="col3" id="modifierDate" type="button"><img src="../img/modifier.png"
+                        alt="modifier"></button>
 
             </form>
         </div>
