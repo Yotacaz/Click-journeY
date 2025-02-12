@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Administrateur</title>
+</head>
+
+<body>
+    <main>
+        <div class="bandeau">
+            <h1 class="bandeau">Page administrateur</h1>
+        </div>
+        <div class="texte">
+            <p><b><em>Notez que tout abus sera punis.</em></b>
+                <br>Selectionnez le statut d'un utilisateur parmi :
+            <ol>
+                <li><b>VIP : </b>le client béneficie de réduction</li>
+                <li><b>Normal : </b>statut par défaut</li>
+                <li><b>Banni : </b> le client a enfreint le <a href="#">règlement du site</a></li>
+            </ol>
+            <br>
+            Merci de bien préciser la raison d'un changement de statut.
+            </p>
+        </div>
+        <div class="texte">
+
+            <div class="scrollable">
+                <div class="form3">
+                    <p>Adresse utilisateur </p>
+                    <p>statut</p>
+                    <p>valider</p>
+
+                    <p class="adresse">true.vador@evil.com</p>
+                    <select name="status" id="status-select">
+                        <option value="normal">Normal</option>
+                        <option value="VIP">VIP</option>
+                        <option selected value="banis">Banni</option>
+                    </select>
+                    <button>valider</button>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+    </main>
+</body>
+
+</html>
