@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>inscription</title>
+        <meta name=”auteur” content=”Augustin Aveline” />
+        <meta name=”description” content=”page d inscription au site” />
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <form action="connexion" method="post">
+            <p class="connexiontitle">
+                merci de remplir ces différents information pour nous permettant de crée votre compte.
+            </p>
+            <table>
+                <tr>
+                    <td>
+                        <label for="emailcinscription">email: </label>
+                    </td>
+                    <td> 
+                        <input type="email" id="emailcinscription" name="emailcinscription"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Prenom">Prénom: </label>
+                    </td>
+                    <td>    
+                        <input type="text" id="Prenom" name="prenom"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mdp">Nom: </label>
+                    </td>
+                    <td>    
+                        <input type="text" id="Nom" name="nom"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="naissance">Dates de naissance: </label>
+                    </td>
+                    <td>    
+                        <input type="date" id="naissance" name="naissance"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="genreH">Genre</label>
+                        <label for="genreF"></label>
+                        <label for="autres"></label>
+                    </td>
+                    <td>
+                        <input type="radio" name="genre" value="genreH" id="genreH"/>Homme
+                        <input type="radio" name="genre" value="genreF" id="genreF"/>Femme
+                        <input type="radio" name="genre" value="autres" id="autres" checked/>autre
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mdp">Mot de passe: </label>
+                    </td>
+                    <td>    
+                        <input type="password" id="creemdp" name="creemdp"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mdp"> Vérifié Mot de passe: </label>
+                    </td>
+                    <td>    
+                        <input type="password" id="creemdp2" name="creemdp2"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                                <button type="submit" id="submit1">Envoyée</button>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
