@@ -13,9 +13,10 @@
         <div class="bandeau">
             <h1 class="bandeau">Page administrateur</h1>
         </div>
-        <div class="texte">
-            <p><b><em>Notez que tout abus sera punis.</em></b>
-                <br>Selectionnez le statut d'un utilisateur parmi :
+        <div class="texte-centre">
+
+            <b><em>Notez que tout abus sera punis.</em></b>
+            <br>Selectionnez le statut d'un utilisateur parmi :
             <ol>
                 <li><b>VIP : </b>le client béneficie de réduction</li>
                 <li><b>Normal : </b>statut par défaut</li>
@@ -23,29 +24,59 @@
             </ol>
             <br>
             Merci de bien préciser la raison d'un changement de statut.
-            </p>
-        </div>
-        <div class="texte">
 
-            <div class="scrollable">
-                <div class="form3">
-                    <p>Adresse utilisateur </p>
-                    <p>statut</p>
-                    <p>valider</p>
-
-                    <p class="adresse">true.vador@evil.com</p>
-                    <select name="status" id="status-select">
-                        <option value="normal">Normal</option>
-                        <option value="VIP">VIP</option>
-                        <option selected value="banis">Banni</option>
-                    </select>
-                    <button>valider</button>
-                </div>
-
-            </div>
-        </div>
 
         </div>
+        <div class="contour-bloc">
+            <form action="#" method="post" id="true.vador@evil.com">
+            </form>
+            <form action="#" method="post" id="john.snow@cold.fr"></form>
+
+            <table class="scrollable">
+                <tr>
+                    <th>Adresse</th>
+                    <th>Statut</th>
+                    <th>Motif</th>
+                    <th>Valider</th>
+                </tr>
+                <tr>
+                    <td>true.vador@evil.com</td>
+                    <td>
+                        <select form="true.vador@evil.com" name="status">
+                            <option value="normal">Normal</option>
+                            <option value="VIP">VIP</option>
+                            <option selected value="banni">Banni</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input form="true.vador@evil.com" type="text" placeholder="motif" value="la force">
+                    </td>
+                    <td>
+                        <button form="true.vador@evil.com" type="submit">Valider</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>john.snow@cold.fr</td>
+                    <td>
+                        <select form="john.snow@cold.fr" name="status">
+                            <option value="normal">Normal</option>
+                            <option selected value="VIP">VIP</option>
+                            <option value="banni">Banni</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input form="john.snow@cold.fr" type="text" placeholder="motif" value="sympa">
+                    </td>
+                    <td>
+                        <button form="john.snow@cold.fr" type="submit">Valider</button>
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </div>
+
     </main>
 </body>
 

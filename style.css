@@ -1,75 +1,91 @@
-/*
-browser-sync ./ --no-open --no-notify -s -f "./style.css
-*/
-
 /*Mise en forme génerale applicable à chaque page*/
 html {
     width: 100%;
 }
 
 body {
+    min-height: 100vh;
+
     margin: 0;
     width: 100%;
+
     position: relative;
     background-color: #261C57;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     color: #43aed4;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 6rem 0 0 0;
 }
 
+h1,
+h2,
+h3 {
+    color: #aa00f9;
+}
+
+th,
+b {
+    color: #f39639;
+}
+
+em {
+    color: #fd5bcf;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+    color: #F205B3
+}
+
+
 /*Mise en forme de l'en tête (banière)*/
 .header {
-
     color: #261C57;
     background-color: #43aed4d8;
-    padding: 0 1em;
-    margin: 0;
+    min-width: fit-content;
     width: 100%;
     height: 6rem;
-    /*bandeau réduis 9rem --> 6rem*/
 
     display: flex;
     position: fixed;
-    z-index: 2025;
     /*stay on top*/
+    z-index: 2025;
     top: 0;
     left: 0;
 
     justify-content: space-between;
-    /* box-sizing: border-box; */
-    /*activer si utilisation de bordure*/
-    /* align-items: stretch; */
     gap: 0;
+    flex-wrap: nowrap;
 }
 
 .header * {
     margin: 0;
     font-weight: bold;
-    /* background-color: #43aed4d8;    */
 }
 
 .header .sectionH {
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0em 1em 0em 0em;
+    padding: 0;
 }
 
 .header img.icone-site {
     height: 100%;
 }
 
-#rechercher {
-    height: 1em;
-}
 
 nav.navbar {
     display: inline-flex;
@@ -77,6 +93,9 @@ nav.navbar {
     align-items: center;
 }
 
+.header h1 {
+    color: #261C57;
+}
 
 .header a {
     flex-grow: 1;
@@ -85,35 +104,53 @@ nav.navbar {
     flex-wrap: wrap;
     text-align: center;
     align-items: center;
-
+    
     text-decoration: none;
     padding: 0em 1em 0em 1em;
 }
 
 .header a:hover {
-    /*background-color: #43aed4d8; ///anciennes couleurs///
-    background-color: hsl(265, 100%, 20%);*/
     background-color: hsla(265, 100%, 100%, 0.25);
-    /*///   nouvelles couleurs (bleu éclaircis) ///*/
     text-decoration: underline;
     transition: 0.2s;
 }
 
-.header a.active {
+.header a.actif {
     text-decoration: underline;
     background-color: hsla(265, 100%, 100%, 0.25);
-    /*nouvelle*/
 }
 
-.header a:link {
-    color: #261C57;
-}
-
-.header a:visited {
-    color: #261C57;
-}
-
+.header a:link,
+.header a:visited,
 .header a:active {
+    color: #261C57;
+}
+
+#rechercher {
+    height: 1em;
+}
+
+/*Pied de page*/
+footer {
+    width: 100%;
+    min-height: min-content;
+    height: 2rem;
+    display: flex;
+    background-color: #43aed4d8;
+    color: #261C57;
+    align-items: center;
+    justify-content: space-around;
+}
+
+footer a:visited {
+    color: #261C57;
+}
+
+footer a:active {
+    color: #261C57;
+}
+
+footer a:link {
     color: #261C57;
 }
 
@@ -131,6 +168,12 @@ nav.navbar {
     display: flex;
     justify-content: center;
     align-items: baseline;
+}
+
+.bandeau h1,
+.bandeau h2,
+.bandeau h3 {
+    color: #261C57;
 }
 
 .bandeau img {
@@ -153,6 +196,11 @@ nav.navbar {
     align-items: center;
 }
 
+.bloc h1,
+.bloc h2,
+.bloc h3 {
+    color: #261C57;
+}
 
 /*Formulaire de 3 colonnes*/
 .form3 {
@@ -168,14 +216,13 @@ nav.navbar {
     height: 1em;
 }
 
-
 button.col3 {
     background: none;
     border: none;
 }
 
 button.col3:hover {
-    background-color:#ffffff40;
+    background-color: #ffffff40;
     border-radius: .2em;
 }
 
@@ -185,36 +232,23 @@ button.col3:hover {
 
 /*Bloc de texte encadré*/
 .contour-bloc {
+    width: fit-content;
     margin: 2em;
     padding: 1em;
+    display: flex;
+    align-self: center;
     border: #43aed4 solid;
     border-radius: .5em;
 }
 
-.contour-bloc h2,
-.contour-bloc h3 {
-    color: #aa00f9;
-}
-
-.contour-bloc b {
-    color: #f39639;
-}
-
-/*Pour zones de texte/contenu classique*/
-.texte {
+/*Pour zones de texte/contenu classique centré*/
+.texte-centre {
     display: grid;
-    width: calc(100%-6em);  /*toute la largeur - la marge et le padding*/
+    width: calc(100% - 6em);
+    /*w=toute la largeur - la marge et le padding*/
     margin: 2em;
     padding: 1em;
     justify-content: center;
-}
-
-.texte b {
-    color: #f39639;
-}
-
-.texte em {
-    color: #fd5bcf;
 }
 
 a.formulaire {
@@ -268,7 +302,6 @@ a.formulaire {
     padding-right: 20px;
     text-align: center;
     font-family: "Arial", "Times New Roman", Times, serif;
-
 }
 
 .image_acc .sous_titre_acc {
@@ -285,7 +318,6 @@ a.formulaire {
     font-size: 40px;
     font-family: "Arial", "Times New Roman", Times, serif;
     white-space: nowrap;
-
 }
 
 
@@ -312,8 +344,6 @@ a.formulaire {
     align-items: center;
     flex-direction: column;
     color: #43aed4;
-
-
 }
 
 .barre_de_recherche input {
@@ -328,7 +358,6 @@ a.formulaire {
     border-radius: 40px;
     font-size: 36px;
     padding: 15px;
-
 }
 
 [title="modifier"] {
@@ -339,6 +368,7 @@ a.formulaire {
 .scrollable {
     bottom: 0;
     height: 50vh;
+    width: fit-content;
     overflow: hidden;
     overflow-y: scroll;
 }
