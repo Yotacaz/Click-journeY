@@ -31,41 +31,55 @@
             <form action="#" method="post" id="true.vador@evil.com">
             </form>
             <form action="#" method="post" id="john.snow@cold.fr"></form>
+            <form action="#666784" method="post">
+            </form>
 
-            <table class="scrollable">
+            <div class="texte-centre">
+                <label for="recherche">
+                    <input type="search" name="recherche" id="recherche" placeholder="Rechercher un ID">
+                    <input type="submit" value="Rechercher">
+                </label>
+            </div>
+
+            <table class="scrollable tableau1">
                 <tr>
+                    <th>ID</th>
                     <th>Adresse</th>
                     <th>Statut</th>
                     <th>Motif</th>
                     <th>Valider</th>
                 </tr>
                 <tr>
+                    <td id="666784">666784 <input type="hidden" name="id" value="666784"></td>
                     <td>true.vador@evil.com</td>
                     <td>
                         <select form="true.vador@evil.com" name="status">
-                            <option value="normal">Normal</option>
-                            <option value="VIP">VIP</option>
-                            <option selected value="banni">Banni</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input form="true.vador@evil.com" type="text" placeholder="motif" value="la force">
-                    </td>
-                    <td>
-                        <button form="true.vador@evil.com" type="submit">Valider</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>john.snow@cold.fr</td>
-                    <td>
-                        <select form="john.snow@cold.fr" name="status">
                             <option value="normal">Normal</option>
                             <option selected value="VIP">VIP</option>
                             <option value="banni">Banni</option>
                         </select>
                     </td>
                     <td>
-                        <input form="john.snow@cold.fr" type="text" placeholder="motif" value="sympa">
+                        <input form="true.vador@evil.com" type="text" name="motif" placeholder="motif"
+                            value="c'est mon père">
+                    </td>
+                    <td>
+                        <button form="true.vador@evil.com" type="submit">Valider</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="000000">000000<input type="hidden" name="id" value="000000"></td>
+                    <td>john.snow@cold.fr</td>
+                    <td>
+                        <select form="john.snow@cold.fr" name="status">
+                            <option value="normal">Normal</option>
+                            <option value="VIP">VIP</option>
+                            <option selected value="banni">Banni</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input form="john.snow@cold.fr" type="text" placeholder="motif" name="motif"
+                            value="tu ne sais rien john snow">
                     </td>
                     <td>
                         <button form="john.snow@cold.fr" type="submit">Valider</button>
