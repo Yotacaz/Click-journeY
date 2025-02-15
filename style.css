@@ -282,6 +282,10 @@ button.col3:hover {
     text-align: right;
 }
 
+.col2{
+    text-align: center;
+}
+
 /*Bloc de texte encadré*/
 .contour-bloc {
     width: fit-content;
@@ -302,10 +306,6 @@ button.col3:hover {
     margin: 2em;
     padding: 1em;
     justify-content: center;
-}
-
-a.formulaire {
-    color: yellow;
 }
 
 /*Pour images d'un coté, texte de l'autre*/
@@ -443,4 +443,36 @@ a.formulaire {
     width: fit-content;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+a.lien {
+color: #aa00f9;
+}
+
+.bloc1 {
+    display: block;
+    padding: 1em;
+    margin: 1em;
+    background-color: #43aed4;
+    color: #261C57;
+    border-radius: 1em;
+    align-items: center;
+    text-align: center;
+}
+
+.bloc1 h1,
+.bloc1 h2,
+.bloc1 h3 {
+    color: #261C57;
+}
+
+div img#dessert{
+    padding: 1em;
+    height: 20em;
+    width: 20em;
+    text-align: left;   
+}
+
+.submit{
+width: 17em;
 }
