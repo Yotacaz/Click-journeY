@@ -1,85 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <title>inscription</title>
         <meta name=”auteur” content=”Augustin Aveline” />
         <meta name=”description” content=”page d inscription au site” />
-        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="../style.css"/>
+        <meta charset="UTF-8">
     </head>
     <body>
-        <form action="connexion" method="post">
-            <p class="connexiontitle">
-                merci de remplir ces différents information pour nous permettant de crée votre compte.
-            </p>
-            <table>
-                <tr>
-                    <td>
-                        <label for="emailcinscription">email: </label>
-                    </td>
-                    <td> 
-                        <input type="email" id="emailcinscription" name="emailcinscription"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="Prenom">Prénom: </label>
-                    </td>
-                    <td>    
-                        <input type="text" id="Prenom" name="prenom"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="mdp">Nom: </label>
-                    </td>
-                    <td>    
-                        <input type="text" id="Nom" name="nom"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="naissance">Dates de naissance: </label>
-                    </td>
-                    <td>    
-                        <input type="date" id="naissance" name="naissance"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="genreH">Genre</label>
-                        <label for="genreF"></label>
-                        <label for="autres"></label>
-                    </td>
-                    <td>
-                        <input type="radio" name="genre" value="genreH" id="genreH"/>Homme
-                        <input type="radio" name="genre" value="genreF" id="genreF"/>Femme
-                        <input type="radio" name="genre" value="autres" id="autres" checked/>autre
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="mdp">Mot de passe: </label>
-                    </td>
-                    <td>    
-                        <input type="password" id="creemdp" name="creemdp"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="mdp"> Vérifié Mot de passe: </label>
-                    </td>
-                    <td>    
-                        <input type="password" id="creemdp2" name="creemdp2"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                                <button type="submit" id="submit1">Envoyée</button>
-                        </label>
-                    </td>
-                </tr>
-            </table>
-        </form>
+        <div class="header">
+            <div class="sectionH">test</div>
+        </div>
+        <main>
+            <div class="bandeau">
+                <h1>
+                    Bonjour et bienvenue à vous
+                </h1>
+            </div>
+            <div class="bloc1">
+                <h2>Créé votre compte </h2>
+                <br>
+                <form class="form3" action="#" method="post" name="profil">
+    
+                    <label for="nom" class="col1">Nom : </label>
+                    <input class="col2" type="text" name="nom" id="nom" contenteditable="false" placeholder="Nom"><br/>
+    
+                    <label for="prenom" class="col1">Prénom : </label>
+                    <input class="col2" type="text" name="prenom" id="prenom" contenteditable="false" placeholder="Prénom"><br/>
+                
+                    <label for="addresse" class="col1">Adresse :</label>
+                    <input class="col2" type="email" name="addresse" id="addresse" placeholder="addresse@email.exemple"><br/>
+                    
+                    <label for="mdp" class="col1">Mot de passe :</label>
+                    <input class="col2" type="password" name="mot de passe" id="mdp" placeholder="Entrez un mot de passe"><br/>
+    
+                    <label for="mdp2" class="col1">Confirmation Mot de passe :</label>
+                    <input class="col2" type="password" name="mot de passe2" id="mdp2" placeholder="Entrez un mot de passe"><br/>
+                    
+                    <p class="col1">Genre :</p>
+                    <div class="col2">
+                        <label for="genreH"><input type="radio" name="genre" id="genreH">Homme</label>
+                        <label for="genreF"><input type="radio" name="genre" id="genreF">Femme</label>
+                        <label for="genreA"><input type="radio" name="genre" id="genreA">Autre</label>
+                    </div><br/>
+                    
+                    <label class="col1" for="date">Date de naissance:</label>
+                    <input class="col2" type="date" name="date" id="date" min="1900-01-01"><br/>
+    
+                    <p class="col1"> </p>
+                    <label class="col2">
+                        <button type="submit" class="submit">Envoyée</button>
+                    </label>
+                </form>
+                <p>
+                    Vous avez déja un compte ?
+                    <a href="Connexion.html" class="lien">Connectez-vous</a>
+                </p>
+            </div>
+        </main>
     </body>
 </html>
