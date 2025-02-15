@@ -1,48 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" >
     <head>
         <title>Connexion à mon compte</title>
         <meta name=”auteur” content=”Augustin Aveline” />
         <meta name=”description” content=”page de connexion au site” />
-        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="../style.css"/>
+        <meta charset="UTF-8">
     </head>
     <body>
-        <form action="connexion" method="post">
-            <p class="connexiontitle">
-                Connexion pour plus d'info sur vos voyage.
-            </p>
-            <table>
-                <tr>
-                    <td>
-                        <label for="emailconnexion">email: </label>
-                    </td>
-                    <td> 
-                        <input type="email" id="emailconnexion" name="emailconnexion"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="mdp">Mot de passe: </label>
-                    </td>
-                    <td>    
-                        <input type="password" id="mdp" name="mdp"/>
-                    </td>
-                    <td>
-                        <a href="mot de passe oublié.html" class="formulaire">Mot de passe oublié?</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                                <button type="submit" id="submit1">Envoyée</button>
-                        </label>
-                    </td>
-                </tr>
-            </table>
-            <p>
-                Vous n'avez pas de compte ?
-                <a href="inscription.html" class="formulaire">Crée le rapidement</a>
-            </p>
-        </form>
+        <div class="header">
+            <div class="sectionH">test</div>
+        </div>
+        <main>
+            <div class="bandeau">
+                <h1>
+                    Bonjour 
+                </h1>
+            </div>
+            <div class="bloc1">
+                <h2>Connexion</h2>
+                <br>
+                <form class="form3" action="#" method="post" name="connexion">
+                    <label for="addresse" class="col1">Adresse mail :</label>
+                    <input class="col2" type="email" name="addresse" id="addresse" placeholder="addresse@email.exemple"><br/>
+    
+                    <label for="mdp" class="col1">Mot de passe :</label>
+                    <input class="col2" type="password" name="mot de passe" id="mdp" placeholder="Entrez un mot de passe"><br/>
+    
+                    <p class="col1"> </p>
+                    <a class="lien" class="col2" href="mot de passe oublie.html"> Mot de passe oublié? </a><br/>
+    
+                    <label class="col2">
+                        <button type="submit" id="submit1">Connexion</button>
+                    </label>
+                </form>
+                <p>
+                    Vous n'avez pas de compte ?
+                    <a href="inscription.html" class="lien">Crée le rapidement</a>
+                </p>
+            </div>
+        </main>
     </body>
 </html>
