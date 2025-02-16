@@ -601,6 +601,7 @@ button.col3:hover {
 
 .menu_selecteur td {
     background-color: #aa00f9;
+    color: #261C57;
 }
 
 /* Lorsque la fenêtre est plus petite (ex. max-width 768px) */
