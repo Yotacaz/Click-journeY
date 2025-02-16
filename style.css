@@ -566,7 +566,7 @@ button.col3:hover {
 /*Mise en forme page de presentation------------------------------------------------------------------*/
 
 .presentation{
-    
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
