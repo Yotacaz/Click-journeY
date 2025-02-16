@@ -2,13 +2,40 @@
 <html lang="fr">
 
 <head>
+    <meta name="auteur" content="CRISSOT Martin" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <title>Administrateur</title>
+    <link rel="icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="description" content="Modification données client administrateur" />
+    <title>Administrateur - PixelTravels</title>
 </head>
 
 <body>
+    <div class="header">
+        <div class="sectionH">
+            <a href="../index.html">
+                <img class="icone-site" src="../img/logo.png" alt="Logo.png">
+                <h1>PixelTravels</h1>
+            </a>
+        </div>
+        <div class="sectionH">
+            <nav class="navbar">
+                <a href="accueil.html">Accueil</a>
+                <a href="recherche.html"><img class="img-1em" src="../img/search.png" alt="🔍">&nbsp;Rechercher</a>
+
+            </nav>
+        </div>
+        <div class="sectionH">
+            <nav class="navbar">
+                <a href="Connexion.html">Connexion</a>
+                <a href="inscription.html">Inscription</a>
+                <a href="profil.html">Profil</a>
+                <!-- <a href="#">Admin</a> -->
+                <!-- Si connecté : page profil, si admin : page admin ?? -->
+            </nav>
+        </div>
+    </div>
     <main>
         <div class="bandeau">
             <h1 class="bandeau">Page administrateur</h1>
@@ -43,14 +70,14 @@
                 <label for="recherche" class="col1">
                     <em>Rechercher par ID :</em>
                 </label>
-                <input class="input-formulaire" form="form-ID" type="number" name="recherche-ID" id="ID" placeholder="ID"
-                    min="0">
+                <input class="input-formulaire" form="form-ID" type="number" name="recherche-ID" id="ID"
+                    placeholder="ID" min="0">
                 <input class="input-formulaire" form="form-ID" type="submit" value="Rechercher">
                 <label for="adresse" class="col1">
                     <em>Rechercher par NOM :</em>
                 </label>
-                <input class="input-formulaire" form="form-nom" type="text" name="recherche-nom" id="nom" placeholder="NOM"
-                    oninput="this.value = this.value.toUpperCase()">
+                <input class="input-formulaire" form="form-nom" type="text" name="recherche-nom" id="nom"
+                    placeholder="NOM" oninput="this.value = this.value.toUpperCase()">
                 <input class="input-formulaire" form="form-nom" type="submit" value="Rechercher">
             </div>
             <br>
@@ -79,8 +106,8 @@
                             </select>
                         </td>
                         <td>
-                            <input class="input-formulaire" form="form-666784" type="text" name="motif" placeholder="motif"
-                                value="c'est mon père">
+                            <input class="input-formulaire" form="form-666784" type="text" name="motif"
+                                placeholder="motif" value="c'est mon père">
                         </td>
                         <td>
                             <button class="input-formulaire" form="form-666784" type="submit">Valider</button>
@@ -98,8 +125,8 @@
                             </select>
                         </td>
                         <td>
-                            <input class="input-formulaire" form="form-000000" type="text" placeholder="motif" name="motif"
-                                value="tu ne sais rien john snow">
+                            <input class="input-formulaire" form="form-000000" type="text" placeholder="motif"
+                                name="motif" value="tu ne sais rien john snow">
                         </td>
                         <td>
                             <button class="input-formulaire" form="form-000000" type="submit">Valider</button>
@@ -113,6 +140,25 @@
         </div>
 
     </main>
+
+    <footer>
+        <div>
+            <a href="#">Mentions légales</a>
+            <a href="#">À propos</a>
+            <a href="#">Contact</a>
+            <a href="#">Cookies</a>
+        </div>
+        <div>
+            <div> © 2021 PixelTravels</div>
+            <div>
+                auteurs :
+                 <a href="https://github.com/AugustinAveline" target="_top">AVELINE Augustin</a>
+                - <a href="https://github.com/bina0413" target="_top">DIOP Bineta</a>
+                - <a href="https://github.com/Yotacaz" target="_top">CRISSOT Martin</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>

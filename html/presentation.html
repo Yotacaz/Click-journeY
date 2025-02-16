@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet"  href="../style.css">
-	<title>Page de Presentation</title>
+	<meta name="auteur" content="DIOP Bineta" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="description" content="Page de présentation du site et recherche rapide" />
+    <title>Accueil - PixelTravels</title>
 </head>
 <body>
-	<div class="header">
+    <div class="header">
         <div class="sectionH">
-            <img class="icone-site" src="../img/tmp_icon.png" alt="Logo.png">
-            <h1>Jeux-Voyage</h1>
+            <a href="../index.html">
+                <img class="icone-site" src="../img/logo.png" alt="Logo.png">
+                <h1>PixelTravels</h1>
+            </a>
         </div>
         <div class="sectionH">
             <nav class="navbar">
-                <a href="../accueil.html" class="active">Accueil</a>
-                <a href="recherche.html"><img id="rechercher" src="img/search.png" alt="🔍">&nbsp;Rechercher</a>
-                
+                <a href="accueil.html" class="actif">Accueil</a>
+                <a href="recherche.html"><img class="img-1em" src="../img/search.png" alt="🔍">&nbsp;Rechercher</a>
+
+            </nav>
+        </div>
+        <div class="sectionH">
+            <nav class="navbar">
+                <a href="Connexion.html">Connexion</a>
+                <a href="inscription.html">Inscription</a>
+                <a href="profil.html">Profil</a>
+                <!-- <a href="#">Admin</a> -->
                 <!-- Si connecté : page profil, si admin : page admin ?? -->
             </nav>
         </div>
-        <div class="sectionH">
-            <nav class="navbar">
-                <a href="Connexion.html">Connection</a>
-                <a href="Inscription.html">Inscription</a>
-                <a href="profil.html">Profil</a>
-                <!-- <a href="#">Admin</a> -->
-            </nav>
-        </div>
     </div>
-	<div class="presentation">
-		<div class="texte_pre">
-    		<h2>Voyagez à travers l'univers des jeux vidéo : une aventure immersive à ne pas manquer</h2>
+    <main>
 
-    		Bienvenue sur notre site de voyage dédié aux passionnés de jeux vidéo ! Explorez des destinations où le monde virtuel prend vie, et plongez au cœur des paysages, des cultures et des univers qui ont inspiré vos jeux préférés.
-            Que vous soyez un fan de fantasy, un <em>explorateur de mondes futuristes ou un amateur de rétro-gaming</em>, nos voyages vous emmènent dans des lieux iconiques qui ont marqué l'histoire du jeu vidéo.
-    		Partez sur les traces des héros légendaires, visitez les studios de création de vos jeux favoris et découvrez des événements exclusifs où la réalité et le virtuel se rencontrent. Prêt à embarquer pour une aventure qui dépasse les limites du possible ? Le voyage commence ici.
+        <div class="presentation">
+            <div class="texte_pre">
+                <h2>Voyagez à travers l'univers des jeux vidéo : une aventure immersive à ne pas manquer</h2>
+                
+                Bienvenue sur notre site de voyage dédié aux passionnés de jeux vidéo ! Explorez des destinations où le monde virtuel prend vie, et plongez au cœur des paysages, des cultures et des univers qui ont inspiré vos jeux préférés.
+                Que vous soyez un fan de fantasy, un <em>explorateur de mondes futuristes ou un amateur de rétro-gaming</em>, nos voyages vous emmènent dans des lieux iconiques qui ont marqué l'histoire du jeu vidéo.
+                Partez sur les traces des héros légendaires, visitez les studios de création de vos jeux favoris et découvrez des événements exclusifs où la réalité et le virtuel se rencontrent. Prêt à embarquer pour une aventure qui dépasse les limites du possible ? Le voyage commence ici.
+                
+            </div>	
             
-        </div>	
-
-	</div>
-    <table class="menu_selecteur">
+        </div>
+        <table class="menu_selecteur">
             <tr>
                 <th> Les plus populaires </th>
             </tr>
@@ -57,8 +64,26 @@
                 <td>God of War</td>
             </tr>
         </table>
-
-	
-	
-</body>
-</html>
+        
+    </main>
+    
+    <footer>
+        <div>
+            <a href="#">Mentions légales</a>
+            <a href="#">À propos</a>
+            <a href="#">Contact</a>
+            <a href="#">Cookies</a>
+        </div>
+        <div>
+            <div> © 2021 PixelTravels</div>
+            <div>
+                auteurs :
+                 <a href="https://github.com/AugustinAveline" target="_top">AVELINE Augustin</a>
+                - <a href="https://github.com/bina0413" target="_top">DIOP Bineta</a>
+                - <a href="https://github.com/Yotacaz" target="_top">CRISSOT Martin</a>
+            </div>
+        </div>
+    </footer>
+        
+    </body>
+    </html>
