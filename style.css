@@ -502,6 +502,11 @@ button.col3:hover {
     text-decoration: none;    
 }
 
+.descrp_acc{
+    max-width: 80%;
+    margin-top: 2rem;
+    justify-content: center;
+ }
 
 
 @media (max-width: 850px) { /* si l'écran devient trop petit  */
