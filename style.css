@@ -432,22 +432,18 @@ button.col3:hover {
     border-top: 1px solid #43aed4;
 }
 
-/*Mise en forme page d'accueil de presentation*/
+
+/*Mise en forme page d'accueil de presentation----------------------------------------------------------*/
+
 .image_acc {
-    background-image: url("img/logo.png");
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    top: 100px;
-    bottom: 0;
-    left: 475px;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    /* Centre horizontalement */
-    align-items: center;
-    /* Centre verticalement */
-    z-index: 1;
+    background-image: url("img/tmp_icon.png");
+    width:600px; 
+    height:600px; 
+
+    display:flex ;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 2;
 }
 
 
@@ -455,62 +451,119 @@ button.col3:hover {
     position: absolute;
     color: black;
     border: 2px black;
-    width: 300px;
-    height: 60px;
+    width:300px; 
+    height:60px; 
     display: flex;
-    justify-content: center;
-    /* Centre horizontalement */
-    align-items: center;
-    /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
     z-index: 25;
     flex-direction: column;
 }
-
 .image_acc .texte_acc h1 {
     background-color: rgba(163, 200, 250, 0.5);
     color: #aa00f9;
-    font-size: 80px;
-    /* Taille de police fixe */
-    white-space: nowrap;
-    /* Empêche le texte de passer à la ligne suivante */
+    font-size: 80px; /* Taille de police fixe */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
-    font-family: "Arial", "Times New Roman", Times, serif;
-}
+    font-family: "Arial"; "Times New Roman", Times, serif;
 
-.image_acc .sous_titre_acc {
+}
+.image_acc .sous_titre_acc{
     position: absolute;
     color: #43aed4;
-    top: 300px;
+    top: 11em;
     display: flex;
-    justify-content: center;
-    /* Centre horizontalement */
-    align-items: center;
-    /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
     z-index: 25;
     flex-direction: column;
     font-size: 40px;
-    font-family: "Arial", "Times New Roman", Times, serif;
+    font-family: "Arial"; "Times New Roman", Times, serif;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     white-space: nowrap;
+
 }
 
 
-.image_acc button {
-    position: absolute;
-    bottom: -15px;
-    right: -380px;
+.image_acc button{
+    position: relative;
+    top: 45%;
+    width: 30%;
+    height: 8%;
     background-color: #43aed4;
     color: #aa00f9;
 }
-
-.image_acc a {
-    text-decoration: none;
+.image_acc a{
+    text-decoration: none;    
 }
 
 
 
-/*Mise en forme page de presentation--------------------------------------------*/
+@media (max-width: 850px) { /* si l'écran devient trop petit  */
+
+.image_acc {
+    background-image: url("img/tmp_icon.png");
+    width:600px; 
+    height:600px; 
+
+    display:flex ;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 2;
+}
+
+
+.image_acc .texte_acc {
+    position: absolute;
+    width:100px; 
+    height:20px; 
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 25;
+    flex-direction: column;
+}
+.image_acc .texte_acc h1 {
+    background-color: rgba(163, 200, 250, 0.5);
+    color: #aa00f9;
+    font-size: 40px; /* Taille de police fixe */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    font-family: "Arial"; "Times New Roman", Times, serif;
+
+}
+.image_acc .sous_titre_acc{
+    position: absolute;
+    color: #43aed4;
+    top: 18em;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 25;
+    flex-direction: column;
+    font-size: 20px;
+    font-family: "Arial"; "Times New Roman", Times, serif;
+    white-space: nowrap;
+
+}
+
+
+.image_acc button{
+    position: relative;
+    top: 40%;
+    background-color: #43aed4;
+    color: #aa00f9;
+}
+.image_acc a{
+    text-decoration: none;    
+}
+
+}
+/*Mise en forme page de presentation------------------------------------------------------------------*/
 
 .presentation{
     
@@ -566,6 +619,7 @@ button.col3:hover {
         right: 0;
     }
 }
+/*Mise en forme page de recherche ------------------------------------------------------------------*/
 
 .barre_de_recherche input {
     position: relative;
