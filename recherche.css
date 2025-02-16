@@ -1,4 +1,19 @@
 /*Mise en forme page d'accueil de recherche*/
+body {
+    min-height: 100vh;
+
+    margin: 0;
+    width: 100%;
+
+    position: relative;
+    background-color: #261C57;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+    color: #43aed4;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 .page_recherche{
     position: relative;
