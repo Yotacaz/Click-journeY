@@ -570,7 +570,6 @@ button.col3:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
     width: 100%; /* On s'assure que le conteneur occupe toute la largeur de l'écran */
 
 }
@@ -670,7 +669,6 @@ button.col3:hover {
 .resultat{
 position: relative;
 top: 3px;
-border: 2px solid black;
 max-height: 40%;
 max-width: 80%;
 display: flex;
