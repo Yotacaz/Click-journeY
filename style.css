@@ -235,12 +235,13 @@ button.input-formulaire {
     display: flex;
     width: calc(100% - 2em);
     margin: 1em 0;
-    padding: 0em 1em;
+    padding: 1em 1em;
 
     background-color: #43aed4;
     display: flex;
     justify-content: center;
     align-items: baseline;
+    height: fit-content;
 }
 
 .bandeau h1,
