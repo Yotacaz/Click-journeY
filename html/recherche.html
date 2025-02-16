@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="auteur" content="DIOP Bineta,CRISSOT Martin" />
     <meta charset="UTF-8">
@@ -9,8 +10,9 @@
     <meta name="description" content="Recherche un voyage selon des catégories" />
     <title>Recherche - PixelTravels</title>
 </head>
+
 <body>
-	    <div class="header">
+    <div class="header">
         <div class="sectionH">
             <a href="../index.html">
                 <img class="icone-site" src="../img/logo.png" alt="Logo.png">
@@ -20,7 +22,8 @@
         <div class="sectionH">
             <nav class="navbar">
                 <a href="accueil.html">Accueil</a>
-                <a href="recherche.html" class="actif"><img class="img-1em" src="../img/search.png" alt="🔍">&nbsp;Rechercher</a>
+                <a href="recherche.html" class="actif"><img class="img-1em" src="../img/search.png"
+                        alt="🔍">&nbsp;Rechercher</a>
 
             </nav>
         </div>
@@ -36,82 +39,60 @@
 
     </div>
     <main>
-    <div class="page_recherche">
-        
-	<div class="barre_de_recherche">
-		<input type="text" placeholder="Recherchez un jeu...">
-	</div>
 
-    <div class="=filtre">
-        FILTRER: 
-        <select class="filtre_genre" name="genre">
-              <option value="Tout">Tout</option>
-              <option value="MMORPG">MMORPG</option>
-              <option value="Aventure">Aventure</option>
-              <option value="Sport">Sport</option>
-              <option value="Action">Action</option>
-              <option value="MMORPG">MMORPG</option>
-              <option value="Aventure">Aventure</option>
-              <option value="Fiction interactive">Fiction</option>
-              <option value="Stratègie">Stratègie</option>
-              
-        </select>
-        <select class="filtre_theme" name="theme">
-              <option value="Tout">Tout</option>
-              <option value="Guerre">Guerre</option>
-              <option value="Science fiction">Science</option>
-              <option value="Fantasy">Fantasy</option>
-              <option value="Horreur">Horreur</option>
-              <option value="Dystopie">Dystopie</option>
-              <option value="Super Hero">Super Hero</option>
-              <option value="Espace">Espace</option>
-              <option value="Medieval">Medieval</option>
-              <option value="City">City</option>
-              <option value="Aquatique">Aquatique</option>
-        </select>
-    </div>
-    <div class="resultat">
-        <img src="../img/tmp_icon.png">
-        <img src="../img/jeu1.png">
-        <img src="../img/spider.png">
-        <img src="../img/tmp_icon.png">
 
-        <img src="../img/tmp_icon.png">
-        <img src="../img/tmp_icon.png">
-        <img src="../img/tmp_icon.png">
-        <img src="../img/tmp_icon.png">
+        <div class="bandeau-image">
+            <img src="../img/arcade.png" alt="image arcade">
+            <div class="centre">
+                <label for="recherche">
+                    Rechercher un jeu, une activité
+                </label>
+                <div>
+                    <input form="form-recherche" id="recherche" class="input-formulaire tres-grand bordure-violette"
+                        type="text" placeholder="Recherchez un jeu..." maxlength="50">
+                    <button form="form-recherche" class="sans-mise-en-forme" type="submit"><img
+                            class="img-4em contour-img" src="../img/search.png" alt="Rechercher"></button>
+                </div>
+            </div>
+        </div>
+
         
-        
-    </div>
-    </div>
         <form action="#" method="get" id="form-recherche">
         </form>
-        
+
         <div class="texte-centre :">
             <h1>Recherche avancée</h1>
             <form action="#" method="get">
+                <h2>Trier par genre</h2>
                 <div>
-                    <h2>Trier par catégorie</h2>
-                    <input type="checkbox" name="categorie" id="categorie-1" value="action" checked>
-                    <label for="categorie-1">Action</label>
-                    <input type="checkbox" name="categorie" id="categorie-2" value="aventure" checked>
-                    <label for="categorie-2">Aventure</label>
-                    <input type="checkbox" name="categorie" id="categorie-3" value="combat" checked>
-                    <label for="categorie-3">Combat</label>
-                    <input type="checkbox" name="categorie" id="categorie-4" value="course" checked>
-                    <label for="categorie-4">Course</label>
-                    <input type="checkbox" name="categorie" id="categorie-5" value="plateforme" checked>
-                    <label for="categorie-5">Plateforme</label>
-                    <input type="checkbox" name="categorie" id="categorie-6" value="simulation" checked>
-                    <label for="categorie-6">Simulation</label>
-                    <input type="checkbox" name="categorie" id="categorie-7" value="sport" checked>
-                    <label for="categorie-7">Sport</label>
-                    <input type="checkbox" name="categorie" id="categorie-8" value="strategie" checked>
-                    <label for="categorie-8">Stratégie</label>
-                    <input type="checkbox" name="categorie" id="categorie-9" value="autre" checked>
-                    <label for="categorie-9">Autre</label>
+                    <select class="filtre_genre" name="genre">
+                        <option value="Tout">Tout</option>
+                        <option value="MMORPG">MMORPG</option>
+                        <option value="Aventure">Aventure</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Action">Action</option>
+                        <option value="MMORPG">MMORPG</option>
+                        <option value="Aventure">Aventure</option>
+                        <option value="Fiction interactive">Fiction</option>
+                        <option value="Stratègie">Stratègie</option>
+                    </select>
+                    <h2>Trier par thème</h2>
+                    <select class="filtre_theme" name="theme">
+                        <option value="Tout">Tout</option>
+                        <option value="Guerre">Guerre</option>
+                        <option value="Science fiction">Science</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Horreur">Horreur</option>
+                        <option value="Dystopie">Dystopie</option>
+                        <option value="Super Hero">Super Hero</option>
+                        <option value="Espace">Espace</option>
+                        <option value="Medieval">Medieval</option>
+                        <option value="City">City</option>
+                        <option value="Aquatique">Aquatique</option>
+                    </select>
                     <br>
                 </div>
+                
                 <div class="separateur-section-haut">
                     <h2>Trier par prix</h2>
                     <input type="radio" name="prix" id="prix-0" checked value="aucun">
@@ -168,6 +149,17 @@
                     <button class="input-formulaire grand">Rechercher</button>
                 </div>
             </form>
+            <div class="resultat">
+                <img src="../img/tmp_icon.png">
+                <img src="../img/jeu1.png">
+                <img src="../img/spider.png">
+                <img src="../img/tmp_icon.png">
+    
+                <img src="../img/tmp_icon.png">
+                <img src="../img/tmp_icon.png">
+                <img src="../img/tmp_icon.png">
+                <img src="../img/tmp_icon.png">
+            </div>
         </div>
     </main>
     <footer>
@@ -181,7 +173,7 @@
             <div> © 2021 PixelTravels</div>
             <div>
                 auteurs :
-                 <a href="https://github.com/AugustinAveline" target="_top">AVELINE Augustin</a>
+                <a href="https://github.com/AugustinAveline" target="_top">AVELINE Augustin</a>
                 - <a href="https://github.com/bina0413" target="_top">DIOP Bineta</a>
                 - <a href="https://github.com/Yotacaz" target="_top">CRISSOT Martin</a>
             </div>
@@ -189,4 +181,5 @@
     </footer>
 
 </body>
+
 </html>
