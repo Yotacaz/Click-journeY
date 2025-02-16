@@ -297,6 +297,7 @@ button.input-formulaire {
 /*Bloc de texte sur fond de couleur*/
 .bloc {
     display: flex;
+    align-self: center;
     width: 80%;
     flex-direction: column;
     padding: 1em;
