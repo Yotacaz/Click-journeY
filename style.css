@@ -436,7 +436,7 @@ button.col3:hover {
 /*Mise en forme page d'accueil de presentation----------------------------------------------------------*/
 
 .image_acc {
-    background-image: url("img/tmp_icon.png");
+    background-image: url("img/logo.png");
     width:600px; 
     height:600px; 
 
@@ -503,60 +503,61 @@ button.col3:hover {
 
 @media (max-width: 850px) { /* si l'écran devient trop petit  */
 
-.image_acc {
-    background-image: url("img/logo.png");
-    width:600px; 
-    height:600px; 
-
-    display:flex ;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    z-index: 2;
-}
-
-
-.image_acc .texte_acc {
-    position: absolute;
-    width:100px; 
-    height:20px; 
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    z-index: 25;
-    flex-direction: column;
-}
-.image_acc .texte_acc h1 {
-    background-color: rgba(163, 200, 250, 0.5);
-    color: #aa00f9;
-    font-size: 40px; /* Taille de police fixe */
-    white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
-}
-.image_acc .sous_titre_acc{
-    position: absolute;
-    color: #43aed4;
-    top: 18em;
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    z-index: 25;
-    flex-direction: column;
-    font-size: 20px;
-    white-space: nowrap;
-
-}
-
-
-.image_acc button{
-    position: relative;
-    top: 40%;
-    background-color: #43aed4;
-    color: #aa00f9;
-}
-.image_acc a{
-    text-decoration: none;    
+    .image_acc {
+        background-image: url("img/logo.png");
+        width:600px; 
+        height:600px; 
+    
+        display:flex ;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        z-index: 2;
+    }
+    
+    
+    .image_acc .texte_acc {
+        position: absolute;
+        width:100px; 
+        height:20px; 
+        display: flex;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        z-index: 25;
+        flex-direction: column;
+    }
+    .image_acc .texte_acc h1 {
+        background-color: rgba(163, 200, 250, 0.5);
+        color: #aa00f9;
+        font-size: 40px; /* Taille de police fixe */
+        white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+    }
+    .image_acc .sous_titre_acc{
+        position: absolute;
+        color: #43aed4;
+        top: 18em;
+        display: flex;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        z-index: 25;
+        flex-direction: column;
+        font-size: 20px;
+        white-space: nowrap;
+    
+    }
+    
+    
+    .image_acc button{
+        position: relative;
+        top: 40%;
+        background-color: #43aed4;
+        color: #aa00f9;
+    }
+    .image_acc a{
+        text-decoration: none;    
+    }
 }
 
 
