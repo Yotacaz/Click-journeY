@@ -508,17 +508,63 @@ button.col3:hover {
     text-decoration: none;
 }
 
-.presentation {
-    position: relative;
-    font-size: 25px;
-    font-family: sans-serif;
-    top: 150px;
-    width: 600px;
+
+
+/*Mise en forme page de presentation--------------------------------------------*/
+
+.presentation{
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    border: 2px solid black;
+    width: 100%; /* On s'assure que le conteneur occupe toute la largeur de l'écran */
+
+}
+
+.presentation .texte_pre {
+    font-size: 20px;
+    font-family: sans-serif;
+    width: 50%;
+    padding: 7px;
+    text-align: center;
     color: #43aed4;
+    outline: 5px dashed #43aed4;
+}
+
+.menu_selecteur {
+    position: fixed; /* Fixe le menu par rapport au haut de la page */
+    top: 12rem; /* Définir la distance du haut de la page */
+    right: 5%; /* Espacement proportionnel à la taille de l'écran à droite */
+    min-height: 50%;
+    border: 5px solid #43aed4;
+    text-align: center;
+}
+
+.menu_selecteur td {
+    background-color: #aa00f9;
+}
+
+/* Lorsque la fenêtre est plus petite (ex. max-width 768px) */
+@media (max-width: 850px) {
+    .presentation {
+        flex-direction: column; /* Passe les éléments en colonne pour les petits écrans */
+        align-items: center; /* Centre les éléments verticalement */
+    }
+
+    .texte_pre {
+        width: 80%; /* Adapte la largeur du texte à un pourcentage plus grand */
+        margin-bottom: 20px; /* Ajoute de l'espace sous le texte */
+    }
+
+    .menu_selecteur {
+        position: relative;
+        width: 80%;
+        top: auto; /* Permet de ne plus avoir de décalage fixe */
+        bottom: 10px; /* Place le menu au bas de l'écran si nécessaire */
+        margin-top: 30px;
+        right: 0;
+    }
 }
 
 .barre_de_recherche input {
