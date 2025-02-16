@@ -490,16 +490,29 @@ button.col3:hover {
 }
 
 
-.image_acc button{
+.image_acc .button_acc{
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: #F205B3 solid 1px; */
+    border-radius: .5em;
     top: 45%;
     width: 30%;
     height: 8%;
+    font-weight: 600;
     background-color: #43aed4;
-    color: #aa00f9;
+    color: #F205B3;
+    border: #43aed4 solid .1em;
+    cursor: pointer;
 }
 .image_acc a{
     text-decoration: none;    
+}
+
+.image_acc .button_acc:hover {
+    border: #aa00f9 solid .1em;
+    background-color: #43aed4;
 }
 
 .descrp_acc{
