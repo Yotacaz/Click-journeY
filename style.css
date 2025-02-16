@@ -520,17 +520,13 @@ color: #aa00f9;
     text-align: center;
 }
 
-.bloc1 h1,
-.bloc1 h2,
-.bloc1 h3 {
+.bloc1 h2{
     color: #261C57;
 }
 
-div img#dessert{
+.dessert{
     padding: 1em;
-    height: 20em;
-    width: 20em;
-    text-align: left;   
+    width: 60%
 }
 
 .submit{
