@@ -504,7 +504,7 @@ button.col3:hover {
 @media (max-width: 850px) { /* si l'écran devient trop petit  */
 
 .image_acc {
-    background-image: url("img/tmp_icon.png");
+    background-image: url("img/logo.png");
     width:600px; 
     height:600px; 
 
