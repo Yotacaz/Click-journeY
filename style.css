@@ -1,4 +1,4 @@
-/*Mise en forme génerale applicable à chaque page*/
+/*Mise en forme générale applicable à chaque page*/
 html {
     width: 100%;
 }
@@ -128,10 +128,6 @@ nav.navbar {
     color: #261C57;
 }
 
-#rechercher {
-    height: 1em;
-}
-
 /*Pied de page*/
 footer {
     width: 100%;
@@ -158,28 +154,49 @@ footer a:link {
 
 /*Contenu principal*/
 
-/*Boutons de type validation pour attirer l'attention*/
-.grand-bouton {
-    background-color: #43aed4;
-    font-size: 2rem !important;
-    width: fit-content;
-    height: fit-content;
-    color: #261C57;
-    border: #43aed4 solid .1em;
-    border-radius: .5em;
-    padding: 1em;
-    margin: 1em;
-    font-size: 1em;
-    cursor: pointer;
+.tres-grand {
+    font-size: xx-large;
 }
 
-.grand-bouton:hover {
-    border: #43aed4 solid .1em;
-    background-color: #43aed4b0;
+.grand {
+    font-size: x-large;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+/*contenu centré*/
+.contenu-centre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+.img-1em {
+    height: 1em;
+}
+
+.img-4em {
+    height: 4em !important;
+}
+
+.sans-mise-en-forme {
+    background-color: transparent;
+    border: none;
+
+}
+
+.contour-img:hover {
+    -webkit-filter: drop-shadow(1px 1px 1px #aa00f9) drop-shadow(-1px -1px 0 #aa00f9);
+    filter: drop-shadow(1px 1px 1px #aa00f9) drop-shadow(-1px -1px 0 #aa00f9);
 }
 
 /*Petits boutons/inputs pour actions secondaires*/
-.petit-input {
+.input-formulaire {
     background-color: #43aed4;
     width: fit-content;
     height: fit-content;
@@ -189,13 +206,17 @@ footer a:link {
     padding: .2em 1em;
 }
 
-button.petit-input {
+button.input-formulaire {
     cursor: pointer;
 }
 
-.petit-input:hover {
-    border: #43aed4 solid .1em;
-    background-color: #43aed4b0;
+.input-formulaire:hover {
+    border: #aa00f9 solid .1em;
+    background-color: #43aed4;
+}
+
+.bordure-violette {
+    border-color: #261C57;
 }
 
 /*Bandeaux de texte pour afficher un titre*/
@@ -247,6 +268,7 @@ button.petit-input {
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 4em;
@@ -254,6 +276,12 @@ button.petit-input {
     color: #261C57;
     background-color: #ffffff80;
     margin: 0;
+}
+
+.centre * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*Bloc de texte sur fond de couleur*/
@@ -331,7 +359,7 @@ button.col3:hover {
     text-align: right;
 }
 
-.col2{
+.col2 {
     text-align: center;
 }
 
@@ -386,6 +414,11 @@ button.col3:hover {
     flex-direction: column;
     margin: 1em 0;
     border-bottom: 1px solid #43aed4;
+    border-top: 1px solid #43aed4;
+}
+
+.separateur-section-haut {
+    margin: 1em 0;
     border-top: 1px solid #43aed4;
 }
 
@@ -467,7 +500,7 @@ button.col3:hover {
 
 .presentation {
     position: relative;
-    font-size: 25;
+    font-size: 25px;
     font-family: sans-serif;
     top: 150px;
     width: 600px;
@@ -506,7 +539,7 @@ button.col3:hover {
 }
 
 a.lien {
-color: #aa00f9;
+    color: #aa00f9;
 }
 
 .bloc1 {
@@ -520,15 +553,17 @@ color: #aa00f9;
     text-align: center;
 }
 
+.bloc1 h2,
 .bloc1 h2{
     color: #261C57;
 }
+
 
 .dessert{
     padding: 1em;
     width: 60%
 }
 
-.submit{
-width: 17em;
+.submit {
+    width: 17em;
 }

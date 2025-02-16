@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="style.css">
-	<title>Recherche</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <title>Recherche</title>
 </head>
+
 <body>
-	    <div class="header">
+    <div class="header">
         <div class="sectionH">
-            <img class="icone-site" src="img/tmp_icon.png" alt="Logo.png">
+            <img class="icone-site" src="../img/tmp_icon.png" alt="Logo.png">
             <h1>Jeux-Voyage</h1>
         </div>
         <div class="sectionH">
             <nav class="navbar">
-                <a href="../accueil.html" >Accueil</a>
-                <a href="recherche.html" class="active"><img id="rechercher" src="img/search.png" alt="🔍">&nbsp;Rechercher</a>
-                
+                <a href="../accueil.html">Accueil</a>
+                <a href="recherche.html" class="active"><img class="img-1em" src="../img/search.png"
+                        alt="🔍">&nbsp;Rechercher</a>
+
                 <!-- Si connecté : page profil, si admin : page admin ?? -->
             </nav>
         </div>
@@ -30,9 +33,107 @@
         </div>
 
     </div>
-	<div class="barre_de_recherche">
-		<input type="text" placeholder="Recherchez un jeu...">
-	</div>
+    <main>
+        <form action="#" method="get" id="form-recherche">
+        </form>
+        <div class="bandeau-image">
+            <img src="../img/arcade.png" alt="image arcade">
+            <div class="centre">
+                <label for="recherche">
+                    Rechercher un jeu, une activité
+                </label>
+                <div>
+                    <input form="form-recherche" id="recherche" class="input-formulaire tres-grand bordure-violette"
+                        type="text" placeholder="Recherchez un jeu..." maxlength="50">
+                    <button form="form-recherche" class="sans-mise-en-forme" type="submit"><img
+                            class="img-4em contour-img" src="../img/search.png" alt="Rechercher"></button>
+                </div>
+            </div>
+        </div>
+        <div class="texte-centre :">
+            <h1>Recherche avancée</h1>
+            <form action="#" method="get">
+                <div>
+                    <h2>Trier par catégorie</h2>
+                    <input type="checkbox" name="categorie" id="categorie-1" value="action" checked>
+                    <label for="categorie-1">Action</label>
+                    <input type="checkbox" name="categorie" id="categorie-2" value="aventure" checked>
+                    <label for="categorie-2">Aventure</label>
+                    <input type="checkbox" name="categorie" id="categorie-3" value="combat" checked>
+                    <label for="categorie-3">Combat</label>
+                    <input type="checkbox" name="categorie" id="categorie-4" value="course" checked>
+                    <label for="categorie-4">Course</label>
+                    <input type="checkbox" name="categorie" id="categorie-5" value="plateforme" checked>
+                    <label for="categorie-5">Plateforme</label>
+                    <input type="checkbox" name="categorie" id="categorie-6" value="simulation" checked>
+                    <label for="categorie-6">Simulation</label>
+                    <input type="checkbox" name="categorie" id="categorie-7" value="sport" checked>
+                    <label for="categorie-7">Sport</label>
+                    <input type="checkbox" name="categorie" id="categorie-8" value="strategie" checked>
+                    <label for="categorie-8">Stratégie</label>
+                    <input type="checkbox" name="categorie" id="categorie-9" value="autre" checked>
+                    <label for="categorie-9">Autre</label>
+                    <br>
+                </div>
+                <div class="separateur-section-haut">
+                    <h2>Trier par prix</h2>
+                    <input type="radio" name="prix" id="prix-0" checked value="aucun">
+                    <label for="prix-0">Aucun filtre</label>
+                    <input type="radio" name="prix" id="prix-1" value="croissant">
+                    <label for="prix-1">Prix croissant</label>
+                    <input type="radio" name="prix" id="prix-2" value="decroissant">
+                    <label for="prix-2">Prix décroissant</label>
+                    <br>
+                    <div class="flex">
+                        <label class="flex" for="prix_min_range">
+                            Prix minimum :&nbsp;
+                            <input type="range" name="prix_min_range" id="prix_min_range" value="100" min="0"
+                                max="25000" step="100" oninput="this.form.prix_min_nb.value=this.value">
+                        </label>
+                        <input type="number" name="prix_min_nb" value="100" min="0" max="25000" step="100"
+                            oninput="this.form.prix_min_range.value=this.value">
+                        &nbsp;€
+                    </div>
+                    <div class="flex">
+                        <label class="flex" for="prix_max_range">
+                            Prix maximum :
+                            <input type="range" name="prix_max_range" id="prix_max_range" value="25000" min="0"
+                                max="25000" step="100" oninput="this.form.prix_max_nb.value=this.value">
+                        </label>
+                        <input type="number" name="prix_max_nb" value="25000" min="0" max="25000" step="100"
+                            oninput="this.form.prix_max_range.value=this.value">
+                        &nbsp;€
+                    </div>
+
+                </div>
+                <div class="separateur-section-haut">
+                    <h2>Trier par date</h2>
+                    <label for="date_min">Date minimum :</label>
+                    <input class="input-formulaire" type="date" name="date_min" id="date_min" value="2025-01-01">
+                    <label for="date_max">Date maximum :</label>
+                    <input class="input-formulaire" type="date" name="date_max" id="date_max" value="2050-12-31">
+                </div>
+                <div class="separateur-section-haut">
+                    <h2>Trier par lieux</h2>
+                    <input type="checkbox" name="lieu" id="lieu-1" value="france" checked>
+                    <label for="lieu-1">France</label>
+                    <input type="checkbox" name="lieu" id="lieu-2" value="etats-unis" checked>
+                    <label for="lieu-2">États-Unis</label>
+                    <input type="checkbox" name="lieu" id="lieu-3" value="japon" checked>
+                    <label for="lieu-3">Japon</label>
+                    <input type="checkbox" name="lieu" id="lieu-4" value="chine" checked>
+                    <label for="lieu-4">Chine</label>
+                    <input type="checkbox" name="lieu" id="lieu-5" value="autre" checked>
+                    <label for="lieu-5">Autre</label>
+                </div>
+                <div class="separateur-section-haut contenu-centre">
+                    <p><br></p>
+                    <button class="input-formulaire grand">Rechercher</button>
+                </div>
+            </form>
+        </div>
+    </main>
 
 </body>
+
 </html>
