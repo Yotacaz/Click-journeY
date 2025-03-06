@@ -401,6 +401,8 @@ button.col3:hover {
 
 /*Pour images d'un coté, texte de l'autre*/
 .conteneur-image-texte {
+    width: 100%;
+    height: fit-content;
     display: flex;
     align-items: baseline;
     align-items: center;
@@ -408,16 +410,20 @@ button.col3:hover {
 }
 
 .conteneur-image {
+    /* flex-grow: 2.5; */
     width: 125%;
-    /* height: 100%; */
+    height: fit-content;
 }
 
 .conteneur-image img {
+    /* object-fit: cover; */
+    height: 100%;
     width: 100%;
 }
 
 .conteneur-texte {
     width: 75%;
+    /* flex-grow: 1; */
     margin: 0 1em;
 }
 
@@ -431,6 +437,7 @@ button.col3:hover {
 }
 
 .separateur-section-haut {
+    width: 100%;
     margin: 1em 0;
     border-top: 1px solid #43aed4;
 }
