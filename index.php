@@ -8,10 +8,13 @@
     <link rel="icon" type="image/x-icon" href="img/logo.png">
     <meta name="description" content="modification profil utilisateur" />
     <title>PixelTravels</title>
+    <?php $titre_page="index" ?>
 </head>
 
 <body>
-
+    <?php
+    require_once "php-include/header.php";
+    ?>
     <div class="image_acc">
 
         <div class="texte_acc">

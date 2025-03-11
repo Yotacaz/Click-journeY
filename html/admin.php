@@ -9,33 +9,13 @@
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="Modification données client administrateur" />
     <title>Administrateur - PixelTravels</title>
+    <?php $titre_page = "admin"; ?>
 </head>
 
 <body>
-    <div class="header">
-        <div class="sectionH">
-            <a href="../index.html">
-                <img class="icone-site" src="../img/logo.png" alt="Logo.png">
-                <h1>PixelTravels</h1>
-            </a>
-        </div>
-        <div class="sectionH">
-            <nav class="navbar">
-                <a href="accueil.html">Accueil</a>
-                <a href="recherche.html"><img class="img-1em" src="../img/search.png" alt="🔍">&nbsp;Rechercher</a>
-
-            </nav>
-        </div>
-        <div class="sectionH">
-            <nav class="navbar">
-                <a href="Connexion.html">Connexion</a>
-                <a href="inscription.html">Inscription</a>
-                <a href="profil.html">Profil</a>
-                <!-- <a href="#">Admin</a> -->
-                <!-- Si connecté : page profil, si admin : page admin ?? -->
-            </nav>
-        </div>
-    </div>
+    <?php
+    require_once "php-include/header.php";
+    ?>
     <main>
         <div class="bandeau">
             <h1 class="bandeau">Page administrateur</h1>
@@ -141,22 +121,9 @@
 
     </main>
 
-    <footer>
-        <div>
-            <a href="#">Mentions légales</a>
-            <a href="#">À propos</a>
-            <a href="#">Contact</a>
-            <a href="#">Cookies</a>
-        </div>
-        <div>
-            <div> © 2021 PixelTravels     -     
-                auteurs :
-                 <a href="https://github.com/AugustinAveline" target="_top">AVELINE Augustin</a>
-                - <a href="https://github.com/bina0413" target="_top">DIOP Bineta</a>
-                - <a href="https://github.com/Yotacaz" target="_top">CRISSOT Martin</a>
-            </div>
-        </div>
-    </footer>
+    <?php
+    require_once "php-include/footer.php";
+    ?>
 
 </body>
 
