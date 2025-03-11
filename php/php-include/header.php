@@ -38,13 +38,13 @@ $page_active = basename(path: $_SERVER["PHP_SELF"]);
     <div class="sectionH">
         <nav class="navbar">
             <a href="connexion.php" <?php
-            classe_actif($titre_page, "connexion.php");
+            classe_actif($page_active, "connexion.php");
             ?>>Connexion</a>
             <a href="inscription.php" <?php
-            classe_actif($titre_page, "inscription.php");
+            classe_actif($page_active, "inscription.php");
             ?>>Inscription</a>
             <a href="profil.php" <?php
-            classe_actif($titre_page, "profil.php");
+            classe_actif($page_active, "profil.php");
             ?>>Profil</a>
             <!-- <a href="#">Admin</a> -->
             <!-- Si connecté : page profil, si admin : page admin ?? -->
