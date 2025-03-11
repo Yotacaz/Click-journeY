@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="Modification données client administrateur" />
     <title>Administrateur - PixelTravels</title>
-    <?php $titre_page = "admin"; ?>
 </head>
 
 <body>

@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="Page de présentation du site et recherche rapide" />
     <title>Accueil - PixelTravels</title>
-    <?php $titre_page = "accueil"; ?>
 </head>
 
 <body>
@@ -45,7 +44,7 @@
                 <td>Minecraft</td>
             </tr>
             <tr>
-                <td><a href="gta5.html">GTA 5</a></td>
+                <td><a href="gta5.php">GTA 5</a></td>
             </tr>
             <tr>
                 <td>The Last of Us</td>

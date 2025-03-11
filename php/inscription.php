@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta charset="UTF-8">
-    <?php $titre_page = "inscription"; ?>
 </head>
 
 <body>
@@ -62,7 +61,7 @@
                 </form>
                 <p>
                     Vous avez déja un compte ?
-                    <a href="Connexion.html" class="lien">Connectez-vous</a>
+                    <a href="connexion.php" class="lien">Connectez-vous</a>
                 </p>
             </div>
             <div">

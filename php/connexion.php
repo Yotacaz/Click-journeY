@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta charset="UTF-8">
-    <?php $titre_page = "connexion"; ?>
 </head>
 
 <body>
@@ -40,9 +39,9 @@
 
                 </form>
                 <p>
-                    <a class="lien" href="mot de passe oublie.html"> Mots de passe oubliée ?</a><br />
+                    <a class="lien" href="#"> Mots de passe oubliée ?</a><br />
                     Vous n'avez pas de compte ?
-                    <a href="inscription.html" class="lien">Crée le rapidement</a>
+                    <a href="inscription.php" class="lien">Crée le rapidement</a>
                 </p>
             </div>
             <img class="dessert" src="../img/Comparaison Desert.png" alt="comparaison desert minecraft réalité">

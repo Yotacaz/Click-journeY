@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="modification profil utilisateur" />
     <title>Profil - PixelTravels</title>
-    <?php $titre_page="profil"; ?>
 </head>
 
 <body>
@@ -25,7 +24,7 @@
             <h2>Vos voyages prévus : </h2>
             <ul>
                 <li><b>Animal Crossing</b> - États Unis, Hawaï, le 03/08/2025</li>
-                <li><a href="gta5.html">GTA V</a><b></b> - États Unis, Los Angeles, le 11/07/2025 </li>
+                <li><a href="gta5.php">GTA V</a><b></b> - États Unis, Los Angeles, le 11/07/2025 </li>
             </ul>
         </div>
         <div class="bloc">

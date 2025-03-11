@@ -9,11 +9,10 @@
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="Recherche un voyage selon des catégories" />
     <title>Recherche - PixelTravels</title>
-    <?php $titre_page="recherche"; ?>
 </head>
 
 <body>
-<?php
+    <?php
     require_once "php-include/header.php";
     ?>
     <main>

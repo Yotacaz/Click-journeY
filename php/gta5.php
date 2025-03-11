@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="modification profil utilisateur" />
     <title>GTA-V - PixelTravels</title>
-    <?php $titre_page = "gta5"; ?>
 </head>
 
 <body>
