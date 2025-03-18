@@ -1,3 +1,6 @@
+<style>
+    <?php include_once "header.css"; ?>
+</style>
 <?php
 
 if (!isset($_SERVER["PHP_SELF"])) {

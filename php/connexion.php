@@ -24,9 +24,9 @@
             <div class="bloc1" class="conteneur-texte">
                 <h2>Connexion</h2><br />
                 <form class="grille3" action="#" method="post" name="connexion">
-                    <label for="addresse" class="col1">Adresse mail :</label>
-                    <input class="col2" type="email" name="addresse" id="addresse"
-                        placeholder="addresse@email.exemple"><br />
+                    <label for="adresse" class="col1">Adresse mail :</label>
+                    <input class="col2" type="email" name="adresse" id="adresse"
+                        placeholder="adresse@email.exemple"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
                     <input class="col2" type="password" name="mot de passe" id="mdp"

@@ -42,9 +42,9 @@
                     <label class="col1" for="date">Date de naissance:</label>
                     <input class="col2" type="date" name="date" id="date" min="1900-01-01"><br />
 
-                    <label for="addresse" class="col1">Adresse :</label>
-                    <input class="col2" type="email" name="addresse" id="addresse"
-                        placeholder="addresse@email.exemple"><br />
+                    <label for="adresse" class="col1">Adresse :</label>
+                    <input class="col2" type="email" name="adresse" id="adresse"
+                        placeholder="adresse@email.exemple"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
                     <input class="col2" type="password" name="mot de passe" id="mdp"

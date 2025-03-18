@@ -53,115 +53,6 @@ ul {
     list-style-type: disclosure-closed;
 }
 
-/*Mise en forme de l'en tête (banière)*/
-.header {
-    color: #261C57;
-    background-color: #43aed4d8;
-    width: 100%;
-    height: max(10vh, 3rem);
-
-    display: flex;
-    position: fixed;
-    /*stay on top*/
-    z-index: 2025;
-    top: 0;
-    left: 0;
-
-    justify-content: space-between;
-    gap: 0;
-    flex-wrap: nowrap;
-}
-
-.header * {
-    margin: 0;
-    font-weight: bold;
-}
-
-.header .sectionH {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0;
-}
-
-.header img.icone-site {
-    height: 100%;
-}
-
-
-nav.navbar {
-    display: inline-flex;
-    height: 100%;
-    align-items: center;
-}
-
-.header h1 {
-    color: #261C57;
-}
-
-.header a {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    align-items: center;
-
-    text-decoration: none;
-    padding: 0em 1em 0em 1em;
-}
-
-.header a:hover {
-    background-color: hsla(265, 100%, 100%, 0.25);
-    text-decoration: underline;
-    transition: 0.2s;
-}
-
-.header a.actif {
-    text-decoration: underline;
-    background-color: hsla(265, 100%, 100%, 0.25);
-}
-
-.header a:link,
-.header a:visited,
-.header a:active {
-    color: #261C57;
-}
-
-/*Pied de page*/
-footer {
-    width: 100%;
-    min-height: min-content;
-    padding: .4em 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #43aed4d8;
-    color: #261C57;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-footer>*{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-footer a:visited {
-    color: #261C57;
-}
-
-footer a:active {
-    color: #261C57;
-}
-
-footer a:link {
-    color: #261C57;
-}
-
 /*Contenu principal*/
 
 .tres-grand {
@@ -172,6 +63,7 @@ footer a:link {
     font-size: x-large;
 }
 
+/*contenu aligné flex*/
 .flex {
     display: flex;
     align-items: center;
@@ -378,7 +270,7 @@ button.col3:hover {
 
 /*Bloc de texte encadré*/
 .contour-bloc {
-    width: 60%;
+    width: max(60%,fit-content);
     margin: 2em auto;
     padding: 2em 4%;
     display: flex;

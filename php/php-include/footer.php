@@ -1,3 +1,8 @@
+<style>
+    <?php include_once "footer.css"; ?>
+</style>
+
+
 <footer>
     <div>
         <a href="#">Mentions légales</a>

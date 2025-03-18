@@ -19,7 +19,7 @@
         <p></p>
         <div class="presentation">
             <div class="texte_pre">
-                <h2>Voyagez à travers l'univers des jeux vidéo : une aventure immersive à ne pas manquer</h2>
+                <h2>Voyager à travers l'univers des jeux vidéo : une aventure immersive à ne pas manquer</h2>
 
                 Bienvenue sur notre site de voyage dédié aux passionnés de jeux vidéo ! Explorez des destinations où le
                 monde virtuel prend vie, et plongez au cœur des paysages, des cultures et des univers qui ont inspiré
@@ -58,7 +58,7 @@
             <label class="grand" for="recherche">
                 Rechercher un jeu, une activité
             </label>
-            <div>
+            <div class="flex">
                 <input form="form-recherche" id="recherche" class="input-formulaire tres-grand bordure-violette"
                     type="text" placeholder="Recherchez un jeu..." maxlength="50">
                 <button form="form-recherche" class="sans-mise-en-forme" type="submit"><img class="img-4em contour-img"

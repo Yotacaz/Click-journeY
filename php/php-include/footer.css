@@ -1,0 +1,33 @@
+/*Pied de page*/
+footer {
+    width: 100%;
+    min-height: min-content;
+    padding: .4em 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #43aed4d8;
+    color: #261C57;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+footer>*{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+footer a:visited {
+    color: #261C57;
+}
+
+footer a:active {
+    color: #261C57;
+}
+
+footer a:link {
+    color: #261C57;
+}
