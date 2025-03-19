@@ -1,0 +1,34 @@
+{
+    "email": "bob@bob.bob",
+    "mdp": "1BoBé2",
+    "id": 1,
+    "role": "admin",
+    "info": {
+        "nom": "BOB",
+        "prenom": "Bob",
+        "sexe": "autre",
+        "date_naissance": "2006-06-06"
+    },
+    "voyages": {
+        "consultes": [],
+        "0": "achetes=>[]"
+    },
+    "autres": {
+        "date_inscription": "2020-06-06",
+        "date_derniere_connexion": "2020-06-06"
+    },
+    "modif_admin": {
+        "19\/03\/2025 10:13:33": {
+            "ancien status": "normal",
+            "nouveau status": "normal",
+            "motif": "slt",
+            "auteur": "bob@bob.bob"
+        },
+        "19\/03\/2025 10:14:01": {
+            "ancien status": "normal",
+            "nouveau status": "admin",
+            "motif": "caca",
+            "auteur": "bob@bob.bob"
+        }
+    }
+}

@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<?php
+
+session_start();
+require_once "php-include/utilisateur.php";
+//TODO A supprimer
+$_SESSION["utilisateur"] = chargerUtilisateurParEmail("bob@bob.bob");
+if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateur"])) {
+    header("Location: connexion.php");
+    exit;
+}
+$utilisateur = $_SESSION["utilisateur"];
+
+
+?>
+
 <head>
     <meta name="auteur" content="CRISSOT Martin" />
     <meta charset="UTF-8">
@@ -11,14 +26,6 @@
     <title>Profil - PixelTravels</title>
 </head>
 
-<?php
-$nom_fichier = "bob-bob-bob.json";
-$chemin = "../donnees/utilisateurs/$nom_fichier";
-if (!file_exists($chemin)) {
-    die("Le fichier $nom_fichier n'existe pas");
-}
-$utilisateur = json_decode(file_get_contents(filename: $chemin), associative: true);
-?>
 
 <body>
     <?php
@@ -32,8 +39,8 @@ $utilisateur = json_decode(file_get_contents(filename: $chemin), associative: tr
         </div>
         <div class="contour-bloc scrollable">
             <h2>Vos voyages prévus : </h2>
-            <?php 
-                //foreach ($utilisateur["info"]["v"] as $key => $value)
+            <?php
+            //foreach ($utilisateur["info"]["v"] as $key => $value)
             ?>
             <ul>
                 <li><b>Animal Crossing</b> - États Unis, Hawaï, le 03/08/2025</li>
@@ -46,10 +53,10 @@ $utilisateur = json_decode(file_get_contents(filename: $chemin), associative: tr
             <form class="grille3" action="#" method="post" name="profil">
 
                 <label for="nom" class="col1">Nom : </label>
-                <input class="col2 " type="text" name="nom" id="nom" disabled contenteditable="false" placeholder="Nom"
+                <input class="col2 " type="text" name="nom" id="nom" disabled placeholder="NOM"
                     value="<?php echo $utilisateur["info"]["nom"]; ?>">
 
-                <button title="modifier" class="col3" id="modifierNom" type="button"><img src="../img/modifier.png"
+                <button title="modifier" class="col3" id="modifierNom" name="modifierNom"><img src="../img/modifier.png"
                         alt="modifier"></button>
 
                 <label for="prenom" class="col1">Prénom : </label>
@@ -97,7 +104,11 @@ $utilisateur = json_decode(file_get_contents(filename: $chemin), associative: tr
                         alt="modifier"></button>
 
             </form>
+
         </div>
+        <form class="texte-centre" action="accueil.php" method="post">
+            <input class="input-formulaire grand" type="submit" value="Déconnexion" name="deconnexion">
+        </form>
     </main>
     <?php
     require_once "php-include/footer.php";

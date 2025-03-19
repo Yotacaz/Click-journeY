@@ -20,7 +20,7 @@ $page_active = basename(path: $_SERVER["PHP_SELF"]);
     <div class="sectionH">
         <a href="../index.php">
             <img class="icone-site" src="../img/logo.png" alt="Logo.png">
-            <h1>PixelTravels</h1>
+            <h1 class="cacher">PixelTravels</h1>
         </a>
     </div>
     <div class="sectionH">
@@ -33,14 +33,36 @@ $page_active = basename(path: $_SERVER["PHP_SELF"]);
             <a href="recherche.php" <?php
             classe_actif($page_active, "recherche.php");
             ?>>
-  <img class="img-1em" src="../img/search.png" alt="🔍">&nbsp;Rechercher
+  <img class="img-1em cacher" src="../img/search.png" alt="🔍">&nbsp;Rechercher
             </a>
 
         </nav>
     </div>
     <div class="sectionH">
         <nav class="navbar">
-            <a href="connexion.php" <?php
+            <?php
+            if (isset($_SESSION["utilisateur"])) {
+                
+                echo '<a href="profil.php" ';
+                classe_actif($page_active, "profil.php");
+                echo '>Profil</a>';
+                if ($_SESSION["utilisateur"]["role"]==="admin") {
+                    echo '<a href="admin.php" ';
+                    classe_actif($page_active, "admin.php");
+                    echo '>Admin</a>';
+                }
+                echo '<a href="deconnexion.php" class="cacher" ';
+                echo '>Déconnexion</a>';
+            } else {
+                echo '<a href="connexion.php" ';
+                classe_actif($page_active, "connexion.php");
+                echo '>Connexion</a>';
+                echo '<a href="inscription.php" ';
+                classe_actif($page_active, "inscription.php");
+                echo '>Inscription</a>';
+            }
+            ?>
+            <!-- <a href="connexion.php" <?php
             classe_actif($page_active, "connexion.php");
             ?>>Connexion</a>
             <a href="inscription.php" <?php
@@ -48,7 +70,7 @@ $page_active = basename(path: $_SERVER["PHP_SELF"]);
             ?>>Inscription</a>
             <a href="profil.php" <?php
             classe_actif($page_active, "profil.php");
-            ?>>Profil</a>
+            ?>>Profil</a> -->
             <!-- <a href="#">Admin</a> -->
             <!-- Si connecté : page profil, si admin : page admin ?? -->
         </nav>
