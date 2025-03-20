@@ -1,0 +1,44 @@
+[
+    {
+        "id": "004",
+        "titre": "jeux1",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "destination1",
+                "dates": {
+                    "debut": "2025-06-20",
+                    "fin": "2025-06-24",
+                    "duree": 4
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "",
+                        "valeurs_possibles": [
+                            "Menu_enfant",
+                            "Menu_veggie",
+                            "Menu_du_jour"
+                        ],
+                        "choix": "",
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 6
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 3000,
+        "statut": "paye"
+    }
+]
