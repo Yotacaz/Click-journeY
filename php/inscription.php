@@ -10,6 +10,26 @@
     <meta charset="UTF-8">
 </head>
 
+<?php 
+    $nom=$_POST['nom'];
+    $prenom=$_POST['prenom'];
+    $mdp=$_POST['mdp'];
+    $mdp2=$_POST['mdp2'];
+    if($mdp != $mdp2){
+        echo "Merci de rentré le même mot de passe.";
+    }
+    else{
+        $nom_fichier = "$nom-$prenom.json";
+        $chemin = "../donnees/utilisateurs/$nom_fichier";
+        if (!file_exists($chemin)) {
+            $open = fopen("../donnees/utilisateurs/$nom_fichier",'w');
+            fwrite( $open , json_encode($_POST) );
+            fclose($open);
+            header("Location: accueil.php");
+        }
+    }
+?>
+
 <body>
     <?php
     require_once "php-include/header.php";
@@ -30,13 +50,13 @@
 
                     <label for="prenom" class="col1">Prénom : </label>
                     <input class="col2" type="text" name="prenom" id="prenom" contenteditable="false"
-                        placeholder="Prénom">
+                        placeholder="Prénom"></br>
 
-                    <div>Genre :</div>
+                    <div class="col1" >Genre :</div>
                     <div>
-                        <label for="genreH"><input type="radio" name="genre" id="genreH">Homme</label>
-                        <label for="genreF"><input type="radio" name="genre" id="genreF">Femme</label>
-                        <label for="genreA"><input type="radio" name="genre" id="genreA">Autre</label>
+                        <label for="genreH"><input type="radio" value="Homme" name="genre" id="genreH">Homme</label>
+                        <label for="genreF"><input type="radio" value="Femme" name="genre" id="genreF">Femme</label>
+                        <label for="genreA"><input type="radio" value="Autre" name="genre" id="genreA">Autre</label>
                     </div><br />
 
                     <label class="col1" for="date">Date de naissance:</label>
@@ -47,11 +67,11 @@
                         placeholder="adresse@email.exemple"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
-                    <input class="col2" type="password" name="mot de passe" id="mdp"
+                    <input class="col2" type="password" name="mdp" id="mdp"
                         placeholder="Entrez un mot de passe"><br />
 
                     <label for="mdp2" class="col1">Confirmation Mot de passe :</label>
-                    <input class="col2" type="password" name="mot de passe2" id="mdp2"
+                    <input class="col2" type="password" name="mdp2" id="mdp2"
                         placeholder="Entrez un mot de passe"><br />
 
                     <p class="col1"> </p>
@@ -66,7 +86,7 @@
             </div>
             <div">
                 <img class="conteneur-image" src="../img/Exemple de voyage.png" alt="exemple de voyage">
-        </div>
+            </div>
         </div>
     </main>
     <?php
