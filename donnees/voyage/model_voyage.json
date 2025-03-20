@@ -1,11 +1,57 @@
 [
     {
-        "id": "004",
+        "id": "001",
         "titre": "jeux1",
+        "note": 5,
+        "description": "blablabla le voyage...",
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
             "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "destination1",
+                "dates": {
+                    "debut": "2025-06-20",
+                    "fin": "2025-06-24",
+                    "duree": 4
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Mathieux",
+                        "prenom": "Charlotte"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "",
+                        "valeurs_possibles": [
+                            "Menu_enfant",
+                            "Menu_veggie",
+                            "Menu_du_jour"
+                        ],
+                        "choix": "",
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 6
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 3000,
+        "statut": "paye"
+    },
+    {
+        "id": "002",
+        "titre": "jeux2",
+        "note": 4,
+        "description": "blablabla le voyage...",
+        "dates": {
+            "debut": "2025-05-15",
+            "fin": "2025-06-26",
+            "duree": 11
         },
         "etapes": [
             {
