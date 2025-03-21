@@ -5,6 +5,7 @@
 
 session_start();
 require_once "php-include/utilisateur.php";
+require_once "php-include/fonctions_voyages.php";
 //TODO A supprimer
 $_SESSION["utilisateur"] = chargerUtilisateurParEmail("bob@bob.bob");
 if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateur"])) {
@@ -39,9 +40,19 @@ $utilisateur = $_SESSION["utilisateur"];
         </div>
         <div class="contour-bloc scrollable">
             <h2>Vos voyages prévus : </h2>
+            <ul>
             <?php
-            //foreach ($utilisateur["info"]["v"] as $key => $value)
+            if (!isset($voyages)) {
+                die("Les voyages n'ont pas pu être chargé");
+            }
+            foreach ($utilisateur["voyages"]["achetes"] as $nom_voyage){
+                $voyage=chargerVoyageParNom($nom_voyage);
+                if ($voyage!=null){
+                    echo "<li><b>".$voyage["nom"]."</b> - ".$voyage["destination"].", ".$voyage["pays"].", le ".$voyage["date"]."</li>";
+                }
+            }
             ?>
+            </ul>
             <ul>
                 <li><b>Animal Crossing</b> - États Unis, Hawaï, le 03/08/2025</li>
                 <li><a href="gta5.php">GTA V</a><b></b> - États Unis, Los Angeles, le 11/07/2025 </li>

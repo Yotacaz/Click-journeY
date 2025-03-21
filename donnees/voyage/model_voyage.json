@@ -1,9 +1,15 @@
 [
     {
         "id": "001",
-        "titre": "jeux1",
+        "titre": "Gta 5",
         "note": 5,
         "description": "blablabla le voyage...",
+        "localisation": {
+            "pays": "Etats-Unis",
+            "ville": "Los-Angeles",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -23,7 +29,12 @@
                         "prenom": "Charlotte"
                     }
                 ],
-                "position_gps": "",
+                "localisation": {
+                    "pays": "Etats-Unis",
+                    "ville": "Glendale",
+                    "adresse": "E Garfiel Ave",
+                    "position_gps": "34.1359° N 118.2473° W"
+                },
                 "options": [
                     {
                         "nom": "",
@@ -39,15 +50,22 @@
                 ]
             }
         ],
+        "nombre_places": 30,
         "personnes": [],
         "prix_total": 3000,
         "statut": "paye"
     },
     {
         "id": "002",
-        "titre": "jeux2",
+        "titre": "Mass Effect",
         "note": 4,
         "description": "blablabla le voyage...",
+        "localisation": {
+            "pays": "Exemple",
+            "ville": "Exemple",
+            "adresse": "Exemple",
+            "position_gps": "34.1359° N 118.2473° W"
+        },
         "dates": {
             "debut": "2025-05-15",
             "fin": "2025-06-26",
@@ -67,7 +85,12 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                "localisation": {
+                    "pays": "Exemple",
+                    "ville": "Exemple",
+                    "adresse": "Exemple",
+                    "position_gps": "34.1359° N 118.2473° W"
+                },
                 "options": [
                     {
                         "nom": "",
@@ -83,6 +106,7 @@
                 ]
             }
         ],
+        "nombre_places": 30,
         "personnes": [],
         "prix_total": 3000,
         "statut": "paye"

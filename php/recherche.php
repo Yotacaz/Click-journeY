@@ -1,3 +1,11 @@
+<?php
+require_once "php-include/fonctions_voyages.php";
+
+$voyages = chargerVoyages();
+$dossier_resultat = "../img/voyage/";
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +24,10 @@
     require_once "php-include/header.php";
     ?>
     <main>
-
+        <?php if (!isset($voyages)) {
+            die("Les voyages n'ont pas pu être chargé");
+        }
+        ?>
 
         <div class="bandeau-image">
             <img src="../img/arcade.png" alt="image arcade">
@@ -42,7 +53,7 @@
             <form action="#" method="get">
                 <h2>Trier par genre</h2>
                 <div>
-                    <select class="filtre_genre" name="genre">
+                    <select class="filtre_genre input-formulaire" name="genre">
                         <option value="Tout">Tout</option>
                         <option value="MMORPG">MMORPG</option>
                         <option value="Aventure">Aventure</option>
@@ -57,7 +68,7 @@
                 <div class="separateur-section-haut">
 
                     <h2>Trier par thème</h2>
-                    <select class="filtre_theme" name="theme">
+                    <select class="filtre_theme input-formulaire" name="theme">
                         <option value="Tout">Tout</option>
                         <option value="Guerre">Guerre</option>
                         <option value="Science fiction">Science</option>
@@ -130,16 +141,19 @@
                 </div>
             </form>
             <h1>Résultats</h2>
+                <?php
+                $nb_elem = count($voyages);
+                $elem_par_page = 8;
+                require_once "php-include/compteur_page.php";
+                ?>
                 <div class="resultat" id="resultat">
-                    <img src="../img/resultat/GTA_V.png">
-                    <img src="../img/resultat/jeu1.png">
-                    <img src="../img/resultat/spider.png">
-                    <img src="../img/resultat/OIP.png">
-
-                    <img src="../img/resultat/mass_effect.png">
-                    <img src="../img/resultat/spider.png">
-                    <img src="../img/resultat/cyberpunk.png">
-                    <img src="../img/resultat/animal_crossing.png">
+                    <?php
+                    $j = $_SESSION["page"]["recherche.php"] * $elem_par_page;
+                    for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
+                        $voyage = $voyages[$i];
+                        afficherResumeVoyage($voyage);
+                    }
+                    ?>
                 </div>
         </div>
     </main>

@@ -10,8 +10,8 @@
         "date_naissance": "2006-06-06"
     },
     "voyages": {
-        "consultes": [],
-        "0": "achetes=>[]"
+        "consultes": ["jeux1"],
+        "achetes" : ["jeux1"]
     },
     "autres": {
         "date_inscription": "2020-06-06",
@@ -22,12 +22,6 @@
             "ancien status": "normal",
             "nouveau status": "normal",
             "motif": "slt",
-            "auteur": "bob@bob.bob"
-        },
-        "19\/03\/2025 10:14:01": {
-            "ancien status": "normal",
-            "nouveau status": "admin",
-            "motif": "caca",
             "auteur": "bob@bob.bob"
         }
     }

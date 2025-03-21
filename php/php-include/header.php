@@ -4,8 +4,7 @@
 <?php
 
 if (!isset($_SERVER["PHP_SELF"])) {
-    echo "Des variables headers ne sont pas définies.";
-    die("Des variables headers ne sont pas définies.");
+    die("Des variables serveurs ne sont pas définies.");
 }
 function classe_actif($page_active, $page): void
 {

@@ -1,4 +1,5 @@
 <?php
+//TODO deconnexion plus proprement
 session_start();
 if (isset($_SESSION["utilisateur"])) {
     session_abort();

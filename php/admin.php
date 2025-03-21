@@ -61,12 +61,11 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
             <?php
             $elem_par_page = 10;
             $nb_utilisateurs = count($utilisateurs);
-            $nb_page_tot = intdiv($nb_utilisateurs, 10);
-
+            $nb_page_tot = intdiv($nb_utilisateurs, $elem_par_page);
             if (!isset($_SESSION["page"])) {
                 $_SESSION["page"] = 0; // reset du compteur de page
             }
-            if (isset($_POST["next"]) && $_SESSION["page"] < $nb_page_tot) {
+            if (isset($_POST["next"]) && $_SESSION["page"] + 1 < $nb_page_tot) {
                 $_SESSION["page"]++;
             }
             if (isset($_POST["prev"]) && $_SESSION["page"] > 0) {
@@ -79,7 +78,7 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
                     <input class="input-formulaire" type="submit" name="prev" value="< précédent">
                 </form>
                 <?php
-                echo "<p>Page " . ($_SESSION["page"] + 1) . "/" . ($nb_page_tot + 1) . "</p>";
+                echo "<p>Page " . ($_SESSION["page"] + 1) . "/$nb_page_tot</p>";
                 ?>
                 <form action="admin.php" method="post" id="form-suivant">
                     <input class="input-formulaire" type="submit" name="next" value="> suivant">
@@ -154,7 +153,6 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
                 <tbody class="scrollable">
                     <?php
                     $j = $_SESSION["page"] * 10;
-                    echo "$j";
                     for ($i = $j; $i < min($j + 10, $nb_utilisateurs); $i++) {
 
                         $utilisateur = $utilisateurs[$i];
