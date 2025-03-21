@@ -52,15 +52,19 @@ $voyages = trierVoyage($fichier);
 $voyages = array_splice($voyages, 0, 5);
 
 // Parcourir les 5 premiers éléments
+    echo '<div class="mieux_notes">';
     echo "<h1>LES MIEUX NOTES<h1/>";
 
 foreach ($voyages as $v) {
+	echo '<div class="info_voyage">';
     echo "<h2>Voyage: " . $v['titre'] . "</h2>";
     echo "<p><strong>Note:</strong> " . $v['note'] . " / 5</p>";
     echo "<p><strong>Description:</strong> " . $v['description'] . "</p>";
     echo "<p><strong>Durée:</strong> " . $v['dates']['duree'] . " jours</p>";
     echo "<hr>";
+    echo "</div>";
 }
+echo "</div>";
         
 
 
