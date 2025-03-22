@@ -4,33 +4,39 @@
 if (!isset($_SERVER["PHP_SELF"])) {
     die("Des variables serveurs ne sont pas définies.");
 }
-if (!isset($nb_elem, $elem_par_page)) {
+if (!isset($nb_elem, $elem_par_page, $form_id, $nom_validation)) {
     die("Des variables serveurs ne sont pas définies.");
 }
-$page_active = basename($_SERVER["PHP_SELF"]);
 
-$nb_page_tot = intdiv($nb_elem, $elem_par_page) + 1;
-if (!isset($_SESSION["page"][$page_active])) {
-    $_SESSION["page"][$page_active] = 0; // reset du compteur de page
+$page_active = $nb_elem > 0 ? 1 : 0;
+
+// $nb_elem = 24;
+if (isset($_GET["page"])) {
+    $page_active = $_GET["page"];
 }
-if (isset($_POST["next"]) && $_SESSION["page"][$page_active] + 1 < $nb_page_tot) {
-    $_SESSION["page"][$page_active]++;
+
+$nb_page_tot = intdiv($nb_elem, $elem_par_page) + ($nb_elem % $elem_par_page > 0 ? 1 : 0);
+if ($nb_elem >0) {
+echo "<em> affichage de " . min($nb_elem, (($page_active - 1) * $elem_par_page) + 1)
+    . " à " . min($nb_elem, $page_active * $elem_par_page) . " / " . $nb_elem . " éléments </em>";
+} else {
+    echo "<em> Aucun élément à afficher </em>";
 }
-if (isset($_POST["prev"]) && $_SESSION["page"][$page_active] > 0) {
-    $_SESSION["page"][$page_active]--;
-}
-echo "<em> affichage de " . ($_SESSION["page"][$page_active] * 10 + 1)
-    . " à " . min($nb_elem, ($_SESSION["page"][$page_active] + 1) * 10) . " / " . $nb_elem . " utilisateurs </em>";
 ?>
 
-<div class="grille3">
-    <form action="<?php echo $page_active; ?> " method="post" id="form-precedent">
-        <input class="input-formulaire" type="submit" name="prev" value="< précédent">
-    </form>
-    <?php
-    echo "<p>Page " . ($_SESSION["page"][$page_active] + 1) . "/$nb_page_tot</p>";
-    ?>
-    <form action="<?php echo $page_active; ?>" method="post" id="form-suivant">
-        <input class="input-formulaire" type="submit" name="next" value="suivant >">
-    </form>
+<div>
+    <input form="<?php echo $form_id; ?>" type="hidden" name=<?php echo $nom_validation; ?>>
+    <div class="grille3">
+        <button form="<?php echo $form_id; ?>" class="input-formulaire" name="page"
+            value="<?php echo $page_active > 1 ? ($page_active - 1) : 1 ?>">
+            Précédent < </button>
+                <?php
+                echo "<p>Page $page_active /$nb_page_tot </p>";
+                ?>
+
+                <button form="<?php echo $form_id; ?>" class="input-formulaire" name="page"
+                    value="<?php echo $page_active < $nb_page_tot ? ($page_active + 1) : $page_active ?>">
+                    > Suivant
+                </button>
+    </div>
 </div>

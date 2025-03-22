@@ -44,11 +44,12 @@ function afficherResumeVoyage(array $voyage)
             <div class="contenu-carte-info">
                 <div class="flex">
                     <h2>' . $voyage["titre"] . '&nbsp</h2>
-                    <p> - ' . $voyage["note"] . '/5 ⭐</p>
+                    <b> - ' . $voyage["note"] . '/5 ⭐</b>
                 </div>
                 <p>' . $voyage["description"] . '</p>
                 <p> Du '.$voyage["dates"]["debut"].' au '.$voyage["dates"]["fin"].' ('. $voyage["dates"]["duree"] . ' jours)</p>
-                <p>'.count($voyage["etapes"]).' étapes</p>
+                <p>' . $voyage["localisation"]["pays"] . ', ' . $voyage["localisation"]["ville"] . '</p>
+                <p>'.count($voyage["etapes"]).' étape(s)</p>
                 <p> Prix : ' . $voyage["prix_total"] . ' €</p>
             </div>
             <a href="tkt"> <span class="lien-span"></span></a>

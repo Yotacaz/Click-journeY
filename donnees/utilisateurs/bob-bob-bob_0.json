@@ -10,8 +10,8 @@
         "date_naissance": "2006-06-06"
     },
     "voyages": {
-        "consultes": ["jeux1"],
-        "achetes" : ["jeux1"]
+        "consultes": [],
+        "achetes" : []
     },
     "autres": {
         "date_inscription": "2020-06-06",

@@ -33,8 +33,21 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
     ?>
     <?php
     $utilisateurs = listerUtilisateurs();
+    $nom_validation = "valider-recherche";
 
+    if (isset($_GET[$nom_validation])) {
 
+        if ($_GET["recherche-ID"] != "") {
+            $utilisateurs = array_filter($utilisateurs, function ($utilisateur) {
+                return $utilisateur["id"] == $_GET["recherche-ID"];
+            });
+        }
+        if ($_GET["recherche-email"] != "") {
+            $utilisateurs = array_filter($utilisateurs, function ($utilisateur) {
+                return $utilisateur["email"] === $_GET["recherche-email"];
+            });
+        }
+    }
     ?>
 
     <main>
@@ -59,83 +72,64 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
             <!-- formulaire de recherche -->
 
             <?php
+            $nb_elem = count($utilisateurs);
             $elem_par_page = 10;
-            $nb_utilisateurs = count($utilisateurs);
-            $nb_page_tot = intdiv($nb_utilisateurs, $elem_par_page);
-            if (!isset($_SESSION["page"])) {
-                $_SESSION["page"] = 0; // reset du compteur de page
-            }
-            if (isset($_POST["next"]) && $_SESSION["page"] + 1 < $nb_page_tot) {
-                $_SESSION["page"]++;
-            }
-            if (isset($_POST["prev"]) && $_SESSION["page"] > 0) {
-                $_SESSION["page"]--;
-            }
-            echo "<em> affichage de " . ($_SESSION["page"] * 10 + 1) . " à " . min($nb_utilisateurs, ($_SESSION["page"] + 1) * 10) . " / " . $nb_utilisateurs . " utilisateurs </em>";
+            $form_id = "form-recherche";
+            require_once "php-include/compteur_page.php";
             ?>
-            <div class="grille3">
-                <form action="admin.php" method="post" id="form-precedent">
-                    <input class="input-formulaire" type="submit" name="prev" value="< précédent">
-                </form>
-                <?php
-                echo "<p>Page " . ($_SESSION["page"] + 1) . "/$nb_page_tot</p>";
-                ?>
-                <form action="admin.php" method="post" id="form-suivant">
-                    <input class="input-formulaire" type="submit" name="next" value="> suivant">
-                </form>
-            </div>
             <br>
 
 
             <!-- Un formulaire par utilisateur  -->
             <?php
-            foreach ($utilisateurs as $utilisateur) {
-                echo '<form action="" method="post" id="form-' . $utilisateur["id"] . '"></form>';
-            }
+            if ($nb_elem > 0) {
+                foreach ($utilisateurs as $utilisateur) {
+                    echo '<form action="" method="post" id="form-' . $utilisateur["id"] . '"></form>';
+                }
 
-            // envoie des formulaires si besoin
-            $j = $_SESSION["page"] * 10;
-            for ($i = $j; $i < min($j + 10, $nb_utilisateurs); $i++) {
-                $utilisateur = $utilisateurs[$i];
-                $id = $utilisateur["id"];
-                if (isset($_POST["form-$id"])) {
+                // envoi des formulaires si besoin
+                $j = $page_active * $elem_par_page;
+                for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
+                    $utilisateur = $utilisateurs[$i];
+                    $id = $utilisateur["id"];
+                    if (isset($_POST["form-$id"])) {
 
-                    $date = date('d/m/Y h:i:s', time());
-                    if (isset($utilisateur["modif_admin"][$date])) {
-                        $n = 1;
-                        while (isset($utilisateur["modif_admin"]["$date ($n)"])) {
-                            $n++;
+                        $date = date('d/m/Y h:i:s', time());
+                        if (isset($utilisateur["modif_admin"][$date])) {
+                            $n = 1;
+                            while (isset($utilisateur["modif_admin"]["$date ($n)"])) {
+                                $n++;
+                            }
+                            $date = "$date ($n)";
                         }
-                        $date = "$date ($n)";
+                        $utilisateur["modif_admin"][$date]["ancien status"] = $utilisateur["role"];
+                        $utilisateur["modif_admin"][$date]["nouveau status"] = $_POST["status"];
+                        $utilisateur["modif_admin"][$date]["motif"] = $_POST["motif"];
+                        $utilisateur["modif_admin"][$date]["auteur"] = $_SESSION["utilisateur"]["email"];
+
+                        $utilisateur["role"] = $_POST["status"];
+                        ecrireFichierUtilisateur($utilisateur);
+
                     }
-                    $utilisateur["modif_admin"][$date]["ancien status"] = $utilisateur["role"];
-                    $utilisateur["modif_admin"][$date]["nouveau status"] = $_POST["status"];
-                    $utilisateur["modif_admin"][$date]["motif"] = $_POST["motif"];
-                    $utilisateur["modif_admin"][$date]["auteur"] = $_SESSION["utilisateur"]["email"];
-
-                    $utilisateur["role"] = $_POST["status"];
-                    ecrireFichierUtilisateur($utilisateur);
-
                 }
             }
-
             ?>
 
-
-            <div class="grille3">
+            <form class="grille3" action="#" method="get" id="form-recherche">
                 <label for="recherche" class="col1">
                     <em>Rechercher par ID :</em>
                 </label>
-                <input class="input-formulaire" form="form-ID" type="number" name="recherche-ID" id="ID"
-                    placeholder="ID" min="0">
-                <input class="input-formulaire" form="form-ID" type="submit" value="Rechercher">
+                <input class="input-formulaire" type="number" name="recherche-ID" id="ID" placeholder="ID" min="0"
+                value="<?php echo isset($_GET["recherche-ID"]) ? $_GET["recherche-ID"] : "" ?>">
+                <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?>>
                 <label for="adresse" class="col1">
                     <em>Rechercher par e-mail :</em>
                 </label>
-                <input class="input-formulaire" form="form-email" type="email" name="recherche-email" id="email"
-                    placeholder="e-mail">
-                <input class="input-formulaire" form="form-email" type="submit" value="Rechercher">
-            </div>
+                <input class="input-formulaire" type="email" name="recherche-email" id="email" placeholder="e-mail"
+                value="<?php echo isset($_GET["recherche-email"]) ? $_GET["recherche-email"] : "" ?>">
+                <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?>>
+            </form>
+
             <br>
             <br>
             <table class="tableau1">
@@ -152,49 +146,52 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
                 </thead>
                 <tbody class="scrollable">
                     <?php
-                    $j = $_SESSION["page"] * 10;
-                    for ($i = $j; $i < min($j + 10, $nb_utilisateurs); $i++) {
+                    if ($nb_elem > 0) {
+                        $j = ($page_active - 1) * $elem_par_page;
+                        for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
+                            $utilisateur = $utilisateurs[$i];
 
-                        $utilisateur = $utilisateurs[$i];
-
-                        echo "<tr>";
-                        echo '<td id="' . $utilisateur["id"] . '">' . $utilisateur["id"] . '<input type="hidden" name="id" value="' . $utilisateur["id"] . '"></td>';
-                        echo '<td>' . $utilisateur["info"]["nom"] . '</td>';
-                        echo '<td>' . $utilisateur["info"]["prenom"] . '</td>';
-                        echo '<td id="' . $utilisateur["email"] . '">' . $utilisateur["email"] . '</td>';
-                        echo '<td>
+                            echo "<tr>";
+                            echo '<td id="' . $utilisateur["id"] . '">' . $utilisateur["id"] . '<input type="hidden" name="id" value="' . $utilisateur["id"] . '"></td>';
+                            echo '<td>' . $utilisateur["info"]["nom"] . '</td>';
+                            echo '<td>' . $utilisateur["info"]["prenom"] . '</td>';
+                            echo '<td id="' . $utilisateur["email"] . '">' . $utilisateur["email"] . '</td>';
+                            echo '<td>
                                     <select class="input-formulaire" form="form-' . $utilisateur["id"] . '" name="status">';
-                        switch ($utilisateur['role']):
-                            case 'admin':
-                                echo '<option value="admin" selected>Admin</option>';
-                                echo '<option value="normal">Normal</option>';
-                                echo '<option value="banni">Banni</option>';
-                                break;
-                            case 'normal':
-                                echo '<option value="admin">Admin</option>';
-                                echo '<option value="normal" selected>Normal</option>';
-                                echo '<option value="banni">Banni</option>';
-                                break;
-                            case 'banni':
-                                echo '<option value="admin">Admin</option>';
-                                echo '<option value="normal">Normal</option>';
-                                echo '<option value="banni" selected>Banni</option>';
-                                break;
-                            default:
-                                echo '<option value="admin">Admin</option>';
-                                echo '<option value="normal">Normal</option>';
-                                echo '<option value="banni">Banni</option>';
-                                break;
-                        endswitch;
-                        echo '</select>
+                            switch ($utilisateur['role']):
+                                case 'admin':
+                                    echo '<option value="admin" selected>Admin</option>';
+                                    echo '<option value="normal">Normal</option>';
+                                    echo '<option value="banni">Banni</option>';
+                                    break;
+                                case 'normal':
+                                    echo '<option value="admin">Admin</option>';
+                                    echo '<option value="normal" selected>Normal</option>';
+                                    echo '<option value="banni">Banni</option>';
+                                    break;
+                                case 'banni':
+                                    echo '<option value="admin">Admin</option>';
+                                    echo '<option value="normal">Normal</option>';
+                                    echo '<option value="banni" selected>Banni</option>';
+                                    break;
+                                default:
+                                    echo '<option value="admin">Admin</option>';
+                                    echo '<option value="normal">Normal</option>';
+                                    echo '<option value="banni">Banni</option>';
+                                    break;
+                            endswitch;
+                            echo '</select>
                                 </td>';
-                        echo '<td>
+                            echo '<td>
                                     <input class="input-formulaire" form="form-' . $utilisateur["id"] . '" type="text" name="motif" placeholder="motif">
                                 </td>';
-                        echo '<td>
+                            echo '<td>
                                     <button class="input-formulaire" form="form-' . $utilisateur["id"] . '" type="submit" name="form-' . $utilisateur["id"] . '">Valider</button>
                                 </td>';
-                        echo "</tr>";
+                            echo "</tr>";
+                        }
+                    }else {
+                        echo "<tr><td colspan='7'><em>Aucun utilisateur trouvé</em></td></tr>";
                     }
                     ?>
                 </tbody>
