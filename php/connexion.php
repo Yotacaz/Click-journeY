@@ -39,12 +39,13 @@
                 </form>
 
                 <?php 
+                    require_once "php-include/utilisateur.php";
                     session_start();
                     if(isset($_POST["boutton"])){
                         $mail=$_POST['email'];
                         $mdp=$_POST['mdp'];
-                        if(file_exists("../donnees/utilisateurs/$mail.json")){
-                            $utilisateur = json_decode(file_get_contents("../donnees/utilisateurs/$mail.json"), true);
+                        $utilisateur = chargerUtilisateurParEmail("$mail");
+                        if($utilisateur != null){
                             if($utilisateur["email"] === $mail && $utilisateur["mdp"] === $mdp){
                                 echo "bienvenue";
                                 $_SESSION["utilisateur"] = $utilisateur;
