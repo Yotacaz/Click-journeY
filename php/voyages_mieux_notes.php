@@ -32,7 +32,7 @@ foreach ($voyages as $v) {
 	$index=(int)$v['id'];
 	$index--;
 echo '<div class="info_voyage">
-            <a href="details_voyage.php?id=' . $index . '">  <span class="lien-span"></span></a>
+            <h2><a href="details_voyage.php?id=' . $index . '">'.$v["titre"].'</a></h2>
 
 	   <p><strong>Note:</strong> ' . $v['note'] .' / 5</p>
 	   <p><strong>Description:</strong> ' . $v['description'] . '</p>
