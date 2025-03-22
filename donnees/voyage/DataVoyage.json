@@ -1,0 +1,409 @@
+[
+    {
+        "id": "001",
+        "titre": "GTA-V",
+        "note": 5,
+        "description": "plongez vous dans le monde de GTA-V, en parcourant Los angeles, Miami et plus",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Los Angeles",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "art urbain",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "location voture de luxe",
+                        "valeurs_possibles": [
+                            "Ferrari",
+                            "Lamborghini",
+                            "Maserati"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    }
+                ]
+            },
+            {
+                "nom": "Miami",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Turner",
+                        "prenom": "Taissa"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "spectacle Hip-Hop",
+                        "valeurs_possibles": [
+                            "place assise",
+                            "fosse"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image001.png",
+            "image101.png",
+            "image201.png",
+            "image301.png"
+        ]
+    },
+    {
+        "id": "002",
+        "titre": "Animal Crossing",
+        "note": 5,
+        "description": "plongez vous dans le monde d'animal crossing, en parcourant les iles paradisiaques de la Polynesie",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Polynesie",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "dance de feu",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "plongee sous-marine",
+                        "valeurs_possibles": [
+                            "apnee",
+                            "scaphandre"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 2
+                    }
+                ]
+            }
+        ],
+        "personnes": [
+            "Vivian Docher"
+        ],
+        "prix_total": 5000,
+        "image": [
+            "image002.png",
+            "image102.png",
+            "image202.png",
+            "image302.png"
+        ]
+    },
+    {
+        "id": "003",
+        "titre": "Mass Effect",
+        "note": 3,
+        "description": "plongez vous dans le monde de Mass Effect, en allant a la conquete spacial, decouvrez des mondes futuristes",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Floride",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "centre spatial Kennedy",
+                        "valeurs_possibles": [
+                            "visite simple",
+                            "visite guidee"
+                        ],
+                        "prix_par_personne": 20,
+                        "nombre_personnes": 2
+                    },
+                    {
+                        "nom": "balade parc Yellowstone",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 4
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 500,
+        "image": [
+            "image003.png",
+            "image103.png",
+            "image203.png",
+            "image303.png"
+        ]
+    },
+    {
+        "id": "004",
+        "titre": "SpiderMan",
+        "note": 1,
+        "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'uneville qui ne dort pas",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "New York",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Statue de la Liberte",
+                        "valeurs_possibles": [
+                            "guide touristique",
+                            "decouverte solo"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Time Square",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 2
+                    },
+                    {
+                        "nom": "Accrobranche Centrale Park",
+                        "valeurs_possibles": [
+                            "debutant",
+                            "intermediaire",
+                            "avance"
+                        ],
+                        "prix_par_personne": 28,
+                        "nombre_personnes": 4
+                    },
+                    {
+                        "nom": "abonnement metro",
+                        "valeurs_possibles": [
+                            "au jours",
+                            "a la semaine",
+                            "ticket individuel"
+                        ],
+                        "prix_par_personne": 5,
+                        "nombre_personnes": 6
+                    }
+                ]
+            }
+        ],
+        "personnes": [
+            "Miles Morales",
+            "Peter Parker"
+        ],
+        "prix_total": 4000,
+        "image": [
+            "image004.png",
+            "image104.png",
+            "image204.png",
+            "image304.png"
+        ]
+    },
+    {
+        "id": "005",
+        "titre": "Red Dead Redemption",
+        "note": 2,
+        "description": "plongez vous dans le monde du far west, mettez vos chapeau cowboys et cowgirl et partez a l'aventure hii haaaa !",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Yellowstone",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "visite parc national",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    }
+                ]
+            },
+            {
+                "nom": "Yosemite",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    [
+                        "Cow Girl"
+                    ]
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "escape game far west",
+                        "valeurs_possibles": [
+                            "entree plein tarif",
+                            "tarif reduit"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 1500,
+        "image": [
+            "image005.png",
+            "image105.png",
+            "image205.png",
+            "image305.png"
+        ]
+    },
+    {
+        "id": "006",
+        "titre": "Skyrim",
+        "note": 5,
+        "description": "plongez vous dans le monde de Skyrim",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Les Alpes",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "art urbain",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "location voture de luxe",
+                        "valeurs_possibles": [
+                            "Ferrari",
+                            "Lamborghini",
+                            "Maserati"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    }
+                ]
+            },
+            {
+                "nom": "Massif Central",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Turner",
+                        "prenom": "Taissa"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "spectacle Hip-Hop",
+                        "valeurs_possibles": [
+                            "place assise",
+                            "fosse"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image006.png",
+            "image106.png",
+            "image206.png",
+            "image306.png"
+        ]
+    }
+]
