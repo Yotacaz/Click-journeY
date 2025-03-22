@@ -38,6 +38,8 @@ function afficherResumeVoyage(array $voyage)
     if (!file_exists($chemin_image)) {
         die("Fichier image de $titre_formate.png inexistant");
     }
+	$index=(int)$voyage['id'];
+	$index--;
     echo
         '<div class="carte-info">
             <img alt="' . $voyage["titre"] . '" src="' . $chemin_image . '">
@@ -51,7 +53,7 @@ function afficherResumeVoyage(array $voyage)
                 <p>'.count($voyage["etapes"]).' étapes</p>
                 <p> Prix : ' . $voyage["prix_total"] . ' €</p>
             </div>
-            <a href="tkt"> <span class="lien-span"></span></a>
+            <a href="details_voyage.php?id='.$index"> <span class="lien-span"></span></a>
         </div>';
             //TODO: Ajouter le lien vers la page du voyage
 }
