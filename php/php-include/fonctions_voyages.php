@@ -38,6 +38,8 @@ function afficherResumeVoyage(array $voyage)
     if (!file_exists($chemin_image)) {
         die("Fichier image de $titre_formate.png inexistant");
     }
+	$index=(int)$voyage['id'];
+	$index--;
     echo
         '<div class="carte-info">
             <img alt="' . $voyage["titre"] . '" src="' . $chemin_image . '">
@@ -52,9 +54,46 @@ function afficherResumeVoyage(array $voyage)
                 <p>'.count($voyage["etapes"]).' étape(s)</p>
                 <p> Prix : ' . $voyage["prix_total"] . ' €</p>
             </div>
-            <a href="tkt"> <span class="lien-span"></span></a>
+            <a href="details_voyage.php?id='.$index.'">  <span class="lien-span"></span></a>
         </div>';
             //TODO: Ajouter le lien vers la page du voyage
+}
+function decodageDonnees($fichier){
+	
+	if(file_exists($fichier)){
+
+        $voyages = file_get_contents($fichier);
+        //decoder le fichier json
+        $donnees = json_decode($voyages, true);
+
+        //verifier si le decodage a marche
+        if($donnees===null){
+        	$donnees="probleme de decodage";
+        }
+	}
+	else{ // le fichier n'existe pas
+		$donnees="le fichier".$fichier." n'existe pas";
+	}
+	return $donnees;
+}
+
+
+
+function trierVoyage($fichier){
+	$voyages= decodageDonnees($fichier);
+	if(is_array($voyages)){ //decodage reussi on peut trier
+
+		usort($voyages, function ($a, $b) 
+			{
+	    		return $b["note"] - $a["note"];  // Tri par note du + au -
+	    	}
+		);
+		return $voyages;
+	}
+	else{     // Si ce n'est pas un tableau, afficher le message d'erreur
+		echo $voyages;
+		exit();
+	}
 }
 
 
