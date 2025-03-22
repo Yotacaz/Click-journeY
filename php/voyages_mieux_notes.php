@@ -12,9 +12,9 @@
 </head>
 </head>
 <body>
-
 <?php
 require_once "php-include/fonctions_voyages.php";
+require_once "php-include/header.php";
 $fichier = "../donnees/voyage/voyages.json";
 
 $voyages = trierVoyage($fichier);
@@ -24,7 +24,7 @@ $voyages = array_splice($voyages, 0, 5);
 
 // Parcourir les 5 premiers éléments
     echo '<div class="mieux_notes">';
-    echo "<center><h1>LES MIEUX NOTES<h1/></center>";
+    echo "<br><br><br><center><h1>LES MIEUX NOTES<h1/></center>";
 
 foreach ($voyages as $v) {
 	$index=(int)$v['id'];
@@ -40,6 +40,6 @@ echo '<div class="info_voyage">
 echo "</div>";
 
 ?>
-	
+    require_once "php-include/footer.php";	
 </body>
 </html>
