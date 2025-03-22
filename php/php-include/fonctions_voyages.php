@@ -55,6 +55,43 @@ function afficherResumeVoyage(array $voyage)
         </div>';
             //TODO: Ajouter le lien vers la page du voyage
 }
+function decodageDonnees($fichier){
+	
+	if(file_exists($fichier)){
+
+        $voyages = file_get_contents($fichier);
+        //decoder le fichier json
+        $donnees = json_decode($voyages, true);
+
+        //verifier si le decodage a marche
+        if($donnees===null){
+        	$donnees="probleme de decodage";
+        }
+	}
+	else{ // le fichier n'existe pas
+		$donnees="le fichier".$fichier." n'existe pas";
+	}
+	return $donnees;
+}
+
+
+
+function trierVoyage($fichier){
+	$voyages= decodageDonnees($fichier);
+	if(is_array($voyages)){ //decodage reussi on peut trier
+
+		usort($voyages, function ($a, $b) 
+			{
+	    		return $b["note"] - $a["note"];  // Tri par note du + au -
+	    	}
+		);
+		return $voyages;
+	}
+	else{     // Si ce n'est pas un tableau, afficher le message d'erreur
+		echo $voyages;
+		exit();
+	}
+}
 
 
 ?>
