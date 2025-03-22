@@ -53,7 +53,7 @@ function afficherResumeVoyage(array $voyage)
                 <p>'.count($voyage["etapes"]).' étapes</p>
                 <p> Prix : ' . $voyage["prix_total"] . ' €</p>
             </div>
-            <a href="details_voyage.php?id='.$index"> <span class="lien-span"></span></a>
+            <a href="details_voyage.php?id='.$index.'">  <span class="lien-span"></span></a>
         </div>';
             //TODO: Ajouter le lien vers la page du voyage
 }
