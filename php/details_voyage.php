@@ -1,4 +1,5 @@
 <?php
+require_once "php-include/header.php";
 require_once "php-include/fonctions_voyages.php";
 $voyages= decodageDonnees("../donnees/voyage/voyages.json");
 $identifiant=recup_id();
@@ -28,7 +29,7 @@ $v=$v[0];
 <body>
 
 
-<?php echo "<h1>".$titre_page." - Détails du voyage</h1>"; ?>
+<?php echo "<br><br><br><h1>".$titre_page." - Détails du voyage</h1>"; ?>
 
 <!-- Affichage des informations générales du voyage -->
 <div class="description">
@@ -92,6 +93,9 @@ foreach ($v['etapes'] as $etape_index => $etape) {
 </div>
 
 </form>
-
+<br><br>
+<?php
+    require_once "php-include/footer.php";
+    ?>
 </body>
 </html>
