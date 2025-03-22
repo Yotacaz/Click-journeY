@@ -4,6 +4,8 @@
         "titre": "GTA-V",
         "note": 5,
         "description": "plongez vous dans le monde de GTA-V, en parcourant Los angeles, Miami et plus",
+        "genre": "action",
+        "Thème": "city",
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "Los-Angeles",
@@ -90,6 +92,8 @@
         "titre": "Animal Crossing",
         "note": 5,
         "description": "plongez vous dans le monde d'animal crossing, en parcourant les iles paradisiaques de la Polynesie",
+        "genre": "Aventure",
+        "Thème": "aquatique",
         "localisation": {
             "pays": "Polynesie",
             "ville": "Tahiti",
@@ -151,6 +155,8 @@
         "titre": "Mass Effect",
         "note": 3,
         "description": "plongez vous dans le monde de Mass Effect, en allant a la conquete spacial, decouvrez des mondes futuristes",
+        "genre": "action",
+        "Thème": "city",
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "Miami",
@@ -210,6 +216,8 @@
         "titre": "SpiderMan",
         "note": 1,
         "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'uneville qui ne dort pas",
+        "genre": "action",
+        "Thème": "city",
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "New-York",
@@ -289,6 +297,8 @@
         "titre": "Red Dead Redemption",
         "note": 2,
         "description": "plongez vous dans le monde du far west, mettez vos chapeau cowboys et cowgirl et partez a l'aventure hii haaaa !",
+        "genre": "action",
+        "Thème": "city",
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "Yellowtone",
@@ -360,6 +370,8 @@
         "id": "006",
         "titre": "Skyrim",
         "note": 5,
+        "genre": "Aventure",
+        "Thème": "Fantasy",
         "description": "plongez vous dans le monde de Skyrim",
         "localisation": {
             "pays": "France",

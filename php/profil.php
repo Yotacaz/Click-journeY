@@ -47,8 +47,11 @@ $utilisateur = $_SESSION["utilisateur"];
                 }
                 foreach ($utilisateur["voyages"]["achetes"] as $nom_voyage) {
                     $voyage = chargerVoyageParNom($nom_voyage);
+                    $index = (int) $voyage['id'];
+                    $index--;
                     if ($voyage != null) {
-                        echo "<li><b>" . $voyage["nom"] . "</b> - " . $voyage["destination"] . ", " . $voyage["pays"] . ", le " . $voyage["date"] . "</li>";
+                        echo "<li><b>" . $voyage["nom"] . "</b> - " . $voyage["localisation"]["ville"] . ", " . $voyage["localisation"]["pays"] . ", le " . $voyage["date"] 
+                        . '<a href="details_voyage.php?id=' . $index . '">  <span class="lien-span"></span></a></li>';
                     }
                 }
                 ?>

@@ -231,9 +231,9 @@ $dossier_resultat = "../img/voyage/";
                 <div class="separateur-section-haut">
                     <h2>Date</h2>
                     <label for="date_min">Date minimum :</label>
-                    <input class="input-formulaire" type="date" name="date_min" id="date_min" value="' . $date_min . '">
+                    <input class="input-formulaire" type="date" name="date_min" id="date_min" value="' . date("Y-m-d", $date_min) . '">
                     <label for="date_max">Date maximum :</label>
-                    <input class="input-formulaire" type="date" name="date_max" id="date_max" value="' . $date_max . '">
+                    <input class="input-formulaire" type="date" name="date_max" id="date_max" value="' . date("Y-m-d", $date_max) . '">
                 </div>
                 <div class="separateur-section-haut">
                     <h2>Lieux</h2>
@@ -258,40 +258,33 @@ $dossier_resultat = "../img/voyage/";
             <h1>Résultats</h2>
                 <?php
                 if (isset($_GET[$nom_validation])) {
-
                     $resultats = [];
 
                     foreach ($voyages as $voyage) {
                         if ($genre !== "Tout" && $voyage["genre"] !== $genre) {
-                            echo $voyage["genre"];
                             continue;
                         }
                         if ($theme !== "Tout" && $voyage["theme"] !== $theme) {
-                            echo $theme;
                             continue;
                         }
                         if ($voyage["prix_total"] < $prix_min) {
-                            echo $prix_min;
                             continue;
                         }
                         if ($voyage["prix_total"] > $prix_max) {
-                            echo $prix_max;
                             continue;
                         }
                         $date_debut = strtotime($voyage["dates"]["debut"]);
                         $date_fin = strtotime($voyage["dates"]["fin"]);
                         if ($date_min > $date_debut || $date_max < $date_fin) {
-                            echo "$date_min, $date_max";
+                            continue;
+                        };
+                        if (!(in_array(strtolower($voyage["localisation"]["pays"]), $lieux) || (in_array("autre", $lieux) && !(in_array(strtolower($voyage["localisation"]["pays"]), ["france", "etats-unis", "japon", "chine"])))) ) {
                             continue;
                         }
-                        if (!in_array("autre", $lieux) && !in_array(strtolower($voyage["localisation"]["pays"]), $lieux)) {
-                            print_r($lieux);
-                            echo $voyage["localisation"]["pays"];
-                            continue;
-                        }
+
                         $resultats[] = $voyage;
                     }
-
+                    
 
                     switch ($tri) {
                         case "defaut":
