@@ -1,5 +1,5 @@
 <?php
-require_once "php-include/voyages.php";
+require_once "php-include/fonctions_voyages.php";
 
 $voyages = chargerVoyages();
 $dossier_resultat = "../img/voyage/";

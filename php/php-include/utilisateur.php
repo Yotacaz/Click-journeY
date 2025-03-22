@@ -4,8 +4,11 @@
  * @param array $utilisateur tableau associatif contenant les informations de l'utilisateur
  * @return bool true si l'utilisateur est valide, false sinon
  */
-function utilisateurValide(array $utilisateur)
+function utilisateurValide(array|null $utilisateur)
 {
+    if ($utilisateur === null) {
+        return false;
+    }
     if (isset($utilisateur["email"]) && isset($utilisateur["mdp"]) && isset($utilisateur["info"]["nom"]) && isset($utilisateur["info"]["prenom"]) && isset($utilisateur["info"]["sexe"]) && isset($utilisateur["info"]["date_naissance"]) && isset($utilisateur["autres"]["date_inscription"]) && isset($utilisateur["autres"]["date_derniere_connexion"])) {
         return true;
     }

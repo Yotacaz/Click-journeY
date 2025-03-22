@@ -10,7 +10,7 @@ if (!isset($nb_elem, $elem_par_page, $form_id, $nom_validation)) {
 
 $page_active = $nb_elem > 0 ? 1 : 0;
 
-// $nb_elem = 24;
+
 if (isset($_GET["page"])) {
     $page_active = $_GET["page"];
 }
@@ -28,14 +28,15 @@ echo "<em> affichage de " . min($nb_elem, (($page_active - 1) * $elem_par_page) 
     <input form="<?php echo $form_id; ?>" type="hidden" name=<?php echo $nom_validation; ?>>
     <div class="grille3">
         <button form="<?php echo $form_id; ?>" class="input-formulaire" name="page"
-            value="<?php echo $page_active > 1 ? ($page_active - 1) : 1 ?>">
+            value="<?php echo $page_active > 1 ? ($page_active - 1) : 1 ?>" <?php echo $page_active <= 1 ? "disabled" : "" ?>>
             Précédent < </button>
                 <?php
                 echo "<p>Page $page_active /$nb_page_tot </p>";
                 ?>
 
                 <button form="<?php echo $form_id; ?>" class="input-formulaire" name="page"
-                    value="<?php echo $page_active < $nb_page_tot ? ($page_active + 1) : $page_active ?>">
+                    value="<?php echo $page_active < $nb_page_tot ? ($page_active + 1) : $page_active ?>" 
+                    <?php echo $page_active >= $nb_page_tot ? "disabled" : "" ?>>
                     > Suivant
                 </button>
     </div>

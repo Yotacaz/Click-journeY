@@ -5,7 +5,7 @@
 
 session_start();
 require_once "php-include/utilisateur.php";
-require_once "php-include/voyages.php";
+require_once "php-include/fonctions_voyages.php";
 //TODO A supprimer
 $_SESSION["utilisateur"] = chargerUtilisateurParEmail("bob@bob.bob");
 if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateur"])) {
