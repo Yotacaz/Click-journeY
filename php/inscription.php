@@ -10,26 +10,6 @@
     <meta charset="UTF-8">
 </head>
 
-<?php 
-    $nom=$_POST['nom'];
-    $prenom=$_POST['prenom'];
-    $mdp=$_POST['mdp'];
-    $mdp2=$_POST['mdp2'];
-    if($mdp != $mdp2){
-        echo "Merci de rentré le même mot de passe.";
-    }
-    else{
-        $nom_fichier = "$nom-$prenom.json";
-        $chemin = "../donnees/utilisateurs/$nom_fichier";
-        if (!file_exists($chemin)) {
-            $open = fopen("../donnees/utilisateurs/$nom_fichier",'w');
-            fwrite( $open , json_encode($_POST) );
-            fclose($open);
-            header("Location: accueil.php");
-        }
-    }
-?>
-
 <body>
     <?php
     require_once "php-include/header.php";
@@ -63,7 +43,7 @@
                     <input class="col2" type="date" name="date" id="date" min="1900-01-01"><br />
 
                     <label for="adresse" class="col1">Adresse :</label>
-                    <input class="col2" type="email" name="adresse" id="adresse"
+                    <input class="col2" type="email" name="email" id="adresse"
                         placeholder="adresse@email.exemple"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
@@ -76,9 +56,31 @@
 
                     <p class="col1"> </p>
                     <label class="col2">
-                        <button type="submit" class="submit">Envoyée</button>
+                        <button type="submit" name="boutton" class="submit">Envoyée</button>
                     </label>
                 </form>
+
+                <?php
+                    if(isset($_POST["boutton"])){
+                        $mail=$_POST["email"];
+                        $mdp=$_POST['mdp'];
+                        $mdp2=$_POST['mdp2'];
+                        if($mdp != $mdp2){
+                            echo "Merci de rentré le même mot de passe.";
+                        }
+                        else{
+                            $nom_fichier = "$mail.json";
+                            $chemin = "../donnees/utilisateurs/$nom_fichier";
+                            if (!file_exists($chemin)) {
+                                $open = fopen("../donnees/utilisateurs/$nom_fichier",'w');
+                                fwrite( $open , json_encode($_POST));
+                                fclose($open);
+                                header("Location: connexion.php");
+                            }
+                        }
+                    }
+                ?>
+                
                 <p>
                     Vous avez déja un compte ?
                     <a href="connexion.php" class="lien">Connectez-vous</a>
