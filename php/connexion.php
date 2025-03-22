@@ -25,19 +25,41 @@
                 <h2>Connexion</h2><br />
                 <form class="grille3" action="#" method="post" name="connexion">
                     <label for="adresse" class="col1">Adresse mail :</label>
-                    <input class="col2" type="email" name="adresse" id="adresse"
+                    <input class="col2" type="email" name="email" id="adresse"
                         placeholder="adresse@email.exemple"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
-                    <input class="col2" type="password" name="mot de passe" id="mdp"
+                    <input class="col2" type="password" name="mdp" id="mdp"
                         placeholder="Entrez un mot de passe"><br />
 
                     <p class="col1"></p>
                     <label class="col2">
-                        <button type="submit" class="submit">Connexion</button>
+                        <button type="submit" name="boutton" class="submit">Connexion</button>
                     </label>
-
                 </form>
+
+                <?php 
+                    session_start();
+                    if(isset($_POST["boutton"])){
+                        $mail=$_POST['email'];
+                        $mdp=$_POST['mdp'];
+                        if(file_exists("../donnees/utilisateurs/$mail.json")){
+                            $utilisateur = json_decode(file_get_contents("../donnees/utilisateurs/$mail.json"), true);
+                            if($utilisateur["email"] === $mail && $utilisateur["mdp"] === $mdp){
+                                echo "bienvenue";
+                                $_SESSION["utilisateur"] = $utilisateur;
+                                header("Location: profil.php");
+                            }
+                            else{
+                                echo "mots de passe erroné.";
+                            }
+                        }
+                        else{
+                            echo "Pas de compte ou adresse mail est erroné!";
+                        }
+                    }
+                ?>
+
                 <p>
                     <a class="lien" href="#"> Mots de passe oubliée ?</a><br />
                     Vous n'avez pas de compte ?
