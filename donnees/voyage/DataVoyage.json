@@ -4,6 +4,12 @@
         "titre": "GTA-V",
         "note": 5,
         "description": "plongez vous dans le monde de GTA-V, en parcourant Los angeles, Miami et plus",
+        "localisation": {
+            "pays": "Etats-Unis",
+            "ville": "Los-Angeles",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -84,6 +90,12 @@
         "titre": "Animal Crossing",
         "note": 5,
         "description": "plongez vous dans le monde d'animal crossing, en parcourant les iles paradisiaques de la Polynesie",
+        "localisation": {
+            "pays": "Polynesie",
+            "ville": "Tahiti",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -139,6 +151,12 @@
         "titre": "Mass Effect",
         "note": 3,
         "description": "plongez vous dans le monde de Mass Effect, en allant a la conquete spacial, decouvrez des mondes futuristes",
+        "localisation": {
+            "pays": "Etats-Unis",
+            "ville": "Miami",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -192,6 +210,12 @@
         "titre": "SpiderMan",
         "note": 1,
         "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'uneville qui ne dort pas",
+        "localisation": {
+            "pays": "Etats-Unis",
+            "ville": "New-York",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -265,6 +289,12 @@
         "titre": "Red Dead Redemption",
         "note": 2,
         "description": "plongez vous dans le monde du far west, mettez vos chapeau cowboys et cowgirl et partez a l'aventure hii haaaa !",
+        "localisation": {
+            "pays": "Etats-Unis",
+            "ville": "Yellowtone",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -331,6 +361,12 @@
         "titre": "Skyrim",
         "note": 5,
         "description": "plongez vous dans le monde de Skyrim",
+        "localisation": {
+            "pays": "France",
+            "ville": "Alpes",
+            "adresse": "7 Lucas Ave",
+            "position_gps": "34.0522° N, 118.2437° W"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
