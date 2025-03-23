@@ -59,7 +59,7 @@ $v = $v[0];
 
             <?php
             foreach ($v['etapes'] as $etape) {
-                echo '<div class="etape">';
+                echo '<div class="contour-bloc">';
                 echo '<h4>' . $etape['nom'] . '</h4>';
                 echo '<p><strong>Dates:</strong> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
                 echo '<p><strong>Durée:</strong> ' . $etape['dates']['duree'] . ' jours</p>';
@@ -75,8 +75,9 @@ $v = $v[0];
                 echo '</div>';
             } ?>
             <div class="texte-centre">
-                <button class="input-formulaire grand" name="valider-recherche"><a
-                        href="paiement.php">payer</a></button><br><br>
+                <a href="details_voyage.php?id=<?php echo $index; ?>"><button class="input-formulaire grand" name="valider-recherche">modifier</button></a><br>
+
+    <a href="paiement.phpid=<?php echo $index; ?>"><button class="input-formulaire grand" name="valider-recherche">payer</button></a><br><br>
             </div>
         </div>
     </main>
