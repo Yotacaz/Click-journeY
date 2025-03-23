@@ -84,7 +84,7 @@ if (utilisateurEstConnecte()){
                             $autres = array('date_inscription'=> $date , 'date_derniere_connexion' => '');
                             $finale= array("email" => $mail , "mdp" => $mdp , "role" =>"normal" , "info" => $info , "voyages" => $voyages , "autres" => $autres);
                             $open = fopen($chemin ,'w');
-                            fwrite( $open , json_encode($_POST));
+                            fwrite( $open , json_encode($finale));
                             fclose($open);
                             //header("Location: connexion.php");
                         }
