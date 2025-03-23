@@ -76,7 +76,7 @@ $v = $v[0];
                 <?php
                 // Parcourir chaque étape et afficher les options modifiables
                 foreach ($v['etapes'] as $etape_index => $etape) {
-                    echo '<div class="etape">';
+                    echo '<div class="contour-bloc">';
                     echo '<h4>' . $etape['nom'] . '</h4>';
                     echo '<p><strong>Dates:</strong> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
 
