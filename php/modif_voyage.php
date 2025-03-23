@@ -1,4 +1,5 @@
 <?php
+
 require_once "php-include/fonctions_voyages.php";
 
 $voyages= decodageDonnees("../donnees/voyage/voyages.json");
@@ -14,19 +15,16 @@ if (!isset($voyages[$identifiant])) {
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-echo "il y a bien post";
 
-    // Charger les données existantes du fichier JSON
-    $voyages= decodageDonnees("../donnees/voyage/voyages.json");
-    if (!is_array($voyages)) {
-    die("erreur impossible de charger les données des voyages.");
-}
-    $identifiant=recup_id();
-    if (!isset($voyages[$identifiant])) {
-    die("erreur pas d'dentifiant voyage");
-}
 
     foreach ($voyages[$identifiant]['etapes'] as $etape_index => &$etape) {
+        if (isset($_POST['date_debut_' . $etape_index])) {
+            echo "changer date";
+        $etape['dates']['debut'] = $_POST['date_debut_' . $etape_index];
+    }else echo "pas de date";
+    if (isset($_POST['date_fin_' . $etape_index])) {
+        $etape['dates']['fin'] = $_POST['date_fin_' . $etape_index];
+    }
         foreach ($etape['options'] as $option_index => &$option) {
             // Récupérer la valeur sélectionnée et le nombre de personnes
             $option_nom = 'option_' . $etape_index . '_' . $option_index;
@@ -47,7 +45,7 @@ echo "il y a bien post";
     // Sauvegarder les modifications dans le fichier JSON !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
     if (file_put_contents("../donnees/voyage/voyages.json", json_encode($voyages, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)) === false) {
-    die("Erreur: Impossible d'écrire dans le fichier JSON !");
+    die("Erreur: Impossible d'écrire dans le fichier JSON ! veuillez modifier les droit d'ecriture sur voyages.json");
 }
 
     // Rediriger vers la page récapitulative
