@@ -370,15 +370,7 @@
         "id": "006",
         "titre": "Skyrim",
         "note": 5,
-        "genre": "Aventure",
-        "Thème": "Fantasy",
         "description": "plongez vous dans le monde de Skyrim",
-        "localisation": {
-            "pays": "France",
-            "ville": "Alpes",
-            "adresse": "7 Lucas Ave",
-            "position_gps": "34.0522° N, 118.2437° W"
-        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -393,25 +385,25 @@
                     "duree": 8
                 },
                 "personnes_supplementaires": [
-                    {
-                        "nom": "Diop",
-                        "prenom": "Bineta"
-                    }
+                    []
                 ],
                 "position_gps": "",
                 "options": [
                     {
-                        "nom": "art urbain",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0,
+                        "nom": "randonnées",
+                        "valeurs_possibles": [
+                            "achat materiel",
+                            "location materiel",
+                            "materiel personel"
+                        ],
+                        "prix_par_personne": 20,
                         "nombre_personnes": 6
                     },
                     {
-                        "nom": "location voture de luxe",
+                        "nom": "transport",
                         "valeurs_possibles": [
-                            "Ferrari",
-                            "Lamborghini",
-                            "Maserati"
+                            "Train",
+                            "Voiture"
                         ],
                         "prix_par_personne": 25,
                         "nombre_personnes": 4
@@ -426,21 +418,19 @@
                     "duree": 2
                 },
                 "personnes_supplementaires": [
-                    {
-                        "nom": "Turner",
-                        "prenom": "Taissa"
-                    }
+                    []
                 ],
                 "position_gps": "",
                 "options": [
                     {
-                        "nom": "spectacle Hip-Hop",
+                        "nom": "randonnées",
                         "valeurs_possibles": [
-                            "place assise",
-                            "fosse"
+                            "achat materiel",
+                            "location materiel",
+                            "materiel personel"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 20,
+                        "nombre_personnes": 6
                     }
                 ]
             }
@@ -452,6 +442,715 @@
             "image106.png",
             "image206.png",
             "image306.png"
+        ]
+    },
+    {
+        "id": "007",
+        "titre": "The Witcher 3",
+        "note": 5,
+        "description": "plongez vous dans le monde de The Witcher 3, en voyagant à travers l'europe de l'est",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Roumanie",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "art urbain",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Restauant traditionnel",
+                        "valeurs_possibles": [
+                            "Menu veggie",
+                            "Menu enfant",
+                            "Menu du jour"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    }
+                ]
+            },
+            {
+                "nom": "Bulgarie",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "transport",
+                        "valeurs_possibles": [
+                            "Train grande vitesse",
+                            "Tramway"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image007.png",
+            "image107.png",
+            "image207.png",
+            "image307.png"
+        ]
+    },
+    {
+        "id": "008",
+        "titre": "Assassin’s Creed Odyssey",
+        "note": 5,
+        "description": "plongez vous dans le monde d'Assassin’s Creed Odyssey, et decouvrez la Grece antique",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Grece",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Musee",
+                        "valeurs_possibles": [
+                            "visite guidee",
+                            "visite libre"
+                        ],
+                        "prix_par_personne": 18,
+                        "nombre_personnes": 2
+                    }
+                ]
+            },
+            {
+                "nom": "Mikonos",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Croisiere",
+                        "valeurs_possibles": [
+                            "Crete",
+                            "Santorin"
+                        ],
+                        "prix_par_personne": 18,
+                        "nombre_personnes": 2
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image008.png",
+            "image108.png",
+            "image208.png",
+            "image308.png"
+        ]
+    },
+    {
+        "id": "009",
+        "titre": "Assassin’s Creed Origins",
+        "note": 5,
+        "description": "plongez vous dans le monde d'Assassin’s Creed Origins, en parcourant les cites perdu d'Egypte antique",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Egypte",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "pyramides de Gizeh",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Temples d’Assouan",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    },
+                    {
+                        "nom": "Croisiere Nil",
+                        "valeurs_possibles": [
+                            "repas compris",
+                            "sans repas"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image009.png",
+            "image109.png",
+            "image209.png",
+            "image309.png"
+        ]
+    },
+    {
+        "id": "010",
+        "titre": "Horizon Zero Dawn",
+        "note": 5,
+        "description": "plongez vous dans le monde post apocalyptique de Horizon Zero Dawn et decouvrez des regions sauvages loin de toutes civilisation",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Islande",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "hebergement",
+                        "valeurs_possibles": [
+                            "Hotel",
+                            "Auberge"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Repas",
+                        "valeurs_possibles": [
+                            "Petit dejeuner",
+                            "Dejeuner",
+                            "Dinner",
+                            "Complet"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    },
+                    {
+                        "nom": "Transport",
+                        "valeurs_possibles": [
+                            "Cheval",
+                            "Charrieaux"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5400,
+        "image": [
+            "image010.png",
+            "image110.png",
+            "image210.png",
+            "image310.png"
+        ]
+    },
+    {
+        "id": "011",
+        "titre": "Journey",
+        "note": 3,
+        "description": "plongez vous dans le monde désertique de Journey",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Sahara",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Exploration desert",
+                        "valeurs_possibles": [
+                            "accompagnateur",
+                            "solo"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Squad",
+                        "valeurs_possibles": [
+                            "2 heures",
+                            "4 heures"
+                        ],
+                        "prix_par_personne": 35,
+                        "nombre_personnes": 4
+                    }
+                ]
+            },
+            {
+                "nom": "Jordanie",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Turner",
+                        "prenom": "Taissa"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Exploration desert",
+                        "valeurs_possibles": [
+                            "accompagnateur",
+                            "solo"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Cite de Petra",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image011.png",
+            "image111.png",
+            "image211.png",
+            "image311.png"
+        ]
+    },
+    {
+        "id": "012",
+        "titre": "Minecraft",
+        "note": 5,
+        "description": "plongez vous dans le monde de Minecraft, on vous propose un tour du monde afin",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Forets-Amazonie",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "randonee",
+                        "valeurs_possibles": [
+                            "Canoe",
+                            "Escalade"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    }
+                ]
+            },
+            {
+                "nom": "Desert-Sahara",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "visite desert",
+                        "valeurs_possibles": [
+                            "chameau",
+                            "4x4",
+                            "a pied"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    }
+                ]
+            },
+            {
+                "nom": "Ocean-Caraibes",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "activite plage",
+                        "valeurs_possibles": [
+                            "plongee",
+                            "peche",
+                            "cabanes"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    }
+                ]
+            },
+            {
+                "nom": "Nether-Indonesie",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Exploration",
+                        "valeurs_possibles": [
+                            "Volcans",
+                            "Source chaude",
+                            "Geyser"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    }
+                ]
+            },
+            {
+                "nom": "Toundra-Groenland",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Expedition",
+                        "valeurs_possibles": [
+                            "chien traineau",
+                            "glaciers"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "Restauration",
+                        "valeurs_possibles": [
+                            "Cuisine Inuite",
+                            "Cuisine Dannoise"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image012.png",
+            "image112.png",
+            "image212.png",
+            "image312.png"
+        ]
+    },
+    {
+        "id": "013",
+        "titre": "The Legend of Zelda: Breath of the Wild",
+        "note": 4,
+        "description": "plongez vous dans le monde de The Legend of Zelda: Breath of the Wild, et decouvrez des decors et paysages inedit tout en partant a l'aventure",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Nouvelle-Zelande",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "visite parc national",
+                        "valeurs_possibles": [
+                            "visite guidee",
+                            "visite libre"
+                        ],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "randonee en montagne",
+                        "valeurs_possibles": [
+                            "location materiel",
+                            "achat materiel",
+                            "propre materiel"
+                        ],
+                        "prix_par_personne": 25,
+                        "nombre_personnes": 4
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 2000,
+        "image": [
+            "image013.png",
+            "image113.png",
+            "image213.png",
+            "image313.png"
+        ]
+    },
+    {
+        "id": "014",
+        "titre": "Uncharted: The Lost Legacy",
+        "note": 5,
+        "description": "plongez vous dans le monde de Uncharted: The Lost Legacy, et decouvrez les mysteres antiques des paysages tropicaux inedits tout en partant a l'aventure",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Senegal",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Diop",
+                        "prenom": "Bineta"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "decouverte art traditionel",
+                        "valeurs_possibles": [],
+                        "prix_par_personne": 0,
+                        "nombre_personnes": 6
+                    },
+                    {
+                        "nom": "parc national Niokolo-Koba",
+                        "valeurs_possibles": [
+                            "visite guide",
+                            "visite libre"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 4
+                    }
+                ]
+            },
+            {
+                "nom": "Tanzanie",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    {
+                        "nom": "Turner",
+                        "prenom": "Taissa"
+                    }
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Exploration jungle",
+                        "valeurs_possibles": [
+                            "accompagnateur",
+                            "solo"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image014.png",
+            "image114.png",
+            "image214.png",
+            "image314.png"
+        ]
+    },
+    {
+        "id": "015",
+        "titre": "Cyberpunk",
+        "note": 5,
+        "description": "plongez vous dans le monde de Cyberpunk, en parcourant les decors hyper-futuristes des grandes metropole",
+        "dates": {
+            "debut": "2025-06-16",
+            "fin": "2025-06-26",
+            "duree": 10
+        },
+        "etapes": [
+            {
+                "nom": "Tokyo",
+                "dates": {
+                    "debut": "2025-06-16",
+                    "fin": "2025-06-24",
+                    "duree": 8
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "restaurant traditionel",
+                        "valeurs_possibles": [
+                            "Menu veggie",
+                            "Menu classique"
+                        ],
+                        "prix_par_personne": 40,
+                        "nombre_personnes": 3
+                    }
+                ]
+            },
+            {
+                "nom": "Shanghai",
+                "dates": {
+                    "debut": "2025-06-24",
+                    "fin": "2025-06-26",
+                    "duree": 2
+                },
+                "personnes_supplementaires": [
+                    []
+                ],
+                "position_gps": "",
+                "options": [
+                    {
+                        "nom": "Exploration jardin de Yuyuan",
+                        "valeurs_possibles": [
+                            "plein tarif",
+                            "tarif reduit"
+                        ],
+                        "prix_par_personne": 15,
+                        "nombre_personnes": 3
+                    }
+                ]
+            }
+        ],
+        "personnes": [],
+        "prix_total": 5000,
+        "image": [
+            "image015.png",
+            "image115.png",
+            "image215.png",
+            "image315.png"
         ]
     }
 ]

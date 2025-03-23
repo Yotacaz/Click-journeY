@@ -12,9 +12,11 @@
 </head>
 </head>
 <body>
+	
 <?php
+    require_once "php-include/header.php";
+ 
 require_once "php-include/fonctions_voyages.php";
-require_once "php-include/header.php";
 $fichier = "../donnees/voyage/voyages.json";
 
 $voyages = trierVoyage($fichier);
@@ -23,14 +25,15 @@ $voyages = trierVoyage($fichier);
 $voyages = array_splice($voyages, 0, 5);
 
 // Parcourir les 5 premiers éléments
-    echo '<div class="mieux_notes">';
-    echo "<br><br><br><center><h1>LES MIEUX NOTES<h1/></center>";
+    echo '<br><br><br><div class="mieux_notes">';
+    echo "<center><h1>LES MIEUX NOTES<h1/></center>";
 
 foreach ($voyages as $v) {
 	$index=(int)$v['id'];
 	$index--;
 echo '<div class="info_voyage">
-    <h2><a href="details_voyage.php?id='.$index.'">Voyage: ' . $v['titre'] . '</a></h2>
+            <h2><a href="details_voyage.php?id=' . $index . '">'.$v["titre"].'</a></h2>
+
 	   <p><strong>Note:</strong> ' . $v['note'] .' / 5</p>
 	   <p><strong>Description:</strong> ' . $v['description'] . '</p>
 	   	<p><strong>Durée:</strong> ' . $v['dates']['duree'] . ' jours</p></h5>
@@ -39,7 +42,7 @@ echo '<div class="info_voyage">
 }
 echo "</div>";
 
-?>
-    require_once "php-include/footer.php";	
+    require_once "php-include/footer.php";
+    ?>	
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-require_once "php-include/header.php";
 require_once "php-include/fonctions_voyages.php";
 $voyages= decodageDonnees("../donnees/voyage/voyages.json");
 $identifiant=recup_id();
@@ -27,6 +26,9 @@ $v=$v[0];
     <title><?php echo "$titre_page"; ?></title>
 </head>
 <body>
+    <?php
+    require_once "php-include/header.php";
+    ?>
 
 
 <?php echo "<br><br><br><h1>".$titre_page." - Détails du voyage</h1>"; ?>
@@ -40,17 +42,13 @@ $v=$v[0];
 <div class="details_voyage">
     <h2><?php echo $v['titre']; ?> (Note: <?php echo $v['note']; ?>/5⭐)</h2>
     <p><strong>Dates:</strong> <?php echo $v['dates']['debut']; ?> - <?php echo $v['dates']['fin']; ?></p>
-    <label for="date_debut">Date de debut: </label>
-    <input type="date" name="date_debut" value=<?php echo $v['dates']['debut']; ?> min="2025-03-22" max="2028-12-31" />
-    <label for="date_fin">Date de fin: </label>
-    <input type="date" name="date_fin" value=<?php echo $v['dates']['fin']; ?> min="2025-03-22" max="2028-12-31" />
     <p><strong>Durée:</strong> <?php echo $v['dates']['duree']; ?> jours</p>
 </div>
 <hr>
 <h3>Étapes du voyage</h3>
 
 <!-- Formulaire global pour modifier plusieurs étapes -->
-<form action="modif_voyage.php" method="POST">
+<form action="modif_voyage.php?id=<?php echo $identifiant; ?>" method="POST">
 
 <?php
 // Parcourir chaque étape et afficher les options modifiables
@@ -59,10 +57,19 @@ foreach ($v['etapes'] as $etape_index => $etape) {
     echo '<h4>' . $etape['nom'] . '</h4>';
     echo '<p><strong>Dates:</strong> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
 
-    echo    '<label for="date_debut_'.$etape["nom"].'">Date de debut: </label>
-    <input type="date" name="date_debut_'.$etape["nom"].'" value='.$etape['dates']['debut'].'.min="2025-03-22" max="2028-12-31" />
-    <label for="date_fin">Date de fin: </label>
-    <input type="date" name="date_debut_'.$etape["nom"].'" value='.$etape['dates']['fin'].'.min="2025-03-22" max="2028-12-31" />';
+    echo    '
+    <label for="date_debut_'.$etape["nom"].'">Date de debut: </label>
+    
+    <input type="date" name="date_debut_<?php echo $etape_index; ?>" 
+       value="'.$etape['dates']['debut'].'" 
+       min="2025-03-22" max="2028-12-31" />
+
+    
+    <label for="date_fin'.$etape["nom"].'">Date de fin: </label>
+    
+    <input type="date" name="date_debut_<?php echo $etape_index; ?>" 
+       value="'.$etape['dates']['fin'].'" 
+       min="2025-03-22" max="2028-12-31" />';
 
     echo '<p><strong>Durée:</strong> ' . $etape['dates']['duree'] . ' jours</p>';
 
@@ -77,10 +84,10 @@ foreach ($v['etapes'] as $etape_index => $etape) {
             echo '<option value="' . $valeur . '">' . $valeur . '</option>';
         }
 
-        echo '</select>';
-        echo '<label for="nombre_personnes_' . $etape_index . '_' . $option_index . '">Nombre de personnes: </label>';
-        echo '<input type="number" name="nombre_personnes_' . $etape_index . '_' . $option_index . '" value="' . $option['nombre_personnes'] . '" min="1" max="10"><br>';
-        echo '</div>'; // Ferme div.option
+        echo '</select>
+        <label for="nombre_personnes_' . $etape_index . '_' . $option_index . '">Nombre de personnes: </label>
+        <input type="number" name="nombre_personnes_' . $etape_index . '_' . $option_index . '" value="' . $option['nombre_personnes'] . '" min="1" max="10"><br>
+        </div>'; // Ferme div.option
     }
 
     echo '</div><hr>'; // Ferme div.etape
@@ -91,7 +98,6 @@ foreach ($v['etapes'] as $etape_index => $etape) {
 <div class="buttons">
     <input type="submit" value="Reservez Maintenant !">
 </div>
-
 </form>
 <br><br>
 <?php
