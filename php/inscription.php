@@ -4,6 +4,13 @@ require_once "php-include/utilisateur.php";
 if (utilisateurEstConnecte()){
     header("Location: profil.php");
 }
+if(isset($_POST["boutton"])){
+    $mdp=$_POST['mdp'];
+    $mdp2=$_POST['mdp2'];
+    if($mdp==$mdp2){
+    header("Location: connexion.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,8 +79,6 @@ if (utilisateurEstConnecte()){
                 <?php
                     if(isset($_POST["boutton"])){
                         $mail=$_POST["email"];
-                        $mdp=$_POST['mdp'];
-                        $mdp2=$_POST['mdp2'];
                         if($mdp != $mdp2){
                             echo "Merci de rentré le même mot de passe.";
                         }
@@ -86,7 +91,6 @@ if (utilisateurEstConnecte()){
                             $open = fopen($chemin ,'w');
                             fwrite( $open , json_encode($finale));
                             fclose($open);
-                            //header("Location: connexion.php");
                         }
                     }
                 ?>
