@@ -63,6 +63,7 @@
                     <input type='hidden' name='retour' value="<?php echo "$retour" ?>">
                     <input type='hidden' name='control' value="<?php echo "$control" ?>">
 
+
                     <p class="col1"> </p>
                     <label class="col2">
                         <button type="submit" name="boutton" class="submit">validé et payé</button>
@@ -70,22 +71,14 @@
                 </form>
 
                 <?php
-                    /*if(isset($_POST["boutton"])){
-                        $num_carte=$_POST['num_carte'];
-                        $valeur=$_POST['valeur_controle'];
-                        if(strlen($num_carte) != 16){
-                            echo "Merci de rentré un numéros de carte valide.";
-                        }
-                        else if(strlen($valeur) != 3){
-                            echo "Merci de rentré une valeur de contrôle valide.";
-                        }
-                    }*/
-                    $cobanc=array(/*"num_carte"=> $_POST['num_carte'] ,*/ "proprietaire"=>"bob bob" , "dates_expirations" => "2029-01-01" , "valeur_controle"=>"555");
-                    $voyage=array('nom_voyage' => "GTA V",'nb_personne' => 6,'dates_debut' => "2028-12-20" ,'date_fin' => "2029-01-05");
-                    $temp= array('montant' => 1800.00 , "utilisateur" => "bob@bob.bob" ,"voyage"=> $voyage , "cobancaire"=> $cobanc);
-                    $open = fopen("../donnees/paiement/transaction_en_cours.json",'w');
-                    fwrite( $open , json_encode($temp));
-                    fclose($open);
+                    if(isset($_POST["boutton"])){
+                        $cobanc=array("num_carte"=> '' , "proprietaire"=>"" , "dates_expirations" => "" , "valeur_controle"=>"");
+                        $voyage=array('nom_voyage' => "GTA V",'nb_personne' => 6,'dates_debut' => "2028-12-20" ,'date_fin' => "2029-01-05");
+                        $temp= array('montant' => $info["montant"] , "utilisateur" => $info["utilisateur"] ,"voyage"=> $voyage , "cobancaire"=> $cobanc);
+                        $open = fopen("../donnees/paiement/transaction_en_cours.json",'w');
+                        fwrite( $open , json_encode($temp));
+                        fclose($open);
+                    }
                 ?>
 
             </div>
@@ -94,7 +87,7 @@
                     <h2>Recapitulatif</h2>
                     Vous participé au voyage <em><?php echo $info["voyage"]["nom_voyage"] ?></em> à <em><?php echo $info["voyage"]["nb_personne"] ?></em> personnes.</br>
                     Le voyage débuteras le <em><?php echo $info["voyage"]["dates_debut"] ?></em> et finiras le <em><?php echo $info["voyage"]["date_fin"] ?></em>.</br>
-                    Pour un montant totale de <em><?php echo "$info[montant]€" ?></em>.
+                    Pour un montant totale de <em><?php echo "$info[montant] €" ?></em>.
                 </div>
             </div>
         </div>
