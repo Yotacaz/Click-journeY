@@ -21,6 +21,7 @@ if (utilisateurEstConnecte()){
 <body>
     <?php
     require_once "php-include/header.php";
+    $date = date("Y-m-d");
     ?>
     <main>
         <div class="bandeau">
@@ -47,10 +48,10 @@ if (utilisateurEstConnecte()){
                         <label for="genreA"><input type="radio" value="Autre" name="genre" id="genreA">Autre</label>
                     </div><br />
 
-                    <label class="col1" for="date">Date de naissance:</label>
-                    <input class="col2" type="date" name="date" id="date" min="1900-01-01"><br />
+                    <label class="col1" for="date_naissance">Date de naissance:</label>
+                    <input class="col2" type="date" name="date_naissance" id="date_naissance" min="1900-01-01" max="<?php echo "$date"; ?>"><br />
 
-                    <label for="adresse" class="col1">Adresse :</label>
+                    <label for="adresse" class="col1">Adresse mail :</label>
                     <input class="col2" type="email" name="email" id="adresse"
                         placeholder="adresse@email.exemple"><br />
 
@@ -77,14 +78,15 @@ if (utilisateurEstConnecte()){
                             echo "Merci de rentré le même mot de passe.";
                         }
                         else{
-                            $nom_fichier = "$mail.json";
-                            $chemin = "../donnees/utilisateurs/$nom_fichier";
-                            if (!file_exists($chemin)) {
-                                $open = fopen("../donnees/utilisateurs/$nom_fichier",'w');
-                                fwrite( $open , json_encode($_POST));
-                                fclose($open);
-                                header("Location: connexion.php");
-                            }
+                            $chemin = genererCheminFichierUtilisateur($mail);
+                            $info = array('nom' => $_POST["nom"],'prenom' => $_POST["prenom"],'sexe' => $_POST['genre'],'date_naissance' => $_POST["date_naissance"]);
+                            $voyages = array('consultes' => [] , 'achetes' => []);
+                            $autres = array('date_inscription'=> $date , 'date_derniere_connexion' => '');
+                            $finale= array("email" => $mail , "mdp" => $mdp , "role" =>"normal" , "info" => $info , "voyages" => $voyages , "autres" => $autres);
+                            $open = fopen($chemin ,'w');
+                            fwrite( $open , json_encode($_POST));
+                            fclose($open);
+                            //header("Location: connexion.php");
                         }
                     }
                 ?>
