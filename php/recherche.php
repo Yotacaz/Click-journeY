@@ -1,4 +1,11 @@
 <?php
+session_start();
+require_once "php-include/utilisateur.php";
+$utilisateur = restaurerSessionUtilisateur();
+if ($utilisateur!= null && !utilisateurValide($utilisateur)) {
+    die("Erreur : Utilisateur invalide");
+}
+
 require_once "php-include/fonctions_voyages.php";
 
 $voyages = chargerVoyages();

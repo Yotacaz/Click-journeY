@@ -6,6 +6,9 @@
 if (!isset($_SERVER["PHP_SELF"])) {
     die("Des variables serveurs ne sont pas définies.");
 }
+if (!isset($utilisateur) || empty($utilisateur)) {
+    $utilisateur = null;
+}
 function classe_actif($page_active, $page): void
 {
     if ($page == $page_active) {
@@ -40,17 +43,17 @@ $page_active = basename(path: $_SERVER["PHP_SELF"]);
     <div class="sectionH">
         <nav class="navbar">
             <?php
-            if (isset($_SESSION["utilisateur"])) {
+            if ($utilisateur!=null) {
                 
                 echo '<a href="profil.php" ';
                 classe_actif($page_active, "profil.php");
                 echo '>Profil</a>';
-                if ($_SESSION["utilisateur"]["role"]==="admin") {
+                if ($utilisateur["role"]==="admin") {
                     echo '<a href="admin.php" ';
                     classe_actif($page_active, "admin.php");
                     echo '>Admin</a>';
                 }
-                echo '<a href="deconnexion.php" class="cacher" ';
+                echo '<a href="php-include/deconnexion.php" class="cacher" ';
                 echo '>Déconnexion</a>';
             } else {
                 echo '<a href="connexion.php" ';

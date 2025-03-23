@@ -1,21 +1,17 @@
+<?php
+session_start();
+require_once "php-include/utilisateur.php";
+$utilisateur = connexionUtilisateurRequise();
+if (!utilisateurValide($utilisateur)){
+    die("Erreur : Utilisateur invalide");
+}
+
+require_once "php-include/fonctions_voyages.php";
+$voyages = chargerVoyages();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php
-
-session_start();
-require_once "php-include/utilisateur.php";
-require_once "php-include/fonctions_voyages.php";
-//TODO A supprimer
-$_SESSION["utilisateur"] = chargerUtilisateurParEmail("bob@bob.bob");
-if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateur"])) {
-    header("Location: connexion.php");
-    exit;
-}
-$utilisateur = $_SESSION["utilisateur"];
-
-
-?>
 
 <head>
     <meta name="auteur" content="CRISSOT Martin" />
@@ -44,6 +40,9 @@ $utilisateur = $_SESSION["utilisateur"];
                 <?php
                 if (!isset($voyages)) {
                     die("Les voyages n'ont pas pu être chargé");
+                }
+                if (count($utilisateur["voyages"]["achetes"]) == 0) {
+                    echo "<li>Vous n'avez pas de voyage prévu</li>";
                 }
                 foreach ($utilisateur["voyages"]["achetes"] as $nom_voyage) {
                     $voyage = chargerVoyageParNom($nom_voyage);
@@ -120,7 +119,8 @@ $utilisateur = $_SESSION["utilisateur"];
             </form>
 
         </div>
-        <form class="texte-centre" action="accueil.php" method="post">
+        
+        <form class="texte-centre" action="php-include/deconnexion.php" method="post">
             <input class="input-formulaire grand" type="submit" value="Déconnexion" name="deconnexion">
         </form>
     </main>

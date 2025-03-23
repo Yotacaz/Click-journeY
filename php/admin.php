@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
-
-//TODO A supprimer
-$_SESSION["utilisateur"] = chargerUtilisateurParEmail("bob@bob.bob");
-$_SESSION["utilisateur"]["role"] = "admin";
-if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateur"])) {
-    header("Location: connexion.php");
-    exit;
-} else if ($_SESSION["utilisateur"]["role"] != "admin") {
-    header("Location: profil.php");
-    exit;
+$admin=adminRequis();
+if (!utilisateurValide($admin)){
+    die("Erreur : Utilisateur invalide");
 }
+$utilisateur=$admin;
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
 
 <head>
     <meta name="auteur" content="CRISSOT Martin" />
@@ -30,6 +25,7 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
 <body>
     <?php
     require_once "php-include/header.php";
+    unset($utilisateur);    // je sais c'est pas propre
     ?>
     <?php
     $utilisateurs = listerUtilisateurs();
@@ -105,7 +101,7 @@ if (!isset($_SESSION["utilisateur"]) || !utilisateurValide($_SESSION["utilisateu
                         $utilisateur["modif_admin"][$date]["ancien status"] = $utilisateur["role"];
                         $utilisateur["modif_admin"][$date]["nouveau status"] = $_POST["status"];
                         $utilisateur["modif_admin"][$date]["motif"] = $_POST["motif"];
-                        $utilisateur["modif_admin"][$date]["auteur"] = $_SESSION["utilisateur"]["email"];
+                        $utilisateur["modif_admin"][$date]["auteur"] = $admin["email"];
 
                         $utilisateur["role"] = $_POST["status"];
                         ecrireFichierUtilisateur($utilisateur);
