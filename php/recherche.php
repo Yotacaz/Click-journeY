@@ -50,7 +50,7 @@ $dossier_resultat = "../img/voyage/";
             } else {
                 die("Erreur lors de la récupération des lieux");
             }
-            $lieux = $_GET["lieu"];
+            $lieux = array_map('strtolower',$_GET["lieu"]);
         }
         ?>
 
@@ -85,12 +85,12 @@ $dossier_resultat = "../img/voyage/";
                         <select class="filtre_genre input-formulaire" name="genre" id="genre">
                             <option selected value="Tout">Tout</option>
                             <option value="MMORPG">MMORPG</option>
-                            <option value="Aventure">Aventure</option>
                             <option value="Sport">Sport</option>
                             <option value="Action">Action</option>
                             <option value="Aventure">Aventure</option>
                             <option value="Fiction interactive">Fiction</option>
                             <option value="Strategie">Stratégie</option>
+                            <option value="Bac a sable">Bac a sable</option>
                         </select>
                     </div>
 
@@ -108,6 +108,7 @@ $dossier_resultat = "../img/voyage/";
                             <option value="Medieval">Medieval</option>
                             <option value="City">City</option>
                             <option value="Aquatique">Aquatique</option>
+                            <option value="Nature">Nature</option>
                         </select>
                     </div>
                 </div>
@@ -177,9 +178,9 @@ $dossier_resultat = "../img/voyage/";
                             <option ' . ($genre === "Aventure" ? "selected" : "") . ' value="Aventure">Aventure</option>
                             <option ' . ($genre === "Sport" ? "selected" : "") . ' value="Sport">Sport</option>
                             <option ' . ($genre === "Action" ? "selected" : "") . ' value="Action">Action</option>
-                            <option ' . ($genre === "Aventure" ? "selected" : "") . ' value="Aventure">Aventure</option>
                             <option ' . ($genre === "Fiction interactive" ? "selected" : "") . ' value="Fiction interactive">Fiction</option>
                             <option ' . ($genre === "Strategie" ? "selected" : "") . ' value="Strategie">Stratégie</option>
+                            <option ' . ($genre === "Bac a sable" ? "selected" : "") . 'value="Bac a sable">Bac a sable</option>
                         </select>
                     </div>
 
@@ -197,6 +198,7 @@ $dossier_resultat = "../img/voyage/";
                             <option ' . ($theme === "Medieval" ? "selected" : "") . ' value="Medieval">Medieval</option>
                             <option ' . ($theme === "City" ? "selected" : "") . '  value="City">City</option>
                             <option ' . ($theme === "Aquatique" ? "selected" : "") . '  value="Aquatique">Aquatique</option>
+                            <option ' . ($theme === "Nature" ? "selected" : "") . '  value="Nature">Nature</option>
                         </select>
                     </div>
                 </div>
@@ -268,10 +270,10 @@ $dossier_resultat = "../img/voyage/";
                     $resultats = [];
 
                     foreach ($voyages as $voyage) {
-                        if ($genre !== "Tout" && $voyage["genre"] !== $genre) {
+                        if (strtolower($genre) !== "tout" && strtolower($voyage["genre"]) !== strtolower($genre)) {
                             continue;
                         }
-                        if ($theme !== "Tout" && $voyage["theme"] !== $theme) {
+                        if (strtolower($theme) !== "tout" && strtolower($voyage["theme"]) !== strtolower($theme)) {
                             continue;
                         }
                         if ($voyage["prix_total"] < $prix_min) {

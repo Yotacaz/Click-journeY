@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
+if (utilisateurEstConnecte()) {
+    header("Location: profil.php");
+}
 $chemin_utilisateurs = nomDossierUtilisateur();
 $message = "test";
 

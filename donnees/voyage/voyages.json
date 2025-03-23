@@ -5,12 +5,10 @@
         "note": 5,
         "description": "plongez vous dans le monde de GTA-V, en parcourant Los angeles, Miami et plus",
         "genre": "action",
-        "Thème": "city",
+        "theme": "city",
         "localisation": {
             "pays": "Etats-Unis",
-            "ville": "Los-Angeles",
-            "adresse": "7 Lucas Ave",
-            "position_gps": "34.0522° N, 118.2437° W"
+            "ville": "Los-Angeles"
         },
         "dates": {
             "debut": "2025-06-16",
@@ -92,13 +90,11 @@
         "titre": "Animal Crossing",
         "note": 5,
         "description": "plongez vous dans le monde d'animal crossing, en parcourant les iles paradisiaques de la Polynesie",
-        "genre": "Aventure",
-        "Thème": "aquatique",
+        "genre": "aventure",
+        "theme": "aquatique",
         "localisation": {
             "pays": "Polynesie",
-            "ville": "Tahiti",
-            "adresse": "7 Lucas Ave",
-            "position_gps": "34.0522° N, 118.2437° W"
+            "ville": "Tahiti"
         },
         "dates": {
             "debut": "2025-06-16",
@@ -156,12 +152,10 @@
         "note": 3,
         "description": "plongez vous dans le monde de Mass Effect, en allant a la conquete spacial, decouvrez des mondes futuristes",
         "genre": "action",
-        "Thème": "city",
+        "theme": "city",
         "localisation": {
             "pays": "Etats-Unis",
-            "ville": "Miami",
-            "adresse": "7 Lucas Ave",
-            "position_gps": "34.0522° N, 118.2437° W"
+            "ville": "Miami"
         },
         "dates": {
             "debut": "2025-06-16",
@@ -217,12 +211,10 @@
         "note": 1,
         "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'uneville qui ne dort pas",
         "genre": "action",
-        "Thème": "city",
+        "theme": "city",
         "localisation": {
             "pays": "Etats-Unis",
-            "ville": "New-York",
-            "adresse": "7 Lucas Ave",
-            "position_gps": "34.0522° N, 118.2437° W"
+            "ville": "New-York"
         },
         "dates": {
             "debut": "2025-06-16",
@@ -298,12 +290,10 @@
         "note": 2,
         "description": "plongez vous dans le monde du far west, mettez vos chapeau cowboys et cowgirl et partez a l'aventure hii haaaa !",
         "genre": "action",
-        "Thème": "city",
+        "theme": "guerre",
         "localisation": {
             "pays": "Etats-Unis",
-            "ville": "Yellowtone",
-            "adresse": "7 Lucas Ave",
-            "position_gps": "34.0522° N, 118.2437° W"
+            "ville": "Yellowtone"
         },
         "dates": {
             "debut": "2025-06-16",
@@ -371,6 +361,12 @@
         "titre": "Skyrim",
         "note": 5,
         "description": "plongez vous dans le monde de Skyrim",
+        "genre": "aventure",
+        "theme": "fantasy",
+        "localisation": {
+            "pays": "France",
+            "ville": "Samoens"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -449,6 +445,12 @@
         "titre": "The Witcher 3",
         "note": 5,
         "description": "plongez vous dans le monde de The Witcher 3, en voyagant à travers l'europe de l'est",
+        "genre": "aventure",
+        "theme": "fantasy",
+        "localisation": {
+            "pays": "Roumanie",
+            "ville": "Bucarest"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -520,9 +522,15 @@
     },
     {
         "id": "008",
-        "titre": "Assassin’s Creed Odyssey",
+        "titre": "Assassin's Creed Odyssey",
         "note": 5,
-        "description": "plongez vous dans le monde d'Assassin’s Creed Odyssey, et decouvrez la Grece antique",
+        "genre": "action",
+        "theme": "fantasy",
+        "description": "plongez vous dans le monde d'Assassin's Creed Odyssey, et decouvrez la Grece antique",
+        "localisation": {
+            "pays": "Grece",
+            "ville": "Athene"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -587,9 +595,15 @@
     },
     {
         "id": "009",
-        "titre": "Assassin’s Creed Origins",
+        "titre": "Assassin's Creed Origins",
         "note": 5,
-        "description": "plongez vous dans le monde d'Assassin’s Creed Origins, en parcourant les cites perdu d'Egypte antique",
+        "genre": "action",
+        "theme": "fantasy",
+        "description": "plongez vous dans le monde d'Assassin's Creed Origins, en parcourant les cites perdu d'Egypte antique",
+        "localisation": {
+            "pays": "Egypte",
+            "ville": "Le Caire"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -649,6 +663,12 @@
         "titre": "Horizon Zero Dawn",
         "note": 5,
         "description": "plongez vous dans le monde post apocalyptique de Horizon Zero Dawn et decouvrez des regions sauvages loin de toutes civilisation",
+        "genre": "aventure",
+        "theme": "fantasy",
+        "localisation": {
+            "pays": "Islande",
+            "ville": "Reykjavik"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -713,6 +733,12 @@
         "titre": "Journey",
         "note": 3,
         "description": "plongez vous dans le monde désertique de Journey",
+        "genre": "aventure",
+        "theme": "nature",
+        "localisation": {
+            "pays": "Sahara occidental",
+            "ville": "Laayoune"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -798,6 +824,12 @@
         "titre": "Minecraft",
         "note": 5,
         "description": "plongez vous dans le monde de Minecraft, on vous propose un tour du monde afin",
+        "genre": "bac a sable",
+        "theme": "nature",
+        "localisation": {
+            "pays": "France",
+            "ville": "Cayenne"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -958,6 +990,12 @@
         "titre": "The Legend of Zelda: Breath of the Wild",
         "note": 4,
         "description": "plongez vous dans le monde de The Legend of Zelda: Breath of the Wild, et decouvrez des decors et paysages inedit tout en partant a l'aventure",
+        "genre": "bac a sable",
+        "theme": "fantasy",
+        "localisation": {
+            "pays": "Nouvelle-Zelande",
+            "ville": "Wellington"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -1012,6 +1050,12 @@
         "titre": "Uncharted: The Lost Legacy",
         "note": 5,
         "description": "plongez vous dans le monde de Uncharted: The Lost Legacy, et decouvrez les mysteres antiques des paysages tropicaux inedits tout en partant a l'aventure",
+        "genre": "aventure",
+        "theme": "fantasy",
+        "localisation": {
+            "pays": "Senegal",
+            "ville": "Dakar"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
@@ -1090,7 +1134,13 @@
         "id": "015",
         "titre": "Cyberpunk",
         "note": 5,
+        "genre": "action",
+        "theme": "city",
         "description": "plongez vous dans le monde de Cyberpunk, en parcourant les decors hyper-futuristes des grandes metropole",
+        "localisation": {
+            "pays": "Japon",
+            "ville": "Tokyo"
+        },
         "dates": {
             "debut": "2025-06-16",
             "fin": "2025-06-26",
