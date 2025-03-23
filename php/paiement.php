@@ -19,13 +19,8 @@
     $passage= array("a","z","e","r","t","y","u","i","o","p","q","s","d","f","g","h","j","k","l","m","w","x","c","v","b","n","0","1","2","3","4","5","6","7","8","9","A","Z","E","R","T","Y","U","I","O","P","Q","S","D","F","G","H","J","K","L","M","W","X","C","V","B","N");
     $nb1 = rand(10,24);
     $vendeur="MI-3_A";
-    //ATTENTION
-    //ATTENTION
-    //le lien ne fonctionne que si le fichier mère du projet s'appelle "main". Si ce n'est pas votre cas merci de changer le chemin par le chemin reliant "localhost" aux dossier "php".
-    $retour="http://localhost/main/php/retour_transaction.php";
-    //le lien ne fonctionne que si le fichier mère du projet s'appelle "main". Si ce n'est pas votre cas merci de changer le chemin par le chemin reliant "localhost" aux dossier "php".
-    //ATTENTION 
-    //ATTENTION
+    $base_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+    $retour = $base_url . "/retour_transaction";
     $transaction=$passage[rand(0,61)];
     for($i=0;$i<$nb1 -1;$i++){
         $transaction=$passage[rand(0,61)].$transaction;
@@ -46,8 +41,8 @@
                 <form class="grille3" action='https://www.plateforme-smc.fr/cybank/index.php' method="post" name="paiement">
 
                     <label for="num_carte" class="col1">Num Carte : </label>
-                    <input class="col2" type="text" name="num_carte" id="num_carte" contenteditable="false" placeholder="Num carte bancaire"><br />
-
+                    <input class="col2" type="text" name="num_carte" id="num_carte" contenteditable="false" placeholder="Num carte bancaire"><br /> 
+                    
                     <label for="proprio" class="col1">Nom-Prénom propriétaire carte :</label>
                     <input class="col2" type="text" name="proprio_carte" id="proprio" contenteditable="false" placeholder="nom-prénom propriétaire carte"></br>
 
@@ -71,13 +66,24 @@
                 </form>
 
                 <?php
+                    require_once "php-include/utilisateur.php";
                     if(isset($_POST["boutton"])){
-                        $cobanc=array("num_carte"=> '' , "proprietaire"=>"" , "dates_expirations" => "" , "valeur_controle"=>"");
-                        $voyage=array('nom_voyage' => "GTA V",'nb_personne' => 6,'dates_debut' => "2028-12-20" ,'date_fin' => "2029-01-05");
-                        $temp= array('montant' => $info["montant"] , "utilisateur" => $info["utilisateur"] ,"voyage"=> $voyage , "cobancaire"=> $cobanc);
-                        $open = fopen("../donnees/paiement/transaction_en_cours.json",'w');
+                        $num_carte=$_POST['num_carte'];
+                        $valeur=$_POST['valeur_controle'];
+                        if(strlen($num_carte) != 16){
+                            echo "Merci de rentré un numéros de carte valide.";
+                        }
+                        else if(strlen($valeur) != 3){
+                            echo "Merci de rentré une valeur de contrôle valide.";
+                        }
+                        else{
+                            
+                                
+                        }
+                        /*$temp= array('nom_voyage' => "GTA V",'nb_personne' => 6,'montant' => 1800.00 ,'dates_debut' => "2028-12-20" ,'date_fin' => "2029-01-05" , "utilisateur" => "bob@bob.bob");
+                        $open = fopen("../donnees/paiement/transaction_en_cours.json",'a+');
                         fwrite( $open , json_encode($temp));
-                        fclose($open);
+                        fclose($open);*/
                     }
                 ?>
 
@@ -85,8 +91,8 @@
             <div>
                 <div class="conteneur-texte">
                     <h2>Recapitulatif</h2>
-                    Vous participé au voyage <em><?php echo $info["voyage"]["nom_voyage"] ?></em> à <em><?php echo $info["voyage"]["nb_personne"] ?></em> personnes.</br>
-                    Le voyage débuteras le <em><?php echo $info["voyage"]["dates_debut"] ?></em> et finiras le <em><?php echo $info["voyage"]["date_fin"] ?></em>.</br>
+                    Vous participé au voyage <em><?php echo "$info[nom_voyage]" ?></em> à <em><?php echo "$info[nb_personne]" ?></em> personnes.</br>
+                    Le voyage débuteras le <em><?php echo "$info[dates_debut]" ?></em> et finiras le <em><?php echo "$info[date_fin]" ?></em>.</br>
                     Pour un montant totale de <em><?php echo "$info[montant] €" ?></em>.
                 </div>
             </div>
