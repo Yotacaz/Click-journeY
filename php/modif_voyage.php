@@ -1,4 +1,10 @@
 <?php
+session_start();
+require_once "php-include/utilisateur.php";
+$utilisateur = connexionUtilisateurRequise($_SERVER["PHP_SELF"]);
+if ($utilisateur != null && !utilisateurValide($utilisateur)) {
+    die("Erreur : Utilisateur invalide");
+}
 
 require_once "php-include/fonctions_voyages.php";
 

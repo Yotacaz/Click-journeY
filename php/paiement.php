@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once "php-include/utilisateur.php";
+$utilisateur = connexionUtilisateurRequise();
+if ($utilisateur != null && !utilisateurValide($utilisateur)) {
+    die("Erreur : Utilisateur invalide");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
