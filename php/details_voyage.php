@@ -1,7 +1,10 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
-$utilisateur = connexionUtilisateurRequise($_SERVER["PHP_SELF"]);
+if (!isset($_GET["id"])) {
+    die("Erreur : Aucun identifiant de voyage spécifié");
+}
+$utilisateur = connexionUtilisateurRequise($_SERVER["PHP_SELF"] . "?id=" . $_GET["id"]);
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
