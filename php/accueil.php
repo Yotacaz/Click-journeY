@@ -62,6 +62,12 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
                 <td>God of War</td>
             </tr>
         </table>
+        <table class="menu_selecteur">
+            <tr>
+                <th> <a href="voyages_mieux_notes.php">Les mieux notes </a></th>
+            </tr>
+        
+        </table>
         <p><br></p>
         <div class="contour-bloc">
             <label class="grand" for="recherche">
