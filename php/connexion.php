@@ -26,10 +26,19 @@ if (isset($_POST["boutton"])) {
             if (!session_id($id_session)) {
                 die("Erreur lors de la mise en place de l'id de session.");
             }
+            $utilisateur["autres"]["date_derniere_connexion"] = date("Y-m-d");
+            
+            if (!ecrireFichierUtilisateur($utilisateur)) {
+                die("Erreur lors de l'écriture du fichier utilisateur (changement de date de connexion).");
+            }
             session_start();
             $_SESSION[$id_session] = $utilisateur;
-            // $message = "Connexion réussie.";
-            header("Location: profil.php");
+            if (isset($_GET["redirection"])) {
+                header("Location: " . $_GET["redirection"]);
+            }
+            else{
+                header("Location: profil.php");
+            }
             exit;
         } else {
             $message = "mot de passe erroné.";

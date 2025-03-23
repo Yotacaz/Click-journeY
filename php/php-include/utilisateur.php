@@ -213,21 +213,26 @@ function restaurerSessionUtilisateur(){
  * Assure que l'utilisateur est connecté, sinon redirige vers la page de connexion.
  * **A n'utiliser que pour les pages nécessitant une connexion 
  * et qu'avant les balises html.**
+ * @param string|null $page_redirection page vers laquelle rediriger l'utilisateur après connexion
  * @return array tableau associatif contenant les informations de l'utilisateur.
  * Si l'utilisateur n'est pas connecté redirige vers la page de connexion
  */
-function connexionUtilisateurRequise()
+function connexionUtilisateurRequise($page_redirection=null)
 {
     if (!utilisateurEstConnecte()) {
-        header("Location: connexion.php");
+        if ($page_redirection != null) {
+            header("Location: connexion.php?redirection=$page_redirection");
+        } else {
+            header("Location: connexion.php");
+        }
         exit;
     }
     return restaurerSessionUtilisateur();
 }
 
-function adminRequis()
+function adminRequis($page_redirection=null)
 {
-    $utilisateur = connexionUtilisateurRequise();
+    $utilisateur = connexionUtilisateurRequise($page_redirection);
     if ($utilisateur["role"] != "admin") {
         header("Location: profil.php");
         exit;
