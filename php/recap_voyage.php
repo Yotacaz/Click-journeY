@@ -57,7 +57,7 @@ foreach ($v['etapes'] as $etape) {
     }
     echo '</div>';
 }?>
-    <button class="input-formulaire grand" name="valider-recherche">payer</button><br><br>
+    <button class="input-formulaire grand" name="valider-recherche"><a href="paiement.php">payer</a></button><br><br>
 <?php
 require_once "php-include/footer.php";
 ?>
