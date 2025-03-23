@@ -30,7 +30,7 @@ $titre_page= $voyages[$identifiant]["titre"];}
     ?>
 <br><br><br><h1>Récapitulatif du voyage</h1>
 
-<!-- Affichage des informations générales du voyage -->
+<!-- Affichage -->
 <div class="voyage-details">
     <h2><?php echo $v['titre']; ?> (Note: <?php echo $v['note']; ?>)</h2>
     <p><strong>Description:</strong> <?php echo $v['description']; ?></p>
@@ -56,9 +56,11 @@ foreach ($v['etapes'] as $etape) {
         echo '</p>';
     }
     echo '</div>';
-}
+}?>
+    <button class="input-formulaire grand" name="valider-recherche">payer</button><br><br>
+<?php
 require_once "php-include/footer.php";
 ?>
+
 </body>
 </html>
-
