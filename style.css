@@ -96,6 +96,8 @@ ul {
 
 }
 
+
+
 .contour-img:hover {
     -webkit-filter: drop-shadow(1px 1px 1px #aa00f9) drop-shadow(-1px -1px 0 #aa00f9);
     filter: drop-shadow(1px 1px 1px #aa00f9) drop-shadow(-1px -1px 0 #aa00f9);
@@ -132,6 +134,22 @@ button.input-formulaire {
     border: #aa00f9 solid .1em;
     border-radius: .5em;
 }
+
+.lien-bouton {
+    text-decoration: none;
+    font-size: medium;
+    color: #43aed4;
+    background-color: transparent;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.lien-bouton:hover {
+    color: #aa00f9;
+    background-color: #ffffff10;
+}
+
 
 .bordure-violette {
     border-color: #261C57;

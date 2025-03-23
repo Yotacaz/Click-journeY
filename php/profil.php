@@ -2,12 +2,16 @@
 session_start();
 require_once "php-include/utilisateur.php";
 $utilisateur = connexionUtilisateurRequise();
-if (!utilisateurValide($utilisateur)){
+if (!utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
 
 require_once "php-include/fonctions_voyages.php";
 $voyages = chargerVoyages();
+
+$id = 3;
+file_put_contents("../donnees/utilisateurs/ID.json", json_encode($id));
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -49,13 +53,22 @@ $voyages = chargerVoyages();
                     $index = (int) $voyage['id'];
                     $index--;
                     if ($voyage != null) {
-                        echo "<li><b>" . $voyage["nom"] . "</b> - " . $voyage["localisation"]["ville"] . ", " . $voyage["localisation"]["pays"] . ", le " . $voyage["date"] 
-                        . '<a href="details_voyage.php?id=' . $index . '">  <span class="lien-span"></span></a></li>';
+                        echo
+                            '<form action="details_voyage.php?id=' . $index . '" method="post">
+                            <button type="submit" name="disabled" class="lien-bouton">
+                                <li><b>' . $voyage["titre"] . '</b> - ' . $voyage["localisation"]["ville"]
+                            . ', ' . $voyage["localisation"]["pays"] . ', le ' . $voyage["date"] . '</li>
+                            </button>
+                        </form>';
                     }
                 }
                 ?>
-            </ul>
-            <ul>
+                <!-- <form action="details_voyage.php?id=2" method="post">
+                    <button type="submit" name="disabled" class="lien-bouton">
+                        <li><b>' . $voyage["titre"] . '</b> - ' . $voyage["localisation"]["ville"]
+                            .', ' . $voyage["localisation"]["pays"] . ', le ' . $voyage["date"] . '</li>
+                    </button>
+                </form> -->
                 <li><b>Animal Crossing</b> - États Unis, Hawaï, le 03/08/2025</li>
                 <li><a href="gta5.php">GTA V</a><b></b> - États Unis, Los Angeles, le 11/07/2025 </li>
             </ul>
@@ -119,7 +132,7 @@ $voyages = chargerVoyages();
             </form>
 
         </div>
-        
+
         <form class="texte-centre" action="php-include/deconnexion.php" method="post">
             <input class="input-formulaire grand" type="submit" value="Déconnexion" name="deconnexion">
         </form>

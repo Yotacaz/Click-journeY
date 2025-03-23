@@ -160,6 +160,20 @@ function ecrireFichierUtilisateur(array $utilisateur): bool
 }
 
 /**
+ * renvoie l'id de l'utilisateur suivant pour la création d'un nouvel utilisateur
+ *  et incrémente le fichier ID.json
+ * @return int id de l'utilisateur suivant
+ */
+function genererIdUtilisateur(): int
+{
+    global $dossier_utilisateurs;
+    $id = json_decode(file_get_contents("$dossier_utilisateurs"."_ID.json"), true);
+    $id++;
+    file_put_contents("../donnees/utilisateurs/_ID.json", json_encode($id));
+    return $id;
+}
+
+/**
  * @return bool true si l'utilisateur est connecté (id de session valide et non expire), false sinon
  */
 function utilisateurEstConnecte(): bool
@@ -220,5 +234,7 @@ function adminRequis()
     }
     return $utilisateur;
 }
+
+
 
 ?>
