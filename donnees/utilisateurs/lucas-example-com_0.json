@@ -1,0 +1,20 @@
+{
+    "email": "lucas@example.com",
+    "mdp": "Aldqs*42",
+    "id": 2,
+    "role": "normal",
+    "info": {
+        "nom": "DUPONT",
+        "prenom": "Lucas",
+        "sexe": "homme",
+        "date_naissance": "1990-04-12"
+    },
+    "voyages": {
+        "consultes": [],
+        "achetes": []
+    },
+    "autres": {
+        "date_inscription": "2021-01-15",
+        "date_derniere_connexion": "2025-03-19"
+    }
+}
