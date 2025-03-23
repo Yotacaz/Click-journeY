@@ -1,0 +1,21 @@
+{
+    "compte utilisateur":"bob@bob.bob",
+    "Info_transaction":{
+        "date_transaction":"23_March_2025",
+        "ID_transaction":"8slncVCS2wgXt",
+        "vendeur":"MI-3_A",
+        "montant":"1800"
+    },
+    "Voyage":{
+        "nom_voyage":"GTA V",
+        "nb_personne":6,
+        "dates_debut":"2028-12-20",
+        "date_fin":"2029-01-05"
+    },
+    "Coordonnee_Bancaire":{
+        "num_carte":"5555 1234 5678 9000",
+        "proprietaire":"bob bob",
+        "dates_expirations":"2029-01-01",
+        "valeur_controle":"555"
+    }
+}{"compte utilisateur":"bob@bob.bob","Info_transaction":{"date_transaction":"23_March_2025","ID_transaction":"VivgU2vHmbqmklRG1U5","vendeur":"MI-3_A","montant":"1800"},"Voyage":{"nom_voyage":"GTA V","nb_personne":6,"dates_debut":"2028-12-20","date_fin":"2029-01-05"},"Coordonnee_Bancaire":{"num_carte":"","proprietaire":"","dates_expirations":"","valeur_controle":""}}{"compte utilisateur":"bob@bob.bob","Info_transaction":{"date_transaction":"23_March_2025","ID_transaction":"VivgU2vHmbqmklRG1U5","vendeur":"MI-3_A","montant":"1800"},"Voyage":{"nom_voyage":"GTA V","nb_personne":6,"dates_debut":"2028-12-20","date_fin":"2029-01-05"},"Coordonnee_Bancaire":{"num_carte":"","proprietaire":"","dates_expirations":"","valeur_controle":""}}{"compte utilisateur":"bob@bob.bob","Info_transaction":{"date_transaction":"23_March_2025","ID_transaction":"VivgU2vHmbqmklRG1U5","vendeur":"MI-3_A","montant":"1800"},"Voyage":{"nom_voyage":"GTA V","nb_personne":6,"dates_debut":"2028-12-20","date_fin":"2029-01-05"},"Coordonnee_Bancaire":{"num_carte":"","proprietaire":"","dates_expirations":"","valeur_controle":""}}
