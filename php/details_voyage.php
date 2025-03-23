@@ -2,6 +2,12 @@
 require_once "php-include/fonctions_voyages.php";
 $voyages= decodageDonnees("../donnees/voyage/voyages.json");
 $identifiant=recup_id();
+/*if (isset($_POST['disabled'])) {
+    $modifiable="disabled";
+}else{
+    $modifiable="";
+}*/
+$modifiable="";
 
 if(is_array($voyages)){ //decodage reussi on peut trier
 $titre_page= $voyages[$identifiant]["titre"];}
@@ -29,12 +35,16 @@ $v=$v[0];
     <?php
     require_once "php-include/header.php";
     ?>
+    <main>
+    <div class="bandeau-image">
+            <img src='../img/banieres/<?php echo $v["image"][0];?>' alt="Logo ">
+        </div>
 
 
 <?php echo "<br><br><br><h1>".$titre_page." - Détails du voyage</h1>"; ?>
 
 <!-- Affichage des informations générales du voyage -->
-<div class="description">
+<center><div class="description">
     <h3>Description</h3>
     <p><?php echo $v["description"]; ?></p>
 </div>
@@ -57,49 +67,51 @@ foreach ($v['etapes'] as $etape_index => $etape) {
     echo '<h4>' . $etape['nom'] . '</h4>';
     echo '<p><strong>Dates:</strong> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
 
-    echo    '
+    echo '
     <label for="date_debut_'.$etape["nom"].'">Date de debut: </label>
     
-    <input type="date" name="date_debut_<?php echo $etape_index; ?>" 
-       value="'.$etape['dates']['debut'].'" 
-       min="2025-03-22" max="2028-12-31" />
+        <input type="date" name="date_debut_'.$etape_index.'" 
+       value="'.$etape['dates']['debut'].'" min="2025-03-22" max="2028-12-31" '.$modifiable.'/>
 
     
     <label for="date_fin'.$etape["nom"].'">Date de fin: </label>
     
-    <input type="date" name="date_debut_<?php echo $etape_index; ?>" 
-       value="'.$etape['dates']['fin'].'" 
-       min="2025-03-22" max="2028-12-31" />';
+        <input type="date" name="date_fin_'.$etape_index.'" 
+       value="'.$etape['dates']['fin'].'" min="2025-03-22" max="2028-12-31" '.$modifiable.'/>';
 
     echo '<p><strong>Durée:</strong> ' . $etape['dates']['duree'] . ' jours</p>';
 
     // Options à modifier pour chaque étape
     foreach ($etape['options'] as $option_index => $option) {
-        echo '<div class="option">';
-        echo '<label for="option_' . $etape_index . '_' . $option_index . '">' . $option['nom'] . ' (Prix par personne: ' . $option['prix_par_personne'] . ')</label>';
-        echo '<select name="option_' . $etape_index . '_' . $option_index . '" id="option_' . $etape_index . '_' . $option_index . '">';
+        echo '<div class="option">
+        <label for="option_' . $etape_index . '_' . $option_index . '">' . $option['nom'] . ' (Prix par personne: ' . $option['prix_par_personne'] . ')</label>
+        <select name="option_' . $etape_index . '_' . $option_index . '" id="option_' . $etape_index . '_' . $option_index . '" '.$modifiable.'>';
         
         // Afficher les valeurs possibles pour l'option
         foreach ($option['valeurs_possibles'] as $valeur) {
             echo '<option value="' . $valeur . '">' . $valeur . '</option>';
         }
-
-        echo '</select>
+        echo '</select><br><br>
         <label for="nombre_personnes_' . $etape_index . '_' . $option_index . '">Nombre de personnes: </label>
-        <input type="number" name="nombre_personnes_' . $etape_index . '_' . $option_index . '" value="' . $option['nombre_personnes'] . '" min="1" max="10"><br>
-        </div>'; // Ferme div.option
+        <input type="number" name="nombre_personnes_' . $etape_index . '_' . $option_index . '" value="' . $option['nombre_personnes'] . '" min="1" max="10" ' .$modifiable.'><br>
+        </div>'; 
     }
 
-    echo '</div><hr>'; // Ferme div.etape
+    echo '</div><hr>'; 
 }
 ?>
 
 <!-- Soumettre le formulaire -->
-<div class="buttons">
-    <input type="submit" value="Reservez Maintenant !">
-</div>
+
+
+<button type="submit" name="submit_voyage" class="input-formulaire grand">
+    Réservez Maintenant !
+</button>
+
 </form>
 <br><br>
+</center>
+</main>
 <?php
     require_once "php-include/footer.php";
     ?>
