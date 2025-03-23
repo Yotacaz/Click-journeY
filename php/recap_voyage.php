@@ -6,8 +6,9 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
 
+print_r($_POST);
 if (isset($_POST["submit_voyage"])) {
-    $utilisateur['voyages']['consultes'] = $_POST;
+
 }
 
 // Charger les données du fichier JSON
@@ -23,6 +24,8 @@ if (is_array($voyages)) { //decodage reussi on peut trier
 }
 $v = array_splice($voyages, $identifiant, 1);  //ne garder que le jeu de la page concernee  
 $v = $v[0];
+$utilisateur['voyages']['consultes'][] = $v;
+ecrireFichierUtilisateur($utilisateur);
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +62,7 @@ $v = $v[0];
 
             <?php
             foreach ($v['etapes'] as $etape) {
-                echo '<div class="contour-bloc">';
+                echo '<div class="etape">';
                 echo '<h4>' . $etape['nom'] . '</h4>';
                 echo '<p><strong>Dates:</strong> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
                 echo '<p><strong>Durée:</strong> ' . $etape['dates']['duree'] . ' jours</p>';
@@ -75,9 +78,8 @@ $v = $v[0];
                 echo '</div>';
             } ?>
             <div class="texte-centre">
-                <a href="details_voyage.php?id=<?php echo $index; ?>"><button class="input-formulaire grand" name="valider-recherche">modifier</button></a><br>
-
-    <a href="paiement.phpid=<?php echo $index; ?>"><button class="input-formulaire grand" name="valider-recherche">payer</button></a><br><br>
+                <button class="input-formulaire grand" name="valider-recherche"><a
+                        href="paiement.php">payer</a></button><br><br>
             </div>
         </div>
     </main>

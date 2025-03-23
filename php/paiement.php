@@ -5,6 +5,15 @@ $utilisateur = connexionUtilisateurRequise();
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
+
+$donnees_voyage = $utilisateur['voyages']['consultes'];
+//TODO: Récupérer les données du voyage
+
+// print_r($utilisateur);
+// if (empty($donnees_voyage)) {
+//     die("Erreur : Aucun voyage spécifié");
+// }
+// $donnees_voyage = $donnees_voyage[count($donnees_voyage) - 1];
 ?>
 
 <!DOCTYPE html>
