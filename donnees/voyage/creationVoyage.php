@@ -188,7 +188,7 @@ $voyage = array(
                     )
                 ),
                 
-            )
+            ),
    
             "personnes" => array(),
             "prix_total" => 500,

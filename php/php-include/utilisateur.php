@@ -69,8 +69,10 @@ function listerUtilisateurs()
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json') {
 
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if (utilisateurValide($utilisateur)) {
-                $utilisateurs[] = $utilisateur;
+            if (is_array($utilisateur)){
+                if (utilisateurValide($utilisateur)) {
+                    $utilisateurs[] = $utilisateur;
+                }
             }
         }
     }
@@ -92,8 +94,10 @@ function chargerUtilisateurParEmail(string $email)
     foreach ($fichiers as $fichier) {
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json' && str_starts_with(haystack: basename($fichier), needle: $email_formate)) {
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if ($utilisateur["email"] === $email) {
-                return $utilisateur;
+            if (is_array($utilisateur) && utilisateurValide($utilisateur)){
+                if ($utilisateur["email"] === $email) {
+                    return $utilisateur;
+                }
             }
         }
     }
@@ -112,8 +116,10 @@ function chercherFichierUtilisateurParEmail(string $email)
     foreach ($fichiers as $fichier) {
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json' && str_starts_with(haystack: basename($fichier), needle: $email_formate)) {
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if ($utilisateur["email"] === $email) {
-                return $dossier_utilisateurs . $fichier;
+            if (is_array($utilisateur) && utilisateurValide($utilisateur)){
+                if ($utilisateur["email"] === $email) {
+                    return $dossier_utilisateurs . $fichier;
+                }
             }
         }
     }
@@ -133,8 +139,10 @@ function genererCheminFichierUtilisateur(string $email): string|null
     foreach ($fichiers as $fichier) {
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json' && str_starts_with($email_formate, basename($fichier))) {
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if ($utilisateur["email"] === $email) {
-                return null;    // utilisateur déjà existant, on ne peut pas créer un nouveau fichier
+            if (is_array($utilisateur) && utilisateurValide($utilisateur)){
+                if ($utilisateur["email"] === $email) {
+                    return null;    // utilisateur déjà existant, on ne peut pas créer un nouveau fichier
+                }
             }
             $i++;
         }
