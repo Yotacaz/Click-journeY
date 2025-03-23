@@ -82,12 +82,14 @@ $utilisateur=$admin;
                 foreach ($utilisateurs as $utilisateur) {
                     echo '<form action="" method="post" id="form-' . $utilisateur["id"] . '"></form>';
                 }
-
+                echo "TEST";
                 // envoi des formulaires si besoin
-                $j = $page_active * $elem_par_page;
+                $j = ($page_active-1) * $elem_par_page;
+
                 for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
                     $utilisateur = $utilisateurs[$i];
                     $id = $utilisateur["id"];
+                    echo "dddE";
                     if (isset($_POST["form-$id"])) {
 
                         $date = date('d/m/Y h:i:s', time());
