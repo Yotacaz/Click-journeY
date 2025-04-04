@@ -1,15 +1,15 @@
-001	GTA-V
-002	Animal crossing
-003	Mass effect
-004	spiderman
-005	Red head redamption
-006	Skyrim
-007	The Witcher 3
-008	Assassin’s Creed Odyssey
-009	Assassin’s Creed Origins
-010	Horizon Zero Dawn
-011	Journey
-012	Minecraft
-013	Uncharted: The Lost Legacy.
-014	The Legend of Zelda: Breath of the Wild
-015	cyberpunk
+0 GTA-V
+1 Animal crossing
+2 Mass effect
+3 spiderman
+4 Red head redamption
+5 Skyrim
+6 The Witcher 3
+7 Assassin’s Creed Odyssey
+8 Assassin’s Creed Origins
+9 Horizon Zero Dawn
+10 Journey
+11 Minecraft
+12 Uncharted: The Lost Legacy.
+13 The Legend of Zelda: Breath of the Wild
+14 cyberpunk

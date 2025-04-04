@@ -1,5 +1,4 @@
 <?php
-//TODO utiliser identifiant de session
 
 if (!isset($_SERVER["PHP_SELF"])) {
     die("Des variables serveurs ne sont pas définies.");

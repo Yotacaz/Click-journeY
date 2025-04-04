@@ -1,4 +1,3 @@
-
 <?php
 /**
  * @file utilisateur.php
@@ -48,13 +47,45 @@ function genererSessionIdUnique(): string
  */
 function utilisateurValide(array|null $utilisateur): bool
 {
-    if ($utilisateur === null) {
+    if ($utilisateur === null || !is_array($utilisateur)) {
+        echo "Le paramètre utilisateur n'est pas un tableau associatif";
         return false;
     }
-    if (isset($utilisateur["email"]) && isset($utilisateur["mdp"]) && isset($utilisateur["info"]["nom"]) && isset($utilisateur["info"]["prenom"]) && isset($utilisateur["info"]["sexe"]) && isset($utilisateur["info"]["date_naissance"]) && isset($utilisateur["autres"]["date_inscription"]) && isset($utilisateur["autres"]["date_derniere_connexion"])) {
-        return true;
+    //verifs principales
+    $cles_principales = ["email", "mdp", "id", "role", "info", "voyages", "autres"];
+    foreach ($cles_principales as $cle) {
+        if (!array_key_exists($cle, $utilisateur)) {
+            echo "Clé manquante : $cle";
+            return false;
+        }
     }
-    return false;
+    // verifs des clés dans "info"
+    $cles_info = ["nom", "prenom", "sexe", "date_naissance"];
+    foreach ($cles_info as $cle) {
+        if (!isset($utilisateur["info"][$cle]) || empty($utilisateur["info"][$cle])) {
+            echo "Clé manquante : $cle";
+            return false;
+        }
+    }
+    // verifs des clés dans "voyages"
+    if (!isset($utilisateur["voyages"]["consultes"]) || !is_array($utilisateur["voyages"]["consultes"])) {
+        echo "Clé manquante : voyages consultés";
+        return false;
+    }
+    if (!isset($utilisateur["voyages"]["achetes"]) || !is_array($utilisateur["voyages"]["achetes"])) {
+        echo "Clé manquante : voyages achetés";
+        return false;
+    }
+
+    // verifs des clés dans "autres"
+    $cles_autres = ["date_inscription", "date_derniere_connexion"];
+    foreach ($cles_autres as $cle) {
+        if (!array_key_exists($cle, $utilisateur["autres"])) {
+            echo "Clé manquante : $cle";
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -69,7 +100,7 @@ function listerUtilisateurs()
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json') {
 
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if (is_array($utilisateur)){
+            if (is_array($utilisateur)) {
                 if (utilisateurValide($utilisateur)) {
                     $utilisateurs[] = $utilisateur;
                 }
@@ -94,7 +125,7 @@ function chargerUtilisateurParEmail(string $email)
     foreach ($fichiers as $fichier) {
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json' && str_starts_with(haystack: basename($fichier), needle: $email_formate)) {
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if (is_array($utilisateur) && utilisateurValide($utilisateur)){
+            if (is_array($utilisateur) && utilisateurValide($utilisateur)) {
                 if ($utilisateur["email"] === $email) {
                     return $utilisateur;
                 }
@@ -116,7 +147,7 @@ function chercherFichierUtilisateurParEmail(string $email)
     foreach ($fichiers as $fichier) {
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json' && str_starts_with(haystack: basename($fichier), needle: $email_formate)) {
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if (is_array($utilisateur) && utilisateurValide($utilisateur)){
+            if (is_array($utilisateur) && utilisateurValide($utilisateur)) {
                 if ($utilisateur["email"] === $email) {
                     return $dossier_utilisateurs . $fichier;
                 }
@@ -139,7 +170,7 @@ function genererCheminFichierUtilisateur(string $email): string|null
     foreach ($fichiers as $fichier) {
         if ($fichier != "." && $fichier != ".." && pathinfo($fichier, PATHINFO_EXTENSION) === 'json' && str_starts_with($email_formate, basename($fichier))) {
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
-            if (is_array($utilisateur) && utilisateurValide($utilisateur)){
+            if (is_array($utilisateur) && utilisateurValide($utilisateur)) {
                 if ($utilisateur["email"] === $email) {
                     return null;    // utilisateur déjà existant, on ne peut pas créer un nouveau fichier
                 }
@@ -151,6 +182,8 @@ function genererCheminFichierUtilisateur(string $email): string|null
 }
 
 /**
+ * Permet de modifier le fichier utilisateur correspondant au tableau associatif en paramètre.
+ * **Attention : la fonction ne modifie pas la session courante**.
  * @param array $utilisateur tableau associatif contenant les informations de l'utilisateur
  * @return bool true si l'écriture a réussi, false sinon (utilisateur invalide)
  */
@@ -175,7 +208,7 @@ function ecrireFichierUtilisateur(array $utilisateur): bool
 function genererIdUtilisateur(): int
 {
     global $dossier_utilisateurs;
-    $id = json_decode(file_get_contents("$dossier_utilisateurs"."_ID.json"), true);
+    $id = json_decode(file_get_contents("$dossier_utilisateurs" . "_ID.json"), true);
     $id++;
     file_put_contents("../donnees/utilisateurs/_ID.json", json_encode($id));
     return $id;
@@ -186,7 +219,8 @@ function genererIdUtilisateur(): int
  */
 function utilisateurEstConnecte(): bool
 {
-    if (!isset($_COOKIE['id_session']) || empty($_COOKIE['id_session'])) {
+    if (empty($_COOKIE['id_session'])) {
+
         return false;
     }
     $id_session = $_COOKIE['id_session'];
@@ -197,13 +231,30 @@ function utilisateurEstConnecte(): bool
     return true;
 }
 
+/**
+ * Permet de sauvegarder **dans la session active et dans le fichier utilisateur** les modifications
+ * apportées au tableau associatif
+ * @param array $utilisateur utilisateur a sauvegarder
+ * @return void
+ */
+function sauvegarderSessionUtilisateur(array $utilisateur): void
+{
+    if (!utilisateurEstConnecte()) {
+        die("Impossible de sauvegarder la session, utilisateur non connecté");
+    }
+    $_SESSION[$_COOKIE['id_session']] = $utilisateur;
+    if (!ecrireFichierUtilisateur($utilisateur)) {
+        die("Erreur lors de l'écriture fichier utilisateur");
+    }
+}
 
 /**
  * Restaure la session de l'utilisateur à partir de l'id de session stocké dans les cookies
  * **A n'utiliser qu'avant toute balise html.**
  * @return array|null tableau associatif contenant les informations de l'utilisateur, null si l'utilisateur n'est pas connecté
  */
-function restaurerSessionUtilisateur(){
+function restaurerSessionUtilisateur()
+{
     if (!utilisateurEstConnecte()) {
         return null;
     }
@@ -225,9 +276,10 @@ function restaurerSessionUtilisateur(){
  * @return array tableau associatif contenant les informations de l'utilisateur.
  * Si l'utilisateur n'est pas connecté redirige vers la page de connexion
  */
-function connexionUtilisateurRequise($page_redirection=null)
+function connexionUtilisateurRequise($page_redirection = null)
 {
     if (!utilisateurEstConnecte()) {
+        // die("utilisateur non connecté");
         if ($page_redirection != null) {
             header("Location: connexion.php?redirection=$page_redirection");
         } else {
@@ -238,7 +290,7 @@ function connexionUtilisateurRequise($page_redirection=null)
     return restaurerSessionUtilisateur();
 }
 
-function adminRequis($page_redirection=null)
+function adminRequis($page_redirection = null)
 {
     $utilisateur = connexionUtilisateurRequise($page_redirection);
     if ($utilisateur["role"] != "admin") {
@@ -248,6 +300,43 @@ function adminRequis($page_redirection=null)
     return $utilisateur;
 }
 
+/**
+ * Retourne les options choisies par un utilisateur pour le voyage consulté d'id $id_v
+ * @param array $utilisateur l'utilisateur dont on cherche les options
+ * @param int $id_v le voyage  recherché
+ * @return mixed $ un "array" des options si le voyage a été consulté, null sinon
+ */
+function optionVoyageConsulte(array $utilisateur, int $id_v)
+{
+    $opt_enr = null;  //options enregistrées 
+    if (!isset($utilisateur["voyages"]["consultes"])) {
+        $utilisateur["voyages"]["consultes"] = [];
+    }
+    //Verification : voyage déjà consulté ?
+    if (!empty($utilisateur["voyages"]["consultes"][$id_v])) {
+        $opt_enr = $utilisateur["voyages"]["consultes"][$id_v];
+    }
+    return $opt_enr;
+}
+
+/**
+ * Retourne les options choisies par un utilisateur pour le voyage acheté d'id $id_v
+ * @param array $utilisateur l'utilisateur dont on cherche les options
+ * @param int $id_v le voyage  recherché
+ * @return mixed $ un "array" des options si le voyage a été consulté, null sinon
+ */
+function optionVoyageAchete(array $utilisateur, int $id_v)
+{
+    $opt_enr = null;  //options enregistrées
+    if (!isset($utilisateur["voyages"]["achetes"])) {
+        $utilisateur["voyages"]["achetes"] = [];
+    }
+    //Verification : voyage déjà consulté ?
+    if (!empty($utilisateur["voyages"]["achetes"][$id_v])) {
+        $opt_enr = $utilisateur["voyages"]["achetes"][$id_v];
+    }
+    return $opt_enr;
+}
 
 
 ?>

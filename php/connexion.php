@@ -3,6 +3,7 @@ session_start();
 require_once "php-include/utilisateur.php";
 if (utilisateurEstConnecte()) {
     header("Location: profil.php");
+    exit;
 }
 $chemin_utilisateurs = nomDossierUtilisateur();
 $message = "test";
@@ -27,7 +28,7 @@ if (isset($_POST["boutton"])) {
                 die("Erreur lors de la mise en place de l'id de session.");
             }
             $utilisateur["autres"]["date_derniere_connexion"] = date("Y-m-d");
-            
+
             if (!ecrireFichierUtilisateur($utilisateur)) {
                 die("Erreur lors de l'écriture du fichier utilisateur (changement de date de connexion).");
             }
@@ -35,8 +36,7 @@ if (isset($_POST["boutton"])) {
             $_SESSION[$id_session] = $utilisateur;
             if (isset($_GET["redirection"])) {
                 header("Location: " . $_GET["redirection"]);
-            }
-            else{
+            } else {
                 header("Location: profil.php");
             }
             exit;

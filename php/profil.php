@@ -7,10 +7,6 @@ if (!utilisateurValide($utilisateur)) {
 }
 
 require_once "php-include/fonctions_voyages.php";
-$voyages = chargerVoyages();
-
-$id = 3;
-file_put_contents("../donnees/utilisateurs/ID.json", json_encode($id));
 
 ?>
 <!DOCTYPE html>
@@ -42,24 +38,17 @@ file_put_contents("../donnees/utilisateurs/ID.json", json_encode($id));
             <h2>Vos voyages prévus : </h2>
             <ul>
                 <?php
-                if (!isset($voyages)) {
-                    die("Les voyages n'ont pas pu être chargé");
-                }
+
                 if (count($utilisateur["voyages"]["achetes"]) == 0) {
                     echo "<li>Vous n'avez pas de voyage prévu</li>";
                 }
-                foreach ($utilisateur["voyages"]["achetes"] as $nom_voyage) {
-                    $voyage = chargerVoyageParNom($nom_voyage);
-                    $index = (int) $voyage['id'];
-                    $index--;
+                foreach ($utilisateur["voyages"]["achetes"] as $id_v => $opt_achat) {
+                    $voyage = chargerVoyageParId($id_v);
+
                     if ($voyage != null) {
                         echo
-                            '<form action="details_voyage.php?id=' . $index . '" method="post">
-                            <button type="submit" name="disabled" class="lien-bouton">
-                                <li><b>' . $voyage["titre"] . '</b> - ' . $voyage["localisation"]["ville"]
-                            . ', ' . $voyage["localisation"]["pays"] . ', le ' . $voyage["date"] . '</li>
-                            </button>
-                        </form>';
+                            '<li><b><a href="details_voyage.php?id=' . $id_v . '">' . $voyage["titre"] . '</a></b> - ' . $voyage["localisation"]["ville"]
+                            . ', ' . $voyage["localisation"]["pays"] . ', du ' . $voyage["dates"]["debut"] . ' au '.$voyage["dates"]["fin"].'</li>';
                     }
                 }
                 ?>
@@ -69,8 +58,8 @@ file_put_contents("../donnees/utilisateurs/ID.json", json_encode($id));
                             .', ' . $voyage["localisation"]["pays"] . ', le ' . $voyage["date"] . '</li>
                     </button>
                 </form> -->
-                <li><b>Animal Crossing</b> - États Unis, Hawaï, le 03/08/2025</li>
-                <li><a href="gta5.php">GTA V</a><b></b> - États Unis, Los Angeles, le 11/07/2025 </li>
+                <!-- <li><b>Animal Crossing</b> - États Unis, Hawaï, le 03/08/2025</li>
+                <li><a href="gta5.php">GTA V</a><b></b> - États Unis, Los Angeles, le 11/07/2025 </li> -->
             </ul>
         </div>
         <div class="bloc">

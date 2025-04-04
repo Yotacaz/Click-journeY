@@ -1,31 +1,34 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
-$utilisateur = connexionUtilisateurRequise($_SERVER["PHP_SELF"] . "?id=" . $_GET["id"]);
+require_once "php-include/fonctions_voyages.php";
+
+$identifiant_v = recup_id_voyage();
+$utilisateur = connexionUtilisateurRequise($_SERVER["PHP_SELF"] . "?id=" . $identifiant_v);
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
 
-print_r($_POST);
-if (isset($_POST["submit_voyage"])) {
+//Chargement des données voyages et options:
+//Verification : voyage déjà consulté ?
+$opt_enr = optionVoyageConsulte($utilisateur, $identifiant_v);
 
+//Verification : voyage déjà acheté ?
+$tmp = optionVoyageAchete($utilisateur, $identifiant_v);
+if ($tmp != null) {
+    if ($opt_enr != null) {
+        die("Le voyage d'id $identifiant_v est déjà présent chez l'utilisateur
+        dans catégorie voyages consulté, ne devrait pas être acheté.");
+    }
+    $opt_enr = $tmp;
 }
 
-// Charger les données du fichier JSON
-require_once "php-include/fonctions_voyages.php";
-$voyages = decodageDonnees("../donnees/voyage/voyages.json");
-$identifiant = recup_id();
-
-if (is_array($voyages)) { //decodage reussi on peut trier
-    $titre_page = $voyages[$identifiant]["titre"];
-} else {     // Si ce n'est pas un tableau, afficher le message d'erreur
-    echo $voyages;
-    exit();
+$voyage = chargerVoyageParId($identifiant_v);
+if ($voyage == null) {
+    die("Erreur : ID de voyage $identifiant_v  introuvable ou corrompu.");
 }
-$v = array_splice($voyages, $identifiant, 1);  //ne garder que le jeu de la page concernee  
-$v = $v[0];
-$utilisateur['voyages']['consultes'][] = $v;
-ecrireFichierUtilisateur($utilisateur);
+
+$titre_page = $voyage["titre"];
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +41,7 @@ ecrireFichierUtilisateur($utilisateur);
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta name="description" content="Page de présentation du site et recherche rapide" />
-    <title><?php echo "$titre_page"; ?></title>
+    <title><?php echo $titre_page; ?> - PixelTravels</title>
 </head>
 
 <body>
@@ -47,41 +50,72 @@ ecrireFichierUtilisateur($utilisateur);
     ?>
     <br><br><br>
     <main>
-        <div class="texte-centre">
-            <h1>Récapitulatif du voyage</h1>
 
-            <!-- Affichage -->
+        <h1 class="bandeau">Récapitulatif du voyage</h1>
+
+        <div class="bandeau">
+
             <div class="voyage-details">
-                <h2><?php echo $v['titre']; ?> (Note: <?php echo $v['note']; ?>)</h2>
-                <p><strong>Description:</strong> <?php echo $v['description']; ?></p>
-                <p><strong>Dates:</strong> <?php echo $v['dates']['debut']; ?> - <?php echo $v['dates']['fin']; ?></p>
-                <p><strong>Durée:</strong> <?php echo $v['dates']['duree']; ?> jours</p>
-            </div>
-
-            <h3>Étapes du voyage</h3>
-
-            <?php
-            foreach ($v['etapes'] as $etape) {
-                echo '<div class="etape">';
-                echo '<h4>' . $etape['nom'] . '</h4>';
-                echo '<p><strong>Dates:</strong> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
-                echo '<p><strong>Durée:</strong> ' . $etape['dates']['duree'] . ' jours</p>';
-
-                // Affichage des options modifiées
-                foreach ($etape['options'] as $option) {
-                    echo '<p><strong>' . $option['nom'] . ':</strong> ' . $option['nombre_personnes'] . ' personnes choisies';
-                    if (isset($option['valeur_choisie'])) {
-                        echo ' (Option choisie: ' . $option['valeur_choisie'] . ')';
-                    }
-                    echo '</p>';
-                }
-                echo '</div>';
-            } ?>
-            <div class="texte-centre">
-                <button class="input-formulaire grand" name="valider-recherche"><a
-                        href="paiement.php">payer</a></button><br><br>
+                <div class="flex">
+                    <h2><?php echo $voyage['titre']; ?></h2>&nbsp - &nbsp<b> (Note: <?php echo $voyage['note']; ?>/5
+                        ⭐)</b>
+                </div>
+                <ul>
+                    <li><b>Description:</b> <?php echo $voyage['description']; ?></li>
+                    <li><b>Dates:</b> <?php echo $voyage['dates']['debut']; ?> -
+                        <?php echo $voyage['dates']['fin']; ?>
+                    </li>
+                    <li><b>Durée:</b> <?php echo $voyage['dates']['duree']; ?> jours</li>
+                    <li><b>Prix total </b>(options incluses): <b><?php echo $opt_enr["prix"]; ?> €</b></li>
+                </ul>
             </div>
         </div>
+
+        <!-- Affichage -->
+        <center>
+            <br>
+            <h2>Étapes du voyage</h2>
+        </center>
+
+        <?php
+        $i = 0;
+        foreach ($voyage['etapes'] as $etape_index => $etape) {
+            $i++;
+            echo '<div class="contour-bloc">';
+            echo '<div class="texte-gauche">';
+            echo "<h3>$i - " . $etape['nom'] . '</h3>';
+            echo '<p><b>Dates:</b> ' . $etape['dates']['debut'] . ' - ' . $etape['dates']['fin'] . '</p>';
+            echo '<p><b>Durée:</b> ' . $etape['dates']['duree'] . ' jours</p>';
+
+            // Affichage des options modifiées
+            foreach ($etape['options'] as $option_index => $option) {
+                $nom_option_form = "option_$etape_index" . "_$option_index";
+                $nom_nb_personne_form = "nombre_personnes_$etape_index" . "_$option_index";
+                echo '<p><b>' . $option['nom'] . ':</b> ' . $opt_enr[$nom_nb_personne_form] . ' personnes choisies';
+                if (isset($option['valeur_choisie'])) {
+                    echo ' (Option choisie: ' . $opt_enr[$nom_option_form] . ')';
+                }
+                echo '</p>';
+            }
+            echo '</div>
+                </div>';
+        }
+        if ($i == 0) {
+            echo "<em>Aucune étape prévue...</em>";
+        }
+        ?>
+
+        <div class="flex space-evenly">
+
+            <button class="input-formulaire grand" name="valider-recherche"><a
+                    href="details_voyage.php?id=<?php echo $identifiant_v; ?>">Revoir détail du voyage</a></button>
+            <button class="input-formulaire grand" name="valider-recherche"><a
+                    href="paiement.php?id=<?php echo $identifiant_v; ?>">Payer</a></button>
+
+        </div>
+        <p>
+
+        </p>
     </main>
     <?php
     require_once "php-include/footer.php";

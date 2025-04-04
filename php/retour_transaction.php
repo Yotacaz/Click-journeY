@@ -33,6 +33,7 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
         fwrite( $open , json_encode($tracabilite));
         fclose($open);
         header("Location: accueil.php");
+        exit;
     }
 ?>
 

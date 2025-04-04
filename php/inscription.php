@@ -1,14 +1,32 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
-if (utilisateurEstConnecte()){
+if (utilisateurEstConnecte()) {
     header("Location: profil.php");
+    exit;
 }
-if(isset($_POST["boutton"])){
-    $mdp=$_POST['mdp'];
-    $mdp2=$_POST['mdp2'];
-    if($mdp==$mdp2){
-    header("Location: connexion.php");
+$msg_err = "";
+$date = date("Y-m-d");
+if (isset($_POST["boutton"])) {
+    $mail = $_POST["email"];
+    $mdp = $_POST['mdp'];
+    $mdp2 = $_POST['mdp2'];
+    if ($mdp !== $mdp2) {
+        $msg_err = "Merci de rentrer le même mot de passe.";
+    } else if (chargerUtilisateurParEmail($mail) != null) {
+        $msg_err = "Adresse déjà utilisé";
+    } else {
+        $chemin = genererCheminFichierUtilisateur($mail);
+        $id = genererIdUtilisateur();
+        $info = array('nom' => $_POST["nom"], 'prenom' => $_POST["prenom"], 'sexe' => $_POST['genre'], 'date_naissance' => $_POST["date_naissance"]);
+        $voyages = array('consultes' => [], 'achetes' => []);
+        $autres = array('date_inscription' => $date, 'date_derniere_connexion' => '');
+        $finale = array("email" => $mail, "mdp" => $mdp, "id" => $id, "role" => "normal", "info" => $info, "voyages" => $voyages, "autres" => $autres);
+        $open = fopen($chemin, 'w');
+        fwrite($open, json_encode($finale, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+        fclose($open);
+        header("Location: connexion.php");
+        exit;
     }
 }
 ?>
@@ -28,7 +46,6 @@ if(isset($_POST["boutton"])){
 <body>
     <?php
     require_once "php-include/header.php";
-    $date = date("Y-m-d");
     ?>
     <main>
         <div class="bandeau">
@@ -48,23 +65,23 @@ if(isset($_POST["boutton"])){
                     <input class="col2" type="text" name="prenom" id="prenom" contenteditable="false"
                         placeholder="Prénom"></br>
 
-                    <div class="col1" >Genre :</div>
+                    <div class="col1">Genre :</div>
                     <div>
-                        <label for="genreH"><input type="radio" value="Homme" name="genre" id="genreH">Homme</label>
-                        <label for="genreF"><input type="radio" value="Femme" name="genre" id="genreF">Femme</label>
-                        <label for="genreA"><input type="radio" value="Autre" name="genre" id="genreA">Autre</label>
+                        <label for="genreH"><input type="radio" value="homme" name="genre" id="genreH">Homme</label>
+                        <label for="genreF"><input type="radio" value="femme" name="genre" id="genreF">Femme</label>
+                        <label for="genreA"><input type="radio" value="autre" name="genre" id="genreA">Autre</label>
                     </div><br />
 
                     <label class="col1" for="date_naissance">Date de naissance:</label>
-                    <input class="col2" type="date" name="date_naissance" id="date_naissance" min="1900-01-01" max="<?php echo "$date"; ?>"><br />
+                    <input class="col2" type="date" name="date_naissance" id="date_naissance" min="1900-01-01"
+                        max="<?php echo "$date"; ?>"><br />
 
                     <label for="adresse" class="col1">Adresse mail :</label>
                     <input class="col2" type="email" name="email" id="adresse"
                         placeholder="adresse@email.exemple"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
-                    <input class="col2" type="password" name="mdp" id="mdp"
-                        placeholder="Entrez un mot de passe"><br />
+                    <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe"><br />
 
                     <label for="mdp2" class="col1">Confirmation Mot de passe :</label>
                     <input class="col2" type="password" name="mdp2" id="mdp2"
@@ -72,37 +89,22 @@ if(isset($_POST["boutton"])){
 
                     <p class="col1"> </p>
                     <label class="col2">
-                        <button type="submit" name="boutton" class="submit">Envoyée</button>
+                        <button type="submit" name="boutton" class="submit">Envoyer</button>
                     </label>
                 </form>
 
                 <?php
-                    if(isset($_POST["boutton"])){
-                        $mail=$_POST["email"];
-                        if($mdp != $mdp2){
-                            echo "Merci de rentré le même mot de passe.";
-                        }
-                        else{
-                            $chemin = genererCheminFichierUtilisateur($mail);
-                            $info = array('nom' => $_POST["nom"],'prenom' => $_POST["prenom"],'sexe' => $_POST['genre'],'date_naissance' => $_POST["date_naissance"]);
-                            $voyages = array('consultes' => [] , 'achetes' => []);
-                            $autres = array('date_inscription'=> $date , 'date_derniere_connexion' => '');
-                            $finale= array("email" => $mail , "mdp" => $mdp , "role" =>"normal" , "info" => $info , "voyages" => $voyages , "autres" => $autres);
-                            $open = fopen($chemin ,'w');
-                            fwrite( $open , json_encode($finale));
-                            fclose($open);
-                        }
-                    }
+                echo $msg_err;
                 ?>
-                
+
                 <p>
-                    Vous avez déja un compte ?
+                    Vous avez déjà un compte ?
                     <a href="connexion.php" class="lien">Connectez-vous</a>
                 </p>
             </div>
             <div">
                 <img class="conteneur-image" src="../img/Exemple de voyage.png" alt="exemple de voyage">
-            </div>
+        </div>
         </div>
     </main>
     <?php

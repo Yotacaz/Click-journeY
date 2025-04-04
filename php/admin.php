@@ -1,11 +1,11 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
-$admin=adminRequis();
-if (!utilisateurValide($admin)){
+$admin = adminRequis();
+if (!utilisateurValide($admin)) {
     die("Erreur : Utilisateur invalide");
 }
-$utilisateur=$admin;
+$utilisateur = $admin;
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ $utilisateur=$admin;
 
         if ($_GET["recherche-ID"] != "") {
             $utilisateurs = array_filter($utilisateurs, function ($utilisateur) {
-                return $utilisateur["id"] == $_GET["recherche-ID"];
+                return intval($utilisateur["id"]) === intval($_GET["recherche-ID"]);
             });
         }
         if ($_GET["recherche-email"] != "") {
@@ -43,6 +43,8 @@ $utilisateur=$admin;
                 return $utilisateur["email"] === $_GET["recherche-email"];
             });
         }
+        $utilisateurs = array_values($utilisateurs);
+
     }
     ?>
 
@@ -80,16 +82,17 @@ $utilisateur=$admin;
             <?php
             if ($nb_elem > 0) {
                 foreach ($utilisateurs as $utilisateur) {
+                    if (!utilisateurValide($utilisateur)) {
+                        die("Erreur : Utilisateur non valide");
+                    }
                     echo '<form action="" method="post" id="form-' . $utilisateur["id"] . '"></form>';
                 }
-                echo "TEST";
                 // envoi des formulaires si besoin
-                $j = ($page_active-1) * $elem_par_page;
+                $j = ($page_active - 1) * $elem_par_page;
 
                 for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
                     $utilisateur = $utilisateurs[$i];
                     $id = $utilisateur["id"];
-                    echo "dddE";
                     if (isset($_POST["form-$id"])) {
 
                         $date = date('d/m/Y h:i:s', time());
@@ -118,13 +121,13 @@ $utilisateur=$admin;
                     <em>Rechercher par ID :</em>
                 </label>
                 <input class="input-formulaire" type="number" name="recherche-ID" id="ID" placeholder="ID" min="0"
-                value="<?php echo isset($_GET["recherche-ID"]) ? $_GET["recherche-ID"] : "" ?>">
+                    value="<?php echo isset($_GET["recherche-ID"]) ? $_GET["recherche-ID"] : "" ?>">
                 <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?>>
                 <label for="adresse" class="col1">
                     <em>Rechercher par e-mail :</em>
                 </label>
                 <input class="input-formulaire" type="email" name="recherche-email" id="email" placeholder="e-mail"
-                value="<?php echo isset($_GET["recherche-email"]) ? $_GET["recherche-email"] : "" ?>">
+                    value="<?php echo isset($_GET["recherche-email"]) ? $_GET["recherche-email"] : "" ?>">
                 <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?>>
             </form>
 
@@ -188,7 +191,7 @@ $utilisateur=$admin;
                                 </td>';
                             echo "</tr>";
                         }
-                    }else {
+                    } else {
                         echo "<tr><td colspan='7'><em>Aucun utilisateur trouvé</em></td></tr>";
                     }
                     ?>

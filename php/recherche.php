@@ -2,7 +2,7 @@
 session_start();
 require_once "php-include/utilisateur.php";
 $utilisateur = restaurerSessionUtilisateur();
-if ($utilisateur!= null && !utilisateurValide($utilisateur)) {
+if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
 
@@ -50,7 +50,7 @@ $dossier_resultat = "../img/voyage/";
             } else {
                 die("Erreur lors de la récupération des lieux");
             }
-            $lieux = array_map('strtolower',$_GET["lieu"]);
+            $lieux = array_map('strtolower', $_GET["lieu"]);
         }
         ?>
 
@@ -266,10 +266,20 @@ $dossier_resultat = "../img/voyage/";
             </form>
             <h1>Résultats</h2>
                 <?php
+                $voyage_dispo = [];
+                foreach ($voyages as $voyage) {
+                    $places = intval($voyage['nb_places_tot']);
+                    $places_restantes = $places - count($voyage['email_personnes_inscrites']);
+                    if ($places_restantes < 2) {
+                        //on n'affiche pas les voyages avec seulement une place restante pour avoir une marge
+                        continue;
+                    }
+                    $voyage_dispo[] = $voyage;
+                }
+
                 if (isset($_GET[$nom_validation])) {
                     $resultats = [];
-
-                    foreach ($voyages as $voyage) {
+                    foreach ($voyage_dispo as $voyage) {
                         if (strtolower($genre) !== "tout" && strtolower($voyage["genre"]) !== strtolower($genre)) {
                             continue;
                         }
@@ -286,18 +296,19 @@ $dossier_resultat = "../img/voyage/";
                         $date_fin = strtotime($voyage["dates"]["fin"]);
                         if ($date_min > $date_debut || $date_max < $date_fin) {
                             continue;
-                        };
-                        if (!(in_array(strtolower($voyage["localisation"]["pays"]), $lieux) || (in_array("autre", $lieux) && !(in_array(strtolower($voyage["localisation"]["pays"]), ["france", "etats-unis", "japon", "chine"])))) ) {
+                        }
+                        ;
+                        if (!(in_array(strtolower($voyage["localisation"]["pays"]), $lieux) || (in_array("autre", $lieux) && !(in_array(strtolower($voyage["localisation"]["pays"]), ["france", "etats-unis", "japon", "chine"]))))) {
                             continue;
                         }
 
                         $resultats[] = $voyage;
                     }
-                    
+
 
                     switch ($tri) {
                         case "defaut":
-                            shuffle($resultats);
+                            // shuffle($resultats);
                             break;
                         case "note":
                             $note = array_column($resultats, 'note');

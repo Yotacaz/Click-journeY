@@ -1,6 +1,6 @@
 [
     {
-        "id": "001",
+        "id": 0,
         "titre": "GTA-V",
         "note": 5,
         "description": "plongez vous dans le monde de GTA-V, en parcourant Los angeles, Miami et plus",
@@ -23,7 +23,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -35,17 +35,18 @@
                         "nom": "art urbain",
                         "valeurs_possibles": [],
                         "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "nombre_personnes": 1
                     },
                     {
-                        "nom": "location voture de luxe",
+                        "nom": "location voiture de luxe",
                         "valeurs_possibles": [
                             "Ferrari",
                             "Lamborghini",
                             "Maserati"
                         ],
                         "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "nombre_personnes": 1,
+                        "valeur_choisie": "Ferrari"
                     }
                 ]
             },
@@ -56,7 +57,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Turner",
                         "prenom": "Taissa"
@@ -71,12 +72,14 @@
                             "fosse"
                         ],
                         "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "nombre_personnes": 1,
+                        "valeur_choisie": "place assise"
                     }
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
+        "nb_places_tot": 30,
         "prix_total": 5000,
         "image": [
             "image001.png",
@@ -86,7 +89,7 @@
         ]
     },
     {
-        "id": "002",
+        "id": 1,
         "titre": "Animal Crossing",
         "note": 5,
         "description": "plongez vous dans le monde d'animal crossing, en parcourant les iles paradisiaques de la Polynesie",
@@ -109,7 +112,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -135,10 +138,9 @@
                 ]
             }
         ],
-        "personnes": [
-            "Vivian Docher"
-        ],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image002.png",
             "image102.png",
@@ -147,7 +149,7 @@
         ]
     },
     {
-        "id": "003",
+        "id": 2,
         "titre": "Mass Effect",
         "note": 3,
         "description": "plongez vous dans le monde de Mass Effect, en allant a la conquete spacial, decouvrez des mondes futuristes",
@@ -170,7 +172,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -185,7 +187,8 @@
                             "visite guidee"
                         ],
                         "prix_par_personne": 20,
-                        "nombre_personnes": 2
+                        "nombre_personnes": 2,
+                        "valeur_choisie": "visite simple"
                     },
                     {
                         "nom": "balade parc Yellowstone",
@@ -196,8 +199,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 500,
+        "nb_places_tot": 30,
         "image": [
             "image003.png",
             "image103.png",
@@ -206,7 +210,7 @@
         ]
     },
     {
-        "id": "004",
+        "id": 3,
         "titre": "SpiderMan",
         "note": 1,
         "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'uneville qui ne dort pas",
@@ -229,7 +233,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -272,11 +276,9 @@
                 ]
             }
         ],
-        "personnes": [
-            "Miles Morales",
-            "Peter Parker"
-        ],
+        "email_personnes_inscrites": [],
         "prix_total": 4000,
+        "nb_places_tot": 30,
         "image": [
             "image004.png",
             "image104.png",
@@ -285,7 +287,7 @@
         ]
     },
     {
-        "id": "005",
+        "id": 4,
         "titre": "Red Dead Redemption",
         "note": 2,
         "description": "plongez vous dans le monde du far west, mettez vos chapeau cowboys et cowgirl et partez a l'aventure hii haaaa !",
@@ -308,7 +310,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -328,7 +330,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     [
                         "Cow Girl"
                     ]
@@ -347,8 +349,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 1500,
+        "nb_places_tot": 30,
         "image": [
             "image005.png",
             "image105.png",
@@ -357,7 +360,7 @@
         ]
     },
     {
-        "id": "006",
+        "id": 5,
         "titre": "Skyrim",
         "note": 5,
         "description": "plongez vous dans le monde de Skyrim",
@@ -380,7 +383,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -413,7 +416,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -431,8 +434,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image006.png",
             "image106.png",
@@ -441,7 +445,7 @@
         ]
     },
     {
-        "id": "007",
+        "id": 6,
         "titre": "The Witcher 3",
         "note": 5,
         "description": "plongez vous dans le monde de The Witcher 3, en voyagant à travers l'europe de l'est",
@@ -464,7 +468,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -494,7 +498,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -511,8 +515,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image007.png",
             "image107.png",
@@ -521,7 +526,7 @@
         ]
     },
     {
-        "id": "008",
+        "id": 7,
         "titre": "Assassin's Creed Odyssey",
         "note": 5,
         "genre": "action",
@@ -544,7 +549,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -567,7 +572,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -584,8 +589,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image008.png",
             "image108.png",
@@ -594,7 +600,7 @@
         ]
     },
     {
-        "id": "009",
+        "id": 8,
         "titre": "Assassin's Creed Origins",
         "note": 5,
         "genre": "action",
@@ -617,7 +623,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -649,8 +655,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image009.png",
             "image109.png",
@@ -659,7 +666,7 @@
         ]
     },
     {
-        "id": "010",
+        "id": 9,
         "titre": "Horizon Zero Dawn",
         "note": 5,
         "description": "plongez vous dans le monde post apocalyptique de Horizon Zero Dawn et decouvrez des regions sauvages loin de toutes civilisation",
@@ -682,7 +689,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -719,8 +726,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5400,
+        "nb_places_tot": 30,
         "image": [
             "image010.png",
             "image110.png",
@@ -729,7 +737,7 @@
         ]
     },
     {
-        "id": "011",
+        "id": 10,
         "titre": "Journey",
         "note": 3,
         "description": "plongez vous dans le monde désertique de Journey",
@@ -752,7 +760,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -784,7 +792,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Turner",
                         "prenom": "Taissa"
@@ -810,8 +818,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image011.png",
             "image111.png",
@@ -820,7 +829,7 @@
         ]
     },
     {
-        "id": "012",
+        "id": 11,
         "titre": "Minecraft",
         "note": 5,
         "description": "plongez vous dans le monde de Minecraft, on vous propose un tour du monde afin",
@@ -843,7 +852,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -869,7 +878,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -896,7 +905,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -923,7 +932,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -950,7 +959,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -976,8 +985,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image012.png",
             "image112.png",
@@ -986,7 +996,7 @@
         ]
     },
     {
-        "id": "013",
+        "id": 12,
         "titre": "The Legend of Zelda: Breath of the Wild",
         "note": 4,
         "description": "plongez vous dans le monde de The Legend of Zelda: Breath of the Wild, et decouvrez des decors et paysages inedit tout en partant a l'aventure",
@@ -1009,7 +1019,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -1036,8 +1046,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 2000,
+        "nb_places_tot": 30,
         "image": [
             "image013.png",
             "image113.png",
@@ -1046,7 +1057,7 @@
         ]
     },
     {
-        "id": "014",
+        "id": 13,
         "titre": "Uncharted: The Lost Legacy",
         "note": 5,
         "description": "plongez vous dans le monde de Uncharted: The Lost Legacy, et decouvrez les mysteres antiques des paysages tropicaux inedits tout en partant a l'aventure",
@@ -1069,7 +1080,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Diop",
                         "prenom": "Bineta"
@@ -1101,7 +1112,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     {
                         "nom": "Turner",
                         "prenom": "Taissa"
@@ -1121,8 +1132,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image014.png",
             "image114.png",
@@ -1131,7 +1143,7 @@
         ]
     },
     {
-        "id": "015",
+        "id": 14,
         "titre": "Cyberpunk",
         "note": 5,
         "genre": "action",
@@ -1154,7 +1166,7 @@
                     "fin": "2025-06-24",
                     "duree": 8
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -1177,7 +1189,7 @@
                     "fin": "2025-06-26",
                     "duree": 2
                 },
-                "personnes_supplementaires": [
+                "guides": [
                     []
                 ],
                 "position_gps": "",
@@ -1194,8 +1206,9 @@
                 ]
             }
         ],
-        "personnes": [],
+        "email_personnes_inscrites": [],
         "prix_total": 5000,
+        "nb_places_tot": 30,
         "image": [
             "image015.png",
             "image115.png",
