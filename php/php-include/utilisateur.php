@@ -281,6 +281,7 @@ function connexionUtilisateurRequise($page_redirection = null)
     if (!utilisateurEstConnecte()) {
         // die("utilisateur non connecté");
         if ($page_redirection != null) {
+            $page_redirection = htmlspecialchars($page_redirection);
             header("Location: connexion.php?redirection=$page_redirection");
         } else {
             header("Location: connexion.php");

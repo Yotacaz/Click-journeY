@@ -1,24 +1,61 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
+require_once "php-include/utiles.php";
 if (utilisateurEstConnecte()) {
     header("Location: profil.php");
     exit;
 }
 $msg_err = "";
+
+$mail = $mdp = $mdp2 = $nom = $prenom = $genre = $date_naissance = "";
+
 $date = date("Y-m-d");
-if (isset($_POST["boutton"])) {
-    $mail = $_POST["email"];
-    $mdp = $_POST['mdp'];
-    $mdp2 = $_POST['mdp2'];
-    if ($mdp !== $mdp2) {
+if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nom = isset($_POST["nom"]) ? test_input($_POST["nom"]) : "";
+    $prenom = isset($_POST["prenom"]) ? test_input($_POST["prenom"]) : "";
+    $genre = isset($_POST["genre"]) ? test_input($_POST["genre"]) : "";
+    $date_naissance = isset($_POST["date_naissance"]) ? test_input($_POST["date_naissance"]) : "";
+    $date_naissance = date("Y-m-d", strtotime($date_naissance));
+
+    $mail = isset($_POST["email"]) ? test_input($_POST["email"]) : "";
+    $mdp = isset($_POST["mdp"]) ? test_input($_POST['mdp']) : "";
+    $mdp2 = isset($_POST["mdp2"]) ? test_input($_POST['mdp2']) : "";
+
+    if (empty($nom) || empty($prenom) || empty($genre) || empty($date_naissance) || empty($mail) || empty($mdp) || empty($mdp2)) {
+        $msg_err = "Merci de remplir tous les champs.";
+
+    } else if (!est_date($date_naissance) || $date_naissance > $date) {
+        $msg_err = "Merci de rentrer une date de naissance valide.";
+
+    } else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        $msg_err = "Merci de rentrer une adresse mail valide.";
+
+    } else if (strlen($mdp) < 2) {  //TODO : changer la taille minimale
+        $msg_err = "Le mot de passe doit contenir au moins 2 caractères.";
+
+    } else if (!preg_match("#[0-9]+#", $mdp)) {
+        $msg_err = "Le mot de passe doit contenir au moins un chiffre.";
+
+    } else if (!preg_match("#[a-zA-Z]+#", $mdp)) {
+        $msg_err = "Le mot de passe doit contenir au moins une lettre.";
+
+    } else if ($mdp !== $mdp2) {
         $msg_err = "Merci de rentrer le même mot de passe.";
+
     } else if (chargerUtilisateurParEmail($mail) != null) {
         $msg_err = "Adresse déjà utilisé";
+
     } else {
         $chemin = genererCheminFichierUtilisateur($mail);
         $id = genererIdUtilisateur();
-        $info = array('nom' => $_POST["nom"], 'prenom' => $_POST["prenom"], 'sexe' => $_POST['genre'], 'date_naissance' => $_POST["date_naissance"]);
+        $info = array(
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'sexe' => $genre,
+            'date_naissance' => $date_naissance
+        );
         $voyages = array('consultes' => [], 'achetes' => []);
         $autres = array('date_inscription' => $date, 'date_derniere_connexion' => '');
         $finale = array("email" => $mail, "mdp" => $mdp, "id" => $id, "role" => "normal", "info" => $info, "voyages" => $voyages, "autres" => $autres);
@@ -59,33 +96,33 @@ if (isset($_POST["boutton"])) {
                 <form class="grille3" action="#" method="post" name="inscription">
 
                     <label for="nom" class="col1">Nom : </label>
-                    <input class="col2" type="text" name="nom" id="nom" contenteditable="false" placeholder="Nom"><br />
+                    <input class="col2" type="text" name="nom" id="nom" contenteditable="false" placeholder="Nom"
+                        value="<?php echo $nom ?>"><br />
 
                     <label for="prenom" class="col1">Prénom : </label>
                     <input class="col2" type="text" name="prenom" id="prenom" contenteditable="false"
-                        placeholder="Prénom"></br>
+                        placeholder="Prénom" value="<?php echo $prenom ?>"></br>
 
                     <div class="col1">Genre :</div>
                     <div>
-                        <label for="genreH"><input type="radio" value="homme" name="genre" id="genreH">Homme</label>
-                        <label for="genreF"><input type="radio" value="femme" name="genre" id="genreF">Femme</label>
-                        <label for="genreA"><input type="radio" value="autre" name="genre" id="genreA">Autre</label>
+                        <label for="genreH"><input type="radio" value="homme" name="genre" id="genreH" <?php echo $genre == "homme" ? "checked" : "" ?>>Homme</label>
+                        <label for="genreF"><input type="radio" value="femme" name="genre" id="genreF" <?php echo $genre == "femme" ? "checked" : "" ?>>Femme</label>
+                        <label for="genreA"><input type="radio" value="autre" name="genre" id="genreA" <?php echo $genre == "autre" ? "checked" : "" ?>>Autre</label>
                     </div><br />
 
                     <label class="col1" for="date_naissance">Date de naissance:</label>
                     <input class="col2" type="date" name="date_naissance" id="date_naissance" min="1900-01-01"
-                        max="<?php echo "$date"; ?>"><br />
+                        value="<?php echo $date_naissance ?>" max="<?php echo $date; ?>"><br />
 
                     <label for="adresse" class="col1">Adresse mail :</label>
-                    <input class="col2" type="email" name="email" id="adresse"
-                        placeholder="adresse@email.exemple"><br />
+                    <input class="col2" type="email" name="email" id="adresse" placeholder="adresse@email.exemple"
+                        value="<?php echo $mail ?>"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
-                    <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe"><br />
+                    <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe" <?php echo $mdp ?>><br />
 
                     <label for="mdp2" class="col1">Confirmation Mot de passe :</label>
-                    <input class="col2" type="password" name="mdp2" id="mdp2"
-                        placeholder="Entrez un mot de passe"><br />
+                    <input class="col2" type="password" name="mdp2" id="mdp2" placeholder="Entrez un mot de passe" <?php echo $mdp2 ?>><br />
 
                     <p class="col1"> </p>
                     <label class="col2">
@@ -94,7 +131,7 @@ if (isset($_POST["boutton"])) {
                 </form>
 
                 <?php
-                echo $msg_err;
+                echo $msg_err != "" ? '<div class="erreur"> ⚠️ ' . $msg_err . '</div> ' : "";
                 ?>
 
                 <p>

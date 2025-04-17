@@ -65,17 +65,24 @@ $titre_page = $voyage["titre"];
                     <li><b>Dates:</b> <?php echo $voyage['dates']['debut']; ?> -
                         <?php echo $voyage['dates']['fin']; ?>
                     </li>
+                    <li><b>Localisation:</b> <?php echo $voyage['localisation']['pays']; ?>,
+                        <?php echo $voyage['localisation']['ville']; ?>
+                    </li>
                     <li><b>Durée:</b> <?php echo $voyage['dates']['duree']; ?> jours</li>
+                    <br>
                     <li><b>Prix total </b>(options incluses): <b><?php echo $opt_enr["prix"]; ?> €</b></li>
+                    <li><b>Réservation pour : </b><?php echo $opt_enr["nombre_personnes_totales"]; ?> personnes</li>
+                    <li><b>Réservation effectuée par :</b>
+                        <?php echo $utilisateur['info']['nom'] . " " . $utilisateur['info']['prenom']; ?></li>
                 </ul>
             </div>
         </div>
 
         <!-- Affichage -->
-        <center>
+        <div class="texte-centre">
             <br>
             <h2>Étapes du voyage</h2>
-        </center>
+        </div>
 
         <?php
         $i = 0;
@@ -88,15 +95,22 @@ $titre_page = $voyage["titre"];
             echo '<p><b>Durée:</b> ' . $etape['dates']['duree'] . ' jours</p>';
 
             // Affichage des options modifiées
+            echo '<p><b>Options:</b></p><ul>';
+
             foreach ($etape['options'] as $option_index => $option) {
                 $nom_option_form = "option_$etape_index" . "_$option_index";
                 $nom_nb_personne_form = "nombre_personnes_$etape_index" . "_$option_index";
-                echo '<p><b>' . $option['nom'] . ':</b> ' . $opt_enr[$nom_nb_personne_form] . ' personnes choisies';
-                if (isset($option['valeur_choisie'])) {
-                    echo ' (Option choisie: ' . $opt_enr[$nom_option_form] . ')';
+                // echo "test : $nom_option_form<br>";
+                echo '<li><b>' . $option['nom'] . ':</b> ' . $opt_enr[$nom_nb_personne_form] . ' personnes choisies';
+                if (isset($opt_enr[$nom_option_form])) {
+                    echo ' (option choisie: ' . $opt_enr[$nom_option_form] . ')';
                 }
-                echo '</p>';
+                echo '</li>';
             }
+            if (empty($etape['options'])) {
+                echo "<li><em>Aucune option disponible</em></li>";
+            }
+            echo '</ul>';
             echo '</div>
                 </div>';
         }
@@ -107,10 +121,9 @@ $titre_page = $voyage["titre"];
 
         <div class="flex space-evenly">
 
-            <button class="input-formulaire grand" name="valider-recherche"><a
-                    href="details_voyage.php?id=<?php echo $identifiant_v; ?>">Revoir détail du voyage</a></button>
-            <button class="input-formulaire grand" name="valider-recherche"><a
-                    href="paiement.php?id=<?php echo $identifiant_v; ?>">Payer</a></button>
+            <a class="input-formulaire grand" href="details_voyage.php?id=<?php echo $identifiant_v; ?>">Revoir
+                détail du voyage</a>
+            <a class="input-formulaire grand" href="paiement.php?id=<?php echo $identifiant_v; ?>">Payer</a>
 
         </div>
         <p>

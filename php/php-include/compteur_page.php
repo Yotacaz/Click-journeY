@@ -11,7 +11,7 @@ $page_active = $nb_elem > 0 ? 1 : 0;
 
 
 if (isset($_GET["page"])) {
-    $page_active = $_GET["page"];
+    $page_active = intval($_GET["page"]);
 }
 
 $nb_page_tot = intdiv($nb_elem, $elem_par_page) + ($nb_elem % $elem_par_page > 0 ? 1 : 0);

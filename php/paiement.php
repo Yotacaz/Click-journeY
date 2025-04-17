@@ -109,7 +109,7 @@ if ($voyage == null) {
 
                 <?php
                 require_once "php-include/utilisateur.php";
-                if (isset($_POST["boutton"])) {
+                if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] != "POST") {
                     $num_carte = $_POST['num_carte'];
                     $valeur = $_POST['valeur_controle'];
                     if (strlen($num_carte) != 16) {

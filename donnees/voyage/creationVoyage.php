@@ -84,6 +84,7 @@ $voyage =
         "email_personnes_inscrites" => array(),
         "prix_total" => 5000,
         "nb_places_tot" => 30,
+        "nb_places_restantes" => 30,
         "image" => array(
             "image001.png",
             "image101.png",

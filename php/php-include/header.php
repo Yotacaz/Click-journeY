@@ -15,7 +15,7 @@ function classe_actif($page_active, $page): void
         echo ' class="actif"';
     }
 }
-$page_active = basename(path: $_SERVER["PHP_SELF"]);
+$page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
 ?>
 
 <div class="header">

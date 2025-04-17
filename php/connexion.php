@@ -1,51 +1,80 @@
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
+require_once "php-include/utiles.php";
 if (utilisateurEstConnecte()) {
     header("Location: profil.php");
     exit;
 }
-$chemin_utilisateurs = nomDossierUtilisateur();
-$message = "test";
 
-if (isset($_POST["boutton"])) {
-    $mail = $_POST['email'];
-    $mdp = $_POST['mdp'];
+$message = "";
+
+$mail = $mdp = "";
+
+
+if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    $mail = isset($_POST['email']) ? test_input($_POST['email']) : "";
+    $mdp = isset($_POST['mdp']) ? test_input($_POST['mdp']) : "";
     $utilisateur = chargerUtilisateurParEmail($mail);
     if ($utilisateur != null) {
+
         //TODO : verification de mot de passe avec password_verify($mdp, $utilisateur["mdp"])
-        if ($utilisateur["email"] === $mail && $utilisateur["mdp"] === $mdp) {
-            $maxAttempts = 16;
-            $attempts = 0;
+        if (empty($mail) || empty($mdp)) {
+            $message = "Merci de remplir tous les champs.";
 
-            $id_session = genererSessionIdUnique();
+        } else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $message = "Merci de rentrer une adresse mail valide.";
 
-            if (!setcookie('id_session', $id_session)) {
-                die("Erreur lors de la génération du cookie.");
-            }
-            session_write_close();
-            if (!session_id($id_session)) {
-                die("Erreur lors de la mise en place de l'id de session.");
-            }
-            $utilisateur["autres"]["date_derniere_connexion"] = date("Y-m-d");
+        } else if (strlen($mdp) < 2) {  //TODO : changer la taille minimale
+            $message = "Le mot de passe doit contenir au moins 2 caractères.";
 
-            if (!ecrireFichierUtilisateur($utilisateur)) {
-                die("Erreur lors de l'écriture du fichier utilisateur (changement de date de connexion).");
-            }
-            session_start();
-            $_SESSION[$id_session] = $utilisateur;
-            if (isset($_GET["redirection"])) {
-                header("Location: " . $_GET["redirection"]);
+        } else if (!preg_match("#[0-9]+#", $mdp)) {
+            $message = "Le mot de passe doit contenir au moins un chiffre.";
+
+        } else if (!preg_match("#[a-zA-Z]+#", $mdp)) {
+            $message = "Le mot de passe doit contenir au moins une lettre.";
+
+        } else if ($utilisateur["email"] === $mail && $utilisateur["mdp"] !== $mdp) {
+            $message = "Adresse mail ou mot de passe erroné.";
+
+        } else if ($utilisateur["mdp"] === $mdp) {
+            if ($utilisateur["statut"] === "banni") {
+                $message = "Votre compte a été banni. Veuillez contacter un administrateur.";
+
             } else {
-                header("Location: profil.php");
+
+                $maxAttempts = 16;
+                $attempts = 0;
+                $id_session = genererSessionIdUnique();
+
+                if (!setcookie('id_session', $id_session)) {
+                    die("Erreur lors de la génération du cookie.");
+                }
+                session_write_close();
+                if (!session_id($id_session)) {
+                    die("Erreur lors de la mise en place de l'id de session.");
+                }
+                $utilisateur["autres"]["date_derniere_connexion"] = date("Y-m-d");
+
+                if (!ecrireFichierUtilisateur($utilisateur)) {
+                    die("Erreur lors de l'écriture du fichier utilisateur (changement de date de connexion).");
+                }
+                session_start();
+                $_SESSION[$id_session] = $utilisateur;
+                if (isset($_GET["redirection"])) {
+                    header("Location: " . $_GET["redirection"]);
+                } else {
+                    header("Location: profil.php");
+                }
+                exit;
             }
-            exit;
         } else {
             $message = "mot de passe erroné.";
         }
     } else {
         $message = "Pas de compte existant ou adresse mail erronée!";
     }
+    unset($utilisateur);
 }
 ?>
 
@@ -78,7 +107,7 @@ if (isset($_POST["boutton"])) {
                 <form class="grille3" action="#" method="post" name="connexion">
                     <label for="adresse" class="col1">Adresse mail :</label>
                     <input class="col2" type="email" name="email" id="adresse" placeholder="adresse@email.exemple"
-                        value="<?php echo isset($_POST["boutton"]) ? $_POST["email"] : "" ?>"><br />
+                        value="<?php echo $mail ?>"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
                     <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe"><br />
@@ -90,7 +119,7 @@ if (isset($_POST["boutton"])) {
                 </form>
                 <?php
                 if (isset($_POST["boutton"])) {
-                    echo "$message<br>";
+                    echo '<div class="erreur"> ⚠️ ' . $message . '</div>';
                 }
                 ?>
 

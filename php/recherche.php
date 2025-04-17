@@ -35,6 +35,17 @@ $dossier_resultat = "../img/voyage/";
             die("Les voyages n'ont pas pu être chargé");
         }
         $nom_validation = "valider-recherche";
+
+        //On initialise les variables de recherche
+        $genre = "Tout";
+        $theme = "Tout";
+        $tri = "defaut"; //defaut, note, prix-croissant, prix-decroissant, date
+        $prix_min = 0;
+        $prix_max = 10000;
+        $date_min = strtotime("2025-01-01");
+        $date_max = strtotime("2050-12-31");
+        $lieux = ["france", "etats-unis", "japon", "chine", "autre"];
+
         if (isset($_GET[$nom_validation])) {
             $genre = $_GET["genre"];
             $theme = $_GET["theme"];
@@ -71,104 +82,12 @@ $dossier_resultat = "../img/voyage/";
             </div>
         </div>
 
-
-
         <div class="texte-centre :">
             <h1>Recherche avancée</h1>
             <form action="#" method="get" id="form-recherche">
                 <?php
-                if (!isset($_GET[$nom_validation])) {
-                    echo '
-                <div class="flex">
-                    <div class="flex marge-droite">
-                        <h3><label for="genre">Genre : &nbsp;</label></h3>
-                        <select class="filtre_genre input-formulaire" name="genre" id="genre">
-                            <option selected value="Tout">Tout</option>
-                            <option value="MMORPG">MMORPG</option>
-                            <option value="Sport">Sport</option>
-                            <option value="Action">Action</option>
-                            <option value="Aventure">Aventure</option>
-                            <option value="Fiction interactive">Fiction</option>
-                            <option value="Strategie">Stratégie</option>
-                            <option value="Bac a sable">Bac a sable</option>
-                        </select>
-                    </div>
 
-                    <div class="flex marge-droite">
-                        <h3><label for="theme">Thème : &nbsp;</label></h3>
-                        <select class="filtre_theme input-formulaire" name="theme" id="theme">
-                            <option selected value="Tout">Tout</option>
-                            <option value="Guerre">Guerre</option>
-                            <option value="Science fiction">Science</option>
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="Horreur">Horreur</option>
-                            <option value="Dystopie">Dystopie</option>
-                            <option value="Super Hero">Super Hero</option>
-                            <option value="Espace">Espace</option>
-                            <option value="Medieval">Medieval</option>
-                            <option value="City">City</option>
-                            <option value="Aquatique">Aquatique</option>
-                            <option value="Nature">Nature</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex">
-                    <h3><label for="tri">Trier par : &nbsp;</label></h3>
-                    <select class="input-formulaire" name="tri" id="tri">
-                        <option selected value="defaut">Défaut</option>
-                        <option value="note">Note</option>
-                        <option value="prix-croissant">Prix croissant</option>
-                        <option value="prix-decroissant">Prix décroissant</option>
-                        <option value="date">Date</option>
-                    </select>
-                </div>
-
-                <div class="separateur-section-haut">
-                    <h2>Prix</h2>
-                    <div class="flex">
-                        <label class="flex" for="prix_min_range">
-                            Prix minimum :&nbsp;
-                            <input type="range" name="prix_min_range" id="prix_min_range" value="100" min="0"
-                                max="10000" step="100" oninput="this.form.prix_min_nb.value=this.value">
-                        </label>
-                        <input type="number" name="prix_min_nb" value="100" min="0" max="10000" step="100"
-                            oninput="this.form.prix_min_range.value=this.value">
-                        &nbsp;€
-                    </div>
-                    <div class="flex">
-                        <label class="flex" for="prix_max_range">
-                            Prix maximum :
-                            <input type="range" name="prix_max_range" id="prix_max_range" value="10000" min="0"
-                                max="10000" step="100" oninput="this.form.prix_max_nb.value=this.value">
-                        </label>
-                        <input type="number" name="prix_max_nb" value="10000" min="0" max="10000" step="100"
-                            oninput="this.form.prix_max_range.value=this.value">
-                        &nbsp;€
-                    </div>
-
-                </div>
-                <div class="separateur-section-haut">
-                    <h2>Date</h2>
-                    <label for="date_min">Date minimum :</label>
-                    <input class="input-formulaire" type="date" name="date_min" id="date_min" value="2025-01-01">
-                    <label for="date_max">Date maximum :</label>
-                    <input class="input-formulaire" type="date" name="date_max" id="date_max" value="2050-12-31">
-                </div>
-                <div class="separateur-section-haut">
-                    <h2>Lieux</h2>
-                    <input type="checkbox" name="lieu[]" id="lieu-1" value="france" checked>
-                    <label for="lieu-1">France</label>
-                    <input type="checkbox" name="lieu[]" id="lieu-2" value="etats-unis" checked>
-                    <label for="lieu-2">États-Unis</label>
-                    <input type="checkbox" name="lieu[]" id="lieu-3" value="japon" checked>
-                    <label for="lieu-3">Japon</label>
-                    <input type="checkbox" name="lieu[]" id="lieu-4" value="chine" checked>
-                    <label for="lieu-4">Chine</label>
-                    <input type="checkbox" name="lieu[]" id="lieu-5" value="autre" checked>
-                    <label for="lieu-5">Autre</label>
-                </div>';
-                } else {
-                    echo '
+                echo '
                 <div class="flex">
                     <div class="flex marge-droite">
                         <h3><label for="genre">Genre : &nbsp;</label></h3>
@@ -257,7 +176,7 @@ $dossier_resultat = "../img/voyage/";
                     <input type="checkbox" name="lieu[]" id="lieu-5" value="autre" ' . (in_array("autre", $lieux) ? "checked" : "") . '>
                     <label for="lieu-5">Autre</label>
                 </div>';
-                }
+
                 ?>
                 <div class="separateur-section-haut contenu-centre">
                     <p><br></p>

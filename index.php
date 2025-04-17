@@ -25,7 +25,9 @@
     </div>
     <br>
     <br>
-    <div class="descrp_acc">Explorez des lieux inspirés de vos jeux vidéo préférés, partez à la découverte de paysages
+
+    <div class="texte-centre texte-align-centre">Explorez des lieux inspirés de vos jeux vidéo préférés, partez à la
+        découverte de paysages
         virtuels et réels, et vivez des expériences immersives qui mêlent tourisme et gaming. Préparez-vous à un voyage
-        unique.</div>
+        unique !</div>
 </body>

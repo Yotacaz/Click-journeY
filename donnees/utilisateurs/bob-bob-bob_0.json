@@ -10,19 +10,22 @@
         "date_naissance": "2006-06-06"
     },
     "voyages": {
-        "consultes": [],
-        "achetes" : []
+        "consultes": [
+            {
+                "nombre_personnes_totales": 15,
+                "nombre_personnes_0_0": 1,
+                "option_0_1": "Lamborghini",
+                "nombre_personnes_0_1": 1,
+                "option_1_0": "fosse",
+                "nombre_personnes_1_0": 0,
+                "prix": 75025
+            }
+        ],
+        "achetes": []
     },
     "autres": {
         "date_inscription": "2020-06-06",
-        "date_derniere_connexion": "2020-06-06"
+        "date_derniere_connexion": "2025-04-17"
     },
-    "modif_admin": {
-        "19\/03\/2025 10:13:33": {
-            "ancien status": "normal",
-            "nouveau status": "normal",
-            "motif": "slt",
-            "auteur": "bob@bob.bob"
-        }
-    }
+    "modif_admin": {}
 }

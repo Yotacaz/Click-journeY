@@ -45,8 +45,7 @@
                             "Maserati"
                         ],
                         "prix_par_personne": 25,
-                        "nombre_personnes": 1,
-                        "valeur_choisie": "Ferrari"
+                        "nombre_personnes": 1
                     }
                 ]
             },
@@ -72,14 +71,14 @@
                             "fosse"
                         ],
                         "prix_par_personne": 15,
-                        "nombre_personnes": 1,
-                        "valeur_choisie": "place assise"
+                        "nombre_personnes": 1
                     }
                 ]
             }
         ],
         "email_personnes_inscrites": [],
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "prix_total": 5000,
         "image": [
             "image001.png",
@@ -141,6 +140,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image002.png",
             "image102.png",
@@ -187,8 +187,7 @@
                             "visite guidee"
                         ],
                         "prix_par_personne": 20,
-                        "nombre_personnes": 2,
-                        "valeur_choisie": "visite simple"
+                        "nombre_personnes": 2
                     },
                     {
                         "nom": "balade parc Yellowstone",
@@ -202,6 +201,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 500,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image003.png",
             "image103.png",
@@ -279,6 +279,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 4000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image004.png",
             "image104.png",
@@ -352,6 +353,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 1500,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image005.png",
             "image105.png",
@@ -437,6 +439,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image006.png",
             "image106.png",
@@ -518,6 +521,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image007.png",
             "image107.png",
@@ -592,6 +596,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image008.png",
             "image108.png",
@@ -658,6 +663,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image009.png",
             "image109.png",
@@ -729,6 +735,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5400,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image010.png",
             "image110.png",
@@ -821,6 +828,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image011.png",
             "image111.png",
@@ -988,6 +996,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image012.png",
             "image112.png",
@@ -1049,6 +1058,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 2000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image013.png",
             "image113.png",
@@ -1135,6 +1145,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image014.png",
             "image114.png",
@@ -1209,6 +1220,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
+        "nb_places_restantes" : 30,
         "image": [
             "image015.png",
             "image115.png",

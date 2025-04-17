@@ -26,7 +26,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: #aa00f9;
+    color: #CA64F9;
 }
 
 th,
@@ -74,6 +74,10 @@ ul {
     text-align: left;
 }
 
+.texte-align-centre {
+    text-align: center;
+}
+
 .marge-droite {
     margin-right: 2em;
 }
@@ -104,8 +108,8 @@ ul {
 
 
 .contour-img:hover {
-    -webkit-filter: drop-shadow(1px 1px 1px #aa00f9) drop-shadow(-1px -1px 0 #aa00f9);
-    filter: drop-shadow(1px 1px 1px #aa00f9) drop-shadow(-1px -1px 0 #aa00f9);
+    -webkit-filter: drop-shadow(1px 1px 1px #CA64F9) drop-shadow(-1px -1px 0 #CA64F9);
+    filter: drop-shadow(1px 1px 1px #CA64F9) drop-shadow(-1px -1px 0 #CA64F9);
 }
 
 /*Petits boutons/inputs pour actions secondaires*/
@@ -128,8 +132,13 @@ button.input-formulaire {
 }
 
 .input-formulaire:hover {
-    border: #aa00f9 solid .1em;
+    border: #CA64F9 solid .1em;
     background-color: #43aed4;
+}
+
+a.input-formulaire {
+    text-decoration: none;
+    color: #261C57;
 }
 
 /*Input de type nombre sans flèches*/
@@ -140,7 +149,7 @@ button.input-formulaire {
 }
 
 .input-nombre:hover {
-    border: #aa00f9 solid .1em;
+    border: #CA64F9 solid .1em;
     border-radius: .5em;
 }
 
@@ -155,7 +164,7 @@ button.input-formulaire {
 }
 
 .lien-bouton:hover {
-    color: #aa00f9;
+    color: #CA64F9;
     background-color: #ffffff10;
 }
 
@@ -230,6 +239,17 @@ button.input-formulaire {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.erreur {
+    background-color: #f39639;
+    color: #261C57;
+    font-weight: 700;
+    text-align: center;
+    margin: 1em 0;
+    padding: .5em 1em .5em 1em;
+    border-radius: .5em;
+
 }
 
 /*Bloc de texte sur fond de couleur*/
@@ -324,6 +344,7 @@ button.col3:hover {
     align-items: center;
     border: #43aed4 solid;
     border-radius: .5em;
+    overflow-x: scroll;
 }
 
 /*Pour zones de texte/contenu classique centré*/
@@ -382,6 +403,12 @@ button.col3:hover {
 
 /*Mise en forme page d'accueil de presentation----------------------------------------------------------*/
 
+.descrp_acc {
+    max-width: 80%;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
 .image_acc {
     background-image: url("img/logo.png");
     width: 600px;
@@ -413,7 +440,7 @@ button.col3:hover {
 
 .image_acc .texte_acc h1 {
     background-color: rgba(163, 200, 250, 0.5);
-    color: #aa00f9;
+    color: #261C57;
     font-size: 80px;
     /* Taille de police fixe */
     white-space: nowrap;
@@ -468,15 +495,10 @@ button.col3:hover {
 }
 
 .image_acc .button_acc:hover {
-    border: #aa00f9 solid .1em;
+    border: #CA64F9 solid .1em;
     background-color: #43aed4;
 }
 
-.descrp_acc {
-    max-width: 80%;
-    margin-top: 2rem;
-    justify-content: center;
-}
 
 
 @media (max-width: 850px) {
@@ -511,7 +533,7 @@ button.col3:hover {
 
     .image_acc .texte_acc h1 {
         background-color: rgba(163, 200, 250, 0.5);
-        color: #aa00f9;
+        color: #CA64F9;
         font-size: 40px;
         /* Taille de police fixe */
         white-space: nowrap;
@@ -542,7 +564,7 @@ button.col3:hover {
         position: relative;
         top: 40%;
         background-color: #43aed4;
-        color: #aa00f9;
+        color: #CA64F9;
     }
 
     .image_acc a {
@@ -567,10 +589,11 @@ button.col3:hover {
     font-size: 20px;
     font-family: sans-serif;
     width: 50%;
-    padding: 7px;
+    padding: 1.5em;
     text-align: center;
     color: #43aed4;
     outline: 5px dashed #43aed4;
+    border-radius: 1em;
 }
 
 .menu_selecteur {
@@ -586,7 +609,7 @@ button.col3:hover {
 }
 
 .menu_selecteur td {
-    background-color: #aa00f9;
+    background-color: #CA64F9;
     color: #261C57;
 }
 
@@ -639,7 +662,7 @@ button.col3:hover {
     margin-top: 5rem;
     margin-bottom: 1rem;
 
-    background-color: #aa00f9;
+    background-color: #CA64F9;
     color: #261C57;
     width: 90%;
     font-size: 30px;
@@ -663,7 +686,7 @@ button.col3:hover {
     border: 5px solid #43aed4;
     border-radius: 10px;
     width: 20%;
-    background-color: #aa00f9;
+    background-color: #CA64F9;
 }
 
 .resultat {
@@ -700,7 +723,7 @@ a .lien-span {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 666;
 }
 
 .lien-span:hover {
@@ -722,6 +745,13 @@ a .lien-span {
 a.lien {
     color: #f205b3;
 }
+
+a.lien:hover {
+    color: #CA64F9;
+    text-decoration: underline;
+}
+
+
 
 .bloc1 {
     display: block;

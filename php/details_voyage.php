@@ -39,7 +39,7 @@ if ($voyage == null) {
 
 $titre_page = $voyage["titre"];
 $places = intval($voyage['nb_places_tot']);
-$places_restantes = $places - count($voyage['email_personnes_inscrites']);
+$places_restantes = intval($voyage['nb_places_restantes']);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +65,15 @@ $places_restantes = $places - count($voyage['email_personnes_inscrites']);
             <?php echo '<h1 class="centre">' . $titre_page . " - Détails du voyage</h1>"; ?>
         </div>
 
-
+        <?php
+        if (isset($_GET["erreur"])) {
+            echo '<div class="erreur">';
+            if ($_GET["erreur"] === "places_insuffisantes") {
+                echo "<h1><b>Erreur : Nombre de personnes spécifié supérieur au nombre de places restantes.</b></h1>";
+            }
+            echo '</div>';
+        }
+        ?>
 
         <!-- Affichage des informations générales du voyage -->
 
@@ -85,22 +93,50 @@ $places_restantes = $places - count($voyage['email_personnes_inscrites']);
                     </li>
                     <li>🌍 &nbsp<?php echo $voyage['localisation']['ville']
                         . " - " . $voyage['localisation']['pays'] ?></li>
-                    <li>&nbsp <b>Prix</b> (sans les options) : <b><?php echo $voyage['prix_total'] ?> €</b></li>
+                    <li>&nbsp <b>Prix unitaire</b> (sans les options) : <b><?php echo $voyage['prix_total'] ?> €</b>
+                    </li>
                     <?php echo isset($opt_enr["prix"]) ? "<li>&nbsp <b>Prix enregistré</b> (avec les options) : <b>" . $opt_enr["prix"] . "€</b></li>" : ""; ?>
                     <li><?php echo "$places_restantes / $places places restantes" ?></li>
                 </ul>
             </div>
         </div>
-        <center>
-            <?php echo $opt_achat == null ? "" : "<b>Statut du voyage : acheté</b>" ?>
-            <br>
-            <h2>Étapes du voyage</h2>
-        </center>
 
-        <!-- Formulaire global pour modifier plusieurs étapes -->
-        <form action="modif_voyage.php?id=<?php echo $identifiant_v; ?>" method="post">
+        <div class="bandeau">
+            <h2>
+                Réservation du voyage &nbsp
+            </h2>
+            <?php echo empty($modifiable) ? "" : " (modification impossible:&nbsp <b>voyage acheté</b>)" ?>
+        </div>
+
+
+        <br>
+        <form action="<?php echo empty($modifiable) ? "modif_voyage.php?id=$identifiant_v" : ""; ?>" method="post">
+            <div>
+                <?php
+                if ($opt_enr != null && isset($opt_enr["nombre_personnes_totales"])) {
+                    $nb_personnes_total = intval($opt_enr["nombre_personnes_totales"]);
+                } else {
+                    $nb_personnes_total = 1;
+                }
+                echo '
+                <div class="contour-bloc">
+                <label> Nombre de personnes participant au voyage (option pour les groupes) <br>
+                <em> (max : ' . $places_restantes . ' personnes) :</em>
+                    <input type="number" name="nombre_personnes_totales" value="' . $nb_personnes_total . '" min="1" max="' . $places_restantes . '" ' . $modifiable . '>
+                </label>
+                </div>';
+                ?>
+            </div>
+
+
+            <div class="texte-centre">
+                <h2>Étapes du voyage</h2>
+            </div>
+
+            <!-- Formulaire global pour modifier plusieurs étapes -->
 
             <?php
+
             $i = 0;
             // Parcourir chaque étape et afficher les options modifiables
             foreach ($voyage['etapes'] as $etape_index => $etape) {
@@ -140,15 +176,15 @@ $places_restantes = $places - count($voyage['email_personnes_inscrites']);
                         }
                     }
                     if ($opt_enr != null && isset($opt_enr[$nom_nb_personne_form])) {
-                        $nb_personnes = intval($opt_enr[$nom_nb_personne_form]);
+                        $nb_personnes_option = intval($opt_enr[$nom_nb_personne_form]);
                     } else {
-                        $nb_personnes = 1;
+                        $nb_personnes_option = 1;
                     }
                     echo '</select><br>
                             <div title="si vous ne souhaitez pas participer, entrez 0, pour inviter un ami entrez 2 (max : ' . $option['nombre_personnes'] . ' invités)">
                                 <label for="' . $nom_nb_personne_form . '">Nombre de personnes participant : </label>';
                     echo
-                        '<input type="number" name="' . $nom_nb_personne_form . '" value="' . $nb_personnes . '" min="0" max="' . ($option['nombre_personnes'] + 1) . '" ' . $modifiable . '><br>
+                        '<input type="number" name="' . $nom_nb_personne_form . '" value="' . $nb_personnes_option . '" min="0" max="' . $nb_personnes_total . '" ' . $modifiable . '><br>
                             </div>
                             </li><br>';
                 }
@@ -162,14 +198,16 @@ $places_restantes = $places - count($voyage['email_personnes_inscrites']);
             ?>
 
             <!-- Soumettre le formulaire -->
-
-            <center>
-                <button type="submit" name="submit_voyage" class="input-formulaire grand" <?php echo " $modifiable"; ?>>
+            <?php
+            echo empty($modifiable) ? '
+            <div class="texte-centre">
+                <button type="submit" name="submit_voyage" class="input-formulaire grand" ' . $modifiable . '>
                     Réservez Maintenant !
                 </button>
                 <br>
                 <br>
-            </center>
+            </div>' : "";
+            ?>
 
         </form>
         <br><br>
