@@ -64,7 +64,13 @@ if ($voyage == null) {
         $transaction = $passage[rand(0, 61)] . $transaction;
     }
     $api_key = getAPIKey("$vendeur");
-    $control = md5($api_key . "#" . $transaction . "#" . $info["montant"] . "#" . $vendeur . "#" . $retour . "#");
+    $control = md5($api_key . "#" . $transaction . "#" . $voyage["prix_total"] . "#" . $vendeur . "#" . $retour . "#");
+
+    $cobanc= array("proprietaire" => "bob bob", "dates_expirations" => "2029-01-01", "valeur_controle" => "555", "num_carte" => "5555 1234 5678 9000");
+    $temp= array('voyage' => $voyage, "utilisateur" => $utilisateur, "cobancaire" => $cobanc);
+    $open = fopen("../donnees/paiement/transaction_en_cours.json",'w');
+    fwrite( $open , json_encode($temp));
+    fclose($open);
     ?>
 
     <main>
@@ -95,7 +101,7 @@ if ($voyage == null) {
                         placeholder="valeur de contrôle"><br />
 
                     <input type='hidden' name='transaction' value="<?php echo "$transaction" ?>">
-                    <input type='hidden' name='montant' value="<?php echo "$info[montant]" ?>">
+                    <input type='hidden' name='montant' value="<?php echo "$voyage[prix_total]" ?>">
                     <input type='hidden' name='vendeur' value="<?php echo "$vendeur" ?>">
                     <input type='hidden' name='retour' value="<?php echo "$retour" ?>">
                     <input type='hidden' name='control' value="<?php echo "$control" ?>">
@@ -120,10 +126,6 @@ if ($voyage == null) {
 
 
                     }
-                    /*$temp= array('nom_voyage' => "GTA V",'nb_personne' => 6,'montant' => 1800.00 ,'dates_debut' => "2028-12-20" ,'date_fin' => "2029-01-05" , "utilisateur" => "bob@bob.bob");
-                    $open = fopen("../donnees/paiement/transaction_en_cours.json",'a+');
-                    fwrite( $open , json_encode($temp));
-                    fclose($open);*/
                 }
                 ?>
 
@@ -131,11 +133,10 @@ if ($voyage == null) {
             <div>
                 <div class="conteneur-texte">
                     <h2>Récapitulatif</h2>
-                    Vous participé au voyage <em><?php echo "$info[nom_voyage]" ?></em> à
-                    <em><?php echo "$info[nb_personne]" ?></em> personnes.</br>
-                    Le voyage débuteras le <em><?php echo "$info[dates_debut]" ?></em> et finiras le
-                    <em><?php echo "$info[date_fin]" ?></em>.</br>
-                    Pour un montant totale de <em><?php echo "$info[montant] €" ?></em>.
+                    Vous participé au voyage <em><?php echo "$voyage[titre]" ?></em></br>
+                    Le voyage débuteras le <em><?php echo $voyage["dates"]["debut"] ?></em> et finiras le
+                    <em><?php echo $voyage["dates"]["fin"] ?></em>.</br>
+                    Pour un montant totale de <em><?php echo "$voyage[prix_total] €" ?></em>.
                 </div>
             </div>
         </div>
