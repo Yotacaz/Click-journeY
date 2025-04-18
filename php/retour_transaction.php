@@ -22,6 +22,9 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
 <?php
     $info = json_decode(file_get_contents("../donnees/paiement/transaction_en_cours.json"), true);
     $tout_tracabilite = json_decode(file_get_contents("../donnees/paiement/transaction_finis.json"), true);
+    $identifiant_v = $info["voyage"]["id"];
+    /*$utilisateur["voyages"]["achetes"][$identifiant_v] = $utilisateur["voyages"]["consultes"][$identifiant_v];
+    $utilisateur["voyages"]["consultes"][$identifiant_v] = "achete";*/
     $date=date("j_F_Y");
     $status=$_GET["status"];
     if($status == "accepted"){
@@ -29,11 +32,12 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
         $vendeur=$_GET["vendeur"];
         $montant=$_GET["montant"];
         $info_transaction=array("date_transaction" => "$date" , "ID_transaction" => "$transaction" , "vendeur" => "$vendeur" , "montant" => "$montant");
-        $new_tracabilite=array("compte utilisateur" => $utilisateur , "Info_transaction" => $info_transaction , "Voyage" => $info["voyage"] , "Coordonnee_Bancaire" => $info["cobancaire"]);
+        $new_tracabilite=array("compte utilisateur" => $utilisateur["email"] , "Info_transaction" => $info_transaction , "Voyage" => $info["voyage"] , "Coordonnee_Bancaire" => $info["cobancaire"]);
         $tracabilite=array($tout_tracabilite , $new_tracabilite);
         $open = fopen("../donnees/paiement/transaction_finis.json",'w');
         fwrite( $open , json_encode($tracabilite));
         fclose($open);
+        
         header("Location: accueil.php");
         exit;
     }
