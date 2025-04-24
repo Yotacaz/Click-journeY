@@ -27,7 +27,6 @@
     <br>
 
     <div class="texte-centre texte-align-centre">Explorez des lieux inspirés de vos jeux vidéo préférés, partez à la
-        découverte de paysages
-        virtuels et réels, et vivez des expériences immersives qui mêlent tourisme et gaming. Préparez-vous à un voyage
-        unique !</div>
+        découverte de paysages virtuels et réels, et vivez des expériences immersives qui mêlent tourisme et gaming.
+        Préparez-vous à un voyage unique !</div>
 </body>

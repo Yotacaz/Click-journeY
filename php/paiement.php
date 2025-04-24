@@ -34,9 +34,7 @@ $voyage = chargerVoyageParId($identifiant_v);
 if ($voyage == null) {
     die("Erreur : ID de voyage $identifiant_v  introuvable ou corrompu.");
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 <head>

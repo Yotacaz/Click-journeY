@@ -1,17 +1,17 @@
 {
     "email": "bob@bob.bob",
-    "mdp": "1BoBé2",
+    "mdp": "bob!123",
     "id": 1,
     "role": "admin",
     "info": {
         "nom": "BOB",
-        "prenom": "Bob",
+        "prenom": "Bobe",
         "sexe": "autre",
         "date_naissance": "2006-06-06"
     },
     "voyages": {
-        "consultes": [
-            {
+        "consultes": {
+            "0": {
                 "nombre_personnes_totales": 15,
                 "nombre_personnes_0_0": 1,
                 "option_0_1": "Lamborghini",
@@ -19,13 +19,20 @@
                 "option_1_0": "fosse",
                 "nombre_personnes_1_0": 0,
                 "prix": 75025
+            },
+            "4": {
+                "nombre_personnes_totales": 1,
+                "nombre_personnes_0_0": 1,
+                "option_1_0": "entree plein tarif",
+                "nombre_personnes_1_0": 1,
+                "prix": 1515
             }
-        ],
+        },
         "achetes": []
     },
     "autres": {
         "date_inscription": "2020-06-06",
-        "date_derniere_connexion": "2025-04-17"
+        "date_derniere_connexion": "2025-04-24"
     },
-    "modif_admin": {}
+    "modif_admin": []
 }

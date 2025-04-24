@@ -10,9 +10,7 @@ require_once "php-include/fonctions_voyages.php";
 
 $voyages = chargerVoyages();
 $dossier_resultat = "../img/voyage/";
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 
 <head>

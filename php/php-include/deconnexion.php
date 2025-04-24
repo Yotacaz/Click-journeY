@@ -1,6 +1,6 @@
 <?php
 //Important : aucune donnée importante rien n'est modifiée sur la session
-//la fermer comme cela ne devrait donc donc pas (encore) poser de problème
+//la fermer comme cela ne devrait donc donc pas poser de problème
 session_start();
 
 session_unset();

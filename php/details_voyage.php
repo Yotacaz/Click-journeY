@@ -40,9 +40,7 @@ if ($voyage == null) {
 $titre_page = $voyage["titre"];
 $places = intval($voyage['nb_places_tot']);
 $places_restantes = intval($voyage['nb_places_restantes']);
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 <head>

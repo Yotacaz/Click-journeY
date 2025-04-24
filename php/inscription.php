@@ -26,20 +26,26 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($nom) || empty($prenom) || empty($genre) || empty($date_naissance) || empty($mail) || empty($mdp) || empty($mdp2)) {
         $msg_err = "Merci de remplir tous les champs.";
 
+    } elseif (est_nom($nom) == false) {
+        $msg_err = "Merci de rentrer un nom valide (" . MIN_STRING_LENGTH . " à " . MAX_STRING_LENGTH . " caractères).";
+
+    } elseif (est_prenom($prenom) == false) {
+        $msg_err = "Merci de rentrer un prénom valide (" . MIN_STRING_LENGTH . " à " . MAX_STRING_LENGTH . " caractères).";
+
+    } else if (strlen($prenom) < MIN_STRING_LENGTH || strlen($prenom) > MAX_STRING_LENGTH) {
+        $msg_err = "Merci de rentrer un prénom valide (2 à 50 caractères).";
+
+    } else if ($genre != "homme" && $genre != "femme" && $genre != "autre") {
+        $msg_err = "Merci de choisir un genre.";
+
     } else if (!est_date($date_naissance) || $date_naissance > $date) {
         $msg_err = "Merci de rentrer une date de naissance valide.";
 
-    } else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        $msg_err = "Merci de rentrer une adresse mail valide.";
+    } else if (!est_mdp($mdp)) {
+        $msg_err = "Merci de rentrer un mot de passe valide (6 à 16 caractères, au moins un chiffre et un caractère spécial).";
 
-    } else if (strlen($mdp) < 2) {  //TODO : changer la taille minimale
-        $msg_err = "Le mot de passe doit contenir au moins 2 caractères.";
-
-    } else if (!preg_match("#[0-9]+#", $mdp)) {
-        $msg_err = "Le mot de passe doit contenir au moins un chiffre.";
-
-    } else if (!preg_match("#[a-zA-Z]+#", $mdp)) {
-        $msg_err = "Le mot de passe doit contenir au moins une lettre.";
+    } else if (!est_email($mail)) {
+        $msg_err = "Merci de rentrer une adresse mail valide (max 50 caractères).";
 
     } else if ($mdp !== $mdp2) {
         $msg_err = "Merci de rentrer le même mot de passe.";
@@ -66,9 +72,7 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 <head>

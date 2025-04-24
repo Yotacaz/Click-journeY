@@ -5,9 +5,7 @@ $utilisateur = connexionUtilisateurRequise();
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 <head>

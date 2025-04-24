@@ -7,9 +7,7 @@ if (!utilisateurValide($admin)) {
     die("Erreur : Utilisateur invalide");
 }
 $utilisateur = $admin;
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 

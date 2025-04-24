@@ -3,14 +3,14 @@
  * @file utilisateur.php
  * @brief Fichier contenant les fonctions pour gérer les utilisateurs
  */
-/**
- * @var string $dossier_utilisateurs chemin du dossier contenant les fichiers des utilisateurs
- */
-$dossier_utilisateurs = "../donnees/utilisateurs/";
 
 
-//ATTENTION : les fonctions de ce fichier ne sont valables que pour des fichiers include dans le dossier php
-//(A cause du chemin des fichiers utilisateurs hardcodé)
+require_once realpath(__DIR__ . '/../../config.php');
+
+
+
+$dossier_utilisateurs = CHEMIN_DONNEES.'/utilisateurs/';
+
 
 /**
  * @return string chemin du dossier contenant les fichiers des utilisateurs
@@ -339,5 +339,16 @@ function optionVoyageAchete(array $utilisateur, int $id_v)
     return $opt_enr;
 }
 
+function verifierMdpUtilisateur(array $utilisateur, string $mdp): bool
+{
+    return $utilisateur["mdp"] === $mdp;
+    // TODO : utiliser password_hash et password_verify pour le mot de passe
+    // $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+    // $utilisateur["mdp"] = password_hash($utilisateur["mdp"], PASSWORD_DEFAULT);
+    // if (password_verify($mdp, $utilisateur["mdp"])) {
+    //     return true;
+    // }
+    // return false;
+}
 
 ?>

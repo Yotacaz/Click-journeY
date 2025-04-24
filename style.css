@@ -1,12 +1,30 @@
 /*Mise en forme générale applicable à chaque page*/
 
+:root {
+    --coul-arr-plan: #261C57;
+    --coul-texte: #43aed4;
+    --coul-titre: #CA64F9;
+    --couleur-gras: #f39639;
+    --couleur-em: #fd5bcf;
+    --couleur-a: #F205B3;
+}
+
+.theme-inverse {
+    --coul-arr-plan: #43aed4;
+    --coul-texte: #261C57;
+    --coul-titre: #CA64F9;
+    --couleur-gras: #f39639;
+    --couleur-em: #fd5bcf;
+    --couleur-a: #F205B3;
+}
+
 body {
     min-height: 100vh;
     margin: 0;
     width: 100%;
 
     position: relative;
-    background-color: #261C57;
+    background-color: var(--coul-arr-plan);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -50,11 +68,13 @@ ul {
     text-align: left;
 }
 
+
 /*Contenu principal*/
 
 .tres-grand {
     font-size: xx-large;
 }
+
 
 .grand {
     font-size: x-large;
@@ -74,9 +94,7 @@ ul {
     text-align: left;
 }
 
-.texte-align-centre {
-    text-align: center;
-}
+
 
 .marge-droite {
     margin-right: 2em;
@@ -102,9 +120,28 @@ ul {
 .sans-mise-en-forme {
     background-color: transparent;
     border: none;
-
 }
 
+[hidden] {
+    display: none !important;
+}
+
+[readonly].desactivable {
+    background-color: #ffffff40;
+    color: #261C57A0;
+    border: #43aed4 solid .1em;
+    border-radius: .2em;
+    box-shadow: none;
+}
+
+[readonly].desactivable:hover {
+    cursor: default;
+}
+
+[readonly].desactivable:focus {
+    outline: none;
+    cursor: default;
+}
 
 
 .contour-img:hover {
@@ -123,7 +160,8 @@ ul {
     padding: .2em 1em;
 }
 
-button.input-formulaire {
+button.input-formulaire,
+input[type="button"].input-formulaire {
     cursor: pointer;
 }
 
@@ -153,6 +191,34 @@ a.input-formulaire {
     border-radius: .5em;
 }
 
+.input-formulaire-2 {
+    background-color: #261C57;
+    border: #261C57 solid .1em;
+    border-radius: .5em;
+    padding: .2em 1em;
+    color: #43aed4;
+}
+
+.input-formulaire-2:hover {
+    border: #CA64F9 solid .1em;
+    background-color: #261C57;
+}
+
+.input[type="button"].input-formulaire-2:hover,
+button.input-formulaire-2:hover {
+    cursor: pointer;
+}
+
+.input-formulaire-2 a {
+    color: #43aed4;
+}
+
+a.input-formulaire-2 {
+    text-decoration: none;
+    color: #43aed4;
+}
+
+/*Liens de type bouton*/
 .lien-bouton {
     text-decoration: none;
     font-size: medium;
@@ -173,15 +239,16 @@ a.input-formulaire {
     border-color: #261C57;
 }
 
-/*Bandeaux de texte pour afficher un titre*/
+/*Bandeaux de texte bleu pour afficher un titre*/
 .bandeau {
+
     color: #261C57;
+    background-color: #43aed4;
     display: flex;
     width: calc(100% - 2em);
     margin: 1em 0;
     padding: 1em 1em;
 
-    background-color: #43aed4;
     justify-content: center;
     align-items: baseline;
     height: fit-content;
@@ -252,6 +319,29 @@ a.input-formulaire {
 
 }
 
+/* Pour les erreurs de formulaire */
+.message-erreur {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    max-width: 100%;
+    font-weight: bolder;
+    font-size: 0.75em;
+}
+
+.fill-col {
+    text-align: center;
+    width: 100%;
+}
+
+.enveloppe-input {
+    display: inline-block;
+}
+.enveloppe-input .message-erreur {
+    contain: inline-size;
+    overflow-wrap: break-word;
+}
+
 /*Bloc de texte sur fond de couleur*/
 .bloc {
     display: flex;
@@ -316,15 +406,6 @@ table.tableau1 tr th:last-child {
     height: 1em;
 }
 
-button.col3 {
-    background: none;
-    border: none;
-}
-
-button.col3:hover {
-    background-color: #ffffff40;
-    border-radius: .2em;
-}
 
 .col1 {
     text-align: right;
@@ -332,6 +413,17 @@ button.col3:hover {
 
 .col2 {
     text-align: center;
+    /* width: min-content; */
+}
+
+button.btn-img {
+    background: none;
+    border: none;
+}
+
+button.btn-img:hover {
+    background-color: #ffffff40;
+    border-radius: .2em;
 }
 
 /*Bloc de texte encadré*/
@@ -345,6 +437,19 @@ button.col3:hover {
     border: #43aed4 solid;
     border-radius: .5em;
     overflow-x: scroll;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
 /*Pour zones de texte/contenu classique centré*/
@@ -729,6 +834,10 @@ a .lien-span {
 .lien-span:hover {
     background-color: #ffffff40;
     border-radius: 0.75em;
+}
+
+#modifiable {
+    border: .5em solid #43aed4;
 }
 
 [title="modifier"] {

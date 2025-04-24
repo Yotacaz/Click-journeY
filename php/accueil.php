@@ -5,9 +5,7 @@ $utilisateur = restaurerSessionUtilisateur();
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 
 <head>
@@ -62,7 +60,7 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
                 <td>God of War</td>
             </tr>
         </table>
-        
+
         <p><br></p>
         <div class="contour-bloc">
             <label class="grand" for="recherche">

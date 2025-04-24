@@ -29,9 +29,7 @@ if ($voyage == null) {
 }
 
 $titre_page = $voyage["titre"];
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 <head>

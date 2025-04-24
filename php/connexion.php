@@ -22,18 +22,14 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($mail) || empty($mdp)) {
             $message = "Merci de remplir tous les champs.";
 
-        } else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        } else if (!est_email($mail)) {
             $message = "Merci de rentrer une adresse mail valide.";
 
-        } else if (strlen($mdp) < 2) {  //TODO : changer la taille minimale
-            $message = "Le mot de passe doit contenir au moins 2 caractères.";
+        } else if (!est_mdp($mdp)) {
+            $message = "Merci de rentrer un mot de passe valide (6 à 16 caractères, au moins un chiffre et un caractère spécial).";
 
-        } else if (!preg_match("#[0-9]+#", $mdp)) {
-            $message = "Le mot de passe doit contenir au moins un chiffre.";
-
-        } else if (!preg_match("#[a-zA-Z]+#", $mdp)) {
-            $message = "Le mot de passe doit contenir au moins une lettre.";
-
+        } else if ($utilisateur["email"] !== $mail && $utilisateur["mdp"] !== $mdp) {
+            $message = "Adresse mail ou mot de passe erroné.";
         } else if ($utilisateur["email"] === $mail && $utilisateur["mdp"] !== $mdp) {
             $message = "Adresse mail ou mot de passe erroné.";
 
@@ -76,9 +72,7 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     }
     unset($utilisateur);
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="fr">
 
 <head>
