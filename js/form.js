@@ -1,12 +1,43 @@
 //note : les regex ont été soit trouvés sur stackoverflow soit 
 // générés par IA puis testés sur le site regex101.com
 
+/*Pour utiliser la fonction verifiersInputs, il faut que le fichier HTML résultant
+ contienne :
+    - un formulaire avec la classe js-form
+    - chaque champ à vérifier doit avoir la classe js-a-verifier, et une classe
+    parmi js-email, js-nom, js-prenom, js-genre, js-date, js-date-passe, js-mdp 
+    (pour indiquer le type de verification à effectuer) 
+    - Le parent de chaque champ à vérifier doit avoir pour frère direct 
+    un élément avec la classe message-erreur
+    - si le champ à verifier possède un attribut maxlength, il faut que son frère direct
+    ait la classe compteur (pour afficher le nombre de caractères restants)
+    - Voir exemple pour proposition de mise en forme (ou profil.php)
+
+    exemple : 
+    <form class="js-form">
+        <label for="email">Email :</label>
+        <div class="enveloppe-input">
+            <div class="fill-col">
+                <input type="email" id="email" class="js-a-verifier js-email" placeholder="Email" maxlength="50" required>
+                <span class="compteur">0/50</span>
+            </div>
+            <p class="message-erreur"></p>
+        </div>
+        ...
+        <button type="submit">Envoyer</button>
+    </form>
+
+    n'hésitez pas à ajouter des classes à verifier dans la fonction verifiersInputs
+*/
+var forms = document.getElementsByClassName("js-form");
+
 export function verifiersInputs() {
-    let nb_err=0;
+    let nb_err = 0;
     const inputs = document.querySelectorAll(".js-a-verifier");
     for (let i = 0; i < inputs.length; i++) {
         let input = inputs[i];
-        const ancienneErreur = input.nextElementSibling;
+
+        const ancienneErreur = input.parentElement.nextElementSibling;
         if (!ancienneErreur || !ancienneErreur.classList.contains("message-erreur")) {
             throw new Error("L'élément suivant d'un élement avec la classe js-a-verifier n'est pas un message d'erreur.");
         }
@@ -19,10 +50,10 @@ export function verifiersInputs() {
             erreur = estNom(input.value);
         } else if (input.classList.contains("js-prenom")) {
             erreur = estPrenom(input.value);
-        } else if (input.classList.contains("js-genre")) {
-            erreur = est_genre(input.value);
-            // if (input.hasAttribute("selected")){
-            // }
+            // } else if (input.classList.contains("js-genre")) {
+            //     erreur = est_genre(input.value);
+            //     // if (input.hasAttribute("selected")){
+            //     // }
         } else if (input.classList.contains("js-date")) {
             erreur = estDate(input.value);
         } else if (input.classList.contains("js-date-passe")) {
@@ -172,4 +203,33 @@ export function est_genre(genre) {
     else {
         return "Genre invalide. Choisissez parmi : " + genres.join(", ");
     }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    for (let i = 0; i < forms.length; i++) {
+        forms[i].addEventListener("submit", function (e) {
+
+            let i = verifiersInputs();
+            // Si erreurs : empeche envoi formulaire
+            if (i > 0) {
+                e.preventDefault();
+            }
+        });
+    }
+});
+
+
+let input_long_max = document.querySelectorAll('[maxlength]');
+for (let i = 0; i < input_long_max.length; i++) {
+    input_long_max[i].addEventListener("input", function () {
+        let max = this.getAttribute("maxlength");
+        let compteur = this.parentElement.querySelector(".compteur");
+        if (compteur) {
+            compteur.innerHTML = this.value.length + "/" + max;
+        }
+        if (this.value.length > max) {
+            this.value = this.value.slice(0, max);
+        }
+    });
 }

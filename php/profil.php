@@ -2,6 +2,7 @@
 session_start();
 require_once "../config.php";
 require_once "php-include/utilisateur.php";
+require_once "php-include/utiles.php";
 $utilisateur = connexionUtilisateurRequise();
 $erreur = "";
 if (!utilisateurValide($utilisateur)) {
@@ -67,7 +68,8 @@ require_once "php-include/fonctions_voyages.php";
         <div class="bloc" id="modifiable">
             <h2>Votre profil :</h2>
             <br>
-            <form action="php-form/profil_modification.php" method="post" name="form-profil" id="form-profil">
+            <form action="php-form/profil_modification.php" class="js-form" method="post" name="form-profil"
+                id="form-profil">
                 <div class="grille3">
                     <p class="col1">Adresse mail:</p>
                     <p class="col2 enveloppe-input " id="email"><?php echo $utilisateur["email"]; ?> </p>
@@ -77,13 +79,19 @@ require_once "php-include/fonctions_voyages.php";
                     <!-- Mot de passe -->
                     <label id="label-mdp" for="mdp" class="col1">Mot de passe :</label>
                     <div class="col2 enveloppe-input">
-                        <!-- Noter que l'input suivante n'a pas la classe  car le mot de passe n'est pas changé par défaut -->
-                        <input class="desactivable fill-col js-mdp" type="password" name="mdp" id="mdp"
-                            placeholder="Entrez un mot de passe" value="<?php
-                            for ($i = 0; $i < strlen($utilisateur["mdp"]); $i++) {
-                                echo "*";
-                            }
-                            ?>" readonly>
+                        <!-- Noter que l'input suivante n'a pas la classe js-a-verifier car le mot de passe n'est pas changé par défaut -->
+                        <div class="fill-coll">
+                            <input class="desactivable js-mdp" type="password" name="mdp" id="mdp"
+                                placeholder="Entrez un mot de passe" value="<?php
+                                for ($i = 0; $i < strlen($utilisateur["mdp"]); $i++) {
+                                    echo "*";
+                                }
+                                ?>" <?php echo ' maxlength="' . MAX_MDP_LENGTH . '" ' ?> readonly>
+                            <span
+                                class="compteur"><?php echo strlen($utilisateur["mdp"]) . "/" . MAX_MDP_LENGTH ?></span>
+                            <!-- <button class="btn-img" title="voir" id="voir-mdp" type="button" onclick="voirMDP('mdp')">
+                                <img src="../img/oeil.png" alt="voir"></button> -->
+                        </div>
                         <p class="message-erreur"></p>
                     </div>
 
@@ -100,8 +108,14 @@ require_once "php-include/fonctions_voyages.php";
                     <label for="mdp2" class="col1" id="label-mdp2" hidden>Confirmer mot de passe :</label>
                     <div class="col2 enveloppe-input" id="div-mdp2" hidden>
                         <!-- Noter que l'input suivante n'a pas la classe  car le mot de passe n'est pas changé par défaut -->
-                        <input hidden class="desactivable fill-col js-mdp" type="password" name="mdp2" id="mdp2"
-                            placeholder="Confirmez le mot de passe" value="" readonly>
+                        <div class="fill-col">
+                            <input hidden class="desactivable js-mdp" type="password" name="mdp2" id="mdp2"
+                                placeholder="Confirmez le mot de passe" value="" readonly <?php echo ' maxlength="' . MAX_MDP_LENGTH . '" ' ?>>
+                            <span class="compteur"><?php echo "0/" . MAX_MDP_LENGTH ?></span>
+
+                            <!-- <button class="btn-img" title="voir" id="voir-mdp" type="button" onclick="voirMDP('mdp')">
+                                <img src="../img/oeil.png" alt="voir"></button> -->
+                        </div>
                         <p class="message-erreur"></p>
                     </div>
                     <br id="col3-mdp2" hidden>
@@ -109,8 +123,13 @@ require_once "php-include/fonctions_voyages.php";
                     <!-- nom -->
                     <label for="nom" class="col1">Nom : </label>
                     <div class="col2 enveloppe-input">
-                        <input class="desactivable fill-col  js-nom" type="text" name="nom" id="nom" readonly
-                            placeholder="NOM" value="<?php echo $utilisateur["info"]["nom"]; ?>">
+                        <div class="fill-col">
+                            <input class="desactivable  js-nom" type="text" name="nom" id="nom" readonly
+                                placeholder="NOM" value="<?php echo $utilisateur["info"]["nom"]; ?>" <?php echo ' maxlength="' . MAX_STRING_LENGTH . '"'; ?>>
+                            <span
+                                class="compteur"><?php echo strlen($utilisateur["info"]["nom"]) . "/" . MAX_STRING_LENGTH ?></span>
+
+                        </div>
                         <p class="message-erreur"></p>
                     </div>
                     <div class="col3">
@@ -126,9 +145,13 @@ require_once "php-include/fonctions_voyages.php";
                     <!-- prénom -->
                     <label for="prenom" class="col1">Prénom : </label>
                     <div class="col2 enveloppe-input">
-                        <input class="desactivable fill-col  js-prenom" type="text" name="prenom" id="prenom" readonly
-                            contenteditable="false" placeholder="Prénom"
-                            value="<?php echo $utilisateur["info"]["prenom"]; ?>">
+                        <div class="fill-col">
+                            <input class="desactivable  js-prenom" type="text" name="prenom" id="prenom" readonly
+                                contenteditable="false" placeholder="Prénom"
+                                value="<?php echo $utilisateur["info"]["prenom"]; ?>" <?php echo ' maxlength="' . MAX_STRING_LENGTH . '" ' ?>>
+                            <span
+                                class="compteur"><?php echo strlen($utilisateur["info"]["prenom"]) . "/" . MAX_STRING_LENGTH ?></span>
+                        </div>
                         <p class="message-erreur"></p>
                     </div>
                     <div class="col3">
@@ -168,7 +191,7 @@ require_once "php-include/fonctions_voyages.php";
                                 die("Erreur : genre non reconnu");
                         }
                         ?>
-                        <p class="message-erreur"></p>
+                        <!-- pas d'erreur prévue ici -->
                     </div>
                     <div class="col3">
                         <button class="btn-img btn-annuler" title="annuler" id="annuler-genre" type="button"
@@ -183,9 +206,11 @@ require_once "php-include/fonctions_voyages.php";
                     <!-- date de naissance -->
                     <label class="col1" for="date">Date de naissance:</label>
                     <div class="col2">
-                        <input class="desactivable fill-col  js-date-passe" type="date" name="date" id="date"
-                            min="1900-01-01" placeholder="JJ/MM/AAAA"
-                            value="<?php echo $utilisateur["info"]["date_naissance"]; ?>" readonly>
+                        <div class="fill-col">
+                            <input class="desactivable fill-col js-date-passe" type="date" name="date" id="date"
+                                min="1900-01-01" placeholder="JJ/MM/AAAA"
+                                value="<?php echo $utilisateur["info"]["date_naissance"]; ?>" readonly>
+                        </div>
                         <p class="message-erreur"></p>
                     </div>
                     <div class="col3">
@@ -205,7 +230,14 @@ require_once "php-include/fonctions_voyages.php";
                     <div class="bloc" id="popup-elem">
                         <label for="mdp-actuel">Mot de passe actuel : </label>
                         <div class="enveloppe-input">
-                            <input class=" js-mdp" name="mdp-actuel" id="mdp-actuel" type="password">
+                            <div>
+                                <input class=" js-mdp" name="mdp-actuel" id="mdp-actuel" type="password">
+                                <span
+                                    class="compteur"><?php echo "0/" . MAX_MDP_LENGTH ?></span>
+
+                                <!-- <button class="btn-img" title="voir" id="voir-mdp" type="button" onclick="voirMDP('mdp')">
+                                <img src="../img/oeil.png" alt="voir"></button> -->
+                            </div>
                             <p class="message-erreur"></p>
                         </div>
                         <input type="hidden" name="valider-modif">

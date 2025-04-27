@@ -14,6 +14,8 @@ var popup_mdp_ouverte = false;
 var popup_mdp = document.getElementById("popup");
 var contenu_popup = document.getElementById("popup-elem");
 
+var evenement = new Event("input")
+
 /**
  * Liste des champs modifiés
  * @type {string[]}
@@ -181,6 +183,7 @@ function modifMDP() {
             console.log(id + " maintenant non modifiable");
         }
     }
+    input.dispatchEvent(evenement);
 
     let input2 = document.getElementById(id_confirmation);
     let label2 = document.getElementById("label-" + id_confirmation);
@@ -208,6 +211,7 @@ function modifMDP() {
             // retirerModification(id_confirmation);
             console.log(id_confirmation + " maintenant non modifiable");
         }
+        input2.dispatchEvent(evenement);
     }
 }
 
@@ -226,7 +230,7 @@ function reinitialiserMDP() {
     let label_mdp = document.getElementById("label-" + id);
     label_mdp.innerHTML = "Mot de passe";
 
-    if (!(input2.readOnly || input2.hasAttribute("readonly"))) {
+    if (!(input2.readOnly == "readonly")) {
         input2.classList.remove("js-a-verifier");
         input2.setAttribute("readonly", "readonly");
         input2.setAttribute("hidden", "hidden");
@@ -237,6 +241,7 @@ function reinitialiserMDP() {
         retirerModification(id_confirmation);
         console.log(id_confirmation + " maintenant non modifiable");
     }
+    input2.dispatchEvent(evenement);
 }
 
 /**
@@ -286,6 +291,7 @@ function reinitialiserInput(id) {
         retirerModification(id);
         console.log(id + " maintenant non modifiable");
     }
+    input.dispatchEvent(evenement);
     gestionBoutonAnnuler(id, false);
 }
 
@@ -378,6 +384,7 @@ function desactiverModification() {
         if (input.classList.contains("desactivable")) {
             input.setAttribute("readonly", "readonly");
         }
+        input.dispatchEvent(evenement);
     }
 
     let div_modif = document.getElementById("valider");
@@ -417,3 +424,4 @@ window.envoyerFormulaire = envoyerFormulaire;
 window.fermerPopup = fermerPopup;
 window.desactiverModification = desactiverModification;
 
+window.champs_modifies = champs_modifies;

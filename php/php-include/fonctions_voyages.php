@@ -1,16 +1,33 @@
 <?php
-//ATTENTION : actuellement ce fichier ne peut pas être inclus dans un autre fichier que php 
-$nom_fichier = "voyages.json";
-$chemin_voyage = "../donnees/voyage/$nom_fichier";
-$dossier_img_voyage = "../img/voyage";
+
+require_once realpath(__DIR__ . '/../../config.php');
+
+
+const NOM_FICHIER = "voyages.json";
+$chemin_voyage = realpath(CHEMIN_DONNEES . "/voyage/".NOM_FICHIER);
+const DOSSIER_IMG_VOYAGE = CHEMIN_RACINE . "/img/voyage";
+const URL_IMG_VOYAGE = URL_RELATIVE . "/img/voyage";
+// die(URL_RELATIVE);
+
 if (!file_exists($chemin_voyage)) {
     echo $chemin_voyage;
     die("Le fichier voyage n'existe pas");
 }
 
-$voyages = json_decode(file_get_contents($chemin_voyage), true);
+$contenu_fichier_voyage = file_get_contents($chemin_voyage);
+
+if ($contenu_fichier_voyage === false) {
+    die("Problème lors de la lecture de $chemin_voyage");
+}
+$voyages = json_decode($contenu_fichier_voyage, true);
 if ($voyages == null) {
     die("Problème lors de la lecture de $chemin_voyage");
+}
+
+function chargerJsonVoyages()
+{
+    global $contenu_fichier_voyage;
+    return $contenu_fichier_voyage;
 }
 function chargerVoyages(): array
 {
@@ -18,7 +35,7 @@ function chargerVoyages(): array
     return $voyages;
 }
 
-//TODO A supprimer
+//TODO A supprimer (inutile)
 function chargerVoyageParNom(string $nom_voyage)
 {
     global $voyages;
@@ -38,7 +55,7 @@ function chargerVoyageParNom(string $nom_voyage)
 function chargerVoyageParId(int $id)
 {
     global $voyages;
-    if (empty($voyages[$id]) || $voyages[$id]["id"] != $id){
+    if (empty($voyages[$id]) || $voyages[$id]["id"] != $id) {
         return null;
     }
     return $voyages[$id];
@@ -51,9 +68,10 @@ function formaterTitreVoyage(string $titre)
 
 function afficherResumeVoyage(array $voyage)
 {
-    global $dossier_img_voyage;
+    
     $titre_formate = formaterTitreVoyage($voyage["titre"]);
-    $chemin_image = "$dossier_img_voyage/$titre_formate/$titre_formate.png";
+    $chemin_image = realpath(DOSSIER_IMG_VOYAGE."/$titre_formate/$titre_formate.png");
+    $url_img = URL_IMG_VOYAGE."/$titre_formate/$titre_formate.png";
     if (!file_exists($chemin_image)) {
         echo $chemin_image;
         die("Fichier image de $titre_formate.png inexistant");
@@ -61,7 +79,7 @@ function afficherResumeVoyage(array $voyage)
     $index = intval($voyage['id']);
     echo
         '<div class="carte-info">
-            <img alt="' . $voyage["titre"] . '" src="' . $chemin_image . '">
+            <img alt="' . $voyage["titre"] . '" src="' . $url_img . '">
             <div class="contenu-carte-info">
                 <div class="flex">
                     <h2>' . $voyage["titre"] . '&nbsp</h2>
@@ -77,30 +95,10 @@ function afficherResumeVoyage(array $voyage)
         </div>';
 }
 
-//TODO Retirer : fonction dupliquée
-function decodageDonnees($fichier)
-{
-    if (file_exists($fichier)) {
-
-        $voyages = file_get_contents($fichier);
-        //decoder le fichier json
-        $donnees = json_decode($voyages, true);
-
-        //verifier si le decodage a marche
-        if ($donnees === null) {
-            $donnees = "probleme de decodage";
-        }
-    } else { // le fichier n'existe pas
-        $donnees = "le fichier" . $fichier . " n'existe pas";
-    }
-    return $donnees;
-}
-
-
 
 function trierVoyage($fichier)
 {
-    $voyages = decodageDonnees($fichier);
+    $voyages = chargerVoyages();
     if (is_array($voyages)) { //decodage reussi on peut trier
 
         usort(
@@ -124,7 +122,7 @@ function recup_id_voyage()
     }
     global $voyages;
     $identifiant = intval($_GET["id"]);
-    if (empty($voyages[$identifiant])){
+    if (empty($voyages[$identifiant])) {
         header("Location: recherche.php");
         die("Erreur : Identifiant de voyage spécifié incorrect");
     }

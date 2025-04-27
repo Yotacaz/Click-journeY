@@ -89,3 +89,5 @@ function est_prenom($prenom)
 
 const MIN_STRING_LENGTH = 2;
 const MAX_STRING_LENGTH = 50;
+const MIN_MDP_LENGTH = 6;
+const MAX_MDP_LENGTH = 16;
