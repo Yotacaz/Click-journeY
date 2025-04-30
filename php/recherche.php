@@ -12,15 +12,31 @@ $contenu_fichier_voyage = chargerJsonVoyages();
 ?><!DOCTYPE html>
 <html>
 
+<?php
+if (!empty($_GET["recherche-textuelle"])) {
+    $voyages = rechercheTextuelle($_GET["recherche-textuelle"]);
+}
+?>
+
 <script type="text/javascript">
 
-    const VOYAGES = JSON.parse(<?php echo json_encode($contenu_fichier_voyage) ?>);
-    const URL_IMG_VOYAGE = "<?php echo URL_IMG_VOYAGE; ?>";
+    <?php
+    // definition de la constante VOYAGES :
+    $js_voyages = json_encode($voyages);
+    echo "const VOYAGES = $js_voyages  ;\n";
+    echo ";\n";
+    ?>
+
+    console.log(VOYAGES);
+
+    const URL_IMG_VOYAGE = "<?= URL_IMG_VOYAGE; ?>";
     const evenement = new Event('change');
+    // console.log(VOYAGES[1].id);
+
 </script>
 
 <script src="../js/recherche.js" defer></script>
-
+<script src="../js/form.js" defer type="module"></script>
 
 <head>
     <meta name="auteur" content="DIOP Bineta,CRISSOT Martin" />
@@ -38,7 +54,11 @@ $contenu_fichier_voyage = chargerJsonVoyages();
     require_once "php-include/header.php";
     ?>
     <main>
-        <?php if (!isset($voyages)) {
+        <?php
+        // $resultats = rechercheTextuelle("Gta V !");
+        
+
+        if (!isset($voyages)) {
             die("Les voyages n'ont pas pu être chargé");
         }
         $nom_validation = "valider-recherche";
@@ -71,26 +91,32 @@ $contenu_fichier_voyage = chargerJsonVoyages();
         }
         ?>
 
-        <div class="bandeau-image">
-            <img src="../img/arcade.png" alt="image arcade">
-            <div class="centre">
-                <label for="recherche-textuelle">
-                    Rechercher un jeu, une activité
-                </label>
-                <div>
-                    <input name="recherche-textuelle" form="form-recherche" id="recherche-textuelle"
-                        class="input-formulaire tres-grand bordure-violette" type="text"
-                        placeholder="Recherchez un jeu..." maxlength="50">
-                    <button name="<?php echo $nom_validation; ?>" form="form-recherche" class="sans-mise-en-forme"
-                        type="button"><img class="img-4em contour-img" src="../img/search.png"
-                            alt="Rechercher"></button>
+        <form action="#" method="get" id="form-recherche" class="js-form">
+            <div class="bandeau-image">
+                <img src="../img/arcade.png" alt="image arcade">
+                <div class="centre">
+                    <label for="recherche-textuelle">
+                        Rechercher un jeu, une activité
+                    </label>
+                    <div>
+                        <div class="enveloppe-input">
+                            <div class="input-formulaire tres-grand bordure-violette">
+                                <input name="recherche-textuelle" form="form-recherche" id="recherche-textuelle"
+                                    class="tres-grand" type="text" placeholder="Recherchez un jeu..."
+                                    maxlength="<?= MAX_STRING_LENGTH ?>">
+                                <span class="compteur">0/<?= MAX_STRING_LENGTH ?></span>
+                            </div>
+                            <p class="message-erreur"></p>
+                        </div>
+                        <button name="<?php echo $nom_validation; ?>" form="form-recherche" class="sans-mise-en-forme"
+                            type="submit"><img class="img-4em contour-img" src="../img/search.png"
+                                alt="Rechercher"></button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="texte-centre">
-            <h1>Recherche avancée</h1>
-            <form action="#" method="get" id="form-recherche">
+            <div class="texte-centre">
+                <h1>Recherche avancée</h1>
 
                 <div class="flex">
                     <div class="flex marge-droite">
@@ -204,9 +230,9 @@ $contenu_fichier_voyage = chargerJsonVoyages();
                     <button class="input-formulaire grand" name="<?php echo $nom_validation; ?>"
                         type="submit">Rechercher</button>
                 </div>
-            </form>
-            <h1>Résultats</h1>
-        </div>
+                <h1>Résultats</h1>
+            </div>
+        </form>
         <div class="texte-centre" style="text-align: center;">
             <?php
             $voyage_dispo = [];
@@ -294,7 +320,7 @@ $contenu_fichier_voyage = chargerJsonVoyages();
             ?>
 
 
-            <div class="resultats" id="resultats" >
+            <div class="resultats" id="resultats">
                 <?php
                 // if ($nb_elem > 0) {
                 //     $j = ($page_active - 1) * $elem_par_page;

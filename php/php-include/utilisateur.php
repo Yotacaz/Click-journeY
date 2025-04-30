@@ -9,7 +9,7 @@ require_once realpath(__DIR__ . '/../../config.php');
 
 
 
-$dossier_utilisateurs = CHEMIN_DONNEES.'/utilisateurs/';
+$dossier_utilisateurs = CHEMIN_DONNEES . '/utilisateurs/';
 
 
 /**
@@ -89,7 +89,7 @@ function utilisateurValide(array|null $utilisateur): bool
 }
 
 /**
- * @return array tableau indexé de tous les utilisateur contenant un tableau associatif avec les informations de l'utilisateur
+ * @return array tableau associatif par id de tous les utilisateur contenant un autre tableau associatif avec les informations de l'utilisateur
  */
 function listerUtilisateurs()
 {
@@ -102,7 +102,7 @@ function listerUtilisateurs()
             $utilisateur = json_decode(file_get_contents($dossier_utilisateurs . $fichier), true);
             if (is_array($utilisateur)) {
                 if (utilisateurValide($utilisateur)) {
-                    $utilisateurs[] = $utilisateur;
+                    $utilisateurs[$utilisateur["id"]] = $utilisateur;
                 }
             }
         }

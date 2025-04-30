@@ -5,8 +5,12 @@ $utilisateur = restaurerSessionUtilisateur();
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
+require_once "php-include/fonctions_voyages.php";
+
 ?><!DOCTYPE html>
 <html>
+
+<script src="../js/form.js" defer type="module"></script>
 
 <head>
     <meta name="auteur" content="DIOP Bineta" />
@@ -43,7 +47,7 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
             </div>
 
         </div>
-        <table class="menu_selecteur">
+        <!-- <table class="menu_selecteur">
             <tr>
                 <th> Les plus populaires </th>
             </tr>
@@ -59,22 +63,51 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
             <tr>
                 <td>God of War</td>
             </tr>
-        </table>
+        </table> -->
 
         <p><br></p>
         <div class="contour-bloc">
             <label class="grand" for="recherche">
                 Rechercher un jeu, une activité
             </label>
-            <div class="flex">
-                <input form="form-recherche" id="recherche" class="input-formulaire tres-grand bordure-violette"
-                    type="text" placeholder="Recherchez un jeu..." maxlength="50">
-                <button form="form-recherche" class="sans-mise-en-forme" type="submit"><img class="img-4em contour-img"
-                        src="../img/search.png" alt="Rechercher"></button>
+            <form action="#resultats" id="form-recherche" method="get" class="flex">
+                <div class="enveloppe-input">
+                    <div class="input-formulaire tres-grand bordure-violette">
+                        <input name="recherche-textuelle" form="form-recherche" id="recherche-textuelle"
+                            class="tres-grand" type="text" placeholder="Recherchez un jeu..."
+                            maxlength="<?= MAX_STRING_LENGTH ?>">
+                        <b class="compteur">0/<?= MAX_STRING_LENGTH ?></b>
+                    </div>
+                    <p class="message-erreur"></p>
+                </div>
+                <button name="rechercher" form="form-recherche" class="sans-mise-en-forme" type="submit"><img
+                        class="img-4em contour-img" src="../img/search.png" alt="Rechercher"></button>
+            </form>
+        </div>
+        <?php
+        if (!empty($_GET['recherche-textuelle'])) {
+            $voyages = rechercheTextuelle($_GET['recherche-textuelle']);
+        } else {
+            $voyages = trierVoyageParNote(6);
+        }
+        ?>
+        <div class="texte-centre">
+            <h1>Selection de voyages :</h1>
+            <div class="resultats" id="resultats">
+                <?php
+                $nb_elem = count($voyages);
+                if ($nb_elem > 0) {
+
+                    for ($i = 0; $i < $nb_elem; $i++) {
+                        afficherResumeVoyage($voyages[$i]);
+                    }
+                } else {
+                    echo "<em>Aucun voyage correspondant à votre recherche.</em>";
+                }
+                ?>
             </div>
         </div>
-
-
+        <p><br></p>
     </main>
 
     <?php

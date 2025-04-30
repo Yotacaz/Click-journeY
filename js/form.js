@@ -1,3 +1,5 @@
+export { verifiersInputs, estEmail, estNom, estPrenom, estDate, estDatePasse, est_mdp };
+
 //note : les regex ont été soit trouvés sur stackoverflow soit 
 // générés par IA puis testés sur le site regex101.com
 
@@ -5,7 +7,7 @@
  contienne :
     - un formulaire avec la classe js-form
     - chaque champ à vérifier doit avoir la classe js-a-verifier, et une classe
-    parmi js-email, js-nom, js-prenom, js-genre, js-date, js-date-passe, js-mdp 
+    parmi js-email, js-nom, js-prenom, js-date, js-date-passe, js-mdp 
     (pour indiquer le type de verification à effectuer) 
     - Le parent de chaque champ à vérifier doit avoir pour frère direct 
     un élément avec la classe message-erreur
@@ -31,7 +33,7 @@
 */
 var forms = document.getElementsByClassName("js-form");
 
-export function verifiersInputs() {
+function verifiersInputs() {
     let nb_err = 0;
     const inputs = document.querySelectorAll(".js-a-verifier");
     for (let i = 0; i < inputs.length; i++) {
@@ -50,10 +52,6 @@ export function verifiersInputs() {
             erreur = estNom(input.value);
         } else if (input.classList.contains("js-prenom")) {
             erreur = estPrenom(input.value);
-            // } else if (input.classList.contains("js-genre")) {
-            //     erreur = est_genre(input.value);
-            //     // if (input.hasAttribute("selected")){
-            //     // }
         } else if (input.classList.contains("js-date")) {
             erreur = estDate(input.value);
         } else if (input.classList.contains("js-date-passe")) {
@@ -80,26 +78,32 @@ export function verifiersInputs() {
  * @param {string} motDePasse - Le mot de passe à valider.
  * @returns {string} - Message d'erreur ou chaîne vide si valide.
  */
-export function est_mdp(motDePasse) {
+function est_mdp(motDePasse) {
     let erreurs = [];
 
     if (motDePasse.length < 6 || motDePasse.length > 16) {
-        erreurs.push("Le mot de passe doit contenir entre 6 et 16 caractères.");
+        erreurs.push("contenir entre 6 et 16 caractères.");
     }
 
     if (!/[0-9]/.test(motDePasse)) {
-        erreurs.push("Le mot de passe doit contenir au moins un chiffre.");
+        erreurs.push("contenir au moins un chiffre.");
     }
 
     if (!/[!@#$%^&*]/.test(motDePasse)) {
-        erreurs.push("Le mot de passe doit contenir au moins un caractère spécial (!@#$%^&*).");
+        erreurs.push("contenir au moins un caractère spécial (!@#$%^&*).");
     }
 
     if (!/[a-zA-Z]/.test(motDePasse)) {
-        erreurs.push("Le mot de passe doit contenir au moins une lettre.");
+        erreurs.push("contenir au moins une lettre.");
     }
-
-    return erreurs.join("\n");
+    let msg_err = "<div>Le mot de passe doit :<ul>";
+    for (let i = 0; i < erreurs.length; i++) {
+        msg_err += "<li>" + erreurs[i] + "</li>";
+    }
+    if (erreurs.length === 0) {
+        return "";
+    }
+    return msg_err + "</ul></div>";
 }
 
 
@@ -111,7 +115,7 @@ const MAX_STRING_LENGTH = 50;
  * @param {string} date - La date à valider.
  * @returns {string} Message d'erreur ou chaîne vide si la date est valide.
  */
-export function estDate(date) {
+function estDate(date) {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     if (!regex.test(date)) {
         return "Format de date invalide (attendu: YYYY-MM-DD)";
@@ -130,7 +134,7 @@ export function estDate(date) {
  * @param {string} date - La date à valider.
  * @returns {string} Message d'erreur ou chaîne vide si la date est valide et passée.
  */
-export function estDatePasse(date) {
+function estDatePasse(date) {
     const message = estDate(date);
     if (message) return message;
 
@@ -147,7 +151,7 @@ export function estDatePasse(date) {
  * @param {string} email - L'adresse email à valider.
  * @returns {string} Message d'erreur ou chaîne vide si l'email est valide.
  */
-export function estEmail(email) {
+function estEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(email)) {
         return "Adresse e-mail invalide";
@@ -165,7 +169,7 @@ export function estEmail(email) {
  * @param {string} nom - Le nom à valider.
  * @returns {string} Message d'erreur ou chaîne vide si le nom est valide.
  */
-export function estNom(nom) {
+function estNom(nom) {
     const regex = /^[\p{L}\s\-]+$/u;
     if (!regex.test(nom)) {
         return "Le nom ne doit contenir que des lettres, espaces ou tirets";
@@ -184,26 +188,11 @@ export function estNom(nom) {
  * @param {string} prenom - Le prénom à valider.
  * @returns {string} Message d'erreur ou chaîne vide si le prénom est valide.
  */
-export function estPrenom(prenom) {
+function estPrenom(prenom) {
     return estNom(prenom);
 }
 
 
-export let genres = ["femme", "homme", "autre"];
-/**
- * Vérifie si un genre est valide (femme, homme, autre).
- * @param {string} genre - Le genre à valider.
- * @returns {string} Message d'erreur ou chaîne vide si le genre est valide.
- */
-export function est_genre(genre) {
-
-    if (genres.includes(genre.toLowerCase())) {
-        return "";
-    }
-    else {
-        return "Genre invalide. Choisissez parmi : " + genres.join(", ");
-    }
-}
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -227,6 +216,9 @@ for (let i = 0; i < input_long_max.length; i++) {
         let compteur = this.parentElement.querySelector(".compteur");
         if (compteur) {
             compteur.innerHTML = this.value.length + "/" + max;
+        }
+        else {
+            console.error("Element de classe compteur non trouvé")
         }
         if (this.value.length > max) {
             this.value = this.value.slice(0, max);

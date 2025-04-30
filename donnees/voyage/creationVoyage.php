@@ -7,6 +7,13 @@ $voyage =
         "description" => "plongez vous dans le monde de GTA-V, en parcourant Los Angeles, Miami et plus",
         "genre" => "action",
         "theme" => "city",
+        "mot_cle" => array(
+            "Los Angeles",
+            "Miami",
+            "GTA-V",
+            "action",
+            "city"
+        ),
         "localisation" => array(
             "pays" => "Etats-Unis",
             "ville" => "Miami"
@@ -98,7 +105,7 @@ encoder le php en json dans une chaine
 puis mettre la chaine dans un fichier
 */
 $fichier = 'voyages.json';
-$liste_voyages= json_decode($fichier, true);
+$liste_voyages = json_decode($fichier, true);
 array_push($liste_voyages, $voyage);
 $donnees_json = json_encode($liste_voyages, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 file_put_contents($fichier, $donnees_json);

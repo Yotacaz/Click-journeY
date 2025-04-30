@@ -6,6 +6,16 @@
         "description": "plongez vous dans le monde de GTA-V, en parcourant Los angeles, Miami et plus",
         "genre": "action",
         "theme": "city",
+        "mots_cles": [
+            "gta 5",
+            "gta V",
+            "gta5",
+            "gta",
+            "arme",
+            "armes",
+            "voiture",
+            "gangs"
+        ],
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "Los-Angeles"
@@ -78,7 +88,7 @@
         ],
         "email_personnes_inscrites": [],
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "prix_total": 5000,
         "image": [
             "image001.png",
@@ -94,6 +104,14 @@
         "description": "plongez vous dans le monde d'animal crossing, en parcourant les iles paradisiaques de la Polynesie",
         "genre": "aventure",
         "theme": "aquatique",
+        "mots_cles": [
+            "animal crossing",
+            "animal",
+            "crossing",
+            "ile",
+            "plage",
+            "paradis"
+        ],
         "localisation": {
             "pays": "Polynesie",
             "ville": "Tahiti"
@@ -140,7 +158,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image002.png",
             "image102.png",
@@ -155,6 +173,14 @@
         "description": "plongez vous dans le monde de Mass Effect, en allant a la conquete spacial, decouvrez des mondes futuristes",
         "genre": "action",
         "theme": "city",
+        "mots_cles": [
+            "mass effect",
+            "mass",
+            "effect",
+            "spatial",
+            "planete",
+            "futuriste"
+        ],
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "Miami"
@@ -201,7 +227,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 500,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image003.png",
             "image103.png",
@@ -213,9 +239,18 @@
         "id": 3,
         "titre": "SpiderMan",
         "note": 1,
-        "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'uneville qui ne dort pas",
+        "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'une ville qui ne dort pas",
         "genre": "action",
         "theme": "city",
+        "mots_cles": [
+            "spider",
+            "man",
+            "voltige",
+            "ville",
+            "hero",
+            "heros",
+            "marvel"
+        ],
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "New-York"
@@ -279,7 +314,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 4000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image004.png",
             "image104.png",
@@ -294,6 +329,15 @@
         "description": "plongez vous dans le monde du far west, mettez vos chapeau cowboys et cowgirl et partez a l'aventure hii haaaa !",
         "genre": "action",
         "theme": "guerre",
+        "mots_cles": [
+            "reddead",
+            "redemption",
+            "cowboy",
+            "farwest",
+            "histoire",
+            "arme",
+            "armes"
+        ],
         "localisation": {
             "pays": "Etats-Unis",
             "ville": "Yellowtone"
@@ -353,7 +397,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 1500,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image005.png",
             "image105.png",
@@ -368,6 +412,15 @@
         "description": "plongez vous dans le monde de Skyrim",
         "genre": "aventure",
         "theme": "fantasy",
+        "mots_cles": [
+            "sky rim",
+            "dragon",
+            "medieval",
+            "fantaisie",
+            "heroique",
+            "hero",
+            "hardcore"
+        ],
         "localisation": {
             "pays": "France",
             "ville": "Samoens"
@@ -439,7 +492,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image006.png",
             "image106.png",
@@ -454,6 +507,15 @@
         "description": "plongez vous dans le monde de The Witcher 3, en voyagant à travers l'europe de l'est",
         "genre": "aventure",
         "theme": "fantasy",
+        "mots_cles": [
+            "witcher3",
+            "witcher 3",
+            "medieval",
+            "fantaisie",
+            "heroique",
+            "hero",
+            "hardcore"
+        ],
         "localisation": {
             "pays": "Roumanie",
             "ville": "Bucarest"
@@ -521,7 +583,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image007.png",
             "image107.png",
@@ -532,10 +594,15 @@
     {
         "id": 7,
         "titre": "Assassin's Creed Odyssey",
+        "description": "plongez vous dans le monde d'Assassin's Creed Odyssey, et decouvrez la Grece antique",
         "note": 5,
         "genre": "action",
         "theme": "fantasy",
-        "description": "plongez vous dans le monde d'Assassin's Creed Odyssey, et decouvrez la Grece antique",
+        "mots_cles": [
+            "assassincreed",
+            "odyssée",
+            "mythologie"
+        ],
         "localisation": {
             "pays": "Grece",
             "ville": "Athene"
@@ -596,7 +663,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image008.png",
             "image108.png",
@@ -608,9 +675,14 @@
         "id": 8,
         "titre": "Assassin's Creed Origins",
         "note": 5,
+        "description": "plongez vous dans le monde d'Assassin's Creed Origins, en parcourant les cites perdu d'Egypte antique",
         "genre": "action",
         "theme": "fantasy",
-        "description": "plongez vous dans le monde d'Assassin's Creed Origins, en parcourant les cites perdu d'Egypte antique",
+        "mots_cles": [
+            "assassincreed",
+            "origines",
+            "monde ouvert"
+        ],
         "localisation": {
             "pays": "Egypte",
             "ville": "Le Caire"
@@ -663,7 +735,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image009.png",
             "image109.png",
@@ -678,6 +750,11 @@
         "description": "plongez vous dans le monde post apocalyptique de Horizon Zero Dawn et decouvrez des regions sauvages loin de toutes civilisation",
         "genre": "aventure",
         "theme": "fantasy",
+        "mots_cles": [
+            "monde ouvert",
+            "horison",
+            "futuriste"
+        ],
         "localisation": {
             "pays": "Islande",
             "ville": "Reykjavik"
@@ -735,7 +812,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5400,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image010.png",
             "image110.png",
@@ -750,6 +827,12 @@
         "description": "plongez vous dans le monde désertique de Journey",
         "genre": "aventure",
         "theme": "nature",
+        "mots_cles": [
+            "voyage",
+            "desert",
+            "nature",
+            "paysage"
+        ],
         "localisation": {
             "pays": "Sahara occidental",
             "ville": "Laayoune"
@@ -828,7 +911,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image011.png",
             "image111.png",
@@ -843,6 +926,12 @@
         "description": "plongez vous dans le monde de Minecraft, on vous propose un tour du monde afin",
         "genre": "bac a sable",
         "theme": "nature",
+        "mots_cles": [
+            "mine craft",
+            "bac a sable",
+            "nature",
+            "paysage"
+        ],
         "localisation": {
             "pays": "France",
             "ville": "Cayenne"
@@ -996,7 +1085,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image012.png",
             "image112.png",
@@ -1011,6 +1100,12 @@
         "description": "plongez vous dans le monde de The Legend of Zelda: Breath of the Wild, et decouvrez des decors et paysages inedit tout en partant a l'aventure",
         "genre": "bac a sable",
         "theme": "fantasy",
+        "mots_cles": [
+            "hero",
+            "legende",
+            "monde ouvert",
+            "open world"
+        ],
         "localisation": {
             "pays": "Nouvelle-Zelande",
             "ville": "Wellington"
@@ -1058,7 +1153,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 2000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image013.png",
             "image113.png",
@@ -1073,6 +1168,12 @@
         "description": "plongez vous dans le monde de Uncharted: The Lost Legacy, et decouvrez les mysteres antiques des paysages tropicaux inedits tout en partant a l'aventure",
         "genre": "aventure",
         "theme": "fantasy",
+        "mots_cles": [
+            "unchart",
+            "legende",
+            "monde ouvert",
+            "open world"
+        ],
         "localisation": {
             "pays": "Senegal",
             "ville": "Dakar"
@@ -1145,7 +1246,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image014.png",
             "image114.png",
@@ -1159,6 +1260,14 @@
         "note": 5,
         "genre": "action",
         "theme": "city",
+        "mots_cles": [
+            "cyber",
+            "punk",
+            "futuriste",
+            "ville",
+            "hero",
+            "heros"
+        ],
         "description": "plongez vous dans le monde de Cyberpunk, en parcourant les decors hyper-futuristes des grandes metropole",
         "localisation": {
             "pays": "Japon",
@@ -1220,7 +1329,7 @@
         "email_personnes_inscrites": [],
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes" : 30,
+        "nb_places_restantes": 30,
         "image": [
             "image015.png",
             "image115.png",

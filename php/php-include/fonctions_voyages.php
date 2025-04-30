@@ -1,10 +1,10 @@
 <?php
 
 require_once realpath(__DIR__ . '/../../config.php');
-
+require_once "utiles.php";
 
 const NOM_FICHIER = "voyages.json";
-$chemin_voyage = realpath(CHEMIN_DONNEES . "/voyage/".NOM_FICHIER);
+$chemin_voyage = realpath(CHEMIN_DONNEES . "/voyage/" . NOM_FICHIER);
 const DOSSIER_IMG_VOYAGE = CHEMIN_RACINE . "/img/voyage";
 const URL_IMG_VOYAGE = URL_RELATIVE . "/img/voyage";
 // die(URL_RELATIVE);
@@ -68,10 +68,10 @@ function formaterTitreVoyage(string $titre)
 
 function afficherResumeVoyage(array $voyage)
 {
-    
+
     $titre_formate = formaterTitreVoyage($voyage["titre"]);
-    $chemin_image = realpath(DOSSIER_IMG_VOYAGE."/$titre_formate/$titre_formate.png");
-    $url_img = URL_IMG_VOYAGE."/$titre_formate/$titre_formate.png";
+    $chemin_image = realpath(DOSSIER_IMG_VOYAGE . "/$titre_formate/$titre_formate.png");
+    $url_img = URL_IMG_VOYAGE . "/$titre_formate/$titre_formate.png";
     if (!file_exists($chemin_image)) {
         echo $chemin_image;
         die("Fichier image de $titre_formate.png inexistant");
@@ -96,9 +96,14 @@ function afficherResumeVoyage(array $voyage)
 }
 
 
-function trierVoyage($fichier)
+/**
+ * Trie les voyages par note décroissante et limite optionnellement le nombre de résultats.
+ * @param int $nb_elements Le nombre maximum d'éléments à retourner. -1 pour tous les éléments.
+ * @return array|void Retourne un tableau trié des voyages, ou termine le script si $voyages n'est pas un tableau.
+ */
+function trierVoyageParNote($nb_elements = -1)
 {
-    $voyages = chargerVoyages();
+    global $voyages;
     if (is_array($voyages)) { //decodage reussi on peut trier
 
         usort(
@@ -107,6 +112,9 @@ function trierVoyage($fichier)
                 return $b["note"] - $a["note"];  // Tri par note du + au -
             }
         );
+        if ($nb_elements != -1) {
+            $voyages = array_slice($voyages, 0, $nb_elements);
+        }
         return $voyages;
     } else {     // Si ce n'est pas un tableau, afficher le message d'erreur
         echo $voyages;
@@ -127,6 +135,43 @@ function recup_id_voyage()
         die("Erreur : Identifiant de voyage spécifié incorrect");
     }
     return $identifiant;
+}
+
+function rechercheTextuelle(string $texte): array
+{
+    global $voyages;
+    $mots = nettoyer_chaine($texte);
+
+    $priorite = [];
+    foreach ($voyages as $voyage) {
+        $id = intval($voyage["id"]);
+        $priorite[$id] = 0;
+        array_walk_recursive($voyage, 'nettoyer_chaine');
+        foreach ($mots as $mot) {
+
+            if (mot_dans_tableau_multiDim_rec($mot, $voyage["titre"])) {
+                $priorite[$id] += 10;
+            }
+            if (mot_dans_tableau_multiDim_rec($mot, $voyage["description"])) {
+                $priorite[$id] += 5;
+            }
+            if (mot_dans_tableau_multiDim_rec($mot, $voyage["mots_cles"])) {
+                $priorite[$id] += 3;
+            }
+            if (mot_dans_tableau_multiDim_rec($mot, $voyage)) {
+                $priorite[$id]++;
+            }
+        }
+    }
+    $resultat = [];
+    arsort($priorite);
+
+    foreach ($priorite as $id => $valeur) {
+        if ($valeur > 0) {
+            $resultat[] = $voyages[$id];
+        }
+    }
+    return $resultat;
 }
 
 ?>

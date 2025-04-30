@@ -6,10 +6,8 @@ $admin = adminRequis();
 if (!utilisateurValide($admin)) {
     die("Erreur : Utilisateur invalide");
 }
-$utilisateur = $admin;
 ?><!DOCTYPE html>
 <html lang="fr">
-
 
 <head>
     <meta name="auteur" content="CRISSOT Martin" />
@@ -21,18 +19,19 @@ $utilisateur = $admin;
     <title>Administrateur - PixelTravels</title>
 </head>
 
+<script src="../js/admin.js" defer></script>
+
 <body>
     <?php
+    $utilisateur = $admin;  // nécessaire pour header.php
     require_once "php-include/header.php";
-    unset($utilisateur);    // je sais c'est pas propre
-    ?>
-    <?php
+    $utilisateur = null;
     $utilisateurs = listerUtilisateurs();
     $nom_validation = "valider-recherche";
 
     $email_recherche = $id_recherche = "";
     $msg_err = "";
-    if (isset($_GET[$nom_validation])) {
+    if (isset($_GET[$nom_validation]) && $_SERVER["REQUEST_METHOD"] == "GET") {
         $email_recherche = isset($_GET["recherche-email"]) ? test_input($_GET["recherche-email"]) : "";
         if (!empty($email_recherche) && !filter_var($email_recherche, FILTER_VALIDATE_EMAIL)) {
             $email_recherche = "";
@@ -41,16 +40,18 @@ $utilisateur = $admin;
 
         $id_recherche = isset($_GET["recherche-ID"]) ? intval($_GET["recherche-ID"]) : "";
         if (!empty($id_recherche)) {
-            $utilisateurs = array_filter($utilisateurs, function ($utilisateur) use ($id_recherche) {
-                return intval($utilisateur["id"]) === $id_recherche;
-            });
+            $utilisateur = $utilisateurs[$id_recherche];
+            if (!utilisateurValide($utilisateur)) {
+                die("Erreur : Utilisateur non valide");
+            }
+            $utilisateurs = [$id_recherche => $utilisateur];
+            $nb_elem = 1;
         }
         if (!empty($email_recherche)) {
             $utilisateurs = array_filter($utilisateurs, function ($utilisateur) use ($email_recherche) {
                 return $utilisateur["email"] === $email_recherche;
             });
         }
-        $utilisateurs = array_values($utilisateurs);
 
     }
     ?>
@@ -87,20 +88,36 @@ $utilisateur = $admin;
 
             <!-- Un formulaire par utilisateur  -->
             <?php
+            $id_modif = null;
             if ($nb_elem > 0) {
                 foreach ($utilisateurs as $utilisateur) {
+
                     if (!utilisateurValide($utilisateur)) {
                         die("Erreur : Utilisateur non valide");
                     }
+
                     echo '<form action="" method="post" id="form-' . $utilisateur["id"] . '"></form>';
                 }
-                // envoi des formulaires si besoin
+                // validation des formulaires si besoin
                 $j = ($page_active - 1) * $elem_par_page;
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $id_modif = test_input($_POST["id"]);
+                    $utilisateur = $utilisateurs[$id_modif];
+                    if (!utilisateurValide($utilisateur)) {
+                        die("Erreur : Utilisateur non valide");
+                    }
+                    if (!isset($_POST["status"]) || empty($_POST["motif"])) {
+                        $msg_err = "Merci de remplir tous les champs.";
+                        // déplacement de l'utilisateur modifié en haut de la liste
+                        $utilisateurs = [$id_modif => $utilisateur] + $utilisateurs;
 
-                for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
-                    $utilisateur = $utilisateurs[$i];
-                    $id = $utilisateur["id"];
-                    if (isset($_POST["form-$id"]) && isset($_POST["status"]) && !empty($_POST["motif"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+                    } else {
+
+                        if ($utilisateur["role"] == test_input($_POST["status"])) {
+                            $msg_err = "Merci de choisir un statut différent.";
+                            $utilisateurs = [$id_modif => $utilisateur] + $utilisateurs;
+
+                        }
 
                         $date = date('d/m/Y h:i:s', time());
                         if (isset($utilisateur["modif_admin"][$date])) {
@@ -119,8 +136,11 @@ $utilisateur = $admin;
                         ecrireFichierUtilisateur($utilisateur);
 
                     }
+
                 }
+
             }
+
             ?>
 
             <form class="grille3" action="#" method="get" id="form-recherche">
@@ -129,13 +149,13 @@ $utilisateur = $admin;
                 </label>
                 <input class="input-formulaire" type="number" name="recherche-ID" id="ID" placeholder="ID" min="0"
                     value="<?php echo $id_recherche ?>">
-                <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?>>
+                <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?> value="Rechercher">
                 <label for="adresse" class="col1">
                     <em>Rechercher par e-mail :</em>
                 </label>
                 <input class="input-formulaire" type="email" name="recherche-email" id="email" placeholder="e-mail"
                     value="<?php echo $email_recherche ?>">
-                <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?>>
+                <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?> value="Rechercher">
             </form>
             <?php
             if (!empty($msg_err)) {
@@ -160,16 +180,19 @@ $utilisateur = $admin;
                     <?php
                     if ($nb_elem > 0) {
                         $j = ($page_active - 1) * $elem_par_page;
+                        $ids = array_keys($utilisateurs);
+
                         for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
-                            $utilisateur = $utilisateurs[$i];
+                            $id = $ids[$i];
+                            $utilisateur = $utilisateurs[$id];
 
                             echo "<tr>";
-                            echo '<td id="' . $utilisateur["id"] . '">' . $utilisateur["id"] . '<input type="hidden" name="id" value="' . $utilisateur["id"] . '"></td>';
+                            echo '<td id="' . $id . '">' . $id . '<input type="hidden" form="form-' . $id . '" name="id" value="' . $id . '"></td>';
                             echo '<td>' . $utilisateur["info"]["nom"] . '</td>';
                             echo '<td>' . $utilisateur["info"]["prenom"] . '</td>';
                             echo '<td id="' . $utilisateur["email"] . '">' . $utilisateur["email"] . '</td>';
                             echo '<td>
-                                    <select class="input-formulaire" form="form-' . $utilisateur["id"] . '" name="status">';
+                                    <select class="input-formulaire" form="form-' . $id . '" name="status">';
                             switch ($utilisateur['role']):
                                 case 'admin':
                                     echo '<option value="admin" selected>Admin</option>';
@@ -195,10 +218,10 @@ $utilisateur = $admin;
                             echo '</select>
                                 </td>';
                             echo '<td>
-                                    <input class="input-formulaire" form="form-' . $utilisateur["id"] . '" type="text" name="motif" placeholder="motif">
+                                    <input class="input-formulaire" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
                                 </td>';
                             echo '<td>
-                                    <button class="input-formulaire" form="form-' . $utilisateur["id"] . '" type="submit" name="form-' . $utilisateur["id"] . '">Valider</button>
+                                    <button class="input-formulaire modif-utilisateur" data-id="'. $id .'" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
                                 </td>';
                             echo "</tr>";
                         }

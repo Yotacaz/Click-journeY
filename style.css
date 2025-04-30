@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
     margin: 0;
     width: 100%;
-
     position: relative;
     background-color: var(--coul-arr-plan);
     display: flex;
@@ -169,8 +168,11 @@ input[type="button"].input-formulaire {
     cursor: pointer;
 }
 
-.input-formulaire a {
+.input-formulaire * {
     color: #261C57;
+    background-color: #43aed4;
+    border: none;
+    outline: none;
 }
 
 .input-formulaire:hover {
@@ -468,6 +470,7 @@ button.btn-img:hover {
     width: calc(100% - 6em);
     /*w=toute la largeur - la marge et le padding*/
     /* margin: 2em; */
+    align-self: center;
     padding: 1em;
     justify-content: center;
 }
@@ -761,7 +764,7 @@ button.btn-img:hover {
 .resultats {
     display: flex;
     margin-top: 1rem;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 

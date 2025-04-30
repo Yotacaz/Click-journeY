@@ -3,7 +3,6 @@ import {
     estEmail,
     estNom,
     estPrenom,
-    est_genre,
     estDate,
     estDatePasse,
     est_mdp
