@@ -1,3 +1,6 @@
+<script src="../js/formulaire.js" type="text/javascript">
+</script>
+
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
