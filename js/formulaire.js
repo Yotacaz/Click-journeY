@@ -1,29 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Fonction pour ajouter l'icône et gérer le clic
-  function ajouterIconeOeil(inputId) {
-    var passwordInput = document.getElementById(inputId);
-
-    if (passwordInput) {
-      var eyeIcon = document.createElement('img'); // Change 'i' to 'img'
-      eyeIcon.setAttribute('src', '/wp-content/uploads/2024/03/eye.svg'); // Set the src attribute for the SVG
-      eyeIcon.style.cssText = 'cursor: pointer; position: absolute; margin-left: -31px; margin-top: 16px;margin-right:9px';
-
-      passwordInput.parentNode.style.position = 'relative';
-      passwordInput.parentNode.insertBefore(eyeIcon, passwordInput.nextSibling);
-
-      eyeIcon.addEventListener('click', function() {
-        if (passwordInput.type === 'password') {
-          passwordInput.type = 'text';
-          eyeIcon.setAttribute('src', '/wp-content/uploads/2024/03/hidden.svg'); // Change to the "eye-slash" icon
-        } else {
-          passwordInput.type = 'password';
-          eyeIcon.setAttribute('src', '/wp-content/uploads/2024/03/eye.svg'); // Revert back to the original "eye" icon
-        }
-      });
+    // Fonction pour ajouter l'icône et gérer le clic
+    function ajouterIconeOeil(Id) {
+      var inputMDP = document.getElementById(Id);
+  
+      if (inputMDP) {
+        var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
+        Iconoeil.setAttribute('src', '../image/img_oeil.png');
+        Iconoeil.style.cssText = 'cursor: pointer; position: absolute; margin-left: -31px; margin-top: 16px;margin-right:9px';
+  
+        inputMDP.parentNode.style.position = 'relative';
+        inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
+  
+        Iconoeil.addEventListener('click', function() {
+          if (inputMDP.type === 'password') {
+            inputMDP.type = 'text';
+            Iconoeil.setAttribute('src', '../image/img_oeil_barré.png'); // Change pour oeil barré
+          } else {
+            inputMDP.type = 'password';
+            Iconoeil.setAttribute('src', '../image/img_oeil.png'); // Reviens sur l'oeil icon original
+          }
+        });
+      }
     }
-  }
-
-  // Appliquer la fonction aux champs de mot de passe et de confirmation
-  ajouterIconeOeil('password');
-  ajouterIconeOeil('password_copy');
-});
+  
+    // Appliquer la fonction aux champs de mot de passe et de confirmation
+    ajouterIconeOeil('mdp');
+  });
