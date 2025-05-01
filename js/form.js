@@ -96,14 +96,19 @@ function est_mdp(motDePasse) {
     if (!/[a-zA-Z]/.test(motDePasse)) {
         erreurs.push("contenir au moins une lettre.");
     }
-    let msg_err = "<div>Le mot de passe doit :<ul>";
-    for (let i = 0; i < erreurs.length; i++) {
-        msg_err += "<li>" + erreurs[i] + "</li>";
-    }
+    let msg_err = "Le mot de passe doit ";
     if (erreurs.length === 0) {
         return "";
     }
-    return msg_err + "</ul></div>";
+    else if (erreurs.length === 1) {
+        return msg_err + erreurs[0];
+    }
+
+    msg_err += ":<ul>";
+    for (let i = 0; i < erreurs.length; i++) {
+        msg_err += "<li>" + erreurs[i] + "</li>";
+    }
+    return "<div>" + msg_err + "</ul></div>";
 }
 
 

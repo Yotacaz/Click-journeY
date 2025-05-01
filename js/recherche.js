@@ -1,28 +1,31 @@
+import { page_active } from "./compteur_page.js";
 
-let form = document.getElementById("form-recherche");
-let donnes_formulaire = new FormData(form);
-let url = new URL(window.location.href);
-let param_form = new URLSearchParams(donnes_formulaire);
-console.log(param_form);
-
-
+if (typeof form === "undefined") {
+    var form = document.getElementById("form-recherche");
+}
+if (typeof donnes_formulaire === "undefined") {
+    var donnes_formulaire = new FormData(form);
+    var url = new URL(window.location.href);
+    var param_form = new URLSearchParams(donnes_formulaire);
+}
 
 let div_resultats = document.getElementById("resultats");
 
 if (form === null) {
     console.error("Erreur : le formulaire de recherche n'a pas été trouvé.");
 }
-if (VOYAGES === null) {
+if (typeof VOYAGES === "undefined") {
+
     console.error("Erreur : le tableau de voyages n'a pas été trouvé.");
 }
 if (donnes_formulaire === null) {
     console.error("Erreur : le FormData n'a pas été trouvé.");
 }
-if (URL_IMG_VOYAGE == "") {
+if (typeof URL_IMG_VOYAGE === "undefined") {
     console.error("Erreur : le dossier d'images de voyage n'est pas renseigné.");
 
 }
-if (evenement == null) {
+if (typeof evenement === undefined) {
     console.error("Erreur : variable d'événements n'a pas été trouvé.");
 }
 
@@ -30,6 +33,34 @@ if (evenement == null) {
 
 var resultats = VOYAGES.slice();    // Copie du tableau voyages pour le filtrage
 
+
+if (typeof nb_elem === "undefined") {
+    nb_elem = resultats.length;
+    console.warn("Aucun nombre d'élements dans le tableau de voyages n'a été renseigné.");
+}
+if (typeof elem_par_page === "undefined") {
+    elem_par_page = nb_elem;
+    console.warn("Aucun nombre d'élements par page n'a été renseigné.");
+}
+if (typeof page_active === "undefined") {
+    page_active = param_form.get("page") || 1;
+    console.warn("Aucune page active n'a été renseignée.");
+}
+
+// if (typeof btn_pre === "undefined") {
+//     btn_pre = document.getElementById("page-pre");
+//     console.warn("Aucun bouton précédent n'a été trouvé.");
+// }
+
+// if (typeof btn_sui === "undefined") {
+//     btn_sui = document.getElementById("page-sui");
+//     console.warn("Aucun bouton suivant n'a été trouvé.");
+// }
+
+
+window.addEventListener("page_change", function () {
+    afficherResultats();
+});
 
 /*
 exemple de donnes_formulaire :
@@ -157,12 +188,14 @@ function formaterTitreVoyage(titre) {
 }
 
 function afficherResultats() {
-    
+
+
     div_resultats.innerHTML = "";
     if (resultats.length === 0) {
         div_resultats.innerHTML = "<em>Aucun voyage ne correspond à votre recherche.</em>";
     } else {
-        for (let i = 0; i < resultats.length; i++) {
+        let j = (page_active - 1) * elem_par_page;
+        for (let i = j; i < Math.min(j + elem_par_page, nb_elem); i++) {
             afficherResumeVoyage(resultats[i]);
         }
     }
@@ -198,7 +231,7 @@ function afficherResumeVoyage(voyage) {
     div_resultats.appendChild(carte_info);
 }
 
-function modifUrl(){
-    
+function modifUrl() {
+
     window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
 }

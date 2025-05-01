@@ -93,6 +93,7 @@ ul {
 .texte-align-centre {
     text-align: center;
 }
+
 .texte-gauche {
     text-align: left;
 }
@@ -178,6 +179,12 @@ input[type="button"].input-formulaire {
 .input-formulaire:hover {
     border: #CA64F9 solid .1em;
     background-color: #43aed4;
+}
+
+.input-formulaire[disabled] {
+    background-color: #43aed4a0;
+    cursor: not-allowed;
+
 }
 
 a.input-formulaire {

@@ -11,11 +11,7 @@ if (!utilisateurValide($utilisateur)) {
 
 require_once "php-include/fonctions_voyages.php";
 ?><!DOCTYPE html>
-<html lang="fr">
-
-<script src="../js/profil.js" type="module">
-</script>
-
+<html lang="fr">   
 
 
 <head>
@@ -30,6 +26,8 @@ require_once "php-include/fonctions_voyages.php";
 
 
 <body>
+    <script src="../js/profil.js" type="module">
+    </script>
     <?php
     require_once "php-include/header.php";
     ?>

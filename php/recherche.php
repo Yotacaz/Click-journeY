@@ -9,6 +9,7 @@ if
 require_once "php-include/fonctions_voyages.php";
 $voyages = chargerVoyages();
 $contenu_fichier_voyage = chargerJsonVoyages();
+$form_id = "form-recherche";
 ?><!DOCTYPE html>
 <html>
 
@@ -31,11 +32,16 @@ if (!empty($_GET["recherche-textuelle"])) {
 
     const URL_IMG_VOYAGE = "<?= URL_IMG_VOYAGE; ?>";
     const evenement = new Event('change');
-    // console.log(VOYAGES[1].id);
+
+    let nom_validation = "valider-recherche";
+    let form_id = "<?= $form_id; ?>";
+    let nb_elem = VOYAGES.length;
+    let elem_par_page = 9;
+
 
 </script>
 
-<script src="../js/recherche.js" defer></script>
+<script src="../js/recherche.js" defer type="module"></script>
 <script src="../js/form.js" defer type="module"></script>
 
 <head>
@@ -64,6 +70,7 @@ if (!empty($_GET["recherche-textuelle"])) {
         $nom_validation = "valider-recherche";
 
         //On initialise les variables de recherche
+        //TODO : A SUPPRIMER (dupliqué en JAVASCRIPT)
         $genre = "Tout";
         $theme = "Tout";
         $tri = "defaut"; //defaut, note, prix-croissant, prix-decroissant, date
@@ -91,7 +98,7 @@ if (!empty($_GET["recherche-textuelle"])) {
         }
         ?>
 
-        <form action="#" method="get" id="form-recherche" class="js-form">
+        <form action="#" method="get" id="<?= $form_id ?>" class="js-form">
             <div class="bandeau-image">
                 <img src="../img/arcade.png" alt="image arcade">
                 <div class="centre">
@@ -101,14 +108,14 @@ if (!empty($_GET["recherche-textuelle"])) {
                     <div>
                         <div class="enveloppe-input">
                             <div class="input-formulaire tres-grand bordure-violette">
-                                <input name="recherche-textuelle" form="form-recherche" id="recherche-textuelle"
+                                <input name="recherche-textuelle" form="<?= $form_id ?>" id="recherche-textuelle"
                                     class="tres-grand" type="text" placeholder="Recherchez un jeu..."
                                     maxlength="<?= MAX_STRING_LENGTH ?>">
                                 <span class="compteur">0/<?= MAX_STRING_LENGTH ?></span>
                             </div>
                             <p class="message-erreur"></p>
                         </div>
-                        <button name="<?php echo $nom_validation; ?>" form="form-recherche" class="sans-mise-en-forme"
+                        <button name="<?php echo $nom_validation; ?>" form="<?= $form_id ?>" class="sans-mise-en-forme"
                             type="submit"><img class="img-4em contour-img" src="../img/search.png"
                                 alt="Rechercher"></button>
                     </div>
@@ -312,25 +319,25 @@ if (!empty($_GET["recherche-textuelle"])) {
             }
             ?>
 
-            <?php
-            $nb_elem = count($voyages);
-            $elem_par_page = 8;
-            $form_id = "form-recherche";
-            require_once "php-include/compteur_page.php";
-            ?>
+            <em id="compteur-nb-elem"> Affichage de xx / xx éléments</em>
+            <div>
+                <div class="grille3">
+                    <button form="<?= $form_id ?>" id="page-pre" class="input-formulaire" type="button" name="page"
+                        value="xx">
+                        Précédent &lt; </button>
+
+                    <p id="compteur-page">Page 1 / xx </p>
+
+                    <button form="<?= $form_id ?>" id="page-sui" class="input-formulaire" type="button" name="page"
+                        value="xx">
+                        &gt; Suivant
+                    </button>
+                </div>
+            </div>
 
 
             <div class="resultats" id="resultats">
-                <?php
-                // if ($nb_elem > 0) {
-                //     $j = ($page_active - 1) * $elem_par_page;
-                //     for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
-                //         $voyage = $voyages[$i];
-                //         afficherResumeVoyage($voyage);
-                //         // echo "$i ";
-                //     }
-                // }
-                ?>
+
             </div>
         </div>
     </main>

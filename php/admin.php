@@ -28,6 +28,7 @@ if (!utilisateurValide($admin)) {
     $utilisateur = null;
     $utilisateurs = listerUtilisateurs();
     $nom_validation = "valider-recherche";
+    $form_id = "form-recherche";
 
     $email_recherche = $id_recherche = "";
     $msg_err = "";
@@ -80,7 +81,7 @@ if (!utilisateurValide($admin)) {
             <?php
             $nb_elem = count($utilisateurs);
             $elem_par_page = 10;
-            $form_id = "form-recherche";
+
             require_once "php-include/compteur_page.php";
             ?>
             <br>
@@ -221,7 +222,7 @@ if (!utilisateurValide($admin)) {
                                     <input class="input-formulaire" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
                                 </td>';
                             echo '<td>
-                                    <button class="input-formulaire modif-utilisateur" data-id="'. $id .'" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
+                                    <button class="input-formulaire modif-utilisateur" data-id="' . $id . '" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
                                 </td>';
                             echo "</tr>";
                         }

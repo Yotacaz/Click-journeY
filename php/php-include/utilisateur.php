@@ -9,7 +9,7 @@ require_once realpath(__DIR__ . '/../../config.php');
 
 
 
-$dossier_utilisateurs = CHEMIN_DONNEES . '/utilisateurs/';
+$dossier_utilisateurs = CHEMIN_DONNEES.'/utilisateurs/';
 
 
 /**
