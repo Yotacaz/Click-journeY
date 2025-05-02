@@ -146,6 +146,7 @@ function rechercheTextuelle(string $texte): array
     foreach ($voyages as $voyage) {
         $id = intval($voyage["id"]);
         $priorite[$id] = 0;
+        unset($voyage["email_personnes_inscrites"], $voyage["image"]);
         array_walk_recursive($voyage, 'nettoyer_chaine');
         foreach ($mots as $mot) {
 
@@ -172,6 +173,18 @@ function rechercheTextuelle(string $texte): array
         }
     }
     return $resultat;
+}
+
+/**
+ * Transforme un tableau de voyages en une chaîne de caractères pour l'affichage dans une page JavaScript.
+ * et supprime les données sensibles (email, image) avant de l'echo
+ * @param array $voyages 
+ */
+function transmission_voyages_js(array $voyages): void
+{
+    unset($voyages["email_personnes_inscrites"], $voyages["image"]);
+    $tableau_json = json_encode($voyages);
+    echo "var voyages = $tableau_json;\n";
 }
 
 ?>

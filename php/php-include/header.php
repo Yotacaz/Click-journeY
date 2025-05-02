@@ -35,46 +35,44 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
             <a href="recherche.php" <?php
             classe_actif($page_active, "recherche.php");
             ?>>
-  <img class="img-1em cacher" src="../img/search.png" alt="🔍">&nbsp;Rechercher
+            <img class="img-1em cacher" src="../img/search.png" alt="🔍">&nbsp;Rechercher
             </a>
 
         </nav>
     </div>
     <div class="sectionH">
         <nav class="navbar">
-            <?php
-            if ($utilisateur!=null) {
-                
-                echo '<a href="profil.php" ';
-                classe_actif($page_active, "profil.php");
-                echo '>Profil</a>';
-                if ($utilisateur["role"]==="admin") {
-                    echo '<a href="admin.php" ';
-                    classe_actif($page_active, "admin.php");
-                    echo '>Admin</a>';
-                }
-                echo '<a href="php-include/deconnexion.php" class="cacher" ';
-                echo '>Déconnexion</a>';
-            } else {
-                echo '<a href="connexion.php" ';
-                classe_actif($page_active, "connexion.php");
-                echo '>Connexion</a>';
-                echo '<a href="inscription.php" ';
-                classe_actif($page_active, "inscription.php");
-                echo '>Inscription</a>';
-            }
-            ?>
-            <!-- <a href="connexion.php" <?php
-            classe_actif($page_active, "connexion.php");
-            ?>>Connexion</a>
-            <a href="inscription.php" <?php
-            classe_actif($page_active, "inscription.php");
-            ?>>Inscription</a>
-            <a href="profil.php" <?php
-            classe_actif($page_active, "profil.php");
-            ?>>Profil</a> -->
-            <!-- <a href="#">Admin</a> -->
-            <!-- Si connecté : page profil, si admin : page admin ?? -->
+            <div class="menu-deroulant">
+                <a class="contenu-affiche-menu" href="#">
+                    &#9207; <p class="cacher" href="#">Compte</p> &nbsp;
+                    <img src="../img/profile-circle-icon-.png" alt="icône compte">
+                </a>
+                <div class="contenu-menu">
+                    <?php
+                    if ($utilisateur != null) {
+                        echo '<a href="profil.php" ';
+                        classe_actif($page_active, "profil.php");
+                        echo '>Profil</a>';
+                        if ($utilisateur["role"] === "admin") {
+                            echo '<a href="admin.php" ';
+                            classe_actif($page_active, "admin.php");
+                            echo '>Admin</a>';
+                        }
+                        echo '<a href="php-include/deconnexion.php" ';
+                        echo '>Déconnexion</a>';
+                    } else {
+                        echo '<a href="connexion.php" ';
+                        classe_actif($page_active, "connexion.php");
+                        echo '>Connexion</a>';
+                        echo '<a href="inscription.php" ';
+                        classe_actif($page_active, "inscription.php");
+                        echo '>Inscription</a>';
+                    }
+                    ?>
+                    <span><input type="checkbox" name="theme" id="theme" value="TODO"><span>&nbsp;Thème xxx</span></span>
+                </div>
+            </div>
         </nav>
     </div>
+
 </div>

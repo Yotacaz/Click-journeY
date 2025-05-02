@@ -88,7 +88,9 @@ $voyage =
             ),
         ),
 
-        "email_personnes_inscrites" => array(),
+        "email_personnes_inscrites" => [
+            "personne1@example.com" => 5   //ex personne inscrite avec 5 amis
+        ],
         "prix_total" => 5000,
         "nb_places_tot" => 30,
         "nb_places_restantes" => 30,

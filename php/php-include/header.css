@@ -38,6 +38,7 @@ nav.navbar {
     display: inline-flex;
     height: 100%;
     align-items: center;
+    position: relative;
 }
 
 .header h1 {
@@ -45,11 +46,13 @@ nav.navbar {
 }
 
 @media (max-width: 850px) {
-    .header .cacher{
+    .header .cacher {
         display: none;
     }
 }
+
 .header a {
+    color: #261C57;
     flex-grow: 1;
     height: 100%;
     display: flex;
@@ -76,4 +79,67 @@ nav.navbar {
 .header a:visited,
 .header a:active {
     color: #261C57;
+}
+
+/* son parent doit avoir une position relative  */
+.menu-deroulant {
+    height: 100%;
+    /* width: max-content; */
+    position: relative;
+    display: inline-block;
+    transition: 0.3s;
+    color: #261C57;
+}
+
+
+
+
+/* Contenu caché par défaut */
+.contenu-menu {
+    display: none;
+    position: absolute;
+    background-color: #43aed4d8;
+    top: 100%;
+    right: 0;
+    min-width: 160px;
+    box-shadow: -0.5em 0.5em 2em rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    border-radius: 0 0 0 .5em;
+    text-align: center;
+}
+
+
+.contenu-menu :last-child {
+    border-radius: 0 0 0 .5em;
+}
+
+.contenu-menu>a,
+.contenu-menu>span {
+    padding: .5em 0em;
+    display: block;
+}
+
+.contenu-menu a:hover {
+    background-color: hsla(265, 100%, 100%, 0.25);
+    transition: 0.2s;
+}
+
+/* Contenu déjà afficher du menu déroulant */
+.contenu-affiche-menu:hover {
+    background-color: hsla(265, 100%, 100%, 0.25);
+    transition: 0.2s;
+    text-decoration: none !important;
+    cursor: default;
+}
+
+.contenu-affiche-menu:hover p {
+    text-decoration: underline;
+}
+
+.contenu-affiche-menu img {
+    height: 60%;
+}
+
+.menu-deroulant:hover .contenu-menu {
+    display: flex;
 }

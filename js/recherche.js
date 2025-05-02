@@ -14,7 +14,7 @@ let div_resultats = document.getElementById("resultats");
 if (form === null) {
     console.error("Erreur : le formulaire de recherche n'a pas été trouvé.");
 }
-if (typeof VOYAGES === "undefined") {
+if (typeof voyages === "undefined") {
 
     console.error("Erreur : le tableau de voyages n'a pas été trouvé.");
 }
@@ -31,7 +31,7 @@ if (typeof evenement === undefined) {
 
 
 
-var resultats = VOYAGES.slice();    // Copie du tableau voyages pour le filtrage
+var resultats = voyages.slice();    // Copie du tableau voyages pour le filtrage
 
 
 if (typeof nb_elem === "undefined") {
@@ -95,31 +95,31 @@ tri.addEventListener("change", function () {
 
 
 
-let inputs = form.getElementsByClassName("filtre");
-for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("change", function () {
-        if (this.type === "checkbox") {
-            if (this.checked) {
-                param_form.append(this.name, this.value);
-            } else {
-                param_form.delete(this.name, this.value);
-            }
-        }
-        else if (this.type === "radio") {
-            if (this.checked) {
-                param_form.set(this.name, this.value);
-            }
-        } else {
-            param_form.set(this.name, this.value);
-        }
-        filterVoyages();
-        modifUrl();
-        afficherResultats();
-    });
-}
+// let inputs = form.getElementsByClassName("filtre");
+// for (let i = 0; i < inputs.length; i++) {
+//     inputs[i].addEventListener("change", function () {
+//         if (this.type === "checkbox") {
+//             if (this.checked) {
+//                 param_form.append(this.name, this.value);
+//             } else {
+//                 param_form.delete(this.name, this.value);
+//             }
+//         }
+//         else if (this.type === "radio") {
+//             if (this.checked) {
+//                 param_form.set(this.name, this.value);
+//             }
+//         } else {
+//             param_form.set(this.name, this.value);
+//         }
+//         filterVoyages();
+//         modifUrl();
+//         afficherResultats();
+//     });
+// }
 
 //filtre et tri au chargement de la page
-filterVoyages();
+// filterVoyages();
 trier();
 afficherResultats();
 
@@ -131,8 +131,8 @@ function filterVoyages() {
     let prixMax = parseFloat(param_form.get("prix_max_nb"));
     let lieux = param_form.getAll("lieu[]");
     lieux = lieux.map(lieu => lieu.toLowerCase());
-    for (let i = 0; i < VOYAGES.length; i++) {
-        let voyage = VOYAGES[i];
+    for (let i = 0; i < voyages.length; i++) {
+        let voyage = voyages[i];
         let date_voyage = new Date(voyage.dates.debut);
         let pays = voyage.localisation.pays.toLowerCase();
         if (param_form.get("recherche-textuelle") !== "" && !voyage.titre.toLowerCase().includes(param_form.get("recherche-textuelle").toLowerCase())) {
@@ -156,6 +156,7 @@ function filterVoyages() {
         resultats.push(voyage);
 
     }
+    nb_elem = resultats.length;
     trier();    // on trie résultat apres filtrage (on peut avoir ajouté des éléments)
 }
 
@@ -164,6 +165,7 @@ function trier() {
 
     switch (tri) {
         case "defaut":
+            resultats = voyages.slice();
             break;
         case "note":
             resultats.sort((a, b) => { return b.note - a.note; });
@@ -177,6 +179,7 @@ function trier() {
         case "date":    //date croissante
             resultats.sort((a, b) => { return new Date(a.dates.debut) - new Date(b.dates.debut); });
             break;
+
         default:
             console.error("Erreur dans le tri des voyages : " + this.value);
             break;
@@ -201,10 +204,18 @@ function afficherResultats() {
     }
 }
 
-function afficherResumeVoyage(voyage) {
 
+// Note : afficher de nouveau les voyages permet d'éviter de potentiels bugs
+// où le tris ne serais pas correctement appliqué mais dont on ne se
+// rendrait pas compte.
+
+function afficherResumeVoyage(voyage) {
+    if (voyage == null) {
+        console.error("Erreur : tentative d'affichage d'un voyage inexistant.");
+        return;
+    }
     let index = voyage.id;
-    if (index !== VOYAGES.indexOf(voyage)) {
+    if (index !== voyages.indexOf(voyage)) {
         console.error("Erreur : l'index du voyage ne correspond pas à son index dans le tableau voyages.");
     }
     let titre_formate = formaterTitreVoyage(voyage.titre);
@@ -232,6 +243,5 @@ function afficherResumeVoyage(voyage) {
 }
 
 function modifUrl() {
-
     window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
 }

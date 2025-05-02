@@ -17,25 +17,90 @@ $form_id = "form-recherche";
 if (!empty($_GET["recherche-textuelle"])) {
     $voyages = rechercheTextuelle($_GET["recherche-textuelle"]);
 }
-?>
 
+
+if (!isset($voyages)) {
+    die("Les voyages n'ont pas pu être chargé");
+}
+$nom_validation = "valider-recherche";
+
+//On initialise les variables de recherche
+$genre = "Tout";
+$theme = "Tout";
+$tri = "defaut"; //defaut, note, prix-croissant, prix-decroissant, date
+$prix_min = 0;
+$prix_max = 10000;
+$date_min = strtotime("2025-01-01");
+$date_max = strtotime("2050-12-31");
+$lieux = ["france", "etats-unis", "japon", "chine", "autre"];
+
+if (isset($_GET[$nom_validation])) {
+    $genre = $_GET["genre"];
+    $theme = $_GET["theme"];
+    $tri = $_GET["tri"]; //defaut, note, prix-croissant, prix-decroissant, date, aleatoire
+    $prix_min = $_GET["prix_min_nb"];
+    $prix_max = $_GET["prix_max_nb"];
+    $date_min = strtotime($_GET["date_min"]);
+    $date_max = strtotime($_GET["date_max"]);
+    $lieux = [];
+    if (isset($_GET["lieu"])) {
+        if (!is_array($_GET["lieu"])) {
+            die("Erreur lors de la récupération des lieux (pas un tableau)");
+        }
+        $lieux = array_map('strtolower', $_GET["lieu"]);
+    }
+}
+
+$voyage_dispo = [];
+foreach ($voyages as $voyage) {
+    $places_restantes = $voyage['nb_places_restantes'];
+    if ($places_restantes < 2) {
+        //on n'affiche pas les voyages avec seulement une place restante pour avoir une marge de manoeuvre
+        continue;
+    }
+    $voyage_dispo[] = $voyage;
+}
+
+if (isset($_GET[$nom_validation])) {
+    $resultats = [];
+    foreach ($voyage_dispo as $voyage) {
+        if (strtolower($genre) !== "tout" && strtolower($voyage["genre"]) !== strtolower($genre)) {
+            continue;
+        }
+        if (strtolower($theme) !== "tout" && strtolower($voyage["theme"]) !== strtolower($theme)) {
+            continue;
+        }
+        if ($voyage["prix_total"] < $prix_min) {
+            continue;
+        }
+        if ($voyage["prix_total"] > $prix_max) {
+            continue;
+        }
+        $date_debut = strtotime($voyage["dates"]["debut"]);
+        $date_fin = strtotime($voyage["dates"]["fin"]);
+        if ($date_min > $date_debut || $date_max < $date_fin) {
+            continue;
+        }
+
+        if (!(in_array(strtolower($voyage["localisation"]["pays"]), $lieux) || (in_array("autre", $lieux) && !(in_array(strtolower($voyage["localisation"]["pays"]), ["france", "etats-unis", "japon", "chine"]))))) {
+            continue;
+        }
+
+        $resultats[] = $voyage;
+    }
+}
+?>
 <script type="text/javascript">
 
-    <?php
-    // definition de la constante VOYAGES :
-    $js_voyages = json_encode($voyages);
-    echo "const VOYAGES = $js_voyages  ;\n";
-    echo ";\n";
-    ?>
 
-    console.log(VOYAGES);
+    <?php transmission_voyages_js($voyages); ?>
 
     const URL_IMG_VOYAGE = "<?= URL_IMG_VOYAGE; ?>";
     const evenement = new Event('change');
 
     let nom_validation = "valider-recherche";
     let form_id = "<?= $form_id; ?>";
-    let nb_elem = VOYAGES.length;
+    let nb_elem = voyages.length;
     let elem_par_page = 9;
 
 
@@ -60,43 +125,6 @@ if (!empty($_GET["recherche-textuelle"])) {
     require_once "php-include/header.php";
     ?>
     <main>
-        <?php
-        // $resultats = rechercheTextuelle("Gta V !");
-        
-
-        if (!isset($voyages)) {
-            die("Les voyages n'ont pas pu être chargé");
-        }
-        $nom_validation = "valider-recherche";
-
-        //On initialise les variables de recherche
-        //TODO : A SUPPRIMER (dupliqué en JAVASCRIPT)
-        $genre = "Tout";
-        $theme = "Tout";
-        $tri = "defaut"; //defaut, note, prix-croissant, prix-decroissant, date
-        $prix_min = 0;
-        $prix_max = 10000;
-        $date_min = strtotime("2025-01-01");
-        $date_max = strtotime("2050-12-31");
-        $lieux = ["france", "etats-unis", "japon", "chine", "autre"];
-
-        if (isset($_GET[$nom_validation])) {
-            $genre = $_GET["genre"];
-            $theme = $_GET["theme"];
-            $tri = $_GET["tri"]; //defaut, note, prix-croissant, prix-decroissant, date, aleatoire
-            $prix_min = $_GET["prix_min_nb"];
-            $prix_max = $_GET["prix_max_nb"];
-            $date_min = strtotime($_GET["date_min"]);
-            $date_max = strtotime($_GET["date_max"]);
-            $lieux = [];
-            if (isset($_GET["lieu"])) {
-                if (!is_array($_GET["lieu"])) {
-                    die("Erreur lors de la récupération des lieux (pas un tableau)");
-                }
-                $lieux = array_map('strtolower', $_GET["lieu"]);
-            }
-        }
-        ?>
 
         <form action="#" method="get" id="<?= $form_id ?>" class="js-form">
             <div class="bandeau-image">
@@ -166,18 +194,7 @@ if (!empty($_GET["recherche-textuelle"])) {
                         </select>
                     </div>
                 </div>
-                <div class="flex">
-                    <h3><label for="tri">Trier par : &nbsp;</label></h3>
-                    <select class="input-formulaire" name="tri" id="tri">
-                        <option <?= $tri === "defaut" ? "selected" : "" ?> value="defaut">Défaut</option>
-                        <option <?= $tri === "note" ? "selected" : "" ?> value="note">Note</option>
-                        <option <?= $tri === "prix-croissant" ? "selected" : "" ?> value="prix-croissant">Prix
-                            croissant</option>
-                        <option <?= $tri === "prix-decroissant" ? "selected" : "" ?> value="prix-decroissant">Prix
-                            décroissant</option>
-                        <option <?= $tri === "date" ? "selected" : "" ?> value="date">Date</option>
-                    </select>
-                </div>
+
 
                 <div class="separateur-section-haut">
                     <h2>Prix</h2>
@@ -241,84 +258,18 @@ if (!empty($_GET["recherche-textuelle"])) {
             </div>
         </form>
         <div class="texte-centre" style="text-align: center;">
-            <?php
-            $voyage_dispo = [];
-            foreach ($voyages as $voyage) {
-                $places = intval($voyage['nb_places_tot']);
-                $places_restantes = $places - count($voyage['email_personnes_inscrites']);
-                if ($places_restantes < 2) {
-                    //on n'affiche pas les voyages avec seulement une place restante pour avoir une marge
-                    continue;
-                }
-                $voyage_dispo[] = $voyage;
-            }
-
-            if (isset($_GET[$nom_validation])) {
-                $resultats = [];
-                foreach ($voyage_dispo as $voyage) {
-                    if (strtolower($genre) !== "tout" && strtolower($voyage["genre"]) !== strtolower($genre)) {
-                        continue;
-                    }
-                    if (strtolower($theme) !== "tout" && strtolower($voyage["theme"]) !== strtolower($theme)) {
-                        continue;
-                    }
-                    if ($voyage["prix_total"] < $prix_min) {
-                        continue;
-                    }
-                    if ($voyage["prix_total"] > $prix_max) {
-                        continue;
-                    }
-                    $date_debut = strtotime($voyage["dates"]["debut"]);
-                    $date_fin = strtotime($voyage["dates"]["fin"]);
-                    if ($date_min > $date_debut || $date_max < $date_fin) {
-                        continue;
-                    }
-                    ;
-                    if (!(in_array(strtolower($voyage["localisation"]["pays"]), $lieux) || (in_array("autre", $lieux) && !(in_array(strtolower($voyage["localisation"]["pays"]), ["france", "etats-unis", "japon", "chine"]))))) {
-                        continue;
-                    }
-
-                    $resultats[] = $voyage;
-                }
-
-
-                switch ($tri) {
-                    case "defaut":
-                        // shuffle($resultats);
-                        break;
-                    case "note":
-                        $note = array_column($resultats, 'note');
-                        if (!array_multisort($note, SORT_DESC, $resultats)) {
-                            die("Erreur lors du tri par note");
-                        }
-                        break;
-                    case "prix-croissant":
-                        $prix = array_column($resultats, 'prix_total');
-                        if (!array_multisort($prix, SORT_ASC, $resultats)) {
-                            die("Erreur lors du tri par prix");
-                        }
-                        ;
-                        break;
-                    case "prix-decroissant":
-                        $prix = array_column($resultats, 'prix_total');
-                        if (!array_multisort($prix, SORT_DESC, $resultats)) {
-                            die("Erreur lors du tri par prix");
-                        }
-                        break;
-                    case "date":
-                        $date_debut = array_column($resultats, 'dates', 'debut');
-                        if (!array_multisort($date_debut, SORT_ASC, $resultats)) {
-                            die("Erreur lors du tri par date");
-                        }
-                        break;
-                    default:
-                        die("Erreur lors du tri");
-                }
-                $voyages = $resultats;
-
-            }
-            ?>
-
+            <div class="flex">
+                <h3><label for="tri">Trier par : &nbsp;</label></h3>
+                <select class="input-formulaire" form="<?= $form_id ?>" name="tri" id="tri">
+                    <option <?= $tri === "defaut" ? "selected" : "" ?> value="defaut">Défaut</option>
+                    <option <?= $tri === "note" ? "selected" : "" ?> value="note">Note</option>
+                    <option <?= $tri === "prix-croissant" ? "selected" : "" ?> value="prix-croissant">Prix
+                        croissant</option>
+                    <option <?= $tri === "prix-decroissant" ? "selected" : "" ?> value="prix-decroissant">Prix
+                        décroissant</option>
+                    <option <?= $tri === "date" ? "selected" : "" ?> value="date">Date</option>
+                </select>
+            </div>
             <em id="compteur-nb-elem"> Affichage de xx / xx éléments</em>
             <div>
                 <div class="grille3">
@@ -337,7 +288,15 @@ if (!empty($_GET["recherche-textuelle"])) {
 
 
             <div class="resultats" id="resultats">
-
+                <?php
+                // $j = $elem_par_page * ($page - 1);
+                // for ($i = $j; $i < min($j + $elem_par_page, $nb_elem); $i++) {
+                //     afficherResumeVoyage($resultats[$i]);
+                // }
+                // if ($nb_elem == 0) {
+                //     echo "<em>Aucun résultat trouvé.</em>";
+                // }
+                ?>
             </div>
         </div>
     </main>

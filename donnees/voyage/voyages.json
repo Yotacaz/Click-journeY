@@ -86,7 +86,9 @@
                 ]
             }
         ],
-        "email_personnes_inscrites": [],
+        "email_personnes_inscrites": {
+            "personne1@example.com" : 5
+        },
         "nb_places_tot": 30,
         "nb_places_restantes": 30,
         "prix_total": 5000,
