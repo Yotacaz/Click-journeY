@@ -23,10 +23,8 @@ require_once "php-include/fonctions_voyages.php";
     $info = json_decode(file_get_contents("../donnees/paiement/transaction_en_cours.json"), true);
     $tout_tracabilite = json_decode(file_get_contents("../donnees/paiement/transaction_finis.json"), true);
     $identifiant_v = $info["voyage"]["id"];
-    /*$utilisateur["voyages"]["achetes"][$identifiant_v] = $utilisateur["voyages"]["consultes"][$identifiant_v];
-    $utilisateur["voyages"]["consultes"][$identifiant_v] = "achete";*/  //Il faut plutot le unset
     $voyage = chargerVoyageParId($identifiant_v);
-    if ($voyage == null) {
+    if ($voyage == null || $voyage['id']!= $identifiant_v) {
         die("Erreur : ID de voyage $identifiant_v  introuvable ou corrompu.");
     }
     if (empty($utilisateur["voyages"]["consultes"][$identifiant_v])){
@@ -42,7 +40,7 @@ require_once "php-include/fonctions_voyages.php";
         die("Erreur : Vous ne pouvez pas acheter un nombre négatif de places.");
     }
     
-
+    
     $date=date("j_F_Y");
     $status=$_GET["status"];
     if($status == "accepted"){
@@ -56,6 +54,9 @@ require_once "php-include/fonctions_voyages.php";
         fwrite( $open , json_encode($tracabilite));
         fclose($open);
         
+        $utilisateur["voyages"]["achetes"][$identifiant_v] = $utilisateur["voyages"]["consultes"][$identifiant_v];
+        unset($utilisateur["voyages"]["consultes"][$identifiant_v]);
+        sauvegarderSessionUtilisateur($utilisateur); 
         $voyage["nb_places_restantes"] = $places_achetes - $places_achetes;
         $voyage["email_personnes_inscrites"][$utilisateur["email"]] = $places_achetes;
         sauvegarder_voyage($voyage);
