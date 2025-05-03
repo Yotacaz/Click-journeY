@@ -4,24 +4,24 @@ require_once realpath(__DIR__ . '/../../config.php');
 require_once "utiles.php";
 
 const NOM_FICHIER = "voyages.json";
-$chemin_voyage = realpath(CHEMIN_DONNEES . "/voyage/" . NOM_FICHIER);
+define('CHEMIN_FICHIER_VOYAGE', realpath(CHEMIN_DONNEES . "/voyage/" . NOM_FICHIER));
 const DOSSIER_IMG_VOYAGE = CHEMIN_RACINE . "/img/voyage";
 const URL_IMG_VOYAGE = URL_RELATIVE . "/img/voyage";
 // die(URL_RELATIVE);
 
-if (!file_exists($chemin_voyage)) {
-    echo $chemin_voyage;
+if (!file_exists(CHEMIN_FICHIER_VOYAGE)) {
+    echo CHEMIN_FICHIER_VOYAGE;
     die("Le fichier voyage n'existe pas");
 }
 
-$contenu_fichier_voyage = file_get_contents($chemin_voyage);
+$contenu_fichier_voyage = file_get_contents(CHEMIN_FICHIER_VOYAGE);
 
 if ($contenu_fichier_voyage === false) {
-    die("Problème lors de la lecture de $chemin_voyage");
+    die("Problème lors de la lecture de " . CHEMIN_FICHIER_VOYAGE);
 }
 $voyages = json_decode($contenu_fichier_voyage, true);
 if ($voyages == null) {
-    die("Problème lors de la lecture de $chemin_voyage");
+    die("Problème lors de la lecture de " . CHEMIN_FICHIER_VOYAGE);
 }
 
 function chargerJsonVoyages()
@@ -174,6 +174,19 @@ function rechercheTextuelle(string $texte): array
     }
     return $resultat;
 }
+
+/**
+ * Sauvegarde les données d'un voyage modifié dans le fichier JSON
+ * @param array $voyage Le tableau associatif du voyage à sauvegarder
+ */
+function sauvegarder_voyage($voyage)
+{
+    global $voyages;
+    $voyages[$voyage["id"]] = $voyage;
+    $contenu_json = json_encode($voyages, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents(CHEMIN_FICHIER_VOYAGE, $contenu_json);
+}
+
 
 /**
  * Transforme un tableau de voyages en une chaîne de caractères pour l'affichage dans une page JavaScript.

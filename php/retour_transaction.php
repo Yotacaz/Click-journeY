@@ -5,6 +5,8 @@ $utilisateur = connexionUtilisateurRequise();
 if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
+
+require_once "php-include/fonctions_voyages.php";
 ?><!DOCTYPE html>
 <html lang="fr">
 
@@ -22,7 +24,25 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     $tout_tracabilite = json_decode(file_get_contents("../donnees/paiement/transaction_finis.json"), true);
     $identifiant_v = $info["voyage"]["id"];
     /*$utilisateur["voyages"]["achetes"][$identifiant_v] = $utilisateur["voyages"]["consultes"][$identifiant_v];
-    $utilisateur["voyages"]["consultes"][$identifiant_v] = "achete";*/
+    $utilisateur["voyages"]["consultes"][$identifiant_v] = "achete";*/  //Il faut plutot le unset
+    $voyage = chargerVoyageParId($identifiant_v);
+    if ($voyage == null) {
+        die("Erreur : ID de voyage $identifiant_v  introuvable ou corrompu.");
+    }
+    if (empty($utilisateur["voyages"]["consultes"][$identifiant_v])){
+        die("Erreur : Voyage $identifiant_v  introuvable dans la liste des voyages consultés.");
+    }
+    
+    $places_achetes = intval($utilisateur["voyages"]["consultes"][$identifiant_v]["nombre_personnes_totales"]);
+    $places_restantes = intval($voyage['nb_places_restantes']);
+    if ($places_achetes > $places_restantes) {
+        die("Erreur : Vous avez dépassé le nombre de places restantes.");
+    }
+    if ($places_achetes < 0) {
+        die("Erreur : Vous ne pouvez pas acheter un nombre négatif de places.");
+    }
+    
+
     $date=date("j_F_Y");
     $status=$_GET["status"];
     if($status == "accepted"){
@@ -36,7 +56,11 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
         fwrite( $open , json_encode($tracabilite));
         fclose($open);
         
-        header("Location: accueil.php");
+        $voyage["nb_places_restantes"] = $places_achetes - $places_achetes;
+        $voyage["email_personnes_inscrites"][$utilisateur["email"]] = $places_achetes;
+        sauvegarder_voyage($voyage);
+
+        header("Location: profil.php");
         exit;
     }
 ?>

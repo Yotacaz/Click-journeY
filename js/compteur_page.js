@@ -1,4 +1,4 @@
-export { page_active }
+export { page_active, maj_nb_elem_total, reinitialiser_compteurs }
 
 
 /* module permettant une pagination, équivalent de compteur_page.php (code dupliqué) 
@@ -47,8 +47,19 @@ if (typeof donnes_formulaire === 'undefined') {
     var donnes_formulaire = new FormData(form);
     var url = new URL(window.location.href);
     var param_form = new URLSearchParams(donnes_formulaire);
-
 }
+if (url.searchParams.has('page')) {
+    param_form.set('page', url.searchParams.get('page'));
+    page_active = parseInt(url.searchParams.get('page'));
+    
+    if (page_active < 0 || page_active > nb_page_tot) {
+        page_active = nb_elem > 0 ? 1 : 0;
+        param_form.delete('page');
+        console.warn("Numéro page invalide dans l'url. La page actuelle est réinitialisée.");
+    }
+}
+
+
 
 let btn_pre = document.querySelector('#page-pre');
 let btn_suiv = document.querySelector('#page-sui');
@@ -58,6 +69,7 @@ btn_suiv.disabled = page_active >= nb_page_tot;
 let page_change = new CustomEvent('page_change', { detail: page_active });
 
 btn_pre.addEventListener('click', (event) => {
+
     if (page_active > 1) {
 
         page_active--;
@@ -108,6 +120,29 @@ function maj_compteurs(page_active) {
         texte_compteur_elem = "Aucun élément à afficher.";
     }
     compteur_nb_elem.textContent = texte_compteur_elem;
+}
+
+function maj_nb_elem_total(nv_nb_elem) {
+    nb_elem = nv_nb_elem;
+    page_active = nb_elem > 0 ? 1 : 0;
+    nb_page_tot = Math.ceil(nb_elem / elem_par_page);
+    reinitialiser_compteurs();
+    return page_active;
+}
+
+function reinitialiser_compteurs() {
+    page_active = nb_elem > 0 ? 1 : 0;
+    btn_pre.disabled = true;
+    btn_suiv.disabled = nb_page_tot <= 1;
+
+    btn_pre.value = page_active - 1;
+    btn_suiv.value = page_active + 1;
+
+    window.dispatchEvent(page_change);
+    param_form.set('page', page_active.toString());
+    // window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
+    maj_compteurs(page_active);
+    return page_active;
 }
 
 maj_compteurs(page_active);

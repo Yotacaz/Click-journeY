@@ -99,7 +99,7 @@ if ($voyage == null) {
                         placeholder="valeur de contrôle"><br />
 
                     <input type='hidden' name='transaction' value="<?php echo "$transaction" ?>">
-                    <input type='hidden' name='montant' value="<?php echo "$voyage[prix_total]" ?>">
+                    <input type='hidden' name='montant' value="<?php echo $voyage["prix_total"] ?>">
                     <input type='hidden' name='vendeur' value="<?php echo "$vendeur" ?>">
                     <input type='hidden' name='retour' value="<?php echo "$retour" ?>">
                     <input type='hidden' name='control' value="<?php echo "$control" ?>">

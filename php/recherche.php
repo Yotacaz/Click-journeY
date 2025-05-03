@@ -25,6 +25,7 @@ if (!isset($voyages)) {
 $nom_validation = "valider-recherche";
 
 //On initialise les variables de recherche
+$recherche_textuelle = "";
 $genre = "Tout";
 $theme = "Tout";
 $tri = "defaut"; //defaut, note, prix-croissant, prix-decroissant, date
@@ -34,9 +35,11 @@ $date_min = strtotime("2025-01-01");
 $date_max = strtotime("2050-12-31");
 $lieux = ["france", "etats-unis", "japon", "chine", "autre"];
 
-if (isset($_GET[$nom_validation])) {
+
+if (isset($_GET[$nom_validation]) && !isset($_GET["reinitialiser"])) {
     $genre = $_GET["genre"];
     $theme = $_GET["theme"];
+    $recherche_textuelle = test_input($_GET["recherche-textuelle"]);
     $tri = $_GET["tri"]; //defaut, note, prix-croissant, prix-decroissant, date, aleatoire
     $prix_min = $_GET["prix_min_nb"];
     $prix_max = $_GET["prix_max_nb"];
@@ -88,6 +91,7 @@ if (isset($_GET[$nom_validation])) {
 
         $resultats[] = $voyage;
     }
+    $voyages = $resultats;
 }
 ?>
 <script type="text/javascript">
@@ -138,7 +142,7 @@ if (isset($_GET[$nom_validation])) {
                             <div class="input-formulaire tres-grand bordure-violette">
                                 <input name="recherche-textuelle" form="<?= $form_id ?>" id="recherche-textuelle"
                                     class="tres-grand" type="text" placeholder="Recherchez un jeu..."
-                                    maxlength="<?= MAX_STRING_LENGTH ?>">
+                                    maxlength="<?= MAX_STRING_LENGTH ?>" value="<?= $recherche_textuelle ?>">
                                 <span class="compteur">0/<?= MAX_STRING_LENGTH ?></span>
                             </div>
                             <p class="message-erreur"></p>
@@ -250,9 +254,12 @@ if (isset($_GET[$nom_validation])) {
                 </div>
                 <div class="separateur-section-haut contenu-centre">
                     <p><br></p>
+                    <div class="flex">
+                        <button class="input-formulaire grand" name="<?php echo $nom_validation; ?>"
+                            type="submit">Rechercher</button>&nbsp;&nbsp;&nbsp;
+                        <button class="input-formulaire grand" name="reinitialiser" type="submit">Réinitialiser</button>
 
-                    <button class="input-formulaire grand" name="<?php echo $nom_validation; ?>"
-                        type="submit">Rechercher</button>
+                    </div>
                 </div>
                 <h1>Résultats</h1>
             </div>

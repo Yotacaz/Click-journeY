@@ -1,4 +1,4 @@
-import { page_active } from "./compteur_page.js";
+import { page_active, maj_nb_elem_total, reinitialiser_compteurs } from "./compteur_page.js";
 
 if (typeof form === "undefined") {
     var form = document.getElementById("form-recherche");
@@ -6,7 +6,8 @@ if (typeof form === "undefined") {
 if (typeof donnes_formulaire === "undefined") {
     var donnes_formulaire = new FormData(form);
     var url = new URL(window.location.href);
-    var param_form = new URLSearchParams(donnes_formulaire);
+    var param_form = url.searchParams;
+    param_form.set(nom_validation, "true");
 }
 
 let div_resultats = document.getElementById("resultats");
@@ -87,7 +88,10 @@ exemple de donnes_formulaire :
 var tri = document.getElementById("tri");
 tri.addEventListener("change", function () {
     param_form.set("tri", this.value);
+    param_form.set('page', page_active.toString());
     trier();
+    reinitialiser_compteurs();
+    
     afficherResultats();
     modifUrl();
 });
@@ -157,6 +161,7 @@ function filterVoyages() {
 
     }
     nb_elem = resultats.length;
+    maj_nb_elem_total();  // maj pour le js compteur de page
     trier();    // on trie résultat apres filtrage (on peut avoir ajouté des éléments)
 }
 
@@ -192,11 +197,11 @@ function formaterTitreVoyage(titre) {
 
 function afficherResultats() {
 
-
     div_resultats.innerHTML = "";
+
     if (resultats.length === 0) {
         div_resultats.innerHTML = "<em>Aucun voyage ne correspond à votre recherche.</em>";
-    } else {
+    } else if (page_active > 0) {
         let j = (page_active - 1) * elem_par_page;
         for (let i = j; i < Math.min(j + elem_par_page, nb_elem); i++) {
             afficherResumeVoyage(resultats[i]);
@@ -215,9 +220,6 @@ function afficherResumeVoyage(voyage) {
         return;
     }
     let index = voyage.id;
-    if (index !== voyages.indexOf(voyage)) {
-        console.error("Erreur : l'index du voyage ne correspond pas à son index dans le tableau voyages.");
-    }
     let titre_formate = formaterTitreVoyage(voyage.titre);
     let url_img = URL_IMG_VOYAGE + "/" + titre_formate + "/" + titre_formate + ".png";
     let carte_info = document.createElement("div");
