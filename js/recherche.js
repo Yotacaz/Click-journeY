@@ -6,7 +6,8 @@ if (typeof form === "undefined") {
 if (typeof donnes_formulaire === "undefined") {
     var donnes_formulaire = new FormData(form);
     var url = new URL(window.location.href);
-    var param_form = url.searchParams;
+    
+    var param_form = new URLSearchParams(donnes_formulaire);
     param_form.set(nom_validation, "true");
 }
 
@@ -60,6 +61,8 @@ if (typeof page_active === "undefined") {
 
 
 window.addEventListener("page_change", function () {
+    param_form.set('page', page_active.toString());
+    modifUrl();
     afficherResultats();
 });
 
@@ -186,7 +189,7 @@ function trier() {
             break;
 
         default:
-            console.error("Erreur dans le tri des voyages : " + this.value);
+            console.error("Erreur dans le tri des voyages : " + tri);
             break;
     }
 }

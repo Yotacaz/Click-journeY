@@ -44,7 +44,7 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
         <nav class="navbar">
             <div class="menu-deroulant">
                 <a class="contenu-affiche-menu" href="#">
-                    &#9207; <p class="cacher" href="#">Compte</p> &nbsp;
+                    &#9207; <p class="cacher" href="#"><?= $utilisateur!=null ? $utilisateur["info"]["prenom"] : "Compte" ?></p> &nbsp;
                     <img src="../img/profile-circle-icon-.png" alt="icône compte">
                 </a>
                 <div class="contenu-menu">

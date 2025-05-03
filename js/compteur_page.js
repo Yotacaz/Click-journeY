@@ -43,18 +43,14 @@ if (!form) {
     throw new Error(`Le formulaire avec l'id "${form_id}" n'a pas été trouvé.`);
 }
 
-if (typeof donnes_formulaire === 'undefined') {
-    var donnes_formulaire = new FormData(form);
+if (typeof url === 'undefined') {
     var url = new URL(window.location.href);
-    var param_form = new URLSearchParams(donnes_formulaire);
 }
 if (url.searchParams.has('page')) {
-    param_form.set('page', url.searchParams.get('page'));
     page_active = parseInt(url.searchParams.get('page'));
-    
+
     if (page_active < 0 || page_active > nb_page_tot) {
         page_active = nb_elem > 0 ? 1 : 0;
-        param_form.delete('page');
         console.warn("Numéro page invalide dans l'url. La page actuelle est réinitialisée.");
     }
 }
@@ -82,8 +78,6 @@ btn_pre.addEventListener('click', (event) => {
         maj_compteurs(page_active);
 
         window.dispatchEvent(page_change);
-        param_form.set('page', page_active.toString());
-        window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
     }
 });
 
@@ -99,8 +93,6 @@ btn_suiv.addEventListener('click', (event) => {
         maj_compteurs(page_active);
 
         window.dispatchEvent(page_change);
-        param_form.set('page', page_active.toString());
-        window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
     }
 });
 
@@ -139,10 +131,9 @@ function reinitialiser_compteurs() {
     btn_suiv.value = page_active + 1;
 
     window.dispatchEvent(page_change);
-    param_form.set('page', page_active.toString());
-    // window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
     maj_compteurs(page_active);
     return page_active;
 }
+
 
 maj_compteurs(page_active);

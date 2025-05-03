@@ -87,10 +87,10 @@
             }
         ],
         "email_personnes_inscrites": {
-            "personne1@example.com" : 5
+            "bob@bob.bob": 5
         },
         "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "nb_places_restantes": 25,
         "prix_total": 5000,
         "image": [
             "image001.png",
@@ -157,10 +157,12 @@
                 ]
             }
         ],
-        "email_personnes_inscrites": [],
+        "email_personnes_inscrites": {
+            "bob@bob.bob": 5
+        },
         "prix_total": 5000,
         "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "nb_places_restantes": 25,
         "image": [
             "image002.png",
             "image102.png",

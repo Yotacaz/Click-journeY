@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 //Gestion de l'utilisateur
 require_once "php-include/utilisateur.php";
@@ -26,8 +29,12 @@ if ($opt_achat != null) {
         die("Le voyage d'id $identifiant_v est déjà présent chez l'utilisateur
         dans catégorie voyages consulté, ne devrait pas être acheté.");
     }
-    header("Location : modif_voyage.php?id=$identifiant_v; ");
-    die("Voyage déjà acheté, ne devrait pas pouvoir être racheter");
+    header("Location: modif_voyage.php?id=$identifiant_v");
+    exit; //Voyage déjà acheté, ne devrait pas pouvoir être racheter
+}
+if ($opt_enr == null) {
+    header("Location: modif_voyage.php?id=$identifiant_v");
+    exit; //Erreur : Voyage introuvable
 }
 
 $voyage = chargerVoyageParId($identifiant_v);
@@ -39,8 +46,8 @@ if ($voyage == null) {
 
 <head>
     <title>Paiement voyage - PixelTravels</title>
-    <meta name=”auteur” content=”Augustin Aveline” />
-    <meta name=”description” content=”page de paiement au site” />
+    <meta name="auteur" content="Augustin Aveline" />
+    <meta name="description" content="page de paiement au site" />
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <meta charset="UTF-8">
@@ -62,13 +69,19 @@ if ($voyage == null) {
         $transaction = $passage[rand(0, 61)] . $transaction;
     }
     $api_key = getAPIKey("$vendeur");
-    $control = md5($api_key . "#" . $transaction . "#" . $voyage["prix_total"] . "#" . $vendeur . "#" . $retour . "#");
+    $control = md5($api_key . "#" . $transaction . "#" . $opt_enr["prix"] . "#" . $vendeur . "#" . $retour . "#");
 
-    $cobanc= array("proprietaire" => "bob bob", "dates_expirations" => "2029-01-01", "valeur_controle" => "555", "num_carte" => "5555 1234 5678 9000");
-    $temp= array('voyage' => $voyage, "utilisateur" => $utilisateur, "cobancaire" => $cobanc);
-    $open = fopen("../donnees/paiement/transaction_en_cours.json",'w');
-    fwrite( $open , json_encode($temp));
-    fclose($open);
+    $cobanc = array("proprietaire" => "bob bob", "dates_expirations" => "2029-01-01", "valeur_controle" => "555", "num_carte" => "5555 1234 5678 9000");    //valeur de controle devrait pas être stocké ici
+    $temp = array('id_voyage' => $identifiant_v, 'options_enregistres' => $opt_enr, "utilisateur" => $utilisateur["email"], "cobancaire" => $cobanc, "date_transaction" => $date);
+
+    if (!empty($info[$transaction])) {
+        //cas pas pris en charge, on écrase le précédent
+    }
+    $info[$transaction] = $temp;
+    file_put_contents("../donnees/paiement/transaction_en_cours.json", json_encode($info, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    $utilisateur["voyages"]["en_cours_d_achat"][$identifiant_v] = $opt_enr;
+    $utilisateur["voyages"]["en_cours_d_achat"][$identifiant_v]["id_transaction"] = $transaction;
+    sauvegarderSessionUtilisateur($utilisateur);
     ?>
 
     <main>
@@ -99,7 +112,7 @@ if ($voyage == null) {
                         placeholder="valeur de contrôle"><br />
 
                     <input type='hidden' name='transaction' value="<?php echo "$transaction" ?>">
-                    <input type='hidden' name='montant' value="<?php echo $voyage["prix_total"] ?>">
+                    <input type='hidden' name='montant' value="<?php echo $opt_enr["prix"] ?>">
                     <input type='hidden' name='vendeur' value="<?php echo "$vendeur" ?>">
                     <input type='hidden' name='retour' value="<?php echo "$retour" ?>">
                     <input type='hidden' name='control' value="<?php echo "$control" ?>">
@@ -107,7 +120,7 @@ if ($voyage == null) {
 
                     <p class="col1"> </p>
                     <label class="col2">
-                        <button type="submit" name="boutton" class="submit">valider et payer</button>
+                        <button type="submit" name="boutton" class="submit input-formulaire-2">valider et payer</button>
                     </label>
                 </form>
 
@@ -131,10 +144,11 @@ if ($voyage == null) {
             <div>
                 <div class="conteneur-texte">
                     <h2>Récapitulatif</h2>
-                    Vous participé au voyage <em><?php echo "$voyage[titre]" ?></em></br>
+                    Vous participé à <em><?= $opt_enr["nombre_personnes_totales"] ?></em> personne(s) au voyage
+                    <em><?php echo "$voyage[titre]" ?></em></br>
                     Le voyage débuteras le <em><?php echo $voyage["dates"]["debut"] ?></em> et finiras le
                     <em><?php echo $voyage["dates"]["fin"] ?></em>.</br>
-                    Pour un montant totale de <em><?php echo "$voyage[prix_total] €" ?></em>.
+                    Pour un montant total de <em><?= $opt_enr["prix"] ?> €</em>.
                 </div>
             </div>
         </div>

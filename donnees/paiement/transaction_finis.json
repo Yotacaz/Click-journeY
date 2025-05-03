@@ -1,21 +1,45 @@
 {
-    "compte utilisateur":"bob@bob.bob",
-    "Info_transaction":{
-        "date_transaction":"23_March_2025",
-        "ID_transaction":"8slncVCS2wgXt",
-        "vendeur":"MI-3_A",
-        "montant":"1800"
+    "7MnwKH0zQ9JiBwu": {
+        "compte utilisateur": "bob@bob.bob",
+        "option_enregistrees": {
+            "nombre_personnes_totales": 5,
+            "nombre_personnes_0_0": 1,
+            "option_0_1": "scaphandre",
+            "nombre_personnes_0_1": 1,
+            "prix": 25025
+        },
+        "Info_transaction": {
+            "date_transaction": "3_May_2025",
+            "id_transaction": "7MnwKH0zQ9JiBwu",
+            "vendeur": "MI-3_A",
+            "montant": 25025
+        },
+        "id_voyage": null,
+        "Coordonnee_Bancaire": null
     },
-    "Voyage":{
-        "nom_voyage":"GTA V",
-        "nb_personne":6,
-        "dates_debut":"2028-12-20",
-        "date_fin":"2029-01-05"
-    },
-    "Coordonnee_Bancaire":{
-        "num_carte":"5555 1234 5678 9000",
-        "proprietaire":"bob bob",
-        "dates_expirations":"2029-01-01",
-        "valeur_controle":"555"
+    "rHKpm7GHUSVoXNyEMLn6BQeB": {
+        "compte utilisateur": "bob@bob.bob",
+        "option_enregistrees": {
+            "nombre_personnes_totales": 5,
+            "nombre_personnes_0_0": 1,
+            "option_0_1": "Ferrari",
+            "nombre_personnes_0_1": 1,
+            "option_1_0": "place assise",
+            "nombre_personnes_1_0": 1,
+            "prix": 25040
+        },
+        "Info_transaction": {
+            "date_transaction": "3_May_2025",
+            "id_transaction": "rHKpm7GHUSVoXNyEMLn6BQeB",
+            "vendeur": "MI-3_A",
+            "montant": 25040
+        },
+        "id_voyage": null,
+        "Coordonnee_Bancaire": {
+            "proprietaire": "bob bob",
+            "dates_expirations": "2029-01-01",
+            "valeur_controle": 555,
+            "num_carte": "5555 1234 5678 9000"
+        }
     }
-}{"compte utilisateur":"bob@bob.bob","Info_transaction":{"date_transaction":"23_March_2025","ID_transaction":"VivgU2vHmbqmklRG1U5","vendeur":"MI-3_A","montant":"1800"},"Voyage":{"nom_voyage":"GTA V","nb_personne":6,"dates_debut":"2028-12-20","date_fin":"2029-01-05"},"Coordonnee_Bancaire":{"num_carte":"","proprietaire":"","dates_expirations":"","valeur_controle":""}}{"compte utilisateur":"bob@bob.bob","Info_transaction":{"date_transaction":"23_March_2025","ID_transaction":"VivgU2vHmbqmklRG1U5","vendeur":"MI-3_A","montant":"1800"},"Voyage":{"nom_voyage":"GTA V","nb_personne":6,"dates_debut":"2028-12-20","date_fin":"2029-01-05"},"Coordonnee_Bancaire":{"num_carte":"","proprietaire":"","dates_expirations":"","valeur_controle":""}}{"compte utilisateur":"bob@bob.bob","Info_transaction":{"date_transaction":"23_March_2025","ID_transaction":"VivgU2vHmbqmklRG1U5","vendeur":"MI-3_A","montant":"1800"},"Voyage":{"nom_voyage":"GTA V","nb_personne":6,"dates_debut":"2028-12-20","date_fin":"2029-01-05"},"Coordonnee_Bancaire":{"num_carte":"","proprietaire":"","dates_expirations":"","valeur_controle":""}}
+}

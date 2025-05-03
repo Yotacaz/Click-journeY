@@ -10,29 +10,32 @@
         "date_naissance": "2006-06-06"
     },
     "voyages": {
-        "consultes": {
-            "0": {
-                "nombre_personnes_totales": 15,
+        "consultes": [],
+        "achetes": {
+            "1": {
+                "nombre_personnes_totales": 5,
                 "nombre_personnes_0_0": 1,
-                "option_0_1": "Lamborghini",
+                "option_0_1": "scaphandre",
                 "nombre_personnes_0_1": 1,
-                "option_1_0": "fosse",
-                "nombre_personnes_1_0": 0,
-                "prix": 75025
+                "prix": 25025,
+                "id_transaction": "7MnwKH0zQ9JiBwu"
             },
-            "4": {
-                "nombre_personnes_totales": 1,
+            "0": {
+                "nombre_personnes_totales": 5,
                 "nombre_personnes_0_0": 1,
-                "option_1_0": "entree plein tarif",
+                "option_0_1": "Ferrari",
+                "nombre_personnes_0_1": 1,
+                "option_1_0": "place assise",
                 "nombre_personnes_1_0": 1,
-                "prix": 1515
+                "prix": 25040,
+                "id_transaction": "rHKpm7GHUSVoXNyEMLn6BQeB"
             }
         },
-        "achetes": []
+        "en_cours_d_achat": []
     },
     "autres": {
         "date_inscription": "2020-06-06",
-        "date_derniere_connexion": "2025-05-02"
+        "date_derniere_connexion": "2025-05-03"
     },
     "modif_admin": []
 }

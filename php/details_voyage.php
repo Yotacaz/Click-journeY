@@ -67,7 +67,7 @@ $places_restantes = intval($voyage['nb_places_restantes']);
         if (isset($_GET["erreur"])) {
             echo '<div class="erreur">';
             if ($_GET["erreur"] === "places_insuffisantes") {
-                echo "<h1><b>Erreur : Nombre de personnes spécifié supérieur au nombre de places restantes.</b></h1>";
+                echo "<h1><b>Erreur : Nombre de personnes spécifié supérieur au nombre de places restantes ($places_restantes).</b></h1>";
             }
             echo '</div>';
         }

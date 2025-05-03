@@ -331,6 +331,9 @@ a.input-formulaire-2 {
     border-radius: .5em;
 
 }
+.erreur b{
+    color: #261C57;
+}
 
 /* Pour les erreurs de formulaire */
 .message-erreur {
