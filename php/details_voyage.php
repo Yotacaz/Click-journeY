@@ -182,7 +182,8 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                             <div title="si vous ne souhaitez pas participer, entrez 0, pour inviter un ami entrez 2 (max : ' . $option['nombre_personnes'] . ' invités)">
                                 <label for="' . $nom_nb_personne_form . '">Nombre de personnes participant : </label>';
                     echo
-                        '<input type="number" name="' . $nom_nb_personne_form . '" value="' . $nb_personnes_option . '" min="0" max="' . $nb_personnes_total . '" ' . $modifiable . '><br>
+                        '<input type="number"  data-prix="' . $option['prix_par_personne']
+                        . '" name="' . $nom_nb_personne_form . '" value="' . $nb_personnes_option . '" min="0" max="' . $nb_personnes_total . '" ' . $modifiable . '><br>
                             </div>
                             </li><br>';
                 }
@@ -194,6 +195,7 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                 echo '<em>Aucune étape trouvée.</em>';
             }
             ?>
+            <center><h2 id="prix_dynam" data-total=<?php echo $voyage['prix_total'] ?>></h2></center>
 
             <!-- Soumettre le formulaire -->
             <?php
@@ -208,6 +210,7 @@ $places_restantes = intval($voyage['nb_places_restantes']);
             ?>
 
         </form>
+    <script type="text/javascript" src="../js/prix_dyn.js"></script>
         <br><br>
     </main>
     <?php
