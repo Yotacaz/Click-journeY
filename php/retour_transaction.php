@@ -21,8 +21,9 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     $info = json_decode(file_get_contents("../donnees/paiement/transaction_en_cours.json"), true);
     $tout_tracabilite = json_decode(file_get_contents("../donnees/paiement/transaction_finis.json"), true);
     $identifiant_v = $info["voyage"]["id"];
-    /*$utilisateur["voyages"]["achetes"][$identifiant_v] = $utilisateur["voyages"]["consultes"][$identifiant_v];
-    $utilisateur["voyages"]["consultes"][$identifiant_v] = "achete";*/
+    $utilisateur["voyages"]["achetes"][$identifiant_v] = $utilisateur["voyages"]["consultes"][$identifiant_v];
+    $utilisateur["voyages"]["consultes"][$identifiant_v] = "achete";
+    sauvegarderSessionUtilisateur($utilisateur);
     $date=date("j_F_Y");
     $status=$_GET["status"];
     if($status == "accepted"){
