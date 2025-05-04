@@ -98,7 +98,7 @@ if ($voyage == null) {
 
                     <label for="num_carte" class="col1">Num Carte : </label>
                     <input class="col2" type="text" name="num_carte" id="num_carte" contenteditable="false"
-                        placeholder="Num carte bancaire"><br />
+                        placeholder="Num carte bancaire" maxlength = "12" ><br />
 
                     <label for="proprio" class="col1">Nom-Prénom propriétaire carte :</label>
                     <input class="col2" type="text" name="proprio" id="proprio" contenteditable="false"
@@ -109,7 +109,42 @@ if ($voyage == null) {
 
                     <label for="val_controle" class="col1">Valeur de contrôle :</label>
                     <input class="col2" type="text" name="valeur_controle" id="val_controle" contenteditable="false"
-                        placeholder="valeur de contrôle"><br />
+                        placeholder="valeur de contrôle" maxlength = "3" >
+                    <script type="text/javascript">
+                        const form = document.getElementById('paiement');
+                        const valCarte = document.getElementById('num_carte');
+                        const valProprio = document.getElementById('proprio');
+                        const valDate = document.getElementById('date');
+                        const valControle = document.getElementById('val_controle');
+                        form.addEventListener('submit',function(event){
+                            let errors =[];
+                            if(valCarte.value.trim()==='' || valProprio.value.trim()===''|| valDate.value.trim()===''|| valControle.value.trim()===''){
+                                error.push('Veuillez remplir tout le formulaire.');
+                            }else if(valCarte.value.trim().length < 12){
+                                error.push('un numéros de carte banquair comptient 12 caractére.');
+                            }else if (/[a-zA-Z!@#$%^&*]/.test(valCarte.value)) {
+                                error.push("contenir que des chiffres.");
+                            }else if (/[0-9]/.test(valProprio)) {
+                                erreurs.push("ne doit pas contenir de chiffre.");
+                            }else if(valCarte.value.trim().length < 3){
+                                error.push('un numéros de carte banquair comptient 3 caractére.');
+                            }
+                            if(error.length > 0){
+                                event.preventDefault();
+                                diplayErrors(errors);
+                            }
+                        });
+                        function displayErrors(errors){
+                            const errorContainer = document.createElement('p');
+                            errorContainer.classList.add('message-erreur');
+                            errors.forEach(function(error){
+                                const errorMessage = document.creatElement('p');
+                                errorMessage.textcontent =error;
+                                errorContainer.appendChild(errorMessage);
+                            });
+                            form.appendChild(errorContainer);
+                        }
+                    </script>
 
                     <input type='hidden' name='transaction' value="<?php echo "$transaction" ?>">
                     <input type='hidden' name='montant' value="<?php echo $opt_enr["prix"] ?>">

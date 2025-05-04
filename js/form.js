@@ -250,10 +250,10 @@ function ajouterIconeOeil(Id) {
       Iconoeil.addEventListener('click', function() {
         if (inputMDP.type === 'password') {
           inputMDP.type = 'text';
-          Iconoeil.setAttribute('src', '../img/imgoeilbarre.svg'); // Change pour oeil barré
+          Iconoeil.setAttribute('src', '../img/imgoeilbarre.png'); // Change pour oeil barré
         } else {
           inputMDP.type = 'password';
-          Iconoeil.setAttribute('src', '../img/imgoeil.svg'); // Reviens sur l'oeil icon original
+          Iconoeil.setAttribute('src', '../img/imgoeil.png'); // Reviens sur l'oeil icon original
         }
       });
     }
