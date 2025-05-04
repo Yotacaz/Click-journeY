@@ -271,4 +271,3 @@ window.estDatePasse = estDatePasse;
 window.estEmail = estEmail;
 window.estNom = estNom;
 window.estPrenom = estPrenom;
-
