@@ -15,10 +15,10 @@
 .dark-theme {
     --coul-arr-plan: #43aed4;
     --coul-texte: #261C57;
-    --coul-titre: #CA64F9;
+    --coul-titre: #8801c7;  /*modif par rapport au theme normal*/
     --couleur-gras: #f39639;
-    --couleur-em: #fd5bcf;
-    --couleur-a: #F205B3;
+    --couleur-em: #c00089;  /*modif par rapport au theme normal*/
+    --couleur-a: #d5019c;
     --couleur-b: #ffffff40;
     --couleur-c: #ffffff10;
     --couleur-d: #ffffff80;

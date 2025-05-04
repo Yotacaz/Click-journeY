@@ -25,6 +25,9 @@ let champs_modifies = [];
  * @type {HTMLElement}
  */
 let div_profil = document.getElementById("modifiable");
+let oeil = document.getElementById("oeil-mdp");
+oeil.setAttribute("hidden", "hidden");
+
 
 window.onbeforeunload = function (e) {
     if (en_modification) {
@@ -174,10 +177,12 @@ function modifMDP() {
             gestionBoutonAnnuler(id, true);
             console.log(id + " maintenant modifiable");
             label.innerHTML = "Nouveau mot de passe";
+            oeil.removeAttribute("hidden");
         } else {
             input.setAttribute("readonly", "readonly");
             // retirerModification(id);
             gestionBoutonAnnuler(id, true);
+            oeil.setAttribute("hidden", "hidden");
             console.log(id + " maintenant non modifiable");
         }
     }
@@ -226,6 +231,7 @@ function reinitialiserMDP() {
     let br_col3 = document.getElementById("col3-" + id_confirmation);
     let div_mdp2 = document.getElementById("div-" + id_confirmation);
     let label_mdp = document.getElementById("label-" + id);
+    oeil.setAttribute("hidden", "hidden");
     label_mdp.innerHTML = "Mot de passe";
 
     if (!(input2.readOnly == "readonly")) {
@@ -388,7 +394,12 @@ function desactiverModification() {
     let div_modif = document.getElementById("valider");
     let valider = document.getElementById("valider-preenvoi");
     let reinitialiser = document.getElementById("reinitialiser-modif");
-
+    
+    ajouterModification("mdp");
+    ajouterModification("mdp2");
+    ajouterModification("bob"); // C'est pas propre je sais
+    reinitialiserMDP();
+    champs_modifies = [];
     if (valider) div_modif.removeChild(valider);
     if (reinitialiser) div_modif.removeChild(reinitialiser);
 

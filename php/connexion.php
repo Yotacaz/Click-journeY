@@ -74,8 +74,8 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?><!DOCTYPE html>
 <html lang="fr">
-<script src="../js/form.js" type="module" defer>
-</script>
+
+
 <head>
     <title>Connexion - PixelTravels</title>
     <meta name="auteur" content="Augustin Aveline" />
@@ -99,14 +99,28 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- class="conteneur-texte" -->
             <div class="bloc1 conteneur-texte">
                 <h2>Connexion</h2><br />
-                <form class="grille3" action="#" method="post" name="connexion">
+                <form class="grille3 js-form" action="#" method="post" name="connexion" id="connexion">
                     <label for="adresse" class="col1">Adresse mail :</label>
-                    <input class="col2" type="email" name="email" id="adresse" placeholder="adresse@email.exemple"
-                        value="<?php echo $mail ?>"><br />
-
+                    <div class="enveloppe-input">
+                        <div class="fill-col">
+                            <input class="col2 js-a-verifier js-email" type="email" name="email" id="adresse"
+                                placeholder="adresse@email.exemple" value="<?php echo $mail ?>"
+                                maxlength="<?= MAX_STRING_LENGTH ?>">
+                            <span class="compteur"></span>
+                        </div>
+                        <p class="message-erreur"></p>
+                    </div>
+                    <br>
                     <label for="mdp" class="col1">Mot de passe :</label>
-                    <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe">
-
+                    <div class="enveloppe-input">
+                        <div class="fill-col">
+                            <input class="col2 js-a-verifier js-mdp" type="password" name="mdp" id="mdp"
+                                placeholder="Entrez un mot de passe" maxlength="<?= MAX_MDP_LENGTH ?>">
+                            <span class="compteur"></span>
+                        </div>
+                        <p class="message-erreur"></p>
+                    </div>
+                    <br>
                     <p class="col1"></p>
                     <label class="col2">
                         <button type="submit" name="boutton" class="submit">Connexion</button>
@@ -133,8 +147,24 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     require_once "php-include/footer.php";
     ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="../js/form.js" type="module">
+    </script>
+
+    <script type="text/javascript">
+
+        document.forms["connexion"].addEventListener("submit", function (event) {
+            let nb_erreurs = verifiersInputs();
+            if (nb_erreurs != 0) {
+                event.preventDefault();
+            }
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
     <script src="../js/mode.js">
     </script>
 </body>

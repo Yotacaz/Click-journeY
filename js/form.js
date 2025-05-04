@@ -233,34 +233,42 @@ for (let i = 0; i < input_long_max.length; i++) {
 
 
 
+
 //fonction oeuil mdp
-document.addEventListener('DOMContentLoaded', function() {
-    // Fonction pour ajouter l'icône et gérer le clic
-    function ajouterIconeOeil(Id) {
-      var inputMDP = document.getElementById(Id);
-  
-      if (inputMDP) {
-        var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
-        Iconoeil.setAttribute('src', '../img/imgoeil.svg');
-        Iconoeil.id = 'oeil-id';
-  
-        inputMDP.parentNode.style.position = 'relative';
-        inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
-  
-        Iconoeil.addEventListener('click', function() {
-          if (inputMDP.type === 'password') {
-            inputMDP.type = 'text';
-            Iconoeil.setAttribute('src', '../img/imgoeilbarre.svg'); // Change pour oeil barré
-          } else {
-            inputMDP.type = 'password';
-            Iconoeil.setAttribute('src', '../img/imgoeil.svg'); // Reviens sur l'oeil icon original
-          }
-        });
-      }
+// Fonction pour ajouter l'icône et gérer le clic
+function ajouterIconeOeil(Id) {
+    var inputMDP = document.getElementById(Id);
+
+    if (inputMDP) {
+      var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
+      Iconoeil.setAttribute('src', '../img/imgoeil.svg');
+      Iconoeil.id = 'oeil-'+Id;
+
+      inputMDP.parentNode.style.position = 'relative';
+      inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
+
+      Iconoeil.addEventListener('click', function() {
+        if (inputMDP.type === 'password') {
+          inputMDP.type = 'text';
+          Iconoeil.setAttribute('src', '../img/imgoeilbarre.svg'); // Change pour oeil barré
+        } else {
+          inputMDP.type = 'password';
+          Iconoeil.setAttribute('src', '../img/imgoeil.svg'); // Reviens sur l'oeil icon original
+        }
+      });
     }
-  
-    // Appliquer la fonction aux champs de mot de passe et de confirmation
-    ajouterIconeOeil('mdp');
-    ajouterIconeOeil('mdp2');
-    ajouterIconeOeil('mdp-actuel');
-  });
+  }
+
+  // Appliquer la fonction aux champs de mot de passe et de confirmation
+  ajouterIconeOeil('mdp');
+  ajouterIconeOeil('mdp2');
+  ajouterIconeOeil('mdp-actuel');
+
+window.verifiersInputs = verifiersInputs;
+window.est_mdp = est_mdp;
+window.estDate = estDate;
+window.estDatePasse = estDatePasse;
+window.estEmail = estEmail;
+window.estNom = estNom;
+window.estPrenom = estPrenom;
+
