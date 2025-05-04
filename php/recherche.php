@@ -275,6 +275,7 @@ if (isset($_GET[$nom_validation])) {
                     <option <?= $tri === "prix-decroissant" ? "selected" : "" ?> value="prix-decroissant">Prix
                         décroissant</option>
                     <option <?= $tri === "date" ? "selected" : "" ?> value="date">Date</option>
+                    <option <?= $tri === "duree" ? "selected" : "" ?> value="duree">Durée (croissante)</option>
                 </select>
             </div>
             <em id="compteur-nb-elem"> Affichage de xx / xx éléments</em>

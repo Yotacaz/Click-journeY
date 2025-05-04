@@ -187,7 +187,9 @@ function trier() {
         case "date":    //date croissante
             resultats.sort((a, b) => { return new Date(a.dates.debut) - new Date(b.dates.debut); });
             break;
-
+        case "duree":   //duree croissante
+            resultats.sort((a, b) => { return new Date(a.dates.duree) - new Date(b.dates.duree); });
+        
         default:
             console.error("Erreur dans le tri des voyages : " + tri);
             break;

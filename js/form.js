@@ -2,7 +2,7 @@ export { verifiersInputs, estEmail, estNom, estPrenom, estDate, estDatePasse, es
 
 //note : les regex ont été soit trouvés sur stackoverflow soit 
 // générés par IA puis testés sur le site regex101.com
-
+// pour utiliser ce script directement dans du html (/php), doit être importé comme module
 /*Pour utiliser la fonction verifiersInputs, il faut que le fichier HTML résultant
  contienne :
     - un formulaire avec la classe js-form
@@ -230,8 +230,6 @@ for (let i = 0; i < input_long_max.length; i++) {
         }
     });
 }
-
-
 
 
 

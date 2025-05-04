@@ -107,6 +107,7 @@ require_once "php-include/fonctions_voyages.php";
                 ?>
             </div>
         </div>
+        <div class="texte-centre"><a class="input-formulaire" href="recherche.php">→ Voir plus</a></div>
         <p><br></p>
     </main>
 

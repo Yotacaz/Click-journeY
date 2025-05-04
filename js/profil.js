@@ -14,7 +14,6 @@ var popup_mdp = document.getElementById("popup");
 var contenu_popup = document.getElementById("popup-elem");
 
 var evenement = new Event("input")
-
 /**
  * Liste des champs modifiés
  * @type {string[]}

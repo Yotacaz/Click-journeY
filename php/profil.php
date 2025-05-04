@@ -111,7 +111,7 @@ require_once "php-include/fonctions_voyages.php";
                                 placeholder="Confirmez le mot de passe" value="" readonly <?php echo ' maxlength="' . MAX_MDP_LENGTH . '" ' ?>>
                             <span class="compteur"><?php echo "0/" . MAX_MDP_LENGTH ?></span>
 
-                            <!-- <button class="btn-img" title="voir" id="voir-mdp" type="button" onclick="voirMDP('mdp')">
+                            <!-- <button class="btn-img" title="voir" id="voir-mdp" type="button" onclick="la_fonction('id_de_input_mdp')">
                                 <img src="../img/oeil.png" alt="voir"></button> -->
                         </div>
                         <p class="message-erreur"></p>
@@ -298,7 +298,12 @@ require_once "php-include/fonctions_voyages.php";
             }
             ?>
         </div>
-
+        <div class="bloc">
+            <label>
+                Activer le mode clair :
+                <input type="checkbox" value="modeClair">
+            </label>
+        </div>
         <form class="texte-centre" action="php-include/deconnexion.php" method="post">
             <input class="input-formulaire grand" type="submit" value="Déconnexion" name="deconnexion">
         </form>

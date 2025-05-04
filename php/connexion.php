@@ -1,6 +1,3 @@
-<script src="../js/form.js" type="text/javascript">
-</script>
-
 <?php
 session_start();
 require_once "php-include/utilisateur.php";
@@ -77,7 +74,8 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?><!DOCTYPE html>
 <html lang="fr">
-
+<script src="../js/form.js" type="module" defer>
+</script>
 <head>
     <title>Connexion - PixelTravels</title>
     <meta name="auteur" content="Augustin Aveline" />

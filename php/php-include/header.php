@@ -69,7 +69,7 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
                         echo '>Inscription</a>';
                     }
                     ?>
-                    <span><input type="checkbox" name="theme" id="theme" value="TODO"><span>&nbsp;Thème xxx</span></span>
+                    <span><label for="theme"><input type="checkbox" name="theme" id="theme" value="TODO">&nbsp;Thème xxx</label></span>
                 </div>
             </div>
         </nav>

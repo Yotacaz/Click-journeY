@@ -8,7 +8,6 @@
         "theme": "city",
         "mots_cles": [
             "gta 5",
-            "gta V",
             "gta5",
             "gta",
             "arme",
@@ -91,7 +90,7 @@
         },
         "nb_places_tot": 30,
         "nb_places_restantes": 25,
-        "prix_total": 5000,
+        "prix_total": 3900,
         "image": [
             "image001.png",
             "image101.png",
@@ -120,8 +119,8 @@
         },
         "dates": {
             "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "fin": "2025-06-24",
+            "duree": 8
         },
         "etapes": [
             {
@@ -191,8 +190,8 @@
         },
         "dates": {
             "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "fin": "2025-06-24",
+            "duree": 8
         },
         "etapes": [
             {
@@ -243,7 +242,7 @@
         "id": 3,
         "titre": "SpiderMan",
         "note": 1,
-        "description": "plongez vous dans le monde de spider man, en parcourant l'immence metropole, zigzaggez a travers les buldings et decouvrez l'effervessence d'une ville qui ne dort pas",
+        "description": "plongez vous dans le monde de spider man, en parcourant l'immense métropole, zigzaguez a travers les buldings et découvrez l'effervescence d'une ville qui ne dort pas",
         "genre": "action",
         "theme": "city",
         "mots_cles": [
@@ -260,17 +259,17 @@
             "ville": "New-York"
         },
         "dates": {
-            "debut": "2025-06-16",
+            "debut": "2025-06-19",
             "fin": "2025-06-26",
-            "duree": 10
+            "duree": 7
         },
         "etapes": [
             {
                 "nom": "New York",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
-                    "duree": 8
+                    "debut": "2025-06-19",
+                    "fin": "2025-06-26",
+                    "duree": 7
                 },
                 "guides": [
                     []
@@ -340,7 +339,8 @@
             "farwest",
             "histoire",
             "arme",
-            "armes"
+            "armes",
+            "usa"
         ],
         "localisation": {
             "pays": "Etats-Unis",
@@ -348,8 +348,8 @@
         },
         "dates": {
             "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "fin": "2025-06-30",
+            "duree": 14
         },
         "etapes": [
             {
@@ -376,8 +376,8 @@
                 "nom": "Yosemite",
                 "dates": {
                     "debut": "2025-06-24",
-                    "fin": "2025-06-26",
-                    "duree": 2
+                    "fin": "2025-06-30",
+                    "duree": 6
                 },
                 "guides": [
                     [
@@ -422,6 +422,7 @@
             "medieval",
             "fantaisie",
             "heroique",
+            "armes",
             "hero",
             "hardcore"
         ],
@@ -439,8 +440,8 @@
                 "nom": "Les Alpes",
                 "dates": {
                     "debut": "2025-06-16",
-                    "fin": "2025-06-24",
-                    "duree": 8
+                    "fin": "2025-06-30",
+                    "duree": 14
                 },
                 "guides": [
                     []
@@ -472,8 +473,8 @@
                 "nom": "Massif Central",
                 "dates": {
                     "debut": "2025-06-24",
-                    "fin": "2025-06-26",
-                    "duree": 2
+                    "fin": "2025-06-30",
+                    "duree": 6
                 },
                 "guides": [
                     []
@@ -525,17 +526,17 @@
             "ville": "Bucarest"
         },
         "dates": {
-            "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "debut": "2025-06-18",
+            "fin": "2025-06-30",
+            "duree": 12
         },
         "etapes": [
             {
                 "nom": "Roumanie",
                 "dates": {
-                    "debut": "2025-06-16",
+                    "debut": "2025-06-18",
                     "fin": "2025-06-24",
-                    "duree": 8
+                    "duree": 6
                 },
                 "guides": [
                     []
@@ -564,8 +565,8 @@
                 "nom": "Bulgarie",
                 "dates": {
                     "debut": "2025-06-24",
-                    "fin": "2025-06-26",
-                    "duree": 2
+                    "fin": "2025-06-30",
+                    "duree": 6
                 },
                 "guides": [
                     []
@@ -621,8 +622,8 @@
                 "nom": "Grece",
                 "dates": {
                     "debut": "2025-06-16",
-                    "fin": "2025-06-24",
-                    "duree": 8
+                    "fin": "2025-06-29",
+                    "duree": 13
                 },
                 "guides": [
                     []
@@ -644,8 +645,8 @@
                 "nom": "Mikonos",
                 "dates": {
                     "debut": "2025-06-24",
-                    "fin": "2025-06-26",
-                    "duree": 2
+                    "fin": "2025-06-29",
+                    "duree": 5
                 },
                 "guides": [
                     []
@@ -685,24 +686,26 @@
         "mots_cles": [
             "assassincreed",
             "origines",
-            "monde ouvert"
+            "monde ouvert",
+            "ombres",
+            "Ubisoft"
         ],
         "localisation": {
             "pays": "Egypte",
             "ville": "Le Caire"
         },
         "dates": {
-            "debut": "2025-06-16",
-            "fin": "2025-06-26",
+            "debut": "2025-09-16",
+            "fin": "2025-09-26",
             "duree": 10
         },
         "etapes": [
             {
                 "nom": "Egypte",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
-                    "duree": 8
+                    "debut": "2025-09-16",
+                    "fin": "2025-09-26",
+                    "duree": 10
                 },
                 "guides": [
                     {
@@ -738,8 +741,8 @@
         ],
         "email_personnes_inscrites": [],
         "prix_total": 5000,
-        "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "nb_places_tot": 40,
+        "nb_places_restantes": 40,
         "image": [
             "image009.png",
             "image109.png",
@@ -757,24 +760,26 @@
         "mots_cles": [
             "monde ouvert",
             "horison",
-            "futuriste"
+            "futuriste",
+            "Guerrilla Games",
+            "monde ouvert"
         ],
         "localisation": {
             "pays": "Islande",
             "ville": "Reykjavik"
         },
         "dates": {
-            "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "debut": "2025-09-16",
+            "fin": "2025-09-23",
+            "duree": 7
         },
         "etapes": [
             {
                 "nom": "Islande",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
-                    "duree": 8
+                    "debut": "2025-09-16",
+                    "fin": "2025-09-23",
+                    "duree": 7
                 },
                 "guides": [
                     []
@@ -815,8 +820,8 @@
         ],
         "email_personnes_inscrites": [],
         "prix_total": 5400,
-        "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "nb_places_tot": 50,
+        "nb_places_restantes": 50,
         "image": [
             "image010.png",
             "image110.png",
@@ -835,7 +840,9 @@
             "voyage",
             "desert",
             "nature",
-            "paysage"
+            "paysage",
+            "walking simulator",
+            "simulateur marche"
         ],
         "localisation": {
             "pays": "Sahara occidental",
@@ -843,16 +850,16 @@
         },
         "dates": {
             "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "fin": "2025-06-27",
+            "duree": 11
         },
         "etapes": [
             {
                 "nom": "Sahara",
                 "dates": {
                     "debut": "2025-06-16",
-                    "fin": "2025-06-24",
-                    "duree": 8
+                    "fin": "2025-06-27",
+                    "duree": 11
                 },
                 "guides": [
                     []
@@ -913,7 +920,7 @@
             }
         ],
         "email_personnes_inscrites": [],
-        "prix_total": 5000,
+        "prix_total": 1500,
         "nb_places_tot": 30,
         "nb_places_restantes": 30,
         "image": [
@@ -934,23 +941,27 @@
             "mine craft",
             "bac a sable",
             "nature",
-            "paysage"
+            "paysage",
+            "Mojang",
+            "construction",
+            "creatif",
+            "créatif"
         ],
         "localisation": {
             "pays": "France",
             "ville": "Cayenne"
         },
         "dates": {
-            "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "debut": "2025-06-01",
+            "fin": "2025-07-10",
+            "duree": 40
         },
         "etapes": [
             {
                 "nom": "Forets-Amazonie",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
+                    "debut": "2025-06-01",
+                    "fin": "2025-06-08",
                     "duree": 8
                 },
                 "guides": [
@@ -975,8 +986,8 @@
             {
                 "nom": "Desert-Sahara",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
+                    "debut": "2025-06-09",
+                    "fin": "2025-06-16",
                     "duree": 8
                 },
                 "guides": [
@@ -1002,7 +1013,7 @@
             {
                 "nom": "Ocean-Caraibes",
                 "dates": {
-                    "debut": "2025-06-16",
+                    "debut": "2025-06-17",
                     "fin": "2025-06-24",
                     "duree": 8
                 },
@@ -1029,8 +1040,8 @@
             {
                 "nom": "Nether-Indonesie",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
+                    "debut": "2025-06-25",
+                    "fin": "2025-07-02",
                     "duree": 8
                 },
                 "guides": [
@@ -1056,8 +1067,8 @@
             {
                 "nom": "Toundra-Groenland",
                 "dates": {
-                    "debut": "2025-06-16",
-                    "fin": "2025-06-24",
+                    "debut": "2025-07-03",
+                    "fin": "2025-07-10",
                     "duree": 8
                 },
                 "guides": [
@@ -1087,7 +1098,7 @@
             }
         ],
         "email_personnes_inscrites": [],
-        "prix_total": 5000,
+        "prix_total": 7500,
         "nb_places_tot": 30,
         "nb_places_restantes": 30,
         "image": [
@@ -1108,24 +1119,26 @@
             "hero",
             "legende",
             "monde ouvert",
-            "open world"
+            "open world",
+            "exploration",
+            "Nintendo"
         ],
         "localisation": {
             "pays": "Nouvelle-Zelande",
             "ville": "Wellington"
         },
         "dates": {
-            "debut": "2025-06-16",
-            "fin": "2025-06-26",
-            "duree": 10
+            "debut": "2025-06-14",
+            "fin": "2025-06-24",
+            "duree": 11
         },
         "etapes": [
             {
                 "nom": "Nouvelle-Zelande",
                 "dates": {
-                    "debut": "2025-06-16",
+                    "debut": "2025-06-14",
                     "fin": "2025-06-24",
-                    "duree": 8
+                    "duree": 11
                 },
                 "guides": [
                     []
@@ -1156,8 +1169,8 @@
         ],
         "email_personnes_inscrites": [],
         "prix_total": 2000,
-        "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "nb_places_tot": 35,
+        "nb_places_restantes": 35,
         "image": [
             "image013.png",
             "image113.png",
@@ -1176,7 +1189,8 @@
             "unchart",
             "legende",
             "monde ouvert",
-            "open world"
+            "open world",
+            "Naughty Dog"
         ],
         "localisation": {
             "pays": "Senegal",
@@ -1248,7 +1262,7 @@
             }
         ],
         "email_personnes_inscrites": [],
-        "prix_total": 5000,
+        "prix_total": 4600,
         "nb_places_tot": 30,
         "nb_places_restantes": 30,
         "image": [
@@ -1331,9 +1345,9 @@
             }
         ],
         "email_personnes_inscrites": [],
-        "prix_total": 5000,
-        "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "prix_total": 1250,
+        "nb_places_tot": 25,
+        "nb_places_restantes": 25,
         "image": [
             "image015.png",
             "image115.png",
