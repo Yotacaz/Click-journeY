@@ -242,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (inputMDP) {
         var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
         Iconoeil.setAttribute('src', '../img/imgoeil.svg');
+        Iconoeil.id = 'oeil-id';
   
         inputMDP.parentNode.style.position = 'relative';
         inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
@@ -261,4 +262,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Appliquer la fonction aux champs de mot de passe et de confirmation
     ajouterIconeOeil('mdp');
     ajouterIconeOeil('mdp2');
+    ajouterIconeOeil('mdp-actuel');
   });
