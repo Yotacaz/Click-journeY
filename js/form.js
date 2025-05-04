@@ -242,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (inputMDP) {
         var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
         Iconoeil.setAttribute('src', '../img/imgoeil.svg');
-        Iconoeil.style.cssText = 'cursor: pointer; position: absolute; margin-left: -31px; margin-top: 16px;margin-right:9px';
   
         inputMDP.parentNode.style.position = 'relative';
         inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
