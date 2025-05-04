@@ -93,7 +93,7 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                         . " - " . $voyage['localisation']['pays'] ?></li>
                     <li>&nbsp <b>Prix unitaire</b> (sans les options) : <b><?php echo $voyage['prix_total'] ?> €</b>
                     </li>
-                    <?php echo isset($opt_enr["prix"]) ? "<li>&nbsp <b>Prix enregistré</b> (avec les options) : <b>" . $opt_enr["prix"] . "€</b></li>" : ""; ?>
+                    <li>&nbsp <b>Prix total</b> (avec les options et tous les membres du groupe) : <b id="prix_dynam_2">X€</b></li>
                     <li><?php echo "$places_restantes / $places places restantes" ?></li>
                 </ul>
             </div>
@@ -118,9 +118,9 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                 }
                 echo '
                 <div class="contour-bloc">
-                <label> Nombre de personnes participant au voyage (option pour les groupes) <br>
+                <label> Nombre de personnes participant au voyage (taille de votre groupe) <br>
                 <em> (max : ' . $places_restantes . ' personnes) :</em>
-                    <input type="number" name="nombre_personnes_totales" value="' . $nb_personnes_total . '" min="1" max="' . $places_restantes . '" ' . $modifiable . '>
+                    <input type="number" name="nombre_personnes_totales" id="nombre_personnes_totales" value="' . $nb_personnes_total . '" min="1" max="' . $places_restantes . '" ' . $modifiable . '>
                 </label>
                 </div>';
                 ?>
@@ -179,10 +179,10 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                         $nb_personnes_option = 1;
                     }
                     echo '</select><br>
-                            <div title="si vous ne souhaitez pas participer, entrez 0, pour inviter un ami entrez 2 (max : ' . $option['nombre_personnes'] . ' invités)">
+                            <div title="si vous ne souhaitez pas participer, entrez 0, pour inviter un ami entrez 2">
                                 <label for="' . $nom_nb_personne_form . '">Nombre de personnes participant : </label>';
                     echo
-                        '<input type="number"  data-prix="' . $option['prix_par_personne']
+                        '<input type="number" class="nombre-personne-activite" id="' . $nom_nb_personne_form . '" data-prix="' . $option['prix_par_personne']
                         . '" name="' . $nom_nb_personne_form . '" value="' . $nb_personnes_option . '" min="0" max="' . $nb_personnes_total . '" ' . $modifiable . '><br>
                             </div>
                             </li><br>';

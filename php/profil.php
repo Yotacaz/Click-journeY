@@ -229,9 +229,9 @@ require_once "php-include/fonctions_voyages.php";
                         <label for="mdp-actuel">Mot de passe actuel : </label>
                         <div class="enveloppe-input">
                             <div>
-                                <input class=" js-mdp" name="mdp-actuel" id="mdp-actuel" type="password">
+                                <input class=" js-mdp" name="mdp-actuel" id="mdp-actuel" type="password" placeholder="Mot de passe actuel" maxlength="<?= MAX_MDP_LENGTH ?>">
                                 <span
-                                    class="compteur"><?php echo "0/" . MAX_MDP_LENGTH ?></span>
+                                    class="compteur"><?= "0/" . MAX_MDP_LENGTH ?></span>
 
                                 <!-- <button class="btn-img" title="voir" id="voir-mdp" type="button" onclick="voirMDP('mdp')">
                                 <img src="../img/oeil.png" alt="voir"></button> -->
@@ -241,7 +241,6 @@ require_once "php-include/fonctions_voyages.php";
                         <input type="hidden" name="valider-modif">
                         <div>
                             <br>
-
                             <input class="input-formulaire-2" type="button" value="valider"
                                 onclick="envoyerFormulaire()">
                             &nbsp;
@@ -297,12 +296,6 @@ require_once "php-include/fonctions_voyages.php";
                 echo '</div>';
             }
             ?>
-        </div>
-        <div class="bloc">
-            <label>
-                Activer le mode clair :
-                <input type="checkbox" value="modeClair">
-            </label>
         </div>
         <form class="texte-centre" action="php-include/deconnexion.php" method="post">
             <input class="input-formulaire grand" type="submit" value="Déconnexion" name="deconnexion">
