@@ -261,4 +261,5 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Appliquer la fonction aux champs de mot de passe et de confirmation
     ajouterIconeOeil('mdp');
+    ajouterIconeOeil('mdp2');
   });
