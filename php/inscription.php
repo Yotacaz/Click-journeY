@@ -1,4 +1,4 @@
-<script src="../js/form.js" type="text/javascript">
+<script src="../js/form.js" type="module">
 </script>
 
 <?php
