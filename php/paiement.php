@@ -101,14 +101,14 @@ if ($voyage == null) {
                         placeholder="Num carte bancaire"><br />
 
                     <label for="proprio" class="col1">Nom-Prénom propriétaire carte :</label>
-                    <input class="col2" type="text" name="proprio_carte" id="proprio" contenteditable="false"
+                    <input class="col2" type="text" name="proprio" id="proprio" contenteditable="false"
                         placeholder="nom-prénom propriétaire carte"></br>
 
                     <label class="col1" for="date">Date d'expiration:</label>
-                    <input class="col2" type="date" name="date_expiration" id="date" min="<?php echo "$date"; ?>"><br />
+                    <input class="col2" type="date" name="date" id="date" min="<?php echo "$date"; ?>"><br />
 
-                    <label for="valcontrole" class="col1">Valeur de contrôle :</label>
-                    <input class="col2" type="text" name="valeur_controle" id="valcontrol" contenteditable="false"
+                    <label for="val_controle" class="col1">Valeur de contrôle :</label>
+                    <input class="col2" type="text" name="valeur_controle" id="val_controle" contenteditable="false"
                         placeholder="valeur de contrôle"><br />
 
                     <input type='hidden' name='transaction' value="<?php echo "$transaction" ?>">
