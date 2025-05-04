@@ -105,7 +105,7 @@ if (isset($_POST["boutton"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $mail ?>"><br />
 
                     <label for="mdp" class="col1">Mot de passe :</label>
-                    <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe"><br />
+                    <input class="col2" type="password" name="mdp" id="mdp" placeholder="Entrez un mot de passe">
 
                     <p class="col1"></p>
                     <label class="col2">
