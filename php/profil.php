@@ -77,7 +77,7 @@ require_once "php-include/fonctions_voyages.php";
                     <label id="label-mdp" for="mdp" class="col1">Mot de passe :</label>
                     <div class="col2 enveloppe-input">
                         <!-- Noter que l'input suivante n'a pas la classe js-a-verifier car le mot de passe n'est pas changé par défaut -->
-                        <div class="fill-coll">
+                        <div class="fill-col">
                             <input class="desactivable js-mdp" type="password" name="mdp" id="mdp"
                                 placeholder="Entrez un mot de passe" value="<?php
                                 for ($i = 0; $i < strlen($utilisateur["mdp"]); $i++) {
@@ -106,7 +106,7 @@ require_once "php-include/fonctions_voyages.php";
                     <div class="col2 enveloppe-input" id="div-mdp2" hidden>
                         <!-- Noter que l'input suivante n'a pas la classe  car le mot de passe n'est pas changé par défaut -->
                         <div class="fill-col">
-                            <input hidden class="desactivable js-mdp" type="password" name="mdp2" id="mdp2"
+                            <input class="desactivable js-mdp" type="password" name="mdp2" id="mdp2"
                                 placeholder="Confirmez le mot de passe" value="" readonly <?php echo ' maxlength="' . MAX_MDP_LENGTH . '" ' ?>>
                             <span class="compteur"><?php echo "0/" . MAX_MDP_LENGTH ?></span>
 

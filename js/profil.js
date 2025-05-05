@@ -20,13 +20,14 @@ var evenement = new Event("input")
  */
 let champs_modifies = [];
 
+
+
 /**
  * Conteneur principal du profil
  * @type {HTMLElement}
  */
 let div_profil = document.getElementById("modifiable");
 let oeil = document.getElementById("oeil-mdp");
-oeil.setAttribute("hidden", "hidden");
 
 
 window.onbeforeunload = function (e) {
@@ -56,11 +57,16 @@ function ajouterModification(id) {
     if (!champs_modifies.includes(id)) {
         champs_modifies.push(id);
     }
+    console.log(en_modification);
+    console.log(champs_modifies);
+
     if (!en_modification) {
         permettreValidation();
         en_modification = true;
     }
 }
+
+
 
 /**
  * Retire un champ de la liste des champs modifiés
@@ -71,7 +77,7 @@ function retirerModification(id) {
         return champ !== id;
     });
     if (champs_modifies.length === 0) {
-        desactiverModification();
+        reinitialiserModifications();
     }
 }
 
@@ -89,6 +95,91 @@ function gestionBoutonAnnuler(id, afficher) {
             annuler.setAttribute("hidden", "hidden");
         }
     }
+    else {
+        console.error("Bouton annuler introuvable pour l'id : " + id);
+    }
+}
+
+let id_mdp = "mdp";
+let id_confirmation_mdp = "mdp2";
+
+let input_mdp = document.getElementById(id_mdp);
+let input_confirmation_mdp = document.getElementById(id_confirmation_mdp);
+let label_mdp = document.getElementById("label-" + id_mdp);
+let label_confirmation_mdp = document.getElementById("label-" + id_confirmation_mdp);
+
+let oeil_mdp = document.getElementById("oeil-" + id_mdp);
+oeil_mdp.setAttribute("hidden", "hidden");
+let oeil_confirmation_mdp = document.getElementById("oeil-" + id_confirmation_mdp);
+let div_mdp2 = document.getElementById("div-" + id_confirmation_mdp);
+let br_col3_mdp2 = document.getElementById("col3-" + id_confirmation_mdp);
+/**
+ * Met en readonly les champs de mot de passe 
+ * cache la confirmation et le reste, sans modifier le
+ * contenu des champs
+ */
+function cacherMdp() {
+    oeil_mdp.setAttribute("hidden", "hidden");
+    oeil_mdp.setAttribute("src", "../img/imgoeil.png");
+    input_mdp.type = "password";
+    input_mdp.setAttribute("readonly", "readonly");
+    label_confirmation_mdp.setAttribute("hidden", "hidden");
+    div_mdp2.setAttribute("hidden", "hidden");
+    br_col3_mdp2.setAttribute("hidden", "hidden");
+}
+
+/**
+ * Affiche les champs de mot de passe en modifiable
+ * et les ajoute à la liste des champs modifiés
+ */
+function afficherMdp() {
+    oeil_mdp.removeAttribute("hidden");
+
+    label_mdp.innerHTML = "Nouveau mot de passe";
+    input_mdp.removeAttribute("readonly");
+    input_mdp.classList.add("js-a-verifier");
+    input_mdp.focus();
+
+    label_confirmation_mdp.removeAttribute("hidden");
+    input_confirmation_mdp.removeAttribute("readonly");
+    input_confirmation_mdp.classList.add("js-a-verifier");
+    div_mdp2.removeAttribute("hidden");
+    br_col3_mdp2.removeAttribute("hidden");
+
+    if (!champs_modifies.includes(id_mdp)) {
+        input_mdp.value = "";
+        input_confirmation_mdp.value = "";
+
+        // Maj de la longueur donc maj compteur de longueur (form.js) 
+        input_mdp.dispatchEvent(evenement);
+        input_confirmation_mdp.dispatchEvent(evenement);
+    }
+
+    ajouterModification(id_mdp);
+    ajouterModification(id_confirmation_mdp);
+    gestionBoutonAnnuler(id_mdp, true);
+}
+
+/**
+ * Active ou désactive la modification du mot de passe
+ */
+function modifMDP() {
+
+    if (input_mdp.hasAttribute("readonly")) {
+        afficherMdp();
+    } else {
+        cacherMdp();
+    }
+}
+
+/**
+ * Réinitialise le mot de passe et son champ de confirmation
+ */
+function reinitialiserMDP() {
+    cacherMdp();
+    label_mdp.innerHTML = "Mot de passe";
+    reinitialiserInput(id_mdp);
+    reinitialiserInput(id_confirmation_mdp, false);
 }
 
 /**
@@ -122,10 +213,6 @@ let btnRadioAffiche = false;
  * @param {string[]} ids liste des ids des boutons radio
  */
 function afficherBtnRadio(idAnnuler, ids) {
-    if (!en_modification) {
-        permettreValidation();
-        en_modification = true;
-    }
 
     let annuler = document.getElementById(idAnnuler);
     if (annuler) {
@@ -143,14 +230,12 @@ function afficherBtnRadio(idAnnuler, ids) {
                 radio.removeAttribute("hidden");
                 ajouterModification(id);
                 // radio.classList.add("js-a-verifier");
-                console.log(id + " maintenant modifiable");
             } else {
                 radio.hidden = true;
                 if (!radio.checked) {
                     label.hidden = true;
                 }
                 // retirerModification(id);
-                console.log(id + " maintenant non modifiable");
             }
         }
     }
@@ -158,95 +243,7 @@ function afficherBtnRadio(idAnnuler, ids) {
     btnRadioAffiche = !btnRadioAffiche;
 }
 
-/**
- * Active ou désactive la modification du mot de passe
- */
-function modifMDP() {
-    let id = "mdp";
-    let id_confirmation = "mdp2";
 
-    let input = document.getElementById(id);
-    let label = document.getElementById("label-" + id);
-    if (input) {
-        if (input.readOnly || input.hasAttribute("readonly")) {
-            input.removeAttribute("readonly");
-            input.value = "";
-            input.focus();
-            input.classList.add("js-a-verifier");
-            ajouterModification(id);
-            gestionBoutonAnnuler(id, true);
-            console.log(id + " maintenant modifiable");
-            label.innerHTML = "Nouveau mot de passe";
-            oeil.removeAttribute("hidden");
-        } else {
-            input.setAttribute("readonly", "readonly");
-            // retirerModification(id);
-            gestionBoutonAnnuler(id, true);
-            oeil.setAttribute("hidden", "hidden");
-            console.log(id + " maintenant non modifiable");
-        }
-    }
-    input.dispatchEvent(evenement);
-
-    let input2 = document.getElementById(id_confirmation);
-    let label2 = document.getElementById("label-" + id_confirmation);
-    let br_col3 = document.getElementById("col3-" + id_confirmation);
-    let div_mdp2 = document.getElementById("div-" + id_confirmation);
-
-    if (input2 && label2 && br_col3 && div_mdp2) {
-
-        if (input2.readOnly || input2.hasAttribute("readonly")) {
-            input2.removeAttribute("readonly");
-            input2.removeAttribute("hidden");
-            input2.value = "";
-            label2.removeAttribute("hidden");
-            br_col3.removeAttribute("hidden");
-            div_mdp2.removeAttribute("hidden");
-            input2.classList.add("js-a-verifier");
-            ajouterModification(id_confirmation);
-            console.log(id_confirmation + " maintenant modifiable");
-        } else {
-            input2.setAttribute("readonly", "readonly");
-            input2.setAttribute("hidden", "hidden");
-            label2.setAttribute("hidden", "hidden");
-            br_col3.setAttribute("hidden", "hidden");
-            div_mdp2.setAttribute("hidden", "hidden");
-            // retirerModification(id_confirmation);
-            console.log(id_confirmation + " maintenant non modifiable");
-        }
-        input2.dispatchEvent(evenement);
-    }
-}
-
-/**
- * Réinitialise le mot de passe et son champ de confirmation
- */
-function reinitialiserMDP() {
-    let id = "mdp";
-    reinitialiserInput(id);
-
-    let id_confirmation = "mdp2";
-    let input2 = document.getElementById(id_confirmation);
-    let label2 = document.getElementById("label-" + id_confirmation);
-    let br_col3 = document.getElementById("col3-" + id_confirmation);
-    let div_mdp2 = document.getElementById("div-" + id_confirmation);
-    let label_mdp = document.getElementById("label-" + id);
-    oeil.setAttribute("hidden", "hidden");
-    label_mdp.innerHTML = "Mot de passe";
-
-    if (!(input2.readOnly == "readonly")) {
-        input2.classList.remove("js-a-verifier");
-        input2.setAttribute("readonly", "readonly");
-        input2.setAttribute("hidden", "hidden");
-        input2.value = "";
-        label2.setAttribute("hidden", "hidden");
-        br_col3.setAttribute("hidden", "hidden");
-        div_mdp2.setAttribute("hidden", "hidden");
-        retirerModification(id_confirmation);
-        console.log(id_confirmation + " maintenant non modifiable");
-    }
-    input2.dispatchEvent(evenement);
-}
 
 /**
  * Réinitialise les boutons radio à leur valeur par défaut
@@ -257,6 +254,9 @@ function reinitialiserRadio(idAnnuler, ids) {
     let annuler = document.getElementById(idAnnuler);
     if (annuler) {
         annuler.setAttribute("hidden", "hidden");
+    }
+    else {
+        console.error("Bouton annuler introuvable pour l'id : " + idAnnuler);
     }
 
     for (let i = 0; i < ids.length; i++) {
@@ -285,18 +285,25 @@ function reinitialiserRadio(idAnnuler, ids) {
 /**
  * Réinitialise un champ input à sa valeur d’origine
  * @param {string} id
+ * @param {boolean} avec_btn_annuler true si le bouton annuler (reset) doit être désactivé
  */
-function reinitialiserInput(id) {
+function reinitialiserInput(id, avec_btn_annuler = true) {
     let input = document.getElementById(id);
-    if (input) {
+    let elem_message_erreur = input.parentNode.parentNode.querySelector(".message-erreur");
+    if (input && elem_message_erreur) {
         input.value = input.defaultValue;
         input.setAttribute("readonly", "readonly");
         input.classList.remove("js-a-verifier");
         retirerModification(id);
-        console.log(id + " maintenant non modifiable");
+        input.dispatchEvent(evenement);
+        elem_message_erreur.innerHTML = "";
     }
-    input.dispatchEvent(evenement);
-    gestionBoutonAnnuler(id, false);
+    else {
+        console.error("Impossible de réinitialiser le champ " + id);
+    }
+    if (avec_btn_annuler) {
+        gestionBoutonAnnuler(id, false);
+    }
 }
 
 /**
@@ -304,7 +311,7 @@ function reinitialiserInput(id) {
  */
 function reinitialiserFormulaire() {
     document.getElementById("form-profil").reset();
-    desactiverModification();
+    reinitialiserModifications();
 }
 
 function preEnvoiFormulaire() {
@@ -369,40 +376,31 @@ function permettreValidation() {
 /**
  * Désactive tous les champs modifiables et cache les boutons d’action
  */
-function desactiverModification() {
-    en_modification = false;
-    champs_modifies = [];
+function reinitialiserModifications() {
     div_profil.style.borderColor = "#43aed4";
-    btnRadioAffiche = false;
-
-    let inputs = document.getElementsByTagName("input");
-    for (let i = 0; i < inputs.length; i++) {
-        let input = inputs[i];
-        if (input.type === "radio") {
-            if (!input.checked) {
-                input.parentNode.setAttribute("hidden", "hidden");
-            } else {
-                input.setAttribute("hidden", "hidden");
-            }
-        }
-        if (input.classList.contains("desactivable")) {
-            input.setAttribute("readonly", "readonly");
-        }
-        input.dispatchEvent(evenement);
+    if (champs_modifies.includes(id_mdp)) {
+        reinitialiserMDP();
     }
+    if (champs_modifies.includes("genreF")){
+        reinitialiserRadio('annuler-genre', ['genreA','genreH','genreF'])
+    }
+    
+    let inputs = document.getElementsByClassName("js-a-verifier");
+    //il ne reste que les inputs avec contenu modifiable
+    for (let i = 0; i < champs_modifies.length; i++) {
+        reinitialiserInput(champs_modifies[i]);
+    }
+    en_modification = false;
+    btnRadioAffiche = false;
+    champs_modifies = [];
 
     let div_modif = document.getElementById("valider");
     let valider = document.getElementById("valider-preenvoi");
     let reinitialiser = document.getElementById("reinitialiser-modif");
-    
-    ajouterModification("mdp");
-    ajouterModification("mdp2");
-    ajouterModification("bob"); // C'est pas propre je sais
-    reinitialiserMDP();
-    champs_modifies = [];
+
     if (valider) div_modif.removeChild(valider);
     if (reinitialiser) div_modif.removeChild(reinitialiser);
-
+    en_modification = false;
     let annuler = document.getElementsByClassName("btn-annuler");
     for (let i = 0; i < annuler.length; i++) {
         annuler[i].setAttribute("hidden", "hidden");
@@ -431,6 +429,6 @@ window.preEnvoiFormulaire = preEnvoiFormulaire;
 window.envoyerFormulaire = envoyerFormulaire;
 
 window.fermerPopup = fermerPopup;
-window.desactiverModification = desactiverModification;
+window.desactiverModification = reinitialiserModifications;
 
 window.champs_modifies = champs_modifies;

@@ -243,7 +243,7 @@ function ajouterIconeOeil(Id) {
       var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
       Iconoeil.setAttribute('src', '../img/imgoeil.svg');
       Iconoeil.id = 'oeil-'+Id;
-
+      Iconoeil.style.maxHeight = "1em";
       inputMDP.parentNode.style.position = 'relative';
       inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
 
