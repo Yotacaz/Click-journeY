@@ -851,6 +851,18 @@ a .lien-span {
     overflow-y: scroll;
 }
 
+/*Contenu dépliable (voir utiles.js)*/
+.js-replier {
+    cursor: pointer;
+    user-select: none;
+}
+
+.js-replier:hover + .repliable{
+    border-radius: .5em;
+    background-color: var(--couleur-c);
+    transition: background-color 0.2s ease;
+}
+
 a.lien {
     color: var(--couleur-a);
 }
@@ -887,6 +899,7 @@ a.lien:hover {
 .submit {
     width: 17em;
 }
+
 
 
 body.dark-theme {

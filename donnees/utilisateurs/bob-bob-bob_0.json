@@ -10,7 +10,15 @@
         "date_naissance": "2006-06-06"
     },
     "voyages": {
-        "consultes": [],
+        "consultes": {
+            "2": {
+                "nombre_personnes_totales": 3,
+                "option_0_0": "visite simple",
+                "nombre_personnes_0_0": 1,
+                "nombre_personnes_0_1": 1,
+                "prix": 1520
+            }
+        },
         "achetes": {
             "1": {
                 "nombre_personnes_totales": 5,
@@ -35,7 +43,7 @@
     },
     "autres": {
         "date_inscription": "2020-06-06",
-        "date_derniere_connexion": "2025-05-04"
+        "date_derniere_connexion": "2025-05-06"
     },
     "modif_admin": []
 }
