@@ -41,5 +41,25 @@
             "valeur_controle": 555,
             "num_carte": "5555 1234 5678 9000"
         }
+    },
+    "KEgXoFrU6mqM3mt": {
+        "ids_voyages": [
+            0
+        ],
+        "options_enregistres": [
+            {
+                "nombre_personnes_totales": 2,
+                "nombre_personnes_0_0": 2,
+                "option_0_1": "Lamborghini",
+                "nombre_personnes_0_1": 0,
+                "option_1_0": "place assise",
+                "nombre_personnes_1_0": 2,
+                "prix": 7830
+            }
+        ],
+        "utilisateur": "bob@bob.bob",
+        "date_transaction": "2025-05-09",
+        "prix_total": 7830,
+        "type_achat": "unitaire"
     }
 }

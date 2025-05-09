@@ -130,11 +130,12 @@ if (isset($_GET[$nom_validation])) {
     ?>
     <main>
 
-        <form action="#" method="get" id="<?= $form_id ?>" class="js-form">
+        <form action="#" method="get" id="<?= $form_id ?>" class="js-form contenu-centre">
             <div class="bandeau-image">
                 <img src="../img/arcade.png" alt="image arcade">
                 <div class="centre">
-                    <label for="recherche-textuelle">
+                    <label for="recherche-textuelle" style="color: #261C57;">
+                        <!-- Ne pas changer couleur texte -->
                         Rechercher un jeu, une activité
                     </label>
                     <div>
@@ -155,110 +156,119 @@ if (isset($_GET[$nom_validation])) {
             </div>
 
             <div class="texte-centre">
-                <h1>Recherche avancée</h1>
+                <h1 class="js-replier">Recherche avancée</h1>
+                <div class="repliable">
 
-                <div class="flex">
-                    <div class="flex marge-droite">
-                        <h3><label for="genre">Genre : &nbsp;</label></h3>
-                        <select class="filtre input-formulaire" name="genre" id="genre">
+                    <div class="flex">
+                        <div class="flex marge-droite">
+                            <h3><label for="genre">Genre : &nbsp;</label></h3>
+                            <select class="filtre input-formulaire" name="genre" id="genre">
 
-                            <option <?= $genre === "Tout" ? "selected" : "" ?> value="Tout">Tout</option>
-                            <option <?= $genre === "MMORPG" ? "selected" : "" ?> value="MMORPG">MMORPG</option>
-                            <option <?= $genre === "Aventure" ? "selected" : "" ?> value="Aventure">Aventure</option>
-                            <option <?= $genre === "Sport" ? "selected" : "" ?> value="Sport">Sport</option>
-                            <option <?= $genre === "Action" ? "selected" : "" ?> value="Action">Action</option>
-                            <option <?= $genre === "Fiction interactive" ? "selected" : "" ?> value="Fiction interactive">
-                                Fiction</option>
-                            <option <?= $genre === "Strategie" ? "selected" : "" ?> value="Strategie">Stratégie
-                            </option>
-                            <opt<?= $genre === "Bac a sable" ? "selected" : "" ?> value="Bac a sable">Bac a sable
+                                <option <?= $genre === "Tout" ? "selected" : "" ?> value="Tout">Tout</option>
+                                <option <?= $genre === "MMORPG" ? "selected" : "" ?> value="MMORPG">MMORPG</option>
+                                <option <?= $genre === "Aventure" ? "selected" : "" ?> value="Aventure">Aventure</option>
+                                <option <?= $genre === "Sport" ? "selected" : "" ?> value="Sport">Sport</option>
+                                <option <?= $genre === "Action" ? "selected" : "" ?> value="Action">Action</option>
+                                <option <?= $genre === "Fiction interactive" ? "selected" : "" ?>
+                                    value="Fiction interactive">
+                                    Fiction</option>
+                                <option <?= $genre === "Strategie" ? "selected" : "" ?> value="Strategie">Stratégie
                                 </option>
+                                <opt<?= $genre === "Bac a sable" ? "selected" : "" ?> value="Bac a sable">Bac a sable
+                                    </option>
 
-                        </select>
+                            </select>
+                        </div>
+
+                        <div class="flex marge-droite">
+                            <h3><label for="theme">Thème : &nbsp;</label></h3>
+                            <select class="filtre input-formulaire" name="theme" id="theme">
+                                <option <?= $theme === "Tout" ? "selected" : "" ?> value="Tout">Tout</option>
+                                <option <?= $theme === "Guerre" ? "selected" : "" ?> value="Guerre">Guerre</option>
+                                <option <?= $theme === "Science fiction" ? "selected" : "" ?> value="Science fiction">
+                                    Science</option>
+                                <option <?= $theme === "Fantasy" ? "selected" : "" ?> value="Fantasy">Fantasy</option>
+                                <option <?= $theme === "Horreur" ? "selected" : "" ?> value="Horreur">Horreur</option>
+                                <option <?= $theme === "Dystopie" ? "selected" : "" ?> value="Dystopie">Dystopie</option>
+                                <option <?= $theme === "Super Hero" ? "selected" : "" ?> value="Super Hero">Super Hero
+                                </option>
+                                <option <?= $theme === "Espace" ? "selected" : "" ?> value="Espace">Espace</option>
+                                <option <?= $theme === "Medieval" ? "selected" : "" ?> value="Medieval">Medieval</option>
+                                <option <?= $theme === "City" ? "selected" : "" ?> value="City">City</option>
+                                <option <?= $theme === "Aquatique" ? "selected" : "" ?> value="Aquatique">Aquatique
+                                </option>
+                                <option <?= $theme === "Nature" ? "selected" : "" ?> value="Nature">Nature</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="flex marge-droite">
-                        <h3><label for="theme">Thème : &nbsp;</label></h3>
-                        <select class="filtre input-formulaire" name="theme" id="theme">
-                            <option <?= $theme === "Tout" ? "selected" : "" ?> value="Tout">Tout</option>
-                            <option <?= $theme === "Guerre" ? "selected" : "" ?> value="Guerre">Guerre</option>
-                            <option <?= $theme === "Science fiction" ? "selected" : "" ?> value="Science fiction">
-                                Science</option>
-                            <option <?= $theme === "Fantasy" ? "selected" : "" ?> value="Fantasy">Fantasy</option>
-                            <option <?= $theme === "Horreur" ? "selected" : "" ?> value="Horreur">Horreur</option>
-                            <option <?= $theme === "Dystopie" ? "selected" : "" ?> value="Dystopie">Dystopie</option>
-                            <option <?= $theme === "Super Hero" ? "selected" : "" ?> value="Super Hero">Super Hero
-                            </option>
-                            <option <?= $theme === "Espace" ? "selected" : "" ?> value="Espace">Espace</option>
-                            <option <?= $theme === "Medieval" ? "selected" : "" ?> value="Medieval">Medieval</option>
-                            <option <?= $theme === "City" ? "selected" : "" ?> value="City">City</option>
-                            <option <?= $theme === "Aquatique" ? "selected" : "" ?> value="Aquatique">Aquatique
-                            </option>
-                            <option <?= $theme === "Nature" ? "selected" : "" ?> value="Nature">Nature</option>
-                        </select>
-                    </div>
-                </div>
 
-
-                <div class="separateur-section-haut">
-                    <h2>Prix</h2>
-                    <div class="flex">
-                        <label class="flex" for="prix_min_range">
-                            Prix minimum :&nbsp;
-                            <input class="filtre" type="range" name="prix_min_range" id="prix_min_range"
+                    <div class="separateur-section-haut">
+                        <h2>Prix</h2>
+                        <div class="flex">
+                            <label class="flex" for="prix_min_range">
+                                Prix minimum :&nbsp;
+                                <input class="filtre" type="range" name="prix_min_range" id="prix_min_range"
+                                    value="<?= $prix_min ?>" min="0" max="10000" step="250"
+                                    oninput="this.form.prix_min_nb.value=this.value"
+                                    onchange="this.form.prix_min_nb.dispatchEvent(evenement)">
+                            </label>
+                            <input class="filtre" type="number" name="prix_min_nb" id="prix_min_nb"
                                 value="<?= $prix_min ?>" min="0" max="10000" step="250"
-                                oninput="this.form.prix_min_nb.value=this.value"
-                                onchange="this.form.prix_min_nb.dispatchEvent(evenement)">
-                        </label>
-                        <input class="filtre" type="number" name="prix_min_nb" id="prix_min_nb" value="<?= $prix_min ?>"
-                            min="0" max="10000" step="250" oninput="this.form.prix_min_range.value=this.value">
-                        &nbsp;€
-                    </div>
-                    <div class="flex">
-                        <label class="flex" for="prix_max_range">
-                            Prix maximum :
-                            <input class="filtre" type="range" name="prix_max_range" id="prix_max_range"
+                                oninput="this.form.prix_min_range.value=this.value">
+                            &nbsp;€
+                        </div>
+                        <div class="flex">
+                            <label class="flex" for="prix_max_range">
+                                Prix maximum :
+                                <input class="filtre" type="range" name="prix_max_range" id="prix_max_range"
+                                    value="<?= $prix_max ?>" min="0" max="10000" step="250"
+                                    oninput="this.form.prix_max_nb.value=this.value"
+                                    onchange="this.form.prix_max_nb.dispatchEvent(evenement)">
+                            </label>
+                            <input class=" filtre" type="number" name="prix_max_nb" id="prix_max_nb"
                                 value="<?= $prix_max ?>" min="0" max="10000" step="250"
-                                oninput="this.form.prix_max_nb.value=this.value"
-                                onchange="this.form.prix_max_nb.dispatchEvent(evenement)">
-                        </label>
-                        <input class=" filtre" type="number" name="prix_max_nb" id="prix_max_nb"
-                            value="<?= $prix_max ?>" min="0" max="10000" step="250"
-                            oninput="this.form.prix_max_range.value=this.value">
-                        &nbsp;€
+                                oninput="this.form.prix_max_range.value=this.value">
+                            &nbsp;€
+                        </div>
+
                     </div>
+                    <div class="separateur-section-haut">
+                        <h2>Date</h2>
+                        <label for="date_min">Date minimum :</label>
+                        <input class="input-formulaire filtre" type="date" name="date_min" id="date_min"
+                            value="<?= date("Y-m-d", $date_min) ?>">
+                        <label for="date_max">Date maximum :</label>
+                        <input class="input-formulaire filtre" type="date" name="date_max" id="date_max" value="<?=
+                            date("Y-m-d", $date_max) ?>">
+                    </div>
+                    <div class="separateur-section-haut">
+                        <h2>Lieux</h2>
+                        <input class="filtre" type="checkbox" name="lieu[]" id="lieu-1" value="france"
+                            <?= in_array("france", $lieux) ? "checked" : "" ?>>
+                        <label for="lieu-1">France</label>
+                        <input class="filtre" type="checkbox" name="lieu[]" id="lieu-2" value="etats-unis"
+                            <?= in_array("etats-unis", $lieux) ? "checked" : "" ?>>
+                        <label for="lieu-2">États-Unis</label>
+                        <input class="filtre" type="checkbox" name="lieu[]" id="lieu-3" value="japon"
+                            <?= in_array("japon", $lieux) ? "checked" : "" ?>>
+                        <label for="lieu-3">Japon</label>
+                        <input class="filtre" type="checkbox" name="lieu[]" id="lieu-4" value="chine"
+                            <?= in_array("chine", $lieux) ? "checked" : "" ?>>
+                        <label for="lieu-4">Chine</label>
+                        <input class="filtre" type="checkbox" name="lieu[]" id="lieu-5" value="autre"
+                            <?= in_array("autre", $lieux) ? "checked" : "" ?>>
+                        <label for="lieu-5">Autre</label>
+                    </div>
+                    <div class="separateur-section-haut contenu-centre">
+                        <p><br></p>
+                        <div class="flex">
+                            <button class="input-formulaire grand" name="<?php echo $nom_validation; ?>"
+                                type="submit">Rechercher</button>&nbsp;&nbsp;&nbsp;
+                            <button class="input-formulaire grand" name="reinitialiser"
+                                type="submit">Réinitialiser</button>
 
-                </div>
-                <div class="separateur-section-haut">
-                    <h2>Date</h2>
-                    <label for="date_min">Date minimum :</label>
-                    <input class="input-formulaire filtre" type="date" name="date_min" id="date_min"
-                        value="<?= date("Y-m-d", $date_min) ?>">
-                    <label for="date_max">Date maximum :</label>
-                    <input class="input-formulaire filtre" type="date" name="date_max" id="date_max" value="<?=
-                        date("Y-m-d", $date_max) ?>">
-                </div>
-                <div class="separateur-section-haut">
-                    <h2>Lieux</h2>
-                    <input class="filtre" type="checkbox" name="lieu[]" id="lieu-1" value="france" <?= in_array("france", $lieux) ? "checked" : "" ?>>
-                    <label for="lieu-1">France</label>
-                    <input class="filtre" type="checkbox" name="lieu[]" id="lieu-2" value="etats-unis"
-                        <?= in_array("etats-unis", $lieux) ? "checked" : "" ?>>
-                    <label for="lieu-2">États-Unis</label>
-                    <input class="filtre" type="checkbox" name="lieu[]" id="lieu-3" value="japon" <?= in_array("japon", $lieux) ? "checked" : "" ?>>
-                    <label for="lieu-3">Japon</label>
-                    <input class="filtre" type="checkbox" name="lieu[]" id="lieu-4" value="chine" <?= in_array("chine", $lieux) ? "checked" : "" ?>>
-                    <label for="lieu-4">Chine</label>
-                    <input class="filtre" type="checkbox" name="lieu[]" id="lieu-5" value="autre" <?= in_array("autre", $lieux) ? "checked" : "" ?>>
-                    <label for="lieu-5">Autre</label>
-                </div>
-                <div class="separateur-section-haut contenu-centre">
-                    <p><br></p>
-                    <div class="flex">
-                        <button class="input-formulaire grand" name="<?php echo $nom_validation; ?>"
-                            type="submit">Rechercher</button>&nbsp;&nbsp;&nbsp;
-                        <button class="input-formulaire grand" name="reinitialiser" type="submit">Réinitialiser</button>
-
+                        </div>
                     </div>
                 </div>
                 <h1>Résultats</h1>
@@ -311,10 +321,7 @@ if (isset($_GET[$nom_validation])) {
     <?php
     require_once "php-include/footer.php";
     ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="../js/mode.js">
-    </script>
+    <script src="../js/utiles.js"></script>
 </body>
 
 

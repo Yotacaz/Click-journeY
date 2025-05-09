@@ -61,6 +61,26 @@ function chargerVoyageParId(int $id)
     return $voyages[$id];
 }
 
+/**
+ * Charge les voyages grâce à une liste d'ids
+ * @param array $ids ids des voyages à charger
+ * @return array|null tableau des voyages correspondants s'ils existent tous, **null** sinon
+ */
+function chargerVoyagesParIds(array $ids)
+{
+    global $voyages;
+    $resultat = [];
+    foreach ($ids as $id) {
+        if (isset($voyages[$id])) {
+            if (empty($voyages[$id]) || $voyages[$id]["id"] != $id) {
+                return null;
+            }
+            $resultat[$id] = $voyages[$id];
+        }
+    }
+    return $resultat;
+}
+
 function formaterTitreVoyage(string $titre)
 {
     return preg_replace('/[^a-z0-9]+/', '_', strtolower($titre));
@@ -124,15 +144,16 @@ function trierVoyageParNote($nb_elements = -1)
 
 function recup_id_voyage()
 {
+
     if (!isset($_GET["id"])) {
+        //cas possible, rediriger vers la page de recherche
         header("Location: recherche.php");
-        die("Erreur : Aucun identifiant de voyage spécifié");
+        exit; //Erreur : Aucun identifiant de voyage spécifié
     }
     global $voyages;
     $identifiant = intval($_GET["id"]);
     if (empty($voyages[$identifiant])) {
-        header("Location: recherche.php");
-        die("Erreur : Identifiant de voyage spécifié incorrect");
+        die("Aucun voyage correspondant à l'identifiant $identifiant");
     }
     return $identifiant;
 }

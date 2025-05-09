@@ -35,7 +35,7 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
             <a href="recherche.php" <?php
             classe_actif($page_active, "recherche.php");
             ?>>
-            <img class="img-1em cacher" src="../img/search.png" alt="🔍">&nbsp;Rechercher
+                <img class="img-1em cacher" src="../img/search.png" alt="🔍">&nbsp;Rechercher
             </a>
 
         </nav>
@@ -43,8 +43,14 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
     <div class="sectionH">
         <nav class="navbar">
             <div class="menu-deroulant">
-                <a class="contenu-affiche-menu" href="#">
-                    &#9207; <p class="cacher" href="#"><?= $utilisateur!=null ? $utilisateur["info"]["prenom"] : "Compte" ?></p> &nbsp;
+                <?php
+                $contenu_menu_deroulant = ["profil", "panier", "connexion", "inscription", "admin"];
+                $dans_menu_deroulant = in_array(basename($page_active, ".php"), $contenu_menu_deroulant);
+                ?>
+                <a class="contenu-affiche-menu <?= $dans_menu_deroulant ? " actif" : "" ?>" href="#">
+                    &#9207; <p class="cacher" href="#">
+                        <?= $utilisateur != null ? $utilisateur["info"]["prenom"] : "Compte" ?>
+                    </p> &nbsp;
                     <img src="../img/profile-circle-icon-.png" alt="icône compte">
                 </a>
                 <div class="contenu-menu">
@@ -58,8 +64,10 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
                             classe_actif($page_active, "admin.php");
                             echo '>Admin</a>';
                         }
-                        echo '<a href="php-include/deconnexion.php" ';
-                        echo '>Déconnexion</a>';
+                        echo '<a href="panier.php"';
+                        classe_actif($page_active, "panier.php");
+                        echo '>Panier</a> ';
+                        echo '<a href="php-include/deconnexion.php">Déconnexion</a>';
                     } else {
                         echo '<a href="connexion.php" ';
                         classe_actif($page_active, "connexion.php");
@@ -69,10 +77,13 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
                         echo '>Inscription</a>';
                     }
                     ?>
-                    <span><input type="checkbox" name="theme" id="theme" value="TODO"><label for="theme" id="mode">&nbsp;Thème clair</label></span>
+                    <span><input type="checkbox" name="theme" id="theme" class="modif-theme" onchange="changerTheme()"><label for="theme"
+                            id="mode">&nbsp;Thème inverse</label></span>
                 </div>
             </div>
         </nav>
     </div>
 
 </div>
+
+<script src="../js/mode.js"></script>

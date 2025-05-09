@@ -70,7 +70,7 @@ nav.navbar {
     transition: 0.2s;
 }
 
-.header a.actif {
+.header .actif {
     text-decoration: underline;
     background-color: hsla(265, 100%, 100%, 0.25);
 }
@@ -125,6 +125,11 @@ nav.navbar {
 }
 
 /* Contenu déjà afficher du menu déroulant */
+
+.contenu-affiche-menu {
+    text-decoration: none !important;
+}
+
 .contenu-affiche-menu:hover {
     background-color: hsla(265, 100%, 100%, 0.25);
     transition: 0.2s;

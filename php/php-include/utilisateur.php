@@ -220,7 +220,6 @@ function genererIdUtilisateur(): int
 function utilisateurEstConnecte(): bool
 {
     if (empty($_COOKIE['id_session'])) {
-
         return false;
     }
     $id_session = $_COOKIE['id_session'];
@@ -282,9 +281,9 @@ function connexionUtilisateurRequise($page_redirection = null)
         // die("utilisateur non connecté");
         if ($page_redirection != null) {
             $page_redirection = htmlspecialchars($page_redirection);
-            header("Location: connexion.php?redirection=$page_redirection");
+            header("Location: ".URL_RELATIVE."/php/connexion.php?redirection=$page_redirection");
         } else {
-            header("Location: connexion.php");
+            header("Location: ".URL_RELATIVE."/php/connexion.php");
         }
         exit;
     }

@@ -63,30 +63,6 @@ require_once "php-include/fonctions_voyages.php";
                 ?>
             </ul>
         </div>
-        <div class="contour-bloc scrollable">
-            <?php
-            $nb_consultes = count($utilisateur["voyages"]["consultes"]);
-            ?>
-            <h2 class="js-replier">Votre panier (<?= $nb_consultes ?>) :</h2>
-            <ul class="repliable">
-                <?php
-
-                if ($nb_consultes == 0) {
-                    echo "<li>Vous n'avez pas de voyages dans votre panier</li>";
-                }
-                foreach ($utilisateur["voyages"]["consultes"] as $id_v => $opt_achat) {
-                    $voyage = chargerVoyageParId($id_v);
-
-                    if ($voyage != null) {
-                        echo
-                            '<li><b><a href="details_voyage.php?id=' . $id_v . '">' . $voyage["titre"] . '</a></b> - ' . $voyage["localisation"]["ville"]
-                            . ', ' . $voyage["localisation"]["pays"] . ', du ' . $voyage["dates"]["debut"] . ' au ' . $voyage["dates"]["fin"] . ' pour
-                        ' . $opt_achat["prix"] . '€ (' . $opt_achat["nombre_personnes_totales"] . ' personnes)</li>';
-                    }
-                }
-                ?>
-            </ul>
-        </div>
         <div class="bloc" id="modifiable">
             <h2 class="js-replier">Votre profil :</h2>
             <form action="php-form/profil_modification.php" class="js-form repliable" method="post" name="form-profil"
@@ -320,6 +296,8 @@ require_once "php-include/fonctions_voyages.php";
             }
             ?>
         </div>
+        <div class="texte-centre"><a href="panier.php" class="input-formulaire"> → Acceder à votre panier</a></div>
+
         <form class="texte-centre" action="php-include/deconnexion.php" method="post">
             <input class="input-formulaire grand" type="submit" value="Déconnexion" name="deconnexion">
         </form>
@@ -327,17 +305,10 @@ require_once "php-include/fonctions_voyages.php";
     <?php
     require_once "php-include/footer.php";
     ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
     <script src="../js/utiles.js"></script>
     <script src="../js/profil.js" type="module">
     </script>
-    <script src="../js/mode.js">
-    </script>
+
 </body>
 
 </html>

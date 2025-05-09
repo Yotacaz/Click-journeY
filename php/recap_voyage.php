@@ -121,6 +121,10 @@ $titre_page = $voyage["titre"];
 
             <a class="input-formulaire grand" href="details_voyage.php?id=<?php echo $identifiant_v; ?>">Revoir
                 détail du voyage</a>
+            <form action="php-form/panier_ajout.php" method="post">
+                <input type="hidden" name="id_voyage" value="<?php echo $identifiant_v; ?>">
+                <button type="submit" class="input-formulaire grand">Ajouter au panier</button>
+            </form>
             <a class="input-formulaire grand" href="paiement.php?id=<?php echo $identifiant_v; ?>">Payer</a>
 
         </div>
@@ -131,10 +135,6 @@ $titre_page = $voyage["titre"];
     <?php
     require_once "php-include/footer.php";
     ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="../js/mode.js">
-    </script>
 </body>
 
 </html>

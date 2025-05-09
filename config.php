@@ -25,6 +25,6 @@ define('URL_BASE', $protocol . '://' . $host . URL_RELATIVE);
 const NOM_SITE = 'PixelTravels';
 const AUTEUR_SITE = ['Augustin AVELINE', 'CRISSOT Martin', 'DIOP Bineta'];
 const DESCRIPTION_SITE = 'Site de réservation de voyages sur le thème du jeu vidéo';
-
+const VENDEUR = "MI-3_A" 
 
 ?>

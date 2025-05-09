@@ -86,10 +86,10 @@
             }
         ],
         "email_personnes_inscrites": {
-            "bob@bob.bob": 5
+            "bob@bob.bob": 2
         },
         "nb_places_tot": 30,
-        "nb_places_restantes": 25,
+        "nb_places_restantes": 28,
         "prix_total": 3900,
         "image": [
             "image001.png",

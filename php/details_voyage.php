@@ -93,7 +93,8 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                         . " - " . $voyage['localisation']['pays'] ?></li>
                     <li>&nbsp <b>Prix unitaire</b> (sans les options) : <b><?php echo $voyage['prix_total'] ?> €</b>
                     </li>
-                    <li>&nbsp <b>Prix total</b> (avec les options et tous les membres du groupe) : <b id="prix_dynam_2">X€</b></li>
+                    <li>&nbsp <b>Prix total</b> (avec les options et tous les membres du groupe) : <b
+                            id="prix_dynam_2">X€</b></li>
                     <li><?php echo "$places_restantes / $places places restantes" ?></li>
                 </ul>
             </div>
@@ -118,7 +119,7 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                 }
                 echo '
                 <div class="contour-bloc">
-                <label> Nombre de personnes participant au voyage (taille de votre groupe) <br>
+                <label> <b>Nombre de personnes participant au voyage</b> (taille de votre groupe) <br>
                 <em> (max : ' . $places_restantes . ' personnes) :</em>
                     <input type="number" name="nombre_personnes_totales" id="nombre_personnes_totales" value="' . $nb_personnes_total . '" min="1" max="' . $places_restantes . '" ' . $modifiable . '>
                 </label>
@@ -195,7 +196,9 @@ $places_restantes = intval($voyage['nb_places_restantes']);
                 echo '<em>Aucune étape trouvée.</em>';
             }
             ?>
-            <center><h2 id="prix_dynam" data-total=<?php echo $voyage['prix_total'] ?>></h2></center>
+            <div class="texte-centre">
+                <h2 id="prix_dynam" data-total=<?php echo $voyage['prix_total'] ?>></h2>
+            </div>
 
             <!-- Soumettre le formulaire -->
             <?php
@@ -210,16 +213,12 @@ $places_restantes = intval($voyage['nb_places_restantes']);
             ?>
 
         </form>
-    <script type="text/javascript" src="../js/prix_dyn.js"></script>
+        <script type="text/javascript" src="../js/prix_dyn.js"></script>
         <br><br>
     </main>
     <?php
     require_once "php-include/footer.php";
     ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="../js/mode.js">
-    </script>
 </body>
 
 </html>
