@@ -5,10 +5,11 @@ if (typeof form === "undefined") {
 }
 if (typeof donnes_formulaire === "undefined") {
     var donnes_formulaire = new FormData(form);
-    var url = new URL(window.location.href);
     
     var param_form = new URLSearchParams(donnes_formulaire);
     param_form.set(nom_validation, "true");
+    
+    var url = new URL(window.location.href);
 }
 
 let div_resultats = document.getElementById("resultats");

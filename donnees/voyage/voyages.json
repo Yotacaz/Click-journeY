@@ -43,8 +43,7 @@
                     {
                         "nom": "art urbain",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 1
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "location voiture de luxe",
@@ -53,8 +52,7 @@
                             "Lamborghini",
                             "Maserati"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 1
+                        "prix_par_personne": 25
                     }
                 ]
             },
@@ -79,8 +77,7 @@
                             "place assise",
                             "fosse"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 1
+                        "prix_par_personne": 15
                     }
                 ]
             }
@@ -141,8 +138,7 @@
                     {
                         "nom": "dance de feu",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "plongee sous-marine",
@@ -150,8 +146,7 @@
                             "apnee",
                             "scaphandre"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 2
+                        "prix_par_personne": 25
                     }
                 ]
             }
@@ -215,14 +210,12 @@
                             "visite simple",
                             "visite guidee"
                         ],
-                        "prix_par_personne": 20,
-                        "nombre_personnes": 2
+                        "prix_par_personne": 20
                     },
                     {
                         "nom": "balade parc Yellowstone",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 0
                     }
                 ]
             }
@@ -282,14 +275,12 @@
                             "guide touristique",
                             "decouverte solo"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Time Square",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 2
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Accrobranche Centrale Park",
@@ -298,8 +289,7 @@
                             "intermediaire",
                             "avance"
                         ],
-                        "prix_par_personne": 28,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 28
                     },
                     {
                         "nom": "abonnement metro",
@@ -308,8 +298,7 @@
                             "a la semaine",
                             "ticket individuel"
                         ],
-                        "prix_par_personne": 5,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 5
                     }
                 ]
             }
@@ -367,8 +356,7 @@
                     {
                         "nom": "visite parc national",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     }
                 ]
             },
@@ -392,8 +380,7 @@
                             "entree plein tarif",
                             "tarif reduit"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 15
                     }
                 ]
             }
@@ -455,8 +442,7 @@
                             "location materiel",
                             "materiel personel"
                         ],
-                        "prix_par_personne": 20,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 20
                     },
                     {
                         "nom": "transport",
@@ -464,8 +450,7 @@
                             "Train",
                             "Voiture"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     }
                 ]
             },
@@ -488,8 +473,7 @@
                             "location materiel",
                             "materiel personel"
                         ],
-                        "prix_par_personne": 20,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 20
                     }
                 ]
             }
@@ -546,8 +530,7 @@
                     {
                         "nom": "art urbain",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Restauant traditionnel",
@@ -556,8 +539,7 @@
                             "Menu enfant",
                             "Menu du jour"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     }
                 ]
             },
@@ -579,8 +561,7 @@
                             "Train grande vitesse",
                             "Tramway"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 15
                     }
                 ]
             }
@@ -636,8 +617,7 @@
                             "visite guidee",
                             "visite libre"
                         ],
-                        "prix_par_personne": 18,
-                        "nombre_personnes": 2
+                        "prix_par_personne": 18
                     }
                 ]
             },
@@ -659,8 +639,7 @@
                             "Crete",
                             "Santorin"
                         ],
-                        "prix_par_personne": 18,
-                        "nombre_personnes": 2
+                        "prix_par_personne": 18
                     }
                 ]
             }
@@ -718,14 +697,12 @@
                     {
                         "nom": "pyramides de Gizeh",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
-                        "nom": "Temples d’Assouan",
+                        "nom": "Temples d'Assouan",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     },
                     {
                         "nom": "Croisiere Nil",
@@ -733,8 +710,7 @@
                             "repas compris",
                             "sans repas"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     }
                 ]
             }
@@ -792,8 +768,7 @@
                             "Hotel",
                             "Auberge"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Repas",
@@ -803,8 +778,7 @@
                             "Dinner",
                             "Complet"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     },
                     {
                         "nom": "Transport",
@@ -812,8 +786,7 @@
                             "Cheval",
                             "Charrieaux"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     }
                 ]
             }
@@ -872,8 +845,7 @@
                             "accompagnateur",
                             "solo"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Squad",
@@ -881,8 +853,7 @@
                             "2 heures",
                             "4 heures"
                         ],
-                        "prix_par_personne": 35,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 35
                     }
                 ]
             },
@@ -907,14 +878,12 @@
                             "accompagnateur",
                             "solo"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Cite de Petra",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 15
                     }
                 ]
             }
@@ -978,8 +947,7 @@
                             "Canoe",
                             "Escalade"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     }
                 ]
             },
@@ -1005,8 +973,7 @@
                             "4x4",
                             "a pied"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     }
                 ]
             },
@@ -1032,8 +999,7 @@
                             "peche",
                             "cabanes"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     }
                 ]
             },
@@ -1059,8 +1025,7 @@
                             "Source chaude",
                             "Geyser"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     }
                 ]
             },
@@ -1082,8 +1047,7 @@
                             "chien traineau",
                             "glaciers"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "Restauration",
@@ -1091,8 +1055,7 @@
                             "Cuisine Inuite",
                             "Cuisine Dannoise"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     }
                 ]
             }
@@ -1151,8 +1114,7 @@
                             "visite guidee",
                             "visite libre"
                         ],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "randonee en montagne",
@@ -1161,8 +1123,7 @@
                             "achat materiel",
                             "propre materiel"
                         ],
-                        "prix_par_personne": 25,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 25
                     }
                 ]
             }
@@ -1220,8 +1181,7 @@
                     {
                         "nom": "decouverte art traditionel",
                         "valeurs_possibles": [],
-                        "prix_par_personne": 0,
-                        "nombre_personnes": 6
+                        "prix_par_personne": 0
                     },
                     {
                         "nom": "parc national Niokolo-Koba",
@@ -1229,8 +1189,7 @@
                             "visite guide",
                             "visite libre"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 4
+                        "prix_par_personne": 15
                     }
                 ]
             },
@@ -1255,8 +1214,7 @@
                             "accompagnateur",
                             "solo"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 15
                     }
                 ]
             }
@@ -1315,8 +1273,7 @@
                             "Menu veggie",
                             "Menu classique"
                         ],
-                        "prix_par_personne": 40,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 40
                     }
                 ]
             },
@@ -1338,8 +1295,7 @@
                             "plein tarif",
                             "tarif reduit"
                         ],
-                        "prix_par_personne": 15,
-                        "nombre_personnes": 3
+                        "prix_par_personne": 15
                     }
                 ]
             }

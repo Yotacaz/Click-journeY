@@ -81,7 +81,6 @@ $voyage =
                             "fosse"
                         ),
                         "prix_par_personne" => 15,
-                        "nombre_personnes" => 3
                     ),
 
                 )
