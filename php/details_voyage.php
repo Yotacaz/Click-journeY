@@ -35,7 +35,7 @@ $voyage = chargerVoyageParId($identifiant_v);
 if ($voyage == null) {
     die("Erreur : ID de voyage $identifiant_v  introuvable ou corrompu.");
 }
-
+unset_donnees_sensibles_voyage($voyage);
 
 $titre_page = $voyage["titre"];
 $places = intval($voyage['nb_places_tot']);

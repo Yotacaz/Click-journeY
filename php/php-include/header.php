@@ -20,7 +20,7 @@ $page_active = basename(path: htmlspecialchars($_SERVER["PHP_SELF"]));
 
 <div class="header">
     <div class="sectionH">
-        <a href="../index.php">
+        <a href="../index.html">
             <img class="icone-site" src="../img/logo.png" alt="Logo.png">
             <h1 class="cacher">PixelTravels</h1>
         </a>

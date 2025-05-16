@@ -99,11 +99,11 @@ $titre_page = $voyage["titre"];
                 $nom_option_form = "option_$etape_index" . "_$option_index";
                 $nom_nb_personne_form = "nombre_personnes_$etape_index" . "_$option_index";
                 // echo "test : $nom_option_form<br>";
-                echo '<li><b>' . $option['nom'] . ':</b> ' . $opt_enr[$nom_nb_personne_form] . ' personnes choisies';
+                echo '<li><b>' . $option['nom'] . ':</b> ';
                 if (isset($opt_enr[$nom_option_form])) {
-                    echo ' (option choisie: ' . $opt_enr[$nom_option_form] . ')';
+                    echo ' option choisie: ' . $opt_enr[$nom_option_form] . ' pour ' . $option["valeurs_possibles"][$opt_enr[$nom_option_form]] . ' €/personne';
                 }
-                echo '</li>';
+                echo ', ' . $opt_enr[$nom_nb_personne_form] . ' personnes choisies </li>';
             }
             if (empty($etape['options'])) {
                 echo "<li><em>Aucune option disponible</em></li>";

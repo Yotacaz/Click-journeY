@@ -42,19 +42,17 @@ $voyage =
                     array(
                         "nom" => "art urbain",
                         "valeurs_possibles" => array(
-                        ),
-                        "prix_par_personne" => 0,
-                        "nombre_personnes" => 6
+                            "peinture" => 5,
+                            "graffiti" => 5
+                        )
                     ),
                     array(
                         "nom" => "location voiture de luxe",
                         "valeurs_possibles" => array(
-                            "Ferrari",
-                            "Lamborghini",
-                            "Maserati",
-                        ),
-                        "prix_par_personne" => 25,
-                        "nombre_personnes" => 4
+                            "Ferrari" => 125,
+                            "Lamborghini" => 100,
+                            "Maserati" => 150
+                        )
                     ),
 
                 )
@@ -77,10 +75,9 @@ $voyage =
                     array(
                         "nom" => "spectacle Hip-Hop",
                         "valeurs_possibles" => array(
-                            "place assise",
-                            "fosse"
-                        ),
-                        "prix_par_personne" => 15,
+                            "place assise" => 15,
+                            "fosse" => 15
+                        )
                     ),
 
                 )

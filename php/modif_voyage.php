@@ -49,7 +49,7 @@ if ($places_restantes < 0) {
     die("Erreur : nombre de personnes négatif ou nul.");
 }
 
-echo "<pre>" . print_r($opt_enr) . "</pre>";
+var_dump($opt_enr);
 
 //calcul du prix total & verification des options
 $prix = floatval($voyage['prix_total']) * $opt_enr["nombre_personnes_totales"];
@@ -70,11 +70,11 @@ foreach ($voyage['etapes'] as $etape_index => $etape) {
         $nom_option_form = "option_$etape_index" . "_$option_index";
         if (isset($opt_enr[$nom_option_form])) {
             $opt_enr[$nom_option_form] = test_input($opt_enr[$nom_option_form]);
-            if (!in_array($opt_enr[$nom_option_form], $option['valeurs_possibles'])) {
-                die("Erreur : valeur de l'option $nom_option_form(" . $opt_enr[$nom_option_form] . ") non valide.");
+            if (!array_key_exists($opt_enr[$nom_option_form], $option["valeurs_possibles"])) {
+                die("Erreur : valeur de l'option $nom_option_form (" . $opt_enr[$nom_option_form] . ") non valide.");
             }
         }
-        $prix += floatval($option['prix_par_personne']) * $opt_enr[$nom_nb_personne_option_form];
+        $prix += floatval($option["valeurs_possibles"][$opt_enr[$nom_option_form]]) * $opt_enr[$nom_nb_personne_option_form];
     }
 }
 $opt_enr["prix"] = $prix;

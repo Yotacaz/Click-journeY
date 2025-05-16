@@ -208,6 +208,16 @@ function sauvegarder_voyage($voyage)
     file_put_contents(CHEMIN_FICHIER_VOYAGE, $contenu_json);
 }
 
+/**
+ * Supprime les données sensibles (email, image) d'un voyage
+ * @param array $voyage Le tableau associatif du voyage à nettoyer
+ * @return void
+ */
+function unset_donnees_sensibles_voyage(array $voyage): void
+{
+    unset($voyage["email_personnes_inscrites"], $voyage["image"]);
+}
+
 
 /**
  * Transforme un tableau de voyages en une chaîne de caractères pour l'affichage dans une page JavaScript.
@@ -216,7 +226,10 @@ function sauvegarder_voyage($voyage)
  */
 function transmission_voyages_js(array $voyages): void
 {
-    unset($voyages["email_personnes_inscrites"], $voyages["image"]);
+    for ($i = 0; $i < count($voyages); $i++) {
+        unset_donnees_sensibles_voyage($voyages[$i]);
+
+    }
     $tableau_json = json_encode($voyages);
     echo "var voyages = $tableau_json;\n";
 }

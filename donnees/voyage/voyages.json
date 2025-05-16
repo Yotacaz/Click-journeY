@@ -38,21 +38,21 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "art urbain",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 5,
+                            "3h": 10
+                        }
                     },
                     {
                         "nom": "location voiture de luxe",
-                        "valeurs_possibles": [
-                            "Ferrari",
-                            "Lamborghini",
-                            "Maserati"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "Ferrari": 200,
+                            "Lamborghini": 150,
+                            "Maserati": 430
+                        }
                     }
                 ]
             },
@@ -69,15 +69,13 @@
                         "prenom": "Taissa"
                     }
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "spectacle Hip-Hop",
-                        "valeurs_possibles": [
-                            "place assise",
-                            "fosse"
-                        ],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "place assise": 10,
+                            "fosse": 20
+                        }
                     }
                 ]
             }
@@ -133,20 +131,21 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "dance de feu",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 0,
+                            "2h": 0,
+                            "3h": 0
+                        }
                     },
                     {
                         "nom": "plongee sous-marine",
-                        "valeurs_possibles": [
-                            "apnee",
-                            "scaphandre"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "apnee": 10,
+                            "scaphandre": 40
+                        }
                     }
                 ]
             }
@@ -202,20 +201,20 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "centre spatial Kennedy",
-                        "valeurs_possibles": [
-                            "visite simple",
-                            "visite guidee"
-                        ],
-                        "prix_par_personne": 20
+                        "valeurs_possibles": {
+                            "visite simple": 20,
+                            "visite guidee": 30
+                        }
                     },
                     {
                         "nom": "balade parc Yellowstone",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "2h": 0,
+                            "4h": 0
+                        }
                     }
                 ]
             }
@@ -267,38 +266,38 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "Statue de la Liberte",
-                        "valeurs_possibles": [
-                            "guide touristique",
-                            "decouverte solo"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "guide touristique": 10,
+                            "decouverte solo": 0
+                        }
                     },
                     {
                         "nom": "Time Square",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 0,
+                            "2h": 0,
+                            "3h": 0,
+                            "4h": 0
+                        }
                     },
                     {
                         "nom": "Accrobranche Centrale Park",
-                        "valeurs_possibles": [
-                            "debutant",
-                            "intermediaire",
-                            "avance"
-                        ],
-                        "prix_par_personne": 28
+                        "valeurs_possibles": {
+                            "debutant": 28,
+                            "intermediaire": 28,
+                            "avance": 28
+                        }
                     },
                     {
                         "nom": "abonnement metro",
-                        "valeurs_possibles": [
-                            "au jours",
-                            "a la semaine",
-                            "ticket individuel"
-                        ],
-                        "prix_par_personne": 5
+                        "valeurs_possibles": {
+                            "au jours": 5,
+                            "a la semaine": 20,
+                            "ticket individuel": 0
+                        }
                     }
                 ]
             }
@@ -351,12 +350,15 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "visite parc national",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 0,
+                            "2h": 0,
+                            "3h": 0,
+                            "4h": 0
+                        }
                     }
                 ]
             },
@@ -369,18 +371,16 @@
                 },
                 "guides": [
                     [
-                        "Cow Girl"
+                        "BOB"
                     ]
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "escape game far west",
-                        "valeurs_possibles": [
-                            "entree plein tarif",
-                            "tarif reduit"
-                        ],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "entree plein tarif": 25,
+                            "tarif reduit": 15
+                        }
                     }
                 ]
             }
@@ -433,24 +433,21 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "randonnées",
-                        "valeurs_possibles": [
-                            "achat materiel",
-                            "location materiel",
-                            "materiel personel"
-                        ],
-                        "prix_par_personne": 20
+                        "valeurs_possibles": {
+                            "achat materiel (vous même)": 0,
+                            "location materiel": 20,
+                            "materiel personel": 0
+                        }
                     },
                     {
                         "nom": "transport",
-                        "valeurs_possibles": [
-                            "Train",
-                            "Voiture"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "Train": 25,
+                            "Voiture": 25
+                        }
                     }
                 ]
             },
@@ -464,16 +461,14 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
                 "options": [
                     {
                         "nom": "randonnées",
-                        "valeurs_possibles": [
-                            "achat materiel",
-                            "location materiel",
-                            "materiel personel"
-                        ],
-                        "prix_par_personne": 20
+                        "valeurs_possibles": {
+                            "achat materiel (vous même)": 0,
+                            "location materiel": 20,
+                            "materiel personel": 0
+                        }
                     }
                 ]
             }
@@ -525,21 +520,24 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "art urbain",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 0,
+                            "2h": 0,
+                            "3h": 0,
+                            "4h": 0
+                        }
                     },
                     {
                         "nom": "Restauant traditionnel",
-                        "valeurs_possibles": [
-                            "Menu veggie",
-                            "Menu enfant",
-                            "Menu du jour"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "Menu veggie": 15,
+                            "Menu enfant": 10,
+                            "Menu du jour": 20
+                        }
                     }
                 ]
             },
@@ -553,15 +551,14 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "transport",
-                        "valeurs_possibles": [
-                            "Train grande vitesse",
-                            "Tramway"
-                        ],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "Train grande vitesse": 15,
+                            "Tramway": 10
+                        }
                     }
                 ]
             }
@@ -609,15 +606,14 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Musee",
-                        "valeurs_possibles": [
-                            "visite guidee",
-                            "visite libre"
-                        ],
-                        "prix_par_personne": 18
+                        "valeurs_possibles": {
+                            "visite guidee": 30,
+                            "visite libre": 5
+                        }
                     }
                 ]
             },
@@ -631,15 +627,14 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Croisiere",
-                        "valeurs_possibles": [
-                            "Crete",
-                            "Santorin"
-                        ],
-                        "prix_par_personne": 18
+                        "valeurs_possibles": {
+                            "Crete": 18,
+                            "Santorin": 18
+                        }
                     }
                 ]
             }
@@ -692,25 +687,30 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "pyramides de Gizeh",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 20,
+                            "2h": 35
+                        }
                     },
                     {
                         "nom": "Temples d'Assouan",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "1h": 15,
+                            "2h": 25,
+                            "3h": 35,
+                            "4h": 45
+                        }
                     },
                     {
                         "nom": "Croisiere Nil",
-                        "valeurs_possibles": [
-                            "repas compris",
-                            "sans repas"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "repas compris": 55,
+                            "sans repas": 35
+                        }
                     }
                 ]
             }
@@ -760,33 +760,30 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "hebergement",
-                        "valeurs_possibles": [
-                            "Hotel",
-                            "Auberge"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "Hotel": 10,
+                            "Auberge": 5
+                        }
                     },
                     {
                         "nom": "Repas",
-                        "valeurs_possibles": [
-                            "Petit dejeuner",
-                            "Dejeuner",
-                            "Dinner",
-                            "Complet"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "Petit dejeuner": 10,
+                            "Dejeuner": 20,
+                            "Dinner": 20,
+                            "Complet": 35
+                        }
                     },
                     {
                         "nom": "Transport",
-                        "valeurs_possibles": [
-                            "Cheval",
-                            "Charrieaux"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "Cheval": 25,
+                            "Charrieaux": 15
+                        }
                     }
                 ]
             }
@@ -837,23 +834,21 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Exploration desert",
-                        "valeurs_possibles": [
-                            "accompagnateur",
-                            "solo"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "accompagnateur": 20,
+                            "solo": 0
+                        }
                     },
                     {
                         "nom": "Squad",
-                        "valeurs_possibles": [
-                            "2 heures",
-                            "4 heures"
-                        ],
-                        "prix_par_personne": 35
+                        "valeurs_possibles": {
+                            "2 heures": 25,
+                            "4 heures": 35
+                        }
                     }
                 ]
             },
@@ -870,20 +865,21 @@
                         "prenom": "Taissa"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Exploration desert",
-                        "valeurs_possibles": [
-                            "accompagnateur",
-                            "solo"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "accompagnateur": 20,
+                            "solo": 0
+                        }
                     },
                     {
                         "nom": "Cite de Petra",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "accompagnateur": 25,
+                            "solo": 0
+                        }
                     }
                 ]
             }
@@ -939,15 +935,14 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "randonee",
-                        "valeurs_possibles": [
-                            "Canoe",
-                            "Escalade"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "Canoe": 20,
+                            "Escalade": 5
+                        }
                     }
                 ]
             },
@@ -964,16 +959,15 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "visite desert",
-                        "valeurs_possibles": [
-                            "chameau",
-                            "4x4",
-                            "a pied"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "chameau": 20,
+                            "4x4": 20,
+                            "a pied": 0
+                        }
                     }
                 ]
             },
@@ -990,16 +984,16 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "activite plage",
-                        "valeurs_possibles": [
-                            "plongee",
-                            "peche",
-                            "cabanes"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "plongee (avec matériel)": 5,
+                            "peche": 5,
+                            "cabanes": 5,
+                            "libre": 0
+                        }
                     }
                 ]
             },
@@ -1016,16 +1010,15 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Exploration",
-                        "valeurs_possibles": [
-                            "Volcans",
-                            "Source chaude",
-                            "Geyser"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "Volcans": 0,
+                            "Source chaude": 0,
+                            "Geyser": 0
+                        }
                     }
                 ]
             },
@@ -1039,23 +1032,21 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Expedition",
-                        "valeurs_possibles": [
-                            "chien traineau",
-                            "glaciers"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "chien traineau": 15,
+                            "glaciers (a pieds)": 5
+                        }
                     },
                     {
                         "nom": "Restauration",
-                        "valeurs_possibles": [
-                            "Cuisine Inuite",
-                            "Cuisine Dannoise"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "Cuisine Inuite": 20,
+                            "Cuisine Dannoise": 20
+                        }
                     }
                 ]
             }
@@ -1106,24 +1097,21 @@
                 "guides": [
                     []
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "visite parc national",
-                        "valeurs_possibles": [
-                            "visite guidee",
-                            "visite libre"
-                        ],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "visite guidee": 20,
+                            "visite libre": 0
+                        }
                     },
                     {
                         "nom": "randonee en montagne",
-                        "valeurs_possibles": [
-                            "location materiel",
-                            "achat materiel",
-                            "propre materiel"
-                        ],
-                        "prix_par_personne": 25
+                        "valeurs_possibles": {
+                            "location materiel": 20,
+                            "propre materiel": 0
+                        }
                     }
                 ]
             }
@@ -1176,20 +1164,23 @@
                         "prenom": "Bineta"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "decouverte art traditionel",
-                        "valeurs_possibles": [],
-                        "prix_par_personne": 0
+                        "valeurs_possibles": {
+                            "1h": 0,
+                            "2h": 0,
+                            "3h": 0,
+                            "4h": 0
+                        }
                     },
                     {
                         "nom": "parc national Niokolo-Koba",
-                        "valeurs_possibles": [
-                            "visite guide",
-                            "visite libre"
-                        ],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "visite guide": 15,
+                            "visite libre": 0
+                        }
                     }
                 ]
             },
@@ -1206,15 +1197,14 @@
                         "prenom": "Taissa"
                     }
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Exploration jungle",
-                        "valeurs_possibles": [
-                            "accompagnateur",
-                            "solo"
-                        ],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "accompagnateur": 20,
+                            "solo": 0
+                        }
                     }
                 ]
             }
@@ -1263,17 +1253,16 @@
                     "duree": 8
                 },
                 "guides": [
-                    []
+                    ["Gilles"]
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "restaurant traditionel",
-                        "valeurs_possibles": [
-                            "Menu veggie",
-                            "Menu classique"
-                        ],
-                        "prix_par_personne": 40
+                        "valeurs_possibles": {
+                            "Menu veggie": 15,
+                            "Menu classique": 40
+                        }
                     }
                 ]
             },
@@ -1285,17 +1274,16 @@
                     "duree": 2
                 },
                 "guides": [
-                    []
+                    ["Gilles"]
                 ],
-                "position_gps": "",
+                
                 "options": [
                     {
                         "nom": "Exploration jardin de Yuyuan",
-                        "valeurs_possibles": [
-                            "plein tarif",
-                            "tarif reduit"
-                        ],
-                        "prix_par_personne": 15
+                        "valeurs_possibles": {
+                            "plein tarif": 15,
+                            "tarif reduit": 10
+                        }
                     }
                 ]
             }

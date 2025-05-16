@@ -78,7 +78,7 @@ function genererOptionsVoyages(root, voyage, modifiable = true) {
 	const totalPers = opt_enr.nombre_personnes_totales || 1;
 	bloc_nb_groupe.innerHTML = `
     <label title="taille de votre groupe">
-      <b>Nombre de personnes participant au voyage</b><br>
+      <b>Nombre de personnes participant au voyage</b>
       <em>(max : ${voyage.nb_places_restantes})</em><br>
       <input type='number' 
              name='nombre_personnes_totales' 
@@ -111,35 +111,37 @@ function genererOptionsVoyages(root, voyage, modifiable = true) {
 
 		etape.options.forEach((opt, jdx) => {
 			const li = document.createElement('li');
-			const nomOpt = `option_${idx}_${jdx}`;
+			const nom_opt = `option_${idx}_${jdx}`;
 			const nomNb = `nombre_personnes_${idx}_${jdx}`;
 			const valNb = opt_enr[nomNb] || 1;
 
 			// Construction du select si valeurs possibles
-			let selectHTML = '';
-			if (opt.valeurs_possibles.length > 0) {
-				selectHTML = `<select class="input-formulaire" id="${nomOpt}" name='${nomOpt}' ${modifiable ? '' : 'disabled'}>` +
-					opt.valeurs_possibles.map(val =>
-						`<option value='${val}'${opt_enr[nomOpt] === val ? ' selected' : ''}>${val}</option>`
-					).join('') +
-					`</select><br>`;
+			let selectHTML = "";
+			if (Object.keys(opt.valeurs_possibles).length > 0) {
+				selectHTML = `<select class="input-formulaire" id="${nom_opt}" name='${nom_opt}' ${modifiable ? '' : 'disabled'}>`;
+				for (const [nom_valeur, prix] of Object.entries(opt.valeurs_possibles)) {
+					selectHTML += `<option value='${nom_valeur}' ${opt_enr[nom_opt] === nom_valeur ? ' selected' : ''}>${nom_valeur} (${prix} €)</option>`;
+				}
+				selectHTML += `</select>`;
 			}
 
 			li.innerHTML = `
-			<label for="${nomOpt}">${opt.nom} (${opt.prix_par_personne} € / personne)</label><br>
-			${selectHTML}
+			<label for="${nom_opt}" class="flex">
+				${opt.nom} &nbsp ${selectHTML}
+			</label>
+			
 			<label title="si personne ne souhaite participer entrez 0" 
 				for="${nomNb}">Nombre de personnes participant :
-				<input type='number'
-					class='nombre-personne-activite'
-					data-prix='${opt.prix_par_personne}' 
+				<input type='number' 
+					class='nombre-personne-activite' 
 					name='${nomNb}' 
 					id='${nomNb}' 
 					value='${valNb}' 
 					min='0' 
 					max='${totalPers}' 
 					${modifiable ? '' : ' disabled'}> 
-			</label>`;
+			</label>
+			<br>`;
 			ul.appendChild(li);
 		});
 		if (etape.options.length == 0) {
