@@ -447,6 +447,12 @@ table.tableau1 tr th:first-child {
 table.tableau1 tr td:last-child,
 table.tableau1 tr th:last-child {
     border-right: 0;
+    display: flex;
+
+}
+
+table.tableau1 tr td:last-child img{
+    margin-left: 0.5em;
 }
 
 .grille3 img {
