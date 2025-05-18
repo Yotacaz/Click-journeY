@@ -223,6 +223,7 @@ if (!utilisateurValide($admin)) {
                                 </td>';
                             echo '<td>
                                     <button class="input-formulaire modif-utilisateur" data-id="' . $id . '" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
+                                    <img src="../img/icon_de_chargement.gif" alt="image de chargement" width="23em" Height="23em" hidden>
                                 </td>';
                             echo "</tr>";
                         }
