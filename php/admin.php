@@ -119,11 +119,9 @@ if (!utilisateurValide($admin)) {
                     value="<?php echo $email_recherche ?>">
                 <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?> value="Rechercher">
             </form>
-            <?php
-            if (!empty($msg_err)) {
-                echo "<div class=\"erreur\"> ⚠️ $msg_err</div>";
-            }
-            ?>
+
+            <div id="msg_err" class="erreur" hidden> </div>
+
             <br>
             <br>
             <table class="tableau1">
@@ -180,7 +178,7 @@ if (!utilisateurValide($admin)) {
                             echo '</select>
                                 </td>';
                             echo '<td>
-                                    <input class="input-formulaire" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
+                                    <input class="input-formulaire" id="motif-' . $id .'" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
                                 </td>';
                             echo '<td>
                                 <button class="input-formulaire modif-utilisateur" data-id="' . $id . '" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
