@@ -30,7 +30,8 @@ for (let i = 0; i < btn_modif.length; i++) {
         this.innerHTML = "En cours...";
         this.setAttribute("disabled", "disabled");
         document.body.style.cursor = "wait";
-        document.getElementById("gif-chargement-"+ (i+1)).hidden = false;
+        const id = id_form.substr(-1,1);
+        document.getElementById("gif-chargement-"+ (id)).hidden = false;
 
         // Attente simulée
         setTimeout(() => {
