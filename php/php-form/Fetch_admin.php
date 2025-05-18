@@ -1,22 +1,28 @@
 <?php
-
+    session_start();
     require_once "../php-include/utilisateur.php";
     require_once "../php-include/utiles.php";
+    sleep(10);
+    $admin = adminRequis();
+    if (!utilisateurValide($admin)) {
+        http_response_code(400);
+        die("⚠️ Erreur : Utilisateur invalide");
+    }
     // validation des formulaires si besoin
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = isset($_POST['email']) ? test_input($_POST['email']) : "";
         $utilisateur = chargerUtilisateurParEmail($email);
         if (!utilisateurValide($utilisateur)) {
             http_response_code(400);
-            die("Erreur : Utilisateur non valide");
+            die("⚠️ Erreur : Utilisateur non valide");
         }
         if (!isset($_POST["status"]) || empty($_POST["motif"])) {
             http_response_code(400);
-            die("Merci de remplir tous les champs.");
+            die("⚠️Merci de remplir tous les champs.");
         } else {
             if ($utilisateur["role"] == test_input($_POST["status"])) {
                 http_response_code(400);
-                die("Merci de choisir un statut différent.");
+                die("⚠️ Merci de choisir un statut différent.");
             }
 
             $date = date('d/m/Y h:i:s', time());
@@ -39,5 +45,7 @@
 
     }
     http_response_code(200);
+    // Attente simulée
+    echo "requete finis" ;
     exit;
 ?>
