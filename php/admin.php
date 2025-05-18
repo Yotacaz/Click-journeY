@@ -99,47 +99,8 @@ if (!utilisateurValide($admin)) {
 
                     echo '<form action="" method="post" id="form-' . $utilisateur["id"] . '"></form>';
                 }
-                // validation des formulaires si besoin
                 $j = ($page_active - 1) * $elem_par_page;
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $id_modif = test_input($_POST["id"]);
-                    $utilisateur = $utilisateurs[$id_modif];
-                    if (!utilisateurValide($utilisateur)) {
-                        die("Erreur : Utilisateur non valide");
-                    }
-                    if (!isset($_POST["status"]) || empty($_POST["motif"])) {
-                        $msg_err = "Merci de remplir tous les champs.";
-                        // déplacement de l'utilisateur modifié en haut de la liste
-                        $utilisateurs = [$id_modif => $utilisateur] + $utilisateurs;
-
-                    } else {
-
-                        if ($utilisateur["role"] == test_input($_POST["status"])) {
-                            $msg_err = "Merci de choisir un statut différent.";
-                            $utilisateurs = [$id_modif => $utilisateur] + $utilisateurs;
-
-                        }
-
-                        $date = date('d/m/Y h:i:s', time());
-                        if (isset($utilisateur["modif_admin"][$date])) {
-                            $n = 1;
-                            while (isset($utilisateur["modif_admin"]["$date ($n)"])) {
-                                $n++;
-                            }
-                            $date = "$date ($n)";
-                        }
-                        $utilisateur["modif_admin"][$date]["ancien status"] = $utilisateur["role"];
-                        $utilisateur["modif_admin"][$date]["nouveau status"] = test_input($_POST["status"]);
-                        $utilisateur["modif_admin"][$date]["motif"] = test_input($_POST["motif"]);
-                        $utilisateur["modif_admin"][$date]["auteur"] = $admin["email"];
-
-                        $utilisateur["role"] = test_input($_POST["status"]);
-                        ecrireFichierUtilisateur($utilisateur);
-
-                    }
-
-                }
-
+                $date = date('d/m/Y h:i:s', time());
             }
 
             ?>
@@ -192,6 +153,7 @@ if (!utilisateurValide($admin)) {
                             echo '<td>' . $utilisateur["info"]["nom"] . '</td>';
                             echo '<td>' . $utilisateur["info"]["prenom"] . '</td>';
                             echo '<td id="' . $utilisateur["email"] . '">' . $utilisateur["email"] . '</td>';
+                            echo '<input type="hidden" name="email" value="'. $utilisateur["email"] . '">';
                             echo '<td>
                                     <select class="input-formulaire" form="form-' . $id . '" name="status">';
                             switch ($utilisateur['role']):
@@ -222,10 +184,10 @@ if (!utilisateurValide($admin)) {
                                     <input class="input-formulaire" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
                                 </td>';
                             echo '<td>
-                                    <button class="input-formulaire modif-utilisateur" data-id="' . $id . '" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
-                                    <img src="../img/icon_de_chargement.gif" alt="image de chargement" width="23em" Height="23em" hidden>
-                                </td>';
-                            echo "</tr>";
+                                <button class="input-formulaire modif-utilisateur" data-id="' . $id . '" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
+                                <img src="../img/icon_de_chargement.gif" alt="image de chargement" width="23em" Height="23em" id="gif-chargement-'. $id .'" hidden>
+                            </td>';
+                        echo "</tr>";
                         }
                     } else {
                         echo "<tr><td colspan='7'><em>Aucun utilisateur trouvé</em></td></tr>";
