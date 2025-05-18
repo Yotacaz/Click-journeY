@@ -34,8 +34,8 @@ $prixTotal = $nbPersTotal * floatval($voyage['prix_total']); //calcul prix sans 
 //parcourir les option et faire la somme des prix successivement
 foreach ($voyage["etapes"] as $index_etape => $etape) {
   foreach ($etape["options"] as $index_option => $option) {
-   $nom_option="option_{$index_etape}_{$index_option}";
-   $nom_nombre="nombre_personnes_{$index_etape}_{$index_option}";
+   $nom_option='option_'.$index_etape.'_'.$index_option;
+   $nom_nombre='nombre_personnes_'.$index_etape.'_'.$index_option;
 
    if(!isset($input[$nom_option]) || !isset($input[$nom_nombre]))
      {
