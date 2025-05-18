@@ -1,50 +1,9 @@
 const inputs = document.querySelectorAll(".nombre-personne-activite");
-const total = document.querySelector("[data-total]");
 const input_taille_groupe = document.getElementById("nombre_personnes_totales");
+const selects = document.querySelectorAll("select");
 
-// Taille du groupe pour la réservation  d'un voyage
 let taille_groupe = 0;
 
-
-function updatePrix() {
-  let sommes = 0;
-  let prixTotal = 0;
-
-  inputs.forEach((input) => {
-    const prix = parseFloat(input.dataset.prix);
-    const valeur = parseInt(input.value) || 0;
-
-
-    // Vérifier les valeurs de prix et valeur
-
-    if (isNaN(prix)) {
-      console.warn("Prix invalide pour l'input avec data-prix:", input.dataset.prix);
-    }
-    if (isNaN(valeur)) {
-      console.warn("Valeur invalide pour l'input avec value:", input.value);
-    }
-    sommes += prix * valeur; // caluler le total
-
-  });
-
-
-  // verification des valeur
-
-  if (total && total.dataset.total) {
-    const totalSansOption = parseFloat(total.dataset.total);
-    if (!isNaN(totalSansOption)) {
-      prixTotal = sommes + totalSansOption * taille_groupe; // ajouter le total initial sans les options
-    } else {
-      console.warn("Le prix total sans option n'est pas un nombre valide.");
-    }
-  }
-
-
-  // afficher le prix total dynamique
-  console.log("Prix total:" + prixTotal + " €");
-  document.getElementById("prix_dynam").textContent = "Prix Total: " + prixTotal + " €";
-  document.getElementById("prix_dynam_2").textContent = prixTotal + " €";
-}
 
 function maj_taille_groupe(nv_taille_groupe) {
   taille_groupe = parseInt(nv_taille_groupe);
@@ -69,6 +28,15 @@ inputs.forEach((input) => {
   });
 });
 
+
+// si changement de select alors mettre a jour le prix
+
+selects.forEach((select) => {
+  select.addEventListener("change", function () {
+    updatePrix();
+  });
+});
+
 input_taille_groupe.addEventListener("change", function () {
   maj_taille_groupe(this.value);
   updatePrix();
@@ -78,5 +46,36 @@ maj_taille_groupe(input_taille_groupe.value);
 updatePrix();
 
 
+// fonction maj du prix --------------------------------
+function updatePrix(){
+
+  //recuper les donnees du formulaire -----------------
+    const form= document.querySelector("form");
+    const formData= new FormData(form);
+
+    //changer formData en un objet pour pouvoir les envoyer en requete -------
+    let data={};
+    formData.forEach((elem,indice)=>{
+      data[indice] = elem;
+    });
+    data['id'] = voyage.id;
 
 
+    //requete asyncrone ----------
+    fetch("../php/calcul.php",{  // Envoie vers un fichier PHP
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data) //on convertit en json ------------------------
+      })
+      .then(response => response.json())  // On attend une réponse JSON
+      .then(data => {//console.log(data)
+                      let prixTotal=data;
+
+
+
+  // afficher le prix total dynamique-------------------------
+  console.log("Prix total:" + prixTotal + " €");
+  document.getElementById("prix_dynam").textContent = "Prix Total: " + prixTotal + " €";
+  document.getElementById("prix_dynam_2").textContent = prixTotal + " €";});
+    }
+    
