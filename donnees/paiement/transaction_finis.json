@@ -61,5 +61,24 @@
         "date_transaction": "2025-05-09",
         "prix_total": 7830,
         "type_achat": "unitaire"
+    },
+    "rUnmzlmDZ2mWsp2": {
+        "ids_voyages": [
+            2
+        ],
+        "options_enregistres": {
+            "2": {
+                "nombre_personnes_totales": 1,
+                "option_0_0": "visite simple",
+                "nombre_personnes_0_0": 1,
+                "option_0_1": "2h",
+                "nombre_personnes_0_1": 1,
+                "prix": 520
+            }
+        },
+        "utilisateur": "bob@bob.bob",
+        "date_transaction": "2025-05-18",
+        "prix_total": 520,
+        "type_achat": "unitaire"
     }
 }

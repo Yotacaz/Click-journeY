@@ -33,13 +33,13 @@ if (!utilisateurValide($admin)) {
     $email_recherche = $id_recherche = "";
     $msg_err = "";
     if (isset($_GET[$nom_validation]) && $_SERVER["REQUEST_METHOD"] == "GET") {
-        $email_recherche = isset($_GET["recherche-email"]) ? test_input($_GET["recherche-email"]) : "";
+        $email_recherche = !empty($_GET["recherche-email"]) ? test_input($_GET["recherche-email"]) : "";
         if (!empty($email_recherche) && !filter_var($email_recherche, FILTER_VALIDATE_EMAIL)) {
             $email_recherche = "";
             $msg_err = "Merci de rentrer une adresse mail valide.";
         }
 
-        $id_recherche = isset($_GET["recherche-ID"]) ? intval($_GET["recherche-ID"]) : "";
+        $id_recherche = !empty($_GET["recherche-ID"]) ? intval($_GET["recherche-ID"]) : "";
         if (!empty($id_recherche)) {
             $utilisateur = $utilisateurs[$id_recherche];
             if (!utilisateurValide($utilisateur)) {
@@ -109,7 +109,7 @@ if (!utilisateurValide($admin)) {
                 <label for="recherche" class="col1">
                     <em>Rechercher par ID :</em>
                 </label>
-                <input class="input-formulaire" type="number" name="recherche-ID" id="ID" placeholder="ID" min="0"
+                <input class="input-formulaire" type="number" name="recherche-ID" id="ID" placeholder="ID" min="1"
                     value="<?php echo $id_recherche ?>">
                 <input class="input-formulaire" type="submit" name=<?php echo $nom_validation; ?> value="Rechercher">
                 <label for="adresse" class="col1">
@@ -178,13 +178,13 @@ if (!utilisateurValide($admin)) {
                             echo '</select>
                                 </td>';
                             echo '<td>
-                                    <input class="input-formulaire" id="motif-' . $id .'" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
+                                    <input class="input-formulaire" id="motif-' . $id . '" form="form-' . $id . '" type="text" name="motif" placeholder="motif">
                                 </td>';
                             echo '<td>
                                 <button class="input-formulaire modif-utilisateur" data-id="' . $id . '" form="form-' . $id . '" type="button" name="form-' . $id . '">Valider</button>
-                                <img src="../img/icon_de_chargement.gif" alt="image de chargement" width="23em" Height="23em" id="gif-chargement-'. $id .'" hidden>
+                                <img src="../img/icon_de_chargement.gif" alt="image de chargement" width="23em" Height="23em" id="gif-chargement-' . $id . '" hidden>
                             </td>';
-                        echo "</tr>";
+                            echo "</tr>";
                         }
                     } else {
                         echo "<tr><td colspan='7'><em>Aucun utilisateur trouvé</em></td></tr>";

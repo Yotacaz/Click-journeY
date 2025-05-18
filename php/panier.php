@@ -77,7 +77,7 @@ require_once "php-include/fonctions_voyages.php";
             </ul>
             <?php
             echo "<a id=\"acheter-panier\" href=\"paiement.php?achat_panier=oui\" class=\"input-formulaire\""
-                . ($taille_panier <= 0 ? " hidden " : "") . "\">Acheter le contenu du panier</a>";
+                . ($taille_panier <= 0 ? " hidden " : "") . ">Acheter le contenu du panier</a>";
             ?>
         </div>
         <div class="contour-bloc">

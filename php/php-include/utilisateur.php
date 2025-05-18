@@ -225,6 +225,8 @@ function utilisateurEstConnecte(): bool
     $id_session = $_COOKIE['id_session'];
     // echo "session_id() = " . session_id() . " id_session = $id_session";
     if (session_id() != $id_session || !isset($_SESSION[$id_session])) {
+        $pb_sess = isset($_SESSION);
+        $pb_id= session_id() != $id_session;
         return false;
     }
     return true;

@@ -219,10 +219,12 @@
                 ]
             }
         ],
-        "email_personnes_inscrites": [],
+        "email_personnes_inscrites": {
+            "bob@bob.bob": 1
+        },
         "prix_total": 500,
         "nb_places_tot": 30,
-        "nb_places_restantes": 30,
+        "nb_places_restantes": 29,
         "image": [
             "image003.png",
             "image103.png",
@@ -520,7 +522,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "art urbain",
@@ -551,7 +552,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "transport",
@@ -606,7 +606,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "Musee",
@@ -627,7 +626,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "Croisiere",
@@ -687,7 +685,6 @@
                         "prenom": "Bineta"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "pyramides de Gizeh",
@@ -760,7 +757,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "hebergement",
@@ -834,7 +830,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "Exploration desert",
@@ -865,7 +860,6 @@
                         "prenom": "Taissa"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "Exploration desert",
@@ -935,7 +929,6 @@
                         "prenom": "Bineta"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "randonee",
@@ -959,7 +952,6 @@
                         "prenom": "Bineta"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "visite desert",
@@ -984,7 +976,6 @@
                         "prenom": "Bineta"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "activite plage",
@@ -1010,7 +1001,6 @@
                         "prenom": "Bineta"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "Exploration",
@@ -1032,7 +1022,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "Expedition",
@@ -1097,7 +1086,6 @@
                 "guides": [
                     []
                 ],
-                
                 "options": [
                     {
                         "nom": "visite parc national",
@@ -1164,7 +1152,6 @@
                         "prenom": "Bineta"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "decouverte art traditionel",
@@ -1197,7 +1184,6 @@
                         "prenom": "Taissa"
                     }
                 ],
-                
                 "options": [
                     {
                         "nom": "Exploration jungle",
@@ -1253,9 +1239,10 @@
                     "duree": 8
                 },
                 "guides": [
-                    ["Gilles"]
+                    [
+                        "Gilles"
+                    ]
                 ],
-                
                 "options": [
                     {
                         "nom": "restaurant traditionel",
@@ -1274,9 +1261,10 @@
                     "duree": 2
                 },
                 "guides": [
-                    ["Gilles"]
+                    [
+                        "Gilles"
+                    ]
                 ],
-                
                 "options": [
                     {
                         "nom": "Exploration jardin de Yuyuan",

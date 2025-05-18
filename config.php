@@ -14,17 +14,15 @@ const CHEMIN_CSS = CHEMIN_RACINE . '/style.css';
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'];
 
-
-
 $racineWeb = realpath($_SERVER['DOCUMENT_ROOT']);   //ex C:\wamp64\www
 
 //A utiliser pour les images, redirections ...
 define('URL_RELATIVE', str_replace("\\","/", str_replace($racineWeb, '', CHEMIN_RACINE)));
 define('URL_BASE', $protocol . '://' . $host . URL_RELATIVE);
 
-//ex
 
 
+//paramètres du site (peu utilisé)
 const NOM_SITE = 'PixelTravels';
 const AUTEUR_SITE = ['Augustin AVELINE', 'CRISSOT Martin', 'DIOP Bineta'];
 const DESCRIPTION_SITE = 'Site de réservation de voyages sur le thème du jeu vidéo';

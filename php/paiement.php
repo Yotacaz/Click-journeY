@@ -42,6 +42,9 @@ if (isset($_GET["achat_panier"])) {
         }
         $prix_total += $opt["prix"];
         $identifiant_v[] = $id_v;
+        if ($voyages_achetes[$id_v]["nb_places_restantes"] < $opt_enr[$id_v]["nombre_personnes_totales"]) {
+            die("Erreur : Le voyage $id_v n'est plus disponible pour le nombre de personnes souhaité"); //TODO Mieux gérer cela 
+        }
     }
 } else {
     //Achat d'un seul voyage
@@ -68,6 +71,9 @@ if (isset($_GET["achat_panier"])) {
     $voyage = chargerVoyageParId($identifiant_v);
     if ($voyage == null) {
         die("Erreur : ID de voyage $identifiant_v  introuvable ou corrompu.");
+    }
+    if ($voyage["nb_places_restantes"] < $opt_enr[$identifiant_v]["nombre_personnes_totales"]) {
+        die("Erreur : Le voyage $identifiant_v n'est plus disponible pour le nombre de personnes souhaité"); //TODO Mieux gérer cela 
     }
 
     $voyages_achetes = [$identifiant_v => $voyage];

@@ -72,8 +72,8 @@ require_once "php-include/fonctions_voyages.php";
             <label class="grand" for="recherche">
                 Rechercher un jeu, une activité
             </label>
-            <form action="#resultats" id="form-recherche" method="get" class="flex">
-                <div class="enveloppe-input">
+            <form action="#resultats" id="form-recherche" method="get" class="centre-sans-debordement">
+                <div class="enveloppe-input flex">
                     <div class="input-formulaire tres-grand bordure-violette">
                         <input name="recherche-textuelle" form="form-recherche" id="recherche-textuelle"
                             class="tres-grand" type="text" placeholder="Recherchez un jeu..."

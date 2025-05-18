@@ -47,35 +47,36 @@ updatePrix();
 
 
 // fonction maj du prix --------------------------------
-function updatePrix(){
+function updatePrix() {
 
   //recuper les donnees du formulaire -----------------
-    const form= document.querySelector("form");
-    const formData= new FormData(form);
+  const form = document.querySelector("form");
+  const formData = new FormData(form);
 
-    //changer formData en un objet pour pouvoir les envoyer en requete -------
-    let data={};
-    formData.forEach((elem,indice)=>{
-      data[indice] = elem;
+  //changer formData en un objet pour pouvoir les envoyer en requete -------
+  let data = {};
+  formData.forEach((elem, indice) => {
+    data[indice] = elem;
+  });
+  data['id'] = voyage.id;
+
+
+  //requete asyncrone ----------
+  fetch("../php/php-form/calcul.php", {  // Envoie vers un fichier PHP
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data) //on convertit en json ------------------------
+  })
+    .then(response => response.json())  // On attend une réponse JSON
+    .then(data => {//console.log(data)
+      let prixTotal = data;
+
+
+
+      // afficher le prix total dynamique-------------------------
+      console.log("Prix total:" + prixTotal + " €");
+      document.getElementById("prix_dynam").textContent = "Prix Total: " + prixTotal + " €";
+      document.getElementById("prix_dynam_2").textContent = prixTotal + " €";
     });
-    data['id'] = voyage.id;
+}
 
-
-    //requete asyncrone ----------
-    fetch("../php/php-form/calcul.php",{  // Envoie vers un fichier PHP
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data) //on convertit en json ------------------------
-      })
-      .then(response => response.json())  // On attend une réponse JSON
-      .then(data => {//console.log(data)
-                      let prixTotal=data;
-
-
-
-  // afficher le prix total dynamique-------------------------
-  console.log("Prix total:" + prixTotal + " €");
-  document.getElementById("prix_dynam").textContent = "Prix Total: " + prixTotal + " €";
-  document.getElementById("prix_dynam_2").textContent = prixTotal + " €";});
-    }
-    

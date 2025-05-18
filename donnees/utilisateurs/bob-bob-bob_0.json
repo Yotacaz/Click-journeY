@@ -20,8 +20,8 @@
                 "prix": 3050
             }
         },
-        "achetes": [
-            {
+        "achetes": {
+            "0": {
                 "nombre_personnes_totales": 2,
                 "nombre_personnes_0_0": 2,
                 "option_0_1": "Lamborghini",
@@ -31,8 +31,18 @@
                 "prix": 7830,
                 "id_transaction": "KEgXoFrU6mqM3mt",
                 "date_achat": "9_May_2025"
+            },
+            "2": {
+                "nombre_personnes_totales": 1,
+                "option_0_0": "visite simple",
+                "nombre_personnes_0_0": 1,
+                "option_0_1": "2h",
+                "nombre_personnes_0_1": 1,
+                "prix": 520,
+                "id_transaction": "rUnmzlmDZ2mWsp2",
+                "date_achat": "18_May_2025"
             }
-        ],
+        },
         "panier": []
     },
     "autres": {

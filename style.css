@@ -887,7 +887,12 @@ a.lien:hover {
     text-decoration: underline;
 }
 
-
+.centre-sans-debordement{
+    min-width: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .bloc1 {
     display: block;
