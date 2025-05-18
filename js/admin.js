@@ -6,14 +6,14 @@ async function reponse(formData){
         });
         if(response.ok){
             const contenue = await response.text();
-            const data = await console.log("Réponse du serveur :", contenue);
+            console.log("Réponse du serveur :", contenue);
         }
         else{
             console.error("La requête n'a pas abouti : " + response.status + " " + response.statusText);
         }
     }
     catch(e){
-        console.error("Erreur avec Fetch", e)
+        console.error("Erreur avec Fetch", e);
     }
 }
 
@@ -30,6 +30,7 @@ for (let i = 0; i < btn_modif.length; i++) {
         this.innerHTML = "En cours...";
         this.setAttribute("disabled", "disabled");
         document.body.style.cursor = "wait";
+        document.getElementById("gif-chargement-"+ (i+1)).hidden = false;
 
         // Attente simulée
         setTimeout(() => {
