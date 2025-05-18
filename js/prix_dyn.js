@@ -62,7 +62,7 @@ function updatePrix(){
 
 
     //requete asyncrone ----------
-    fetch("../php/calcul.php",{  // Envoie vers un fichier PHP
+    fetch("../php/php-form/calcul.php",{  // Envoie vers un fichier PHP
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data) //on convertit en json ------------------------
