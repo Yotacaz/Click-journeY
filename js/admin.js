@@ -1,3 +1,22 @@
+async function reponse(formData){
+    try{
+        const response = await fetch("../php/php-form/Fetch_admin.php", {
+            method: "POST",
+            body: formData
+        });
+        if(response.ok){
+            const contenue = await response.text();
+            const data = await console.log("Réponse du serveur :", contenue);
+        }
+        else{
+            console.error("La requête n'a pas abouti : " + response.status + " " + response.statusText);
+        }
+    }
+    catch(e){
+        console.error("Erreur avec Fetch", e)
+    }
+}
+
 let btn_modif = document.getElementsByClassName("modif-utilisateur");
 
 for (let i = 0; i < btn_modif.length; i++) {
@@ -14,25 +33,8 @@ for (let i = 0; i < btn_modif.length; i++) {
 
         // Attente simulée
         setTimeout(() => {
-            let formData = new FormData(form);
-
-            fetch("../php/php-form/Fetch_admin.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log("Réponse du serveur :", data);
-                this.innerHTML = "Modifié";
-                this.style.backgroundColor = "green";
-                document.body.style.cursor = "default";
-            })
-            .catch(error => {
-                console.error("Erreur :", error);
-                this.innerHTML = "Erreur";
-                this.style.backgroundColor = "red";
-                document.body.style.cursor = "default";
-            });
+            const formData = new FormData(form);
+            reponse(formData);
         }, 2000);
     });
 }
