@@ -1,7 +1,4 @@
 <?php
-//page pour la gestion du statut des utilisateurs, réservée au admins
-
-//restauration des données utilisateurs
 session_start();
 require_once "php-include/utilisateur.php";
 require_once "php-include/utiles.php";
@@ -155,8 +152,7 @@ if (!utilisateurValide($admin)) {
                             echo '<td id="' . $id . '">' . $id . '<input type="hidden" form="form-' . $id . '" name="id" value="' . $id . '"></td>';
                             echo '<td>' . $utilisateur["info"]["nom"] . '</td>';
                             echo '<td>' . $utilisateur["info"]["prenom"] . '</td>';
-                            echo '<td id="' . $utilisateur["email"] . '">' . $utilisateur["email"] . '</td>';
-                            echo '<input type="hidden" name="email" value="'. $utilisateur["email"] . '">';
+                            echo '<td id="' . $utilisateur["email"] . '">' . $utilisateur["email"] . '<input type="hidden" form="form-' . $id . '" name="email" value="' . $utilisateur["email"] . '"></td>';
                             echo '<td>
                                     <select class="input-formulaire" form="form-' . $id . '" name="status">';
                             switch ($utilisateur['role']):
