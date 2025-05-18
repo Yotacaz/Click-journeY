@@ -6,7 +6,7 @@
 
 header('Content-Type: application/json');
 session_start();
-require_once "php-include/fonctions_voyages.php";
+require_once "../php-include/fonctions_voyages.php";
 
 
 
