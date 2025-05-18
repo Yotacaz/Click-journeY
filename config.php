@@ -1,5 +1,8 @@
 <?php
 
+//Fichier contenant diverse information/paramètres tels que les chemins absolus pour 
+// les fichiers, les urls absolues, le nom du site (pas utilisé)...
+
 define('CHEMIN_RACINE', realpath(__DIR__));
 const CHEMIN_INCLUDE = CHEMIN_RACINE . '/php-include';
 const CHEMIN_IMG = CHEMIN_RACINE . '/img';

@@ -1,4 +1,7 @@
 <?php
+
+//page de retour après une transaction si le paiement est refusé
+
 require_once "php-include/utiles.php";
 $raison = isset($_GET["raison"]) ? test_input($_GET["raison"]) : "";
 $id_transaction = isset($_GET["id_transaction"]) ? test_input($_GET["id_transaction"]) : "";

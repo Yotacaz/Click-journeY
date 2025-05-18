@@ -1,3 +1,6 @@
+//Fichier permettant de gérer le panier utilisateur pour achat de voyages groupés
+// Nécessite que les variables taille_panier, taille_consultes 
+// et prix total soient définis côté page php
 if (typeof taille_panier === "undefined") {
     taille_panier = 0;
     console.warn("Aucune taille du panier n'a été renseignée.");
@@ -19,7 +22,11 @@ let elem_nb_panier = document.getElementById("nb-panier");
 let elem_nb_consultes = document.getElementById("nb-consultes");
 let btn_acheter_panier = document.getElementById("acheter-panier");
 
-
+/*
+Pour ajouter ou supprimer un voyage du panier, les boutons 
+ont deux types (précisés dans data-type), soit "ajout", soit "supprimer"
+A la modification, le type de bouton est mis à jour
+*/
 let btn_modifier = document.getElementsByClassName("modifier_voyage");
 for (let i = 0; i < btn_modifier.length; i++) {
     btn_modifier[i].addEventListener("click", async function () {
@@ -47,6 +54,7 @@ for (let i = 0; i < btn_modifier.length; i++) {
         else if (this.dataset.type == "ajouter") {
             const prix = await ajouterVoyage(id_voyage);
             if (taille_panier == 0) {
+                //Panier était vide (ne le sera plus) --> retirer message panier vide
                 elem_liste_panier.innerHTML = "";
                 btn_acheter_panier.removeAttribute("hidden");
             }
@@ -72,6 +80,11 @@ for (let i = 0; i < btn_modifier.length; i++) {
     });
 }
 
+/**
+ * Envoie requête serveur, permet d'ajouter un voyage au panier de l'utilisateur
+ * @param {int} id_voyage id du voyage a ajouter au panier 
+ * @returns {float} prix du voyage ajouté au panier
+ */
 async function ajouterVoyage(id_voyage) {
     if (typeof id_voyage !== 'number' || isNaN(id_voyage)) {
         console.error("id_voyage invalide : ", id_voyage);
@@ -93,12 +106,17 @@ async function ajouterVoyage(id_voyage) {
             throw new Error("Erreur lors de l'ajout au panier : " + requete.status + " " + requete.statusText);
         }
         let prix = await requete.text();
-        return await parseFloat(prix);
+        return parseFloat(prix);
     } catch (error) {
         console.error("Erreur lors de la mise à jour du panier : ", error);
     }
 }
 
+/**
+ * Envoie requête serveur, permet de supprimer un voyage du panier de l'utilisateur
+ * @param {int} id_voyage id du voyage à supprimer du panier 
+ * @returns {float} prix du voyage qui a été supprimé du panier
+ */
 async function supprimerVoyage(id_voyage) {
     if (typeof id_voyage !== 'number' || isNaN(id_voyage)) {
         console.error("id_voyage invalide : ", id_voyage);
@@ -121,7 +139,7 @@ async function supprimerVoyage(id_voyage) {
             throw new Error("Erreur lors de la suppression du panier : " + requete.status + " " + requete.statusText);
         }
         let prix = await requete.text();
-        return await parseFloat(prix);
+        return parseFloat(prix);
     } catch (error) {
         console.error("Erreur lors de la mise à jour du panier : ", error);
     }

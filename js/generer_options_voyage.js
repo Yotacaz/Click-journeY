@@ -1,4 +1,7 @@
-//
+// Fichier permettant de charger dynamiquement les options de 
+// voyages pour details_voyage.php.
+//Certaines variables doivent être préalablement définies dans details_voyage.php
+
 if (typeof voyage === 'undefined') console.error("Aucun voyage n'a été fourni.");
 if (typeof modifiable === 'undefined') {
 	modifiable = true;

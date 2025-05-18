@@ -1,4 +1,8 @@
 <?php
+//Page de connexion. Si l'utilisateur est déjà connecté, 
+// il est redirigé vers la page de profil.
+
+//restauration de la session
 session_start();
 require_once "php-include/utilisateur.php";
 require_once "php-include/utiles.php";

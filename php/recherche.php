@@ -1,4 +1,8 @@
 <?php
+
+//Fichier permettant la recherche de voyages, leurs filtrage ainsi que leurs tris
+
+//restauration des données utilisateurs
 session_start();
 require_once "php-include/utilisateur.php";
 $utilisateur = restaurerSessionUtilisateur();
@@ -96,7 +100,6 @@ if (isset($_GET[$nom_validation])) {
 ?>
 <script type="text/javascript">
 
-
     <?php transmission_voyages_js($voyages); ?>
 
     const URL_IMG_VOYAGE = "<?= URL_IMG_VOYAGE; ?>";
@@ -106,7 +109,6 @@ if (isset($_GET[$nom_validation])) {
     let form_id = "<?= $form_id; ?>";
     let nb_elem = voyages.length;
     let elem_par_page = 9;
-
 
 </script>
 

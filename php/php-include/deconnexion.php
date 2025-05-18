@@ -1,4 +1,7 @@
 <?php
+
+//déconnecte et renvoie vers la page d'accueil
+
 //Important : aucune donnée importante rien n'est modifiée sur la session
 //la fermer comme cela ne devrait donc donc pas poser de problème
 session_start();

@@ -1,4 +1,13 @@
 <?php
+
+//Ce fichier permet la suppression d'un voyage du panier.
+//Il est appelé par la bouton ajouter au panier dans panier.php
+
+// on récupère les données via $_POST
+// en cas de fetch (pas de redirection), on renvoie le prix du voyage supprimé du panier
+
+
+// restauration de la session utilisateur.
 session_start();
 require_once "../php-include/utilisateur.php";
 $utilisateur = restaurerSessionUtilisateur();
@@ -17,7 +26,7 @@ if ($utilisateur == null || !utilisateurValide($utilisateur)) {
 }
 
 $prix = 0;
-
+//màj du panier
 if (isset($_POST["id_voyage"]) && $_SERVER['REQUEST_METHOD'] === "POST") {
     $id_voyage = intval($_POST["id_voyage"]);
     if (empty($utilisateur["voyages"]["panier"][$id_voyage])) {

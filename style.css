@@ -142,6 +142,7 @@ ul {
 
 [hidden] {
     display: none !important;
+    /* Sinon, les contenus flex ne seraient pas affectés par défaut  */
 }
 
 [readonly].desactivable {
@@ -218,6 +219,7 @@ a.input-formulaire {
     border-radius: .5em;
 }
 
+/*Pour les inputs avec couleurs inversées*/
 .input-formulaire-2 {
     background-color: var(--coul-arr-plan);
     border: var(--coul-arr-plan) solid .1em;
@@ -420,6 +422,7 @@ a.input-formulaire-2 {
     margin-bottom: 1em;
 }
 
+/*Style de tableau pour n'avoir que les bordures intérieures (ex dans admin.php)*/
 table.tableau1 {
     border-collapse: collapse;
     width: 100%;
@@ -451,7 +454,7 @@ table.tableau1 tr th:last-child {
 
 }
 
-table.tableau1 tr td:last-child img{
+table.tableau1 tr td:last-child img {
     margin-left: 0.5em;
 }
 
@@ -497,6 +500,7 @@ button.btn-img:hover {
     box-sizing: border-box;
 }
 
+/*Popup qui s'ouvre au millieu de l'écran (voir profil.php)*/
 .popup {
     position: fixed;
     top: 0;

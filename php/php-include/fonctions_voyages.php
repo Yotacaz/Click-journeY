@@ -1,5 +1,7 @@
 <?php
 
+// Ensemble de fonctions utiles pour gérés les voyages
+
 require_once realpath(__DIR__ . '/../../config.php');
 require_once "utiles.php";
 

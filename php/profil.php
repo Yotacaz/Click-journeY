@@ -1,4 +1,9 @@
 <?php
+
+// Fichier permettant à l'utilisateur de consulter et de modifier 
+// ses informations
+
+//restauration des données utilisateurs
 session_start();
 require_once "../config.php";
 require_once "php-include/utilisateur.php";
@@ -43,7 +48,7 @@ require_once "php-include/fonctions_voyages.php";
 
         </div>
         <div class="contour-bloc scrollable">
-            <h2 class="js-replier">Vos voyages prévus : </h2>
+            <h2 class="js-replier">Vos voyages achetés : </h2>
             <ul class="repliable">
                 <?php
 
@@ -227,8 +232,8 @@ require_once "php-include/fonctions_voyages.php";
                     <div class="bloc" id="popup-elem">
                         <label for="mdp-actuel">Mot de passe actuel : </label>
                         <div class="enveloppe-input">
-                            <div>
-                                <input class=" js-mdp" name="mdp-actuel" id="mdp-actuel" type="password"
+                            <div class="fill-col">
+                                <input class="js-mdp" name="mdp-actuel" id="mdp-actuel" type="password" required
                                     placeholder="Mot de passe actuel" maxlength="<?= MAX_MDP_LENGTH ?>">
                                 <span class="compteur"><?= "0/" . MAX_MDP_LENGTH ?></span>
 
@@ -240,61 +245,14 @@ require_once "php-include/fonctions_voyages.php";
                         <input type="hidden" name="valider-modif">
                         <div>
                             <br>
-                            <input class="input-formulaire-2" type="button" value="valider"
-                                onclick="envoyerFormulaire()">
+                            <input class="input-formulaire-2" type="button" value="valider" id="envoi-formulaire">
                             &nbsp;
                             <input class="input-formulaire-2" type="button" value="annuler" onclick="fermerPopup()">
                         </div>
                     </div>
                 </div>
             </form>
-            <?php
-            if (isset($_GET["erreur"]) && $_SERVER["REQUEST_METHOD"] == "GET") {
-                echo '<div class="erreur"> ⚠️ Erreur : ';
-                switch ($_GET["erreur"]) {
-                    case "date_invalide":
-                        echo "Date invalide";
-                        break;
-                    case "email_invalide":
-                        echo "Email invalide";
-                        break;
-                    case "mdp_invalide":
-                        echo "Mot de passe doit avoir entre 6 et 16 caractères, au moins un chiffre et un caractère spécial parmi !@#$%^&*";
-                        break;
-                    case "mdp_different":
-                        echo "Les mots de passe ne correspondent pas";
-                        break;
-                    case "utilisateur_invalide":
-                        echo "Utilisateur invalide";
-                        break;
-                    case "nom_invalide":
-                        echo "Nom invalide";
-                        break;
-                    case "prenom_invalide":
-                        echo "Prénom invalide";
-                        break;
-                    case "genre_invalide":
-                        echo "Genre invalide";
-                        break;
-                    case "mdp_actuel_vide":
-                        echo "Mot de passe actuel vide";
-                        break;
-                    case "mdp_actuel_invalide":
-                        echo "Mot de passe actuel invalide";
-                        break;
-                    case "mdp_actuel_incorrect":
-                        echo "Mot de passe actuel incorrect";
-                        break;
-                    case "action_invalide":
-                        echo "Action invalide";
-                        break;
-                    default:
-                        echo "Erreur inconnue : " . $_GET["erreur"];
-                        break;
-                }
-                echo '</div>';
-            }
-            ?>
+            <div class="erreur" hidden>⚠️ Erreur : <span id="erreur-php"></span></div>
         </div>
         <div class="texte-centre"><a href="panier.php" class="input-formulaire"> → Acceder à votre panier</a></div>
 

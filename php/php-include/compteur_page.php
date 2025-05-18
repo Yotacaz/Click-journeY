@@ -1,5 +1,10 @@
 <?php
 
+//permet d'appliquer une pagination pour formulaire $_GET (ex : liste de voyage).
+// le numéro de page active est stocké dans l'url
+//les variables $nb_elem, $elem_par_page, $form_id, $nom_validation 
+// doivent être correctement initialisées.
+
 if (!isset($_SERVER["PHP_SELF"])) {
     die("Des variables serveurs ne sont pas définies.");
 }

@@ -1,3 +1,5 @@
+<!-- pied de page -->
+
 <style>
     <?php include_once "footer.css"; ?>
 </style>

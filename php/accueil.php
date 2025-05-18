@@ -1,4 +1,6 @@
 <?php
+
+//restauration des données utilisateurs
 session_start();
 require_once "php-include/utilisateur.php";
 $utilisateur = restaurerSessionUtilisateur();

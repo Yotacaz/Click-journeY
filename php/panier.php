@@ -1,4 +1,7 @@
 <?php
+
+//permet d'ajouter/retirer des voyages au panier d'un utilisateur
+
 session_start();
 //Gestion de l'utilisateur
 require_once "php-include/utilisateur.php";

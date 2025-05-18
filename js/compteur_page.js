@@ -32,6 +32,8 @@ if (typeof nb_elem === 'undefined' || typeof elem_par_page === 'undefined'
     throw new Error('Des variables nécessaires au compteur de page ne sont pas déclarées.');
 }
 
+
+//initialisations
 let page_active = nb_elem > 0 ? 1 : 0;
 let nb_page_tot = Math.ceil(nb_elem / elem_par_page);
 
@@ -64,6 +66,7 @@ btn_suiv.disabled = page_active >= nb_page_tot;
 
 let page_change = new CustomEvent('page_change', { detail: page_active });
 
+// Action pour le bouton "Précédent"
 btn_pre.addEventListener('click', (event) => {
 
     if (page_active > 1) {
@@ -77,10 +80,12 @@ btn_pre.addEventListener('click', (event) => {
         btn_suiv.disabled = page_active >= nb_page_tot;
         maj_compteurs(page_active);
 
+        //permet à d'autre script de détecter le changement de page :
         window.dispatchEvent(page_change);
     }
 });
 
+//Action pour le bouton "Suivant"
 btn_suiv.addEventListener('click', (event) => {
     if (page_active < nb_page_tot) {
         page_active++;
@@ -122,6 +127,7 @@ function maj_nb_elem_total(nv_nb_elem) {
     return page_active;
 }
 
+// Remet les compteurs à leur état initial
 function reinitialiser_compteurs() {
     page_active = nb_elem > 0 ? 1 : 0;
     btn_pre.disabled = true;
@@ -130,6 +136,7 @@ function reinitialiser_compteurs() {
     btn_pre.value = page_active - 1;
     btn_suiv.value = page_active + 1;
 
+    //permet à d'autre script de détecter le changement de page :
     window.dispatchEvent(page_change);
     maj_compteurs(page_active);
     return page_active;

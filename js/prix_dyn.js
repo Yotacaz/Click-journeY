@@ -2,6 +2,7 @@ const inputs = document.querySelectorAll(".nombre-personne-activite");
 const total = document.querySelector("[data-total]");
 const input_taille_groupe = document.getElementById("nombre_personnes_totales");
 
+// Taille du groupe pour la réservation  d'un voyage
 let taille_groupe = 0;
 
 

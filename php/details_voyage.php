@@ -1,4 +1,7 @@
 <?php
+
+//Permet l'affichage des option détaillées d'un voyage et leurs modification
+
 session_start();
 //Gestion de l'utilisateur
 require_once "php-include/utilisateur.php";

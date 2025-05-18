@@ -1,4 +1,8 @@
 <?php
+
+//permet l'inscription d'un utilisateur et la création de son compte.
+// si l'utilisateur est déjà connecté, il est redirigé vers la page de profil.
+
 session_start();
 require_once "php-include/utilisateur.php";
 require_once "php-include/utiles.php";

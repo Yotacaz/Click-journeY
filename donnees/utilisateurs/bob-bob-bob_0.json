@@ -5,8 +5,8 @@
     "role": "admin",
     "info": {
         "nom": "BOB",
-        "prenom": "Bobe",
-        "sexe": "autre",
+        "prenom": "Bob",
+        "sexe": "homme",
         "date_naissance": "2006-06-06"
     },
     "voyages": {
@@ -37,7 +37,7 @@
     },
     "autres": {
         "date_inscription": "2020-06-06",
-        "date_derniere_connexion": "2025-05-16"
+        "date_derniere_connexion": "2025-05-18"
     },
     "modif_admin": []
 }

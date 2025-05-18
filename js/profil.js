@@ -1,23 +1,23 @@
 import {
-    verifiersInputs,
-    estEmail,
-    estNom,
-    estPrenom,
-    estDate,
-    estDatePasse,
-    est_mdp
+    verifiersInputs, fixerValeursParDefaut
 } from "./form.js";
 
-var en_modification = false;
-var popup_mdp_ouverte = false;
-var popup_mdp = document.getElementById("popup");
-var contenu_popup = document.getElementById("popup-elem");
+/* 
+  Fichier permettant la modification du profil utilisateur avec : possibilité de choisir un champ à modifier,
+  possibilité de réinitialiser, possibilité de sauvegarder les modifications
+   (avec confirmation de mot de passe)
+ */
 
-var evenement = new Event("input")
+let en_modification = false;
+let btnRadioAffiche = false;
+
+// variable evenement utilisée pour propager dans form.js les changements 
+// aux champs de formulaire avec taille maximale (pour compteur de caractères)
+var evenement = new Event("input");
 /**
  * Liste des champs modifiés
  * @type {string[]}
- */
+*/
 let champs_modifies = [];
 
 
@@ -25,11 +25,10 @@ let champs_modifies = [];
 /**
  * Conteneur principal du profil
  * @type {HTMLElement}
- */
+*/
+let id_form = "form-profil";
+let form = document.forms[id_form];
 let div_profil = document.getElementById("modifiable");
-let oeil = document.getElementById("oeil-mdp");
-
-
 window.onbeforeunload = function (e) {
     if (en_modification) {
         e.preventDefault();
@@ -38,7 +37,10 @@ window.onbeforeunload = function (e) {
 };
 
 // Fermer la popup si on clique à l'extérieur
-document.addEventListener("click", function (event) {
+let popup_mdp = document.getElementById("popup");
+let popup_mdp_ouverte = false;
+let contenu_popup = document.getElementById("popup-elem");
+popup_mdp.addEventListener("click", function (event) {
     if (
         !popup_mdp.hidden &&
         !contenu_popup.contains(event.target) && // si clic en dehors
@@ -57,8 +59,6 @@ function ajouterModification(id) {
     if (!champs_modifies.includes(id)) {
         champs_modifies.push(id);
     }
-    console.log(en_modification);
-    console.log(champs_modifies);
 
     if (!en_modification) {
         permettreValidation();
@@ -100,6 +100,7 @@ function gestionBoutonAnnuler(id, afficher) {
     }
 }
 
+//Gestion champ de mot de passe
 let id_mdp = "mdp";
 let id_confirmation_mdp = "mdp2";
 
@@ -110,7 +111,6 @@ let label_confirmation_mdp = document.getElementById("label-" + id_confirmation_
 
 let oeil_mdp = document.getElementById("oeil-" + id_mdp);
 oeil_mdp.setAttribute("hidden", "hidden");
-let oeil_confirmation_mdp = document.getElementById("oeil-" + id_confirmation_mdp);
 let div_mdp2 = document.getElementById("div-" + id_confirmation_mdp);
 let br_col3_mdp2 = document.getElementById("col3-" + id_confirmation_mdp);
 /**
@@ -182,6 +182,8 @@ function reinitialiserMDP() {
     reinitialiserInput(id_confirmation_mdp, false);
 }
 
+//gestions des inputs
+
 /**
  * Active ou désactive un champ input
  * @param {string} id
@@ -195,21 +197,42 @@ function inputModifiable(id) {
             ajouterModification(id);
             gestionBoutonAnnuler(id, true);
             input.classList.add("js-a-verifier");
-            console.log(id + " maintenant modifiable");
         } else {
             input.setAttribute("readonly", "readonly");
             // retirerModification(id);
             gestionBoutonAnnuler(id, true);
-            console.log(id + " maintenant non modifiable");
         }
     }
 }
 
-let btnRadioAffiche = false;
+/**
+ * Réinitialise un champ input à sa valeur d’origine
+ * @param {string} id
+ * @param {boolean} avec_btn_annuler true si le bouton annuler (reset) doit être désactivé
+ */
+function reinitialiserInput(id, avec_btn_annuler = true) {
+    let input = document.getElementById(id);
+    let elem_message_erreur = input.parentNode.parentNode.querySelector(".message-erreur");
+    if (input && elem_message_erreur) {
+        input.value = input.defaultValue;
+        input.setAttribute("readonly", "readonly");
+        input.classList.remove("js-a-verifier");
+        retirerModification(id);
+        input.dispatchEvent(evenement);
+        elem_message_erreur.innerHTML = "";
+    }
+    else {
+        console.error("Impossible de réinitialiser le champ " + id);
+    }
+    if (avec_btn_annuler) {
+        gestionBoutonAnnuler(id, false);
+    }
+}
 
+//gestions des boutons radios
 /**
  * Affiche ou masque les boutons radio et le bouton annuler associé
- * @param {string} idAnnuler
+ * @param {string} idAnnuler id du bouton annuler
  * @param {string[]} ids liste des ids des boutons radio
  */
 function afficherBtnRadio(idAnnuler, ids) {
@@ -275,7 +298,6 @@ function reinitialiserRadio(idAnnuler, ids) {
                 label.removeAttribute("hidden");
             }
             retirerModification(id);
-            console.log(id + " maintenant non modifiable");
         }
     }
 
@@ -283,38 +305,18 @@ function reinitialiserRadio(idAnnuler, ids) {
 }
 
 /**
- * Réinitialise un champ input à sa valeur d’origine
- * @param {string} id
- * @param {boolean} avec_btn_annuler true si le bouton annuler (reset) doit être désactivé
- */
-function reinitialiserInput(id, avec_btn_annuler = true) {
-    let input = document.getElementById(id);
-    let elem_message_erreur = input.parentNode.parentNode.querySelector(".message-erreur");
-    if (input && elem_message_erreur) {
-        input.value = input.defaultValue;
-        input.setAttribute("readonly", "readonly");
-        input.classList.remove("js-a-verifier");
-        retirerModification(id);
-        input.dispatchEvent(evenement);
-        elem_message_erreur.innerHTML = "";
-    }
-    else {
-        console.error("Impossible de réinitialiser le champ " + id);
-    }
-    if (avec_btn_annuler) {
-        gestionBoutonAnnuler(id, false);
-    }
-}
-
-/**
  * Réinitialise l’ensemble du formulaire
  */
 function reinitialiserFormulaire() {
-    document.getElementById("form-profil").reset();
+    form.reset();
     reinitialiserModifications();
 }
 
-function preEnvoiFormulaire() {
+/**
+ * Verifie si le formulaire est correctement remplis.
+ * Si c'est le cas, affiche la popup de confirmation du mot de passe.
+ */
+function afficherConfirmationMdp() {
     let nb_err = verifiersInputs();
 
     if (popup_mdp && nb_err === 0) {
@@ -328,9 +330,33 @@ function preEnvoiFormulaire() {
 }
 
 /**
- * Réinitialise les états de modification au moment de l’envoi
+ * Affiche sur profil.php le message d'erreur
+ * @param {string} msg_err le message d'erreur
  */
-function envoyerFormulaire() {
+function afficherMsgErreurPhp(msg_err) {
+    let span_err = document.getElementById("erreur-php");
+    if (span_err) {
+        span_err.innerHTML = msg_err;
+        span_err.parentElement.removeAttribute("hidden");
+    }
+}
+
+/**
+ * Cache sur profil.php le message d'erreur
+ */
+function cacherMsgErreurPhp() {
+    let span_err = document.getElementById("erreur-php");
+    if (span_err) {
+        span_err.parentElement.setAttribute("hidden", "hidden");
+    }
+}
+
+/**
+ * Réinitialise les états de modification au moment de l’envoi du formulaire
+ */
+let btn_envoi_form = document.getElementById("envoi-formulaire");
+btn_envoi_form.addEventListener("click", async function () {
+    //Verification de la modification
     let elem_mdp_actuel = document.getElementById("mdp-actuel");
     elem_mdp_actuel.classList.add("js-a-verifier");
     let i = verifiersInputs();
@@ -338,11 +364,38 @@ function envoyerFormulaire() {
         return;
     }
 
-    en_modification = false;
-    champs_modifies = [];
+    //Les champs sont biens valides --> on peut envoyer le formulaire
+    // en_modification = false;
 
-    document.getElementById("form-profil").submit();
-}
+    const style = document.documentElement.style;
+    style.setProperty("cursor", "wait");
+    this.setAttribute("disabled", "disabled");
+    try {
+        let requete = await fetch("php-form/profil_modification.php", {
+            method: "POST",
+            body: new FormData(form)
+        });
+        let retour = await requete.json();
+        if (!requete.ok) {
+            afficherMsgErreurPhp(retour.erreur || "Erreur inconnue lors de l'envoi du formulaire");
+            console.error("Erreur lors de l'envoie du formulaire. "
+                + requete.status + " " + requete.statusText);
+            style.setProperty("cursor", "");
+            this.removeAttribute("disabled");
+            fermerPopup();
+            return;
+        }
+        fixerValeursParDefaut(form);
+        reinitialiserModifications();
+    } catch (err) {
+        console.error(err);
+    }
+    finally {
+        style.setProperty("cursor", "");
+        this.removeAttribute("disabled");
+        fermerPopup();
+    }
+});
 
 /**
  * Active l’état de modification et affiche les boutons de validation/annulation
@@ -357,7 +410,7 @@ function permettreValidation() {
         valider.setAttribute("id", "valider-preenvoi");
         valider.setAttribute("name", "valider-preenvoi");
         valider.innerHTML = "Sauvegarder";
-        valider.onclick = preEnvoiFormulaire;
+        valider.onclick = afficherConfirmationMdp;
         valider.type = "button";
         div_modif.appendChild(valider);
     }
@@ -381,11 +434,10 @@ function reinitialiserModifications() {
     if (champs_modifies.includes(id_mdp)) {
         reinitialiserMDP();
     }
-    if (champs_modifies.includes("genreF")){
-        reinitialiserRadio('annuler-genre', ['genreA','genreH','genreF'])
+    if (champs_modifies.includes("genreF")) {
+        reinitialiserRadio('annuler-genre', ['genreA', 'genreH', 'genreF'])
     }
-    
-    let inputs = document.getElementsByClassName("js-a-verifier");
+
     //il ne reste que les inputs avec contenu modifiable
     for (let i = 0; i < champs_modifies.length; i++) {
         reinitialiserInput(champs_modifies[i]);
@@ -402,9 +454,9 @@ function reinitialiserModifications() {
     if (reinitialiser) div_modif.removeChild(reinitialiser);
     en_modification = false;
     let annuler = document.getElementsByClassName("btn-annuler");
-    for (let i = 0; i < annuler.length; i++) {
-        annuler[i].setAttribute("hidden", "hidden");
-    }
+    // for (let i = 0; i < annuler.length; i++) {
+    //     annuler[i].setAttribute("hidden", "hidden");
+    // }
 }
 
 /**
@@ -417,18 +469,13 @@ function fermerPopup() {
     popup_mdp_ouverte = false;
 }
 
-
+//Pour faire en sorte que les fonctions soit globales :
+// (pour être utilisées dans le html)
 window.inputModifiable = inputModifiable;
 window.afficherBtnRadio = afficherBtnRadio;
 window.modifMDP = modifMDP;
 window.reinitialiserMDP = reinitialiserMDP;
 window.reinitialiserRadio = reinitialiserRadio;
 window.reinitialiserInput = reinitialiserInput;
-window.reinitialiserFormulaire = reinitialiserFormulaire;
-window.preEnvoiFormulaire = preEnvoiFormulaire;
-window.envoyerFormulaire = envoyerFormulaire;
 
 window.fermerPopup = fermerPopup;
-window.desactiverModification = reinitialiserModifications;
-
-window.champs_modifies = champs_modifies;

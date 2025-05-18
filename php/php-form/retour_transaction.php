@@ -1,4 +1,11 @@
 <?php
+
+//lien de retour après un payement de voyage.
+//Gère les information de retours et sauvegarde 
+// si nécessaire l'achat d'un ou de plusieurs voyages
+
+
+//restauration de la session utilisateur
 session_start();
 require_once "../php-include/utilisateur.php";
 $utilisateur = connexionUtilisateurRequise();
@@ -6,7 +13,7 @@ if ($utilisateur != null && !utilisateurValide($utilisateur)) {
     die("Erreur : Utilisateur invalide");
 }
 
-
+//récupération des paramètres / infos utiles, et vérification de celles-ci :
 if (!isset($_GET["status"], $_GET["transaction"], $_GET["montant"], $_GET["vendeur"], $_GET["control"])) {
     die("Erreur : Paramètres incorrects.");
 }
@@ -73,6 +80,7 @@ if ($vendeur != VENDEUR) {
     die("Erreur : Vendeur incorrect.");
 }
 
+//sauvegarde des données de la transaction
 
 $tout_tracabilite[$id_transaction] = $achat;
 $open = fopen("../../donnees/paiement/transaction_finis.json", 'w');

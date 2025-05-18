@@ -1,4 +1,11 @@
 <?php
+//Ce fichier permet l'ajout au panier d'un voyage.
+//Il est appelé soit par la bouton ajouter au panier dans panier.php
+//soit par lien direct dans le recap de voyage (fonctionnements différents)
+
+//Dans tous les cas on récupère les données via $_POST
+// en cas de fetch (pas de redirection), on renvoie le prix du voyage ajouté au panier
+
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
@@ -6,13 +13,14 @@ error_log(print_r($_POST, true));
 if (!isset($_POST["id_voyage"])) {
     error_log("id_voyage non défini dans POST");
 }
+
+//restauration de la session utilisateur.
 session_start();
 require_once "../php-include/utilisateur.php";
 $utilisateur = restaurerSessionUtilisateur();
 
 require_once "../php-include/utiles.php";
 $redirection = isset($_POST["pas_de_redirection"]) ? false : true;
-
 
 if ($utilisateur == null || !utilisateurValide($utilisateur)) {
     if ($redirection) {
@@ -25,7 +33,7 @@ if ($utilisateur == null || !utilisateurValide($utilisateur)) {
 }
 
 $prix = 0;
-
+// Màj du panier
 if (isset($_POST["id_voyage"]) && $_SERVER['REQUEST_METHOD'] === "POST") {
     $id_voyage = intval($_POST["id_voyage"]);
     if (empty($utilisateur["voyages"]["consultes"][$id_voyage])) {

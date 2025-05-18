@@ -1,3 +1,5 @@
+<!-- baniere / haut de page -->
+
 <style>
     <?php include_once "header.css"; ?>
 </style>

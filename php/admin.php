@@ -1,4 +1,7 @@
 <?php
+//page pour la gestion du statut des utilisateurs, réservée au admins
+
+//restauration des données utilisateurs
 session_start();
 require_once "php-include/utilisateur.php";
 require_once "php-include/utiles.php";

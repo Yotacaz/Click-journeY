@@ -1,4 +1,7 @@
-export { verifiersInputs, estEmail, estNom, estPrenom, estDate, estDatePasse, est_mdp };
+export {
+    verifiersInputs, estEmail, estNom, estPrenom, estDate,
+    estDatePasse, est_mdp, fixerValeursParDefaut
+};
 
 //note : les regex ont été soit trouvés sur stackoverflow soit 
 // générés par IA puis testés sur le site regex101.com
@@ -197,7 +200,27 @@ function estPrenom(prenom) {
     return estNom(prenom);
 }
 
-
+/**
+ * Fonction permettant de fixer les valeurs par défaut pour les champs d'un formulaire.
+ * Utile si on souhaite utiliser un form.reset() avec de nouvelles valeurs
+ * @param {object} form le formulaire dont on souhaite fixer les valeurs par défaut
+ */
+function fixerValeursParDefaut(form) {
+    const elements = form.elements;
+    for (let elem of elements) {
+        if (elem.tagName === "INPUT" || elem.tagName === "TEXTAREA") {
+            if (elem.type === "checkbox" || elem.type === "radio") {
+                elem.defaultChecked = elem.checked;
+            } else {
+                elem.defaultValue = elem.value;
+            }
+        } else if (elem.tagName === "SELECT") {
+            for (let option of elem.options) {
+                option.defaultSelected = option.selected;
+            }
+        }
+    }
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -240,29 +263,29 @@ function ajouterIconeOeil(Id) {
     var inputMDP = document.getElementById(Id);
 
     if (inputMDP) {
-      var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
-      Iconoeil.setAttribute('src', '../img/imgoeil.svg');
-      Iconoeil.id = 'oeil-'+Id;
-      Iconoeil.style.maxHeight = "1em";
-      inputMDP.parentNode.style.position = 'relative';
-      inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
+        var Iconoeil = document.createElement('img'); // Change 'i' to 'img'
+        Iconoeil.setAttribute('src', '../img/imgoeil.svg');
+        Iconoeil.id = 'oeil-' + Id;
+        Iconoeil.style.maxHeight = "1em";
+        inputMDP.parentNode.style.position = 'relative';
+        inputMDP.parentNode.insertBefore(Iconoeil, inputMDP.nextSibling);
 
-      Iconoeil.addEventListener('click', function() {
-        if (inputMDP.type === 'password') {
-          inputMDP.type = 'text';
-          Iconoeil.setAttribute('src', '../img/imgoeilbarre.png'); // Change pour oeil barré
-        } else {
-          inputMDP.type = 'password';
-          Iconoeil.setAttribute('src', '../img/imgoeil.png'); // Reviens sur l'oeil icon original
-        }
-      });
+        Iconoeil.addEventListener('click', function () {
+            if (inputMDP.type === 'password') {
+                inputMDP.type = 'text';
+                Iconoeil.setAttribute('src', '../img/imgoeilbarre.png'); // Change pour oeil barré
+            } else {
+                inputMDP.type = 'password';
+                Iconoeil.setAttribute('src', '../img/imgoeil.png'); // Reviens sur l'oeil icon original
+            }
+        });
     }
-  }
+}
 
-  // Appliquer la fonction aux champs de mot de passe et de confirmation
-  ajouterIconeOeil('mdp');
-  ajouterIconeOeil('mdp2');
-  ajouterIconeOeil('mdp-actuel');
+// Appliquer la fonction aux champs de mot de passe et de confirmation
+ajouterIconeOeil('mdp');
+ajouterIconeOeil('mdp2');
+ajouterIconeOeil('mdp-actuel');
 
 window.verifiersInputs = verifiersInputs;
 window.est_mdp = est_mdp;

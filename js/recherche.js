@@ -1,14 +1,16 @@
 import { page_active, maj_nb_elem_total, reinitialiser_compteurs } from "./compteur_page.js";
 
+//Fichier permettant le tris des voyages dans recherche.php
+//il utilise une pagination grâce au fichier compteur_page.js.
+
+//Verification variables requises et initialisation
 if (typeof form === "undefined") {
     var form = document.getElementById("form-recherche");
 }
 if (typeof donnes_formulaire === "undefined") {
     var donnes_formulaire = new FormData(form);
-    
     var param_form = new URLSearchParams(donnes_formulaire);
     param_form.set(nom_validation, "true");
-    
     var url = new URL(window.location.href);
 }
 
@@ -18,7 +20,6 @@ if (form === null) {
     console.error("Erreur : le formulaire de recherche n'a pas été trouvé.");
 }
 if (typeof voyages === "undefined") {
-
     console.error("Erreur : le tableau de voyages n'a pas été trouvé.");
 }
 if (donnes_formulaire === null) {
@@ -26,16 +27,13 @@ if (donnes_formulaire === null) {
 }
 if (typeof URL_IMG_VOYAGE === "undefined") {
     console.error("Erreur : le dossier d'images de voyage n'est pas renseigné.");
-
 }
 if (typeof evenement === undefined) {
     console.error("Erreur : variable d'événements n'a pas été trouvé.");
 }
 
 
-
 var resultats = voyages.slice();    // Copie du tableau voyages pour le filtrage
-
 
 if (typeof nb_elem === "undefined") {
     nb_elem = resultats.length;
@@ -50,17 +48,7 @@ if (typeof page_active === "undefined") {
     console.warn("Aucune page active n'a été renseignée.");
 }
 
-// if (typeof btn_pre === "undefined") {
-//     btn_pre = document.getElementById("page-pre");
-//     console.warn("Aucun bouton précédent n'a été trouvé.");
-// }
-
-// if (typeof btn_sui === "undefined") {
-//     btn_sui = document.getElementById("page-sui");
-//     console.warn("Aucun bouton suivant n'a été trouvé.");
-// }
-
-
+//Reception de compteur_page.js la demande d'afficher une nouvelle page
 window.addEventListener("page_change", function () {
     param_form.set('page', page_active.toString());
     modifUrl();
@@ -88,20 +76,20 @@ exemple de donnes_formulaire :
     15: "valider-recherche" → ""
 */
 
-
+// Effectue le tris et reinitialise le compteur de page
 var tri = document.getElementById("tri");
 tri.addEventListener("change", function () {
     param_form.set("tri", this.value);
     param_form.set('page', page_active.toString());
     trier();
     reinitialiser_compteurs();
-    
+
     afficherResultats();
     modifUrl();
 });
 
 
-
+//filtrage : (inutilisé)
 
 // let inputs = form.getElementsByClassName("filtre");
 // for (let i = 0; i < inputs.length; i++) {
@@ -131,6 +119,7 @@ tri.addEventListener("change", function () {
 trier();
 afficherResultats();
 
+//Fonction de filtrage des voyages inutilisée
 function filterVoyages() {
     resultats = [];
     let dateMin = new Date(param_form.get("date_min"));
@@ -169,6 +158,10 @@ function filterVoyages() {
     trier();    // on trie résultat apres filtrage (on peut avoir ajouté des éléments)
 }
 
+/**
+ * Permet le tris du tableau des voyages en fonction du contenu
+ * du formulaire
+ */
 function trier() {
     let tri = param_form.get("tri");
 
@@ -190,17 +183,25 @@ function trier() {
             break;
         case "duree":   //duree croissante
             resultats.sort((a, b) => { return new Date(a.dates.duree) - new Date(b.dates.duree); });
-        
+
         default:
             console.error("Erreur dans le tri des voyages : " + tri);
             break;
     }
 }
 
+/**
+ * Formate le titre d'un voyage pour être utilisé comme lien d'image 
+ * @param {string} titre titre du voyage
+ * @returns {string} titre formaté
+ */
 function formaterTitreVoyage(titre) {
     return titre.toLowerCase().replace(/[^a-z0-9]+/g, '_');
 }
 
+/**
+ * Affiche les cartes de voyages pour chaque voyage dans le tableau résultats
+ */
 function afficherResultats() {
 
     div_resultats.innerHTML = "";
@@ -220,6 +221,10 @@ function afficherResultats() {
 // où le tris ne serais pas correctement appliqué mais dont on ne se
 // rendrait pas compte.
 
+/**
+ * Affiche la carte de résumé d'un voyage
+ * @param {object} voyage le voyage a afficher
+ */
 function afficherResumeVoyage(voyage) {
     if (voyage == null) {
         console.error("Erreur : tentative d'affichage d'un voyage inexistant.");
@@ -250,6 +255,9 @@ function afficherResumeVoyage(voyage) {
     div_resultats.appendChild(carte_info);
 }
 
+/**
+ * Modifie l'url de la page en fonction des paramètres du formulaires
+ */
 function modifUrl() {
     window.history.replaceState({}, "", url.pathname + "?" + param_form.toString());
 }
